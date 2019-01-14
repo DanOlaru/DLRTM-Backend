@@ -6,6 +6,8 @@ import java.util.List;
 
 import static webtodb.globalvalues.GlobalValues.US_ANONYMIZER_PREFIX;
 
+
+//change
 public class Client {
 
     /* Client info consists of: name, location, phone number, product, quantity, total price, price per unit,
@@ -39,7 +41,7 @@ public class Client {
     private Address clientBillingAddress, clientShippingAddress, clientAlternateAddress;
     private Address clientDeliveryAddress; //the actual delivery address —————— one from the list above
 
-    
+
     //payment info
 
     private PaymentInfo cardInfo, alternateCardInfo;
