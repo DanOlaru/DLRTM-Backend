@@ -8,6 +8,9 @@ public class PhoneNumber {
     private String clientAreaCode;
     private String anonymizerPrefix = US_ANONYMIZER_PREFIX; //can be set to a different value —————————— hidden
 
+    //utility variables
+    private int isPrimary = 0;
+
 
     public PhoneNumber(String clientPhoneNo, String clientAreaCode, String anonymizerPrefix) {
         this.clientPhoneNo = clientPhoneNo;
@@ -39,6 +42,19 @@ public class PhoneNumber {
     public void setAnonymizerPrefix(String anonymizerPrefix) {
         this.anonymizerPrefix = anonymizerPrefix;
     }
+
+
+
+    //utility variables
+    public int getIsPrimary() {
+        return isPrimary;
+    }
+
+    public void setIsPrimary(int isPrimary) {
+        this.isPrimary = isPrimary;
+    }
+
+
 
     @Override
     public String toString() {

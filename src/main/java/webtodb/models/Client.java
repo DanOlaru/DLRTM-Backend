@@ -1,87 +1,94 @@
 package webtodb.models;
 
-//import android.util.Log;
-import java.util.Arrays;
-import java.util.List;
+/* Dan Olaru 2019*/
 
-import static webtodb.globalvalues.GlobalValues.US_ANONYMIZER_PREFIX;
-
-
-//change
 public class Client {
 
-    /* Client info consists of: name, location, phone number, product, quantity, total price, price per unit,
-     * ClientPriceAdjust is positive if client owes and negative if client is owed,
-     * ClientUrgency is on a scale of 1 to 5
-     * ClientValue is on a scale of 1 to 5 — expresses how important client is
-     * ClientSeen - expresses whether the client was served or not
-     * this is the data with which the core code operates, pulled off of the database
-     */
+    //=============ATTRIBUTES========================================================================================================
 
-    //version 2 attributes ================================================================================================
-
-    //private Client thisClientRef;
-
+    //#1 Client id
     private String clientUniqueID;
 
-    //Client Name
-    private String clientFirstName;
-    private String clientMiddleName;
-    private String clientLastName;
+    //#2 Client Name
+    private PersonName clientName;
 
-    //Phone contact info
-    private PhoneNumber clientPrimaryPhone, clientAlternatePhone, clientMobilePhone, clientPrimaryContactPhone; //first phone to contact
+    //#3 Phone contact info
+    private PhoneNumber clientHomePhone, clientBusinessPhone, clientAlternatePhone, clientMobilePhone;
+    private PhoneNumber clientPrimaryContactPhone; //first phone to contact
 
-    //email address
+    //#4 email address
     private String clientPrimaryEmailAddress,clientAlternateEmailAddress;
 
 
-    //Client adresses
-
+    //#5 Client adresses
     private Address clientBillingAddress, clientShippingAddress, clientAlternateAddress;
     private Address clientDeliveryAddress; //the actual delivery address —————— one from the list above
 
 
-    //payment info
+    //#6 payment info
 
     private PaymentInfo cardInfo, alternateCardInfo;
-    private PaymentInfo selectedPaymentMethod; // one of the above
+    private PaymentInfo selectedPaymentMethod; // points to one of the above
 
 
-    //Other (/internal) info
+    //#7 Other (/internal) client info Value Range 0-5
     private float clientUrgency;
     private float clientValue;
     private String clientStatus;
 
-    //other hidden internal / reference / utility variables
+    //#8 internal reference / utility variables
     private String clientReferenceCode = "0";
     private String revision = "0";
 
-    //version 2 attributes ================================================================================================
+    //=============ATTRIBUTES========================================================================================================
 
 
+    //=============CONSTRUCTORS======================================================================================================
 
-
-    /****************************************Constructors******************/
     // 1° constructor -  basic
     public Client()
     {}
 
     //full constructor
-
-
-    public Client(String clientUniqueID, String clientFirstName, String clientMiddleName, String clientLastName,
-                  PhoneNumber clientPrimaryPhone, PhoneNumber clientAlternatePhone, PhoneNumber clientMobilePhone,
+    public Client(String clientUniqueID, PersonName clientName, PhoneNumber clientHomePhone, PhoneNumber clientBusinessPhone,
+                  PhoneNumber clientAlternatePhone, PhoneNumber clientMobilePhone, PhoneNumber clientPrimaryContactPhone,
                   String clientPrimaryEmailAddress, String clientAlternateEmailAddress, Address clientBillingAddress,
                   Address clientShippingAddress, Address clientAlternateAddress, Address clientDeliveryAddress, PaymentInfo cardInfo,
                   PaymentInfo alternateCardInfo, PaymentInfo selectedPaymentMethod, float clientUrgency, float clientValue,
-                  String clientStatus, String clientReferenceCode, String revision) {
+                  String clientStatus) {
 
         this.clientUniqueID = clientUniqueID;
-        this.clientFirstName = clientFirstName;
-        this.clientMiddleName = clientMiddleName;
-        this.clientLastName = clientLastName;
-        this.clientPrimaryPhone = clientPrimaryPhone;
+        this.clientName = clientName;
+        this.clientHomePhone = clientHomePhone;
+        this.clientBusinessPhone = clientBusinessPhone;
+        this.clientAlternatePhone = clientAlternatePhone;
+        this.clientMobilePhone = clientMobilePhone;
+        this.clientPrimaryContactPhone = clientPrimaryContactPhone;
+        this.clientPrimaryEmailAddress = clientPrimaryEmailAddress;
+        this.clientAlternateEmailAddress = clientAlternateEmailAddress;
+        this.clientBillingAddress = clientBillingAddress;
+        this.clientShippingAddress = clientShippingAddress;
+        this.clientAlternateAddress = clientAlternateAddress;
+        this.clientDeliveryAddress = clientDeliveryAddress;
+        this.cardInfo = cardInfo;
+        this.alternateCardInfo = alternateCardInfo;
+        this.selectedPaymentMethod = selectedPaymentMethod;
+        this.clientUrgency = clientUrgency;
+        this.clientValue = clientValue;
+        this.clientStatus = clientStatus;
+    }
+
+    //smaller-signature Constructor
+    public Client(String clientUniqueID, PersonName clientName, PhoneNumber clientHomePhone, PhoneNumber clientBusinessPhone,
+                  PhoneNumber clientAlternatePhone, PhoneNumber clientMobilePhone, String clientPrimaryEmailAddress,
+                  String clientAlternateEmailAddress, Address clientBillingAddress, Address clientShippingAddress,
+                  Address clientAlternateAddress, PaymentInfo cardInfo, PaymentInfo alternateCardInfo, float clientUrgency,
+                  float clientValue, String clientStatus) {
+
+        this.clientUniqueID = clientUniqueID;
+        this.clientName = clientName;
+        this.clientHomePhone = clientHomePhone;
+        this.clientBusinessPhone = clientBusinessPhone;
         this.clientAlternatePhone = clientAlternatePhone;
         this.clientMobilePhone = clientMobilePhone;
         this.clientPrimaryEmailAddress = clientPrimaryEmailAddress;
@@ -89,47 +96,50 @@ public class Client {
         this.clientBillingAddress = clientBillingAddress;
         this.clientShippingAddress = clientShippingAddress;
         this.clientAlternateAddress = clientAlternateAddress;
-        this.clientDeliveryAddress = clientDeliveryAddress;
         this.cardInfo = cardInfo;
         this.alternateCardInfo = alternateCardInfo;
-        this.selectedPaymentMethod = selectedPaymentMethod;
         this.clientUrgency = clientUrgency;
         this.clientValue = clientValue;
         this.clientStatus = clientStatus;
-        this.clientReferenceCode = clientReferenceCode;
-        this.revision = revision;
 
-        //by Dan
+        //by Dan — by default the 'primary' fields point to these attributes, respectively
         this.clientPrimaryContactPhone = clientMobilePhone;
+        this.clientDeliveryAddress = clientShippingAddress;
+        this.selectedPaymentMethod = cardInfo;
     }
 
-    // 6° constructor from the same type of object — Dan
-    public Client (Client fromClient)
+
+    // 6° constructor from the same type of object
+    public Client (Client myClient)
     {
-        this.clientUniqueID = fromClient.getClientUniqueID();
-        this.clientFirstName = fromClient.getClientFirstName();
-        this.clientMiddleName = fromClient.getClientMiddleName();
-        this.clientLastName = fromClient.getClientLastName();
-        this.clientPrimaryPhone = fromClient.getClientPrimaryPhone();
-        this.clientAlternatePhone = fromClient.getClientAlternatePhone();
-        this.clientMobilePhone = fromClient.getClientMobilePhone()
-        this.getClientPrimaryPhone = fromClient.getClientP
-        this.clientPrimaryEmailAddress = clientPrimaryEmailAddress;
-        this.clientAlternateEmailAddress = clientAlternateEmailAddress;
-        this.clientBillingAddress = clientBillingAddress;
-        this.clientShippingAddress = clientShippingAddress;
-        this.clientAlternateAddress = clientAlternateAddress;
-        this.clientDeliveryAddress = clientDeliveryAddress;
-        this.cardInfo = cardInfo;
-        this.alternateCardInfo = alternateCardInfo;
-        this.selectedPaymentMethod = selectedPaymentMethod;
-        this.clientUrgency = clientUrgency;
-        this.clientValue = clientValue;
-        this.clientStatus = clientStatus;
-        this.clientReferenceCode = clientReferenceCode;
-        this.revision = revision;
+        this.clientUniqueID = myClient.getClientUniqueID();
+        this.clientName = myClient.getClientName();
 
+        this.clientHomePhone = myClient.getClientHomePhone();
+        this.clientBusinessPhone = myClient.getClientBusinessPhone();
+        this.clientAlternatePhone = myClient.getClientAlternatePhone();
+        this.clientMobilePhone = myClient.getClientMobilePhone();
+        this.clientPrimaryContactPhone = myClient.getClientPrimaryContactPhone();
+        this.clientPrimaryEmailAddress = myClient.getClientPrimaryEmailAddress();
+        this.clientAlternateEmailAddress = myClient.getClientAlternateEmailAddress();
+        this.clientBillingAddress = myClient.getClientBillingAddress();
+        this.clientShippingAddress = myClient.getClientShippingAddress();
+        this.clientAlternateAddress = myClient.getClientAlternateAddress();
+        this.clientDeliveryAddress = myClient.getClientDeliveryAddress();
+        this.cardInfo = myClient.getCardInfo();
+        this.alternateCardInfo = myClient.getAlternateCardInfo();
+        this.selectedPaymentMethod = myClient.getSelectedPaymentMethod();
+
+        //utility attributes
+        this.clientUrgency = myClient.getClientUrgency();
+        this.clientValue = myClient.getClientValue();
+        this.clientStatus = myClient.getClientStatus();
+        this.clientReferenceCode = myClient.getClientReferenceCode();
+        this.revision = myClient.getRevision();
     }
+
+    //=============CONSTRUCTORS======================================================================================================
+
 
     /****************Getters and setters - methods use to access the private attributes of a class **/
 
@@ -141,36 +151,37 @@ public class Client {
         this.clientUniqueID = clientUniqueID;
     }
 
-    public String getClientFirstName() {
-        return clientFirstName;
+    public PersonName getClientName() {
+        return clientName;
     }
 
-    public void setClientFirstName(String clientFirstName) {
-        this.clientFirstName = clientFirstName;
+    public void setClientName(PersonName clientName) {
+        this.clientName = clientName;
     }
 
-    public String getClientMiddleName() {
-        return clientMiddleName;
+    public PhoneNumber getClientBusinessPhone() {
+        return clientBusinessPhone;
     }
 
-    public void setClientMiddleName(String clientMiddleName) {
-        this.clientMiddleName = clientMiddleName;
+    public void setClientBusinessPhone(PhoneNumber clientBusinessPhone) {
+        this.clientBusinessPhone = clientBusinessPhone;
     }
 
-    public String getClientLastName() {
-        return clientLastName;
+    public PhoneNumber getClientPrimaryContactPhone() {
+        return clientPrimaryContactPhone;
     }
 
-    public void setClientLastName(String clientLastName) {
-        this.clientLastName = clientLastName;
+    public void setClientPrimaryContactPhone(PhoneNumber clientPrimaryContactPhone) {
+        this.clientPrimaryContactPhone = clientPrimaryContactPhone;
     }
 
-    public PhoneNumber getClientPrimaryPhone() {
-        return clientPrimaryPhone;
+
+    public PhoneNumber getClientHomePhone() {
+        return clientHomePhone;
     }
 
-    public void setClientPrimaryPhone(PhoneNumber clientPrimaryPhone) {
-        this.clientPrimaryPhone = clientPrimaryPhone;
+    public void setClientHomePhone(PhoneNumber clientHomePhone) {
+        this.clientHomePhone = clientHomePhone;
     }
 
     public PhoneNumber getClientAlternatePhone() {
@@ -307,7 +318,9 @@ public class Client {
     //return a reference to this Client object
     public Client getClient () {return this;}
 
-    //other methods
+
+
+    /************ !!!!!!!!!!!!!!!!!!!!!!!!!!!! other/utility methods !!!!!!!!!!!!!!!!!!!!!!!!!!!! *******/
 
     //convert client to List<List<Object>>
    /* public List<List<Object>> returnClientAsObjectList() {
@@ -327,22 +340,43 @@ public class Client {
     public String clientDifferences(Client other) {
         String differencesIndex="";
 
+        //#1 Client id
+        if (!this.clientUniqueID.equals(other.getClientUniqueID())) differencesIndex+=1; else differencesIndex+=0;
+
+        //#2 Client Name
         if (!this.clientName.equals(other.getClientName())) differencesIndex+=1; else differencesIndex+=0;
 
-        if (!this.clientPhoneNo.equals(other.getClientPhoneNo())) differencesIndex+=1; else differencesIndex+=0;
+        //#3 Phone contact info
+        if (!this.clientHomePhone.equals(other.getClientHomePhone())) differencesIndex+=1; else differencesIndex+=0;
+        if (!this.clientBusinessPhone.equals(other.getClientBusinessPhone())) differencesIndex+=1; else differencesIndex+=0;
+        if (!this.clientAlternatePhone.equals(other.getClientAlternatePhone())) differencesIndex+=1; else differencesIndex+=0;
+        if (!this.clientMobilePhone.equals(other.getClientMobilePhone())) differencesIndex+=1; else differencesIndex+=0;
+        if (!this.clientPrimaryContactPhone.equals(other.getClientPrimaryContactPhone())) differencesIndex+=1; else differencesIndex+=0;
 
-        if (!this.clientLocation.equals(other.getClientLocation())) differencesIndex+=1; else differencesIndex+=0;
+        //#4 email address
+        if (!this.clientPrimaryEmailAddress.equals(other.getClientPrimaryEmailAddress())) differencesIndex+=1; else differencesIndex+=0;
+        if (!this.clientAlternateEmailAddress.equals(other.getClientAlternateEmailAddress())) differencesIndex+=1; else differencesIndex+=0;
 
+        //#5 Client adresses
+        if (!this.clientBillingAddress.equals(other.getClientBillingAddress())) differencesIndex+=1; else differencesIndex+=0;
+        if (!this.clientShippingAddress.equals(other.getClientShippingAddress())) differencesIndex+=1; else differencesIndex+=0;
+        if (!this.clientAlternateAddress.equals(other.getClientAlternateAddress())) differencesIndex+=1; else differencesIndex+=0;
+        if (!this.clientDeliveryAddress.equals(other.getClientDeliveryAddress())) differencesIndex+=1; else differencesIndex+=0;
+
+
+        //#6 payment info
+        if (!this.cardInfo.equals(other.getCardInfo())) differencesIndex+=1; else differencesIndex+=0;
+        if (!this.alternateCardInfo.equals(other.getAlternateCardInfo())) differencesIndex+=1; else differencesIndex+=0;
+        if (!this.selectedPaymentMethod.equals(other.getSelectedPaymentMethod())) differencesIndex+=1; else differencesIndex+=0;
+
+
+        //#7 Other (/internal) info
         if (this.clientUrgency != other.getClientUrgency()) differencesIndex+=1; else differencesIndex+=0;
-
         if (this.clientValue != other.getClientValue()) differencesIndex+=1; else differencesIndex+=0;
-
         if (!this.clientStatus.equals(other.getClientStatus())) differencesIndex+=1; else differencesIndex+=0;
 
         return differencesIndex;
     }
-
-
 
     //for debugging purposes
    /* public void showClient () {

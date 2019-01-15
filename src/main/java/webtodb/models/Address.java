@@ -7,8 +7,7 @@ public class Address {
     //fields
     private String fullAddress;
 
-
-    private String personName;
+    private PersonName personName;
 
     private String bldgNumber;
     private String streetName;
@@ -18,6 +17,7 @@ public class Address {
     private String country;
 
     private String otherInfo;
+    private double latitude, longitude;
 
 
     public Address(String fullAddress) {
@@ -25,8 +25,11 @@ public class Address {
         //TODO: from here we populate the individual fields!!!!!!!!!!
     }
 
-    public Address(String personName, String bldgNumber, String streetName, String cityName, String provinceName, String zipCode, String country, String otherInfo) {
-        this.personName = personName;
+    public Address(String personName, String bldgNumber, String streetName, String cityName, String provinceName, String zipCode,
+                   String country, String otherInfo) {
+
+        this.personName = new PersonName(personName);
+
         this.bldgNumber = bldgNumber;
         this.streetName = streetName;
         this.cityName = cityName;
@@ -36,6 +39,20 @@ public class Address {
         this.otherInfo = otherInfo;
     }
 
+    public Address(String fullAddress, PersonName personName, String bldgNumber, String streetName, String cityName,
+                   String provinceName, String zipCode, String country, String otherInfo, double latitude, double longitude) {
+        this.fullAddress = fullAddress;
+        this.personName = personName;
+        this.bldgNumber = bldgNumber;
+        this.streetName = streetName;
+        this.cityName = cityName;
+        this.provinceName = provinceName;
+        this.zipCode = zipCode;
+        this.country = country;
+        this.otherInfo = otherInfo;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
 
     public String getFullAddress() {
         return fullAddress;
@@ -45,11 +62,11 @@ public class Address {
         this.fullAddress = fullAddress;
     }
 
-    public String getPersonName() {
+    public PersonName getPersonName() {
         return personName;
     }
 
-    public void setPersonName(String personName) {
+    public void setPersonName(PersonName personName) {
         this.personName = personName;
     }
 
@@ -109,6 +126,21 @@ public class Address {
         this.otherInfo = otherInfo;
     }
 
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
 
     @Override
     public String toString() {
@@ -122,6 +154,10 @@ public class Address {
                 ", zipCode='" + zipCode + '\'' +
                 ", country='" + country + '\'' +
                 ", otherInfo='" + otherInfo + '\'' +
+
+                //by Dan
+                ", latitude ='" + latitude  + '\'' +
+                ", longitude ='" + longitude + '\'' +
                 '}';
     }
 

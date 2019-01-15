@@ -56,4 +56,5 @@ public class PaymentInfo {
                 ", cardVerificationNumber='" + cardVerificationNumber + '\'' +
                 '}';
     }
+
 }

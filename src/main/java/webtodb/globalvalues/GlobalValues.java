@@ -2,13 +2,19 @@ package webtodb.globalvalues;
 
 
 public class GlobalValues {
-    public static final String APP_API_KEY = "AIzaSyDCos2tFqSvd80yDcIZgl1_x9Zk1zWQ1RI";
+    //TODO: ACTUALLY RELEVANT
     public static final String US_ANONYMIZER_PREFIX = "*67";
 
+    public enum PersonalTitles {Mr,Mrs,Ms,Miss};
+    public enum PersonalPostfixes {Sr, Jr, I, II, III, IV, V};
 
+
+
+
+    //TODO: IN RESERVE
 
     //public static final LatLng ChicagoLocale = new LatLng(41.8781, -87.6298);
-    public static final String THE_FIRST_DOWNLOAD_SHEET = "https://spreadsheets.google.com/tq?key=16ujt55GOJVgcgxox1NrGT_iKf2LIVlEU7ywxtzOtngY";
+    //public static final LatLng MilanLocale = new LatLng(45.4642, 9.1900);
 
     public static final int RC_SIGN_IN = 9001;
     public static final int RC_SIGN_OUT = 9002;
@@ -48,5 +54,4 @@ public class GlobalValues {
     private static final String APPLICATION_NAME = "DLRTM - Digital Logistics Resource Time Management";
     //private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
-
 }
