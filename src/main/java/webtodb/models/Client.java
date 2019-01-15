@@ -19,14 +19,12 @@ public class Client {
     //#4 email address
     private String clientPrimaryEmailAddress,clientAlternateEmailAddress;
 
-
     //#5 Client adresses
     private Address clientBillingAddress, clientShippingAddress, clientAlternateAddress;
     private Address clientDeliveryAddress; //the actual delivery address —————— one from the list above
 
 
     //#6 payment info
-
     private PaymentInfo cardInfo, alternateCardInfo;
     private PaymentInfo selectedPaymentMethod; // points to one of the above
 
@@ -35,6 +33,9 @@ public class Client {
     private float clientUrgency;
     private float clientValue;
     private String clientStatus;
+
+    private String clientSpecialMentions;
+
 
     //#8 internal reference / utility variables
     private String clientReferenceCode = "0";
@@ -55,7 +56,7 @@ public class Client {
                   String clientPrimaryEmailAddress, String clientAlternateEmailAddress, Address clientBillingAddress,
                   Address clientShippingAddress, Address clientAlternateAddress, Address clientDeliveryAddress, PaymentInfo cardInfo,
                   PaymentInfo alternateCardInfo, PaymentInfo selectedPaymentMethod, float clientUrgency, float clientValue,
-                  String clientStatus) {
+                  String clientStatus, String clientSpecialMentions) {
 
         this.clientUniqueID = clientUniqueID;
         this.clientName = clientName;
@@ -76,6 +77,7 @@ public class Client {
         this.clientUrgency = clientUrgency;
         this.clientValue = clientValue;
         this.clientStatus = clientStatus;
+        this.clientSpecialMentions = clientSpecialMentions;
     }
 
     //smaller-signature Constructor
@@ -83,7 +85,7 @@ public class Client {
                   PhoneNumber clientAlternatePhone, PhoneNumber clientMobilePhone, String clientPrimaryEmailAddress,
                   String clientAlternateEmailAddress, Address clientBillingAddress, Address clientShippingAddress,
                   Address clientAlternateAddress, PaymentInfo cardInfo, PaymentInfo alternateCardInfo, float clientUrgency,
-                  float clientValue, String clientStatus) {
+                  float clientValue, String clientStatus, String clientSpecialMentions) {
 
         this.clientUniqueID = clientUniqueID;
         this.clientName = clientName;
@@ -101,6 +103,7 @@ public class Client {
         this.clientUrgency = clientUrgency;
         this.clientValue = clientValue;
         this.clientStatus = clientStatus;
+        this.clientSpecialMentions = clientSpecialMentions;
 
         //by Dan — by default the 'primary' fields point to these attributes, respectively
         this.clientPrimaryContactPhone = clientMobilePhone;
@@ -129,6 +132,7 @@ public class Client {
         this.cardInfo = myClient.getCardInfo();
         this.alternateCardInfo = myClient.getAlternateCardInfo();
         this.selectedPaymentMethod = myClient.getSelectedPaymentMethod();
+        this.clientSpecialMentions = myClient.getClientSpecialMentions();
 
         //utility attributes
         this.clientUrgency = myClient.getClientUrgency();
@@ -294,6 +298,15 @@ public class Client {
 
     public void setClientStatus(String clientStatus) {
         this.clientStatus = clientStatus;
+    }
+
+
+    public String getClientSpecialMentions() {
+        return clientSpecialMentions;
+    }
+
+    public void setClientSpecialMentions(String clientSpecialMentions) {
+        this.clientSpecialMentions = clientSpecialMentions;
     }
 
     public String getClientReferenceCode() {
