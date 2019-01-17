@@ -1,4 +1,4 @@
-package webtodb;
+package Entity;
 
 public class WebClient {
 

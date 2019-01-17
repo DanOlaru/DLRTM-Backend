@@ -1,14 +1,13 @@
-package webtodb.globalvalues;
+package Entity.globalvalues;
 
 
 public class GlobalValues {
     //TODO: ACTUALLY RELEVANT
     public static final String US_ANONYMIZER_PREFIX = "*67";
 
-    public enum PersonalTitles {Mr,Mrs,Ms,Miss};
-    public enum PersonalPostfixes {Sr, Jr, I, II, III, IV, V};
+    public enum PersonalTitles {Mr,Mrs,Ms,Miss}
 
-
+    public enum PersonalPostfixes {Sr, Jr, I, II, III, IV, V}
 
 
     //TODO: IN RESERVE

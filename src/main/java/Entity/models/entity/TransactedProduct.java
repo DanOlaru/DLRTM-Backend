@@ -1,6 +1,4 @@
-package webtodb.models.entity;
-
-import webtodb.models.entity.Product;
+package Entity.models.entity;
 
 public class TransactedProduct extends Product {
 

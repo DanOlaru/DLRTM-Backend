@@ -1,7 +1,4 @@
-package webtodb.models.entity;
-
-import webtodb.models.entity.Client;
-import webtodb.models.entity.TransactedProduct;
+package Entity.models.entity;
 
 import java.util.ArrayList;
 import java.util.Arrays;

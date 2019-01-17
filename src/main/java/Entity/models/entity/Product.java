@@ -1,4 +1,4 @@
-package webtodb.models.entity;
+package Entity.models.entity;
 
 public class Product {
 

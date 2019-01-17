@@ -1,4 +1,4 @@
-package webtodb.models.atomic;
+package Entity.models.atomic;
 
 public class PaymentInfo {
 

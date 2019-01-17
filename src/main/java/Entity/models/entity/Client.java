@@ -1,11 +1,11 @@
-package webtodb.models.entity;
+package Entity.models.entity;
 
 /* Dan Olaru 2019*/
 
-import webtodb.models.atomic.Address;
-import webtodb.models.atomic.PaymentInfo;
-import webtodb.models.atomic.PersonName;
-import webtodb.models.atomic.PhoneNumber;
+import Entity.models.atomic.Address;
+import Entity.models.atomic.PaymentInfo;
+import Entity.models.atomic.PersonName;
+import Entity.models.atomic.PhoneNumber;
 
 public class Client {
 

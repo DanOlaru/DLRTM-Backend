@@ -1,6 +1,6 @@
-package webtodb.models.atomic;
+package Entity.models.atomic;
 
-import static webtodb.globalvalues.GlobalValues.US_ANONYMIZER_PREFIX;
+import static Entity.globalvalues.GlobalValues.US_ANONYMIZER_PREFIX;
 
 public class PhoneNumber {
 
