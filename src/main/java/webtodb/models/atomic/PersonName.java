@@ -1,4 +1,4 @@
-package webtodb.models;
+package webtodb.models.atomic;
 
 import java.util.StringTokenizer;
 

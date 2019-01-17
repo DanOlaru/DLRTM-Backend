@@ -1,4 +1,4 @@
-package webtodb.models;
+package webtodb.models.entity;
 
 public class Product {
 
@@ -11,7 +11,7 @@ public class Product {
     private String productCountryOfOrigin;
     private String productDescription;
 
-    private double productPrice;
+    private double productUnitPrice;
     private double productDiscounts;
     private double productAdjustments;
     private double productCredits;
@@ -30,26 +30,23 @@ public class Product {
 
     //Internal Reference / Utility fields
 
-
     //Zero Constructor
 
     public Product() {}
 
 
     //Full Constructor
-
-
     public Product(String productUniqueID, String productName, String productManufacturer, String productCountryOfOrigin, String productDescription,
-                   double productPrice, double productDiscounts, double productAdjustments, double productCredits, double productDeductions,
-                   String productSpecialOffers, int productItemsInStockInt, float productItemsInStockDecimal, int productNeedToReorder,
-                   String productSpecialMentions) {
+                   double productUnitPrice, double productDiscounts, double productAdjustments, double productCredits, double productDeductions,
+                   String productSpecialOffers, int productItemsInStockInt, float productItemsInStockDecimal, float productQuantityInStock,
+                   int productNeedToReorder, String productMeasurementUnit, String productSpecialMentions) {
 
         this.productUniqueID = productUniqueID;
         this.productName = productName;
         this.productManufacturer = productManufacturer;
         this.productCountryOfOrigin = productCountryOfOrigin;
         this.productDescription = productDescription;
-        this.productPrice = productPrice;
+        this.productUnitPrice = productUnitPrice;
         this.productDiscounts = productDiscounts;
         this.productAdjustments = productAdjustments;
         this.productCredits = productCredits;
@@ -57,6 +54,8 @@ public class Product {
         this.productSpecialOffers = productSpecialOffers;
         this.productItemsInStockInt = productItemsInStockInt;
         this.productItemsInStockDecimal = productItemsInStockDecimal;
+        this.productQuantityInStock = productQuantityInStock;
+        this.productMeasurementUnit = productMeasurementUnit;
         this.productNeedToReorder = productNeedToReorder;
         this.productSpecialMentions = productSpecialMentions;
     }
@@ -69,7 +68,7 @@ public class Product {
         this.productManufacturer = product.productManufacturer;
         this.productCountryOfOrigin = product.productCountryOfOrigin;
         this.productDescription = product.getProductDescription();
-        this.productPrice = product.productPrice;
+        this.productUnitPrice = product.productUnitPrice;
         this.productDiscounts = product.productDiscounts;
         this.productAdjustments = product.productAdjustments;
         this.productSpecialOffers = product.productSpecialOffers;
@@ -120,12 +119,12 @@ public class Product {
         this.productDescription = productDescription;
     }
 
-    public double getProductPrice() {
-        return productPrice;
+    public double getProductUnitPrice() {
+        return productUnitPrice;
     }
 
-    public void setProductPrice(double productPrice) {
-        this.productPrice = productPrice;
+    public void setProductUnitPrice(double productUnitPrice) {
+        this.productUnitPrice = productUnitPrice;
     }
 
     public double getProductDiscounts() {
@@ -182,6 +181,22 @@ public class Product {
 
     public void setProductItemsInStockDecimal(float productItemsInStockDecimal) {
         this.productItemsInStockDecimal = productItemsInStockDecimal;
+    }
+
+    public float getProductQuantityInStock() {
+        return productQuantityInStock;
+    }
+
+    public void setProductQuantityInStock(float productQuantityInStock) {
+        this.productQuantityInStock = productQuantityInStock;
+    }
+
+    public String getProductMeasurementUnit() {
+        return productMeasurementUnit;
+    }
+
+    public void setProductMeasurementUnit(String productMeasurementUnit) {
+        this.productMeasurementUnit = productMeasurementUnit;
     }
 
     public int getProductNeedToReorder() {

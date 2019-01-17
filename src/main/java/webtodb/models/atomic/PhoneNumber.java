@@ -1,9 +1,10 @@
-package webtodb.models;
+package webtodb.models.atomic;
 
 import static webtodb.globalvalues.GlobalValues.US_ANONYMIZER_PREFIX;
 
 public class PhoneNumber {
 
+    private String ownerName;
     private String clientPhoneNo; // It's a string because the sequence of numbers does not have any logic behind it
     private String clientAreaCode;
     private String anonymizerPrefix = US_ANONYMIZER_PREFIX; //can be set to a different value —————————— hidden
@@ -12,7 +13,9 @@ public class PhoneNumber {
     private int isPrimary = 0;
 
 
-    public PhoneNumber(String clientPhoneNo, String clientAreaCode, String anonymizerPrefix) {
+    //full constructor
+    public PhoneNumber(String ownerName, String clientPhoneNo, String clientAreaCode, String anonymizerPrefix) {
+        this.ownerName = ownerName;
         this.clientPhoneNo = clientPhoneNo;
         this.clientAreaCode = clientAreaCode;
         this.anonymizerPrefix = anonymizerPrefix;
