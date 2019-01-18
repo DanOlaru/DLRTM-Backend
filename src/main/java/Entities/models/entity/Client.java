@@ -1,11 +1,11 @@
-package Entity.models.entity;
+package Entities.models.entity;
 
 /* Dan Olaru 2019*/
 
-import Entity.models.atomic.Address;
-import Entity.models.atomic.PaymentInfo;
-import Entity.models.atomic.PersonName;
-import Entity.models.atomic.PhoneNumber;
+import Entities.models.atomic.Address;
+import Entities.models.atomic.PaymentInfo;
+import Entities.models.atomic.PersonName;
+import Entities.models.atomic.PhoneNumber;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 

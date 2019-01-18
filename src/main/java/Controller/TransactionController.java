@@ -1,7 +1,7 @@
 package Controller;
 /*
 
-import Entity.models.entity.Transaction;
+import Entities.models.entity.Transaction;
 import Service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

@@ -1,5 +1,5 @@
 package Repository;
-import Entity.models.entity.Product;
+import Entities.models.entity.Product;
 import org.springframework.data.repository.CrudRepository;
 
 

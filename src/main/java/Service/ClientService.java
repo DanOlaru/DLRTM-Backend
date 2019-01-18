@@ -2,7 +2,7 @@ package Service;
 /*
 
 import Dao.ClientDao;
-import Entity.models.entity.Client;
+import Entities.models.entity.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 

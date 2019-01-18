@@ -1,6 +1,6 @@
 package Dao;
 
-/*import Entity.models.entity.Product;
+/*import Entities.models.entity.Product;
 
 import java.util.Collection;
 

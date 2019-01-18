@@ -1,7 +1,7 @@
 package Dao;
 /*
 
-import Entity.models.entity.Transaction;
+import Entities.models.entity.Transaction;
 
 import java.util.Collection;
 import java.util.Date;

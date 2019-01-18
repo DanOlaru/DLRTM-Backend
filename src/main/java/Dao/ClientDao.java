@@ -1,6 +1,6 @@
 package Dao;
 
-/*import Entity.models.entity.Client;
+/*import Entities.models.entity.Client;
 
 import java.util.Collection;
 import java.util.Date;

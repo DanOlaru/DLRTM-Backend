@@ -1,12 +1,10 @@
 package Controller;
 
-import Entity.models.entity.Product;
+import Entities.models.entity.Product;
 import Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
 import java.util.List;
 
 @RestController

@@ -1,6 +1,6 @@
-package Entity.models.atomic;
+package Entities.models.atomic;
 
-import static Entity.globalvalues.GlobalValues.US_ANONYMIZER_PREFIX;
+import static Entities.globalvalues.GlobalValues.US_ANONYMIZER_PREFIX;
 
 public class PhoneNumber {
 

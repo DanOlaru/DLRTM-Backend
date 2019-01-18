@@ -1,15 +1,6 @@
 package Dao;
 
 
-import Entity.models.entity.Product;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Repository;
-
-import java.sql.Connection;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
 //@Repository
 //@Qualifier("mongoData")
 //@Qualifier("fakeData")

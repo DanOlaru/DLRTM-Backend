@@ -2,7 +2,7 @@ package Controller;
 /*
 
 
-import Entity.models.entity.Client;
+import Entities.models.entity.Client;
 import Service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

@@ -1,4 +1,4 @@
-package Entity.models.atomic;
+package Entities.models.atomic;
 
 public class PaymentInfo {
 

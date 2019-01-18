@@ -1,4 +1,4 @@
-package Entity.globalvalues;
+package Entities.globalvalues;
 
 
 public class GlobalValues {
