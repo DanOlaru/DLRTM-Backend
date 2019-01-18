@@ -1,5 +1,8 @@
 package Entity.models.entity;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity //TODO: is this even right?
 public class TransactedProduct extends Product {
 
     //TODO: questionable if these are needed

@@ -6,12 +6,16 @@ import Entity.models.atomic.Address;
 import Entity.models.atomic.PaymentInfo;
 import Entity.models.atomic.PersonName;
 import Entity.models.atomic.PhoneNumber;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class Client {
 
     //=============ATTRIBUTES========================================================================================================
 
     //#1 Client id
+    @Id
     private String clientUniqueID;
 
     //#2 Client Name

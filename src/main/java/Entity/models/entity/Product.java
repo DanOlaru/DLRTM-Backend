@@ -1,8 +1,13 @@
 package Entity.models.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Product {
 
     //#1 Product id
+    @Id
     private String productUniqueID;
 
     //#2 Product description

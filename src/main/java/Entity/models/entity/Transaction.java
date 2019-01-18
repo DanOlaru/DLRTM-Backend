@@ -2,11 +2,15 @@ package Entity.models.entity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class Transaction {
 
     //#1 IDs:
     // unique transaction id
+    @Id
     private String transactionUniqueID;
 
     // Client id + client reference

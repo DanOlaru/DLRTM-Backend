@@ -1,6 +1,6 @@
 package Dao;
 
-import Entity.models.entity.Client;
+/*import Entity.models.entity.Client;
 
 import java.util.Collection;
 import java.util.Date;
@@ -25,4 +25,4 @@ public interface ClientDao {
     //boolean insertClient (Client client);
 
 
-}
+}*/

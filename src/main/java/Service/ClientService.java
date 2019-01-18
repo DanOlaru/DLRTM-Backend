@@ -1,4 +1,5 @@
 package Service;
+/*
 
 import Dao.ClientDao;
 import Entity.models.entity.Client;
@@ -42,3 +43,4 @@ public class ClientService {
         this.myClientDao.insertClient(client);
     }
 }
+*/

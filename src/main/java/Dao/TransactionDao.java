@@ -1,4 +1,5 @@
 package Dao;
+/*
 
 import Entity.models.entity.Transaction;
 
@@ -26,3 +27,4 @@ public interface TransactionDao {
     //boolean insertProduct (Product product);
 
 }
+*/
