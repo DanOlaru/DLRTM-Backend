@@ -4,26 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.longmoneyoffshore.dlrtmplatform</groupId>
-    <artifactId>dlrtm-backend</artifactId>
-    <version>1.0</version>
-    <packaging>jar</packaging>
-
-
-    <name>DLRTM Web Platform</name>
-    <description> DLRTM Web E-commerce Platform </description>
-
+    <groupId>jdbcDemo</groupId>
+    <artifactId>jdbcDemo</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-        <java.version>9</java.version>
-        <java.release>9</java.release>
-
-        <!--<maven.compiler.source>9</maven.compiler.source>
-        <maven.compiler.target>9</maven.compiler.target>-->
+        <maven.compiler.source>9</maven.compiler.source>
+        <maven.compiler.target>9</maven.compiler.target>
     </properties>
+
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -34,23 +23,12 @@
 
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
 
-
-        <dependency>
+       <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.derby</groupId>
-            <artifactId>derby</artifactId>
-            <scope>runtime</scope>
-            <version>47</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -63,15 +41,11 @@
             <version>2.1.1.RELEASE</version>
         </dependency>
 
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>5.1.3.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
         <dependency>
@@ -87,6 +61,14 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>47</version>
+        </dependency>
+
+
+
+        <dependency>
             <groupId>hibernate</groupId>
             <artifactId>hibernate</artifactId>
             <version>3.1rc2</version>
@@ -97,16 +79,8 @@
             <artifactId>derby</artifactId>
             <version> 10.14.2.0</version>
         </dependency>
-    </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+    </dependencies>
 
 
 
