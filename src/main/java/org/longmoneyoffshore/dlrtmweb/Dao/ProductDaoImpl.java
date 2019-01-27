@@ -10,18 +10,10 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-
-//@org.longmoneyoffshore.dlrtmweb.Repository
-//@Qualifier("mongoData")
-//@Qualifier("fakeData")
-
+//@Qualifier("")
 @Component
 public class ProductDaoImpl implements ProductDao {
 
@@ -33,16 +25,11 @@ public class ProductDaoImpl implements ProductDao {
         };
     }*/
 
-    //private static Map<String, Product> products;
-
-    //Connection mongoConnection;
-
-
-    @Autowired
-    private DataSource dataSource;
-
     //@Autowired
-    private JdbcTemplate jdbcTemplate;
+    private DataSource dataSource;
+    //@Autowired
+    //private JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate = new JdbcTemplate();
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
 
@@ -54,6 +41,7 @@ public class ProductDaoImpl implements ProductDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+
     public DataSource getDataSource() {
         return dataSource;
     }
@@ -61,7 +49,6 @@ public class ProductDaoImpl implements ProductDao {
     @Autowired
     public void setDataSource(DataSource dataSource) {
 
-        //this.dataSource = dataSource;
         this.jdbcTemplate = new JdbcTemplate(dataSource);
         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
@@ -108,71 +95,21 @@ public class ProductDaoImpl implements ProductDao {
     }
 
 
-    //old style implementation
-    //TODO: this is going to be our implementation
-    public Product getProduct (String productId) {
-
-        Connection conn = null;
-
-        try {
-            String driver = "org.apache.derby.jdbc.ClientDriver";
-
-            Class.forName(driver).getDeclaredConstructor().newInstance();
-            //Class.forName(driver).newInstance();
-
-            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/db");
-
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM product where id = ?");
-            //ps.setInt(1, productId);
-            ps.setString(1, productId);
-
-            Product product = null;
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                product =  new Product(String.valueOf(productId),rs.getString("name"));
-            }
-
-            rs.close();
-            ps.close();
-
-            return product;
-
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        } finally {
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return null;
-    }
 
 
     @Override
     public Product getProductById (String productId) {
-        //return this.products.get(id);
 
-        String sql = "SELECT * FROM CIRCLE WHERE ID = ?";
-        //return jdbcTemplate.queryForObject(sql, new Object[] {productId}, new ProductMapper());
+        //TODO: has problems when there are several entries with the same ID
+        String sql = "SELECT * FROM product where id = ?";
+        return jdbcTemplate.queryForObject(sql, new Object[] {productId}, new ProductMapper());
+
+
 
         //TODO: is it possible to do the above with namedParameter?
+        //Product product = namedParameterJdbcTemplate.query(sql, new ProductMapper()).get(0);
 
-        Product productWithId = namedParameterJdbcTemplate.query(sql, new ProductMapper()).get(0);
-
-        return productWithId;
-
+        //return product;
     }
 
 
@@ -184,11 +121,22 @@ public class ProductDaoImpl implements ProductDao {
 
         int count = jdbcTemplate.queryForObject(sql,Integer.class);
 
-        ProductMapper productMapper = new ProductMapper();
+        return count;
+    }
+
+
+    public int getProductWPropertyCount(){
+
+        //TODO: not done yet
+
+        int count = 0;
+        String sql = "SELECT COUNT(*) FROM CIRCLE";
+
         //int count = namedParameterJdbcTemplate.queryForObject(sql, commandsMap, new ProductMapper ());
         List<Product> productsWithProperty = namedParameterJdbcTemplate.query(sql, new ProductMapper());
 
         count = productsWithProperty.size();
+
 
         return count;
 
@@ -210,21 +158,16 @@ public class ProductDaoImpl implements ProductDao {
     }
 
 
-
     @Override
     public List<Product> getAllProducts() {
-        String sql = "SELECT * FROM CIRCLE";
+        String sql = "SELECT * FROM products";
 
         //return jdbcTemplate.query(sql, new ProductMapper());
         return namedParameterJdbcTemplate.query(sql, new ProductMapper());
-
-        //return this.products.values(); — Bad
     }
 
     @Override
     public void insertProduct (Product product) {
-
-        //this.products.put(product.getProductUniqueID(), product);
 
         //TODO: First Implementation
         //String sql = "INSERT INTO CIRCLE (ID, NAME) VALUES (?, ?)";
@@ -232,12 +175,44 @@ public class ProductDaoImpl implements ProductDao {
 
 
         //TODO: Second Implementation w/ named parameters
-        String sql = "INSERT INTO CIRCLE (ID, NAME) VALUES (:id, :name)";
+        String sql = "INSERT INTO products (uniqueID, name, manufacturer, countryOfOrigin, description, unitPurchasePrice," +
+                "unitPrice, discounts, adjustments, credits, deductions, specialOffers, currency, itemsInStockInt, itemsInStockDecimal," +
+                "quantityInStock, needToReorder, measurementUnit, specialMentions)" +
 
-        SqlParameterSource namedParameters = new MapSqlParameterSource("id", product.getProductUniqueID())
-                .addValue("name", product.getProductName());
+                "VALUES (:uniqueID, :name, :manufacturer, :countryOfOrigin," +
+                ":description, :unitPurchasePrice, :unitPrice, :discounts, :adjustments, :credits, :deductions, :specialOffers," +
+                ":currency, :itemsInStockInt, :itemsInStockDecimal, :quantityInStock, :needToReorder, :measurementUnit," +
+                ":specialMentions)";
+
+        SqlParameterSource namedParameters = new MapSqlParameterSource("uniqueID", product.getProductUniqueID())
+                .addValue("name", product.getProductName())
+                .addValue("manufacturer", product.getProductManufacturer())
+                .addValue("countryOfOrigin", product.getProductCountryOfOrigin())
+                .addValue("description", product.getProductDescription())
+                .addValue("unitPurchasePrice", product.getProductUnitPurchasePrice())
+                .addValue("unitPrice", product.getProductUnitPrice())
+                .addValue("discounts", product.getProductDiscounts())
+                .addValue("adjustments", product.getProductAdjustments())
+                .addValue("credits", product.getProductCredits())
+                .addValue("deductions", product.getProductDeductions())
+                .addValue("specialOffers", product.getProductSpecialOffers())
+                .addValue("currency", product.getCurrency())
+                .addValue("itemsInStockInt", product.getProductItemsInStockInt())
+                .addValue("itemsInStockDecimal", product.getProductItemsInStockDecimal())
+                .addValue("quantityInStock", product.getProductQuantityInStock())
+                .addValue("needToReorder", product.getProductNeedToReorder())
+                .addValue("measurementUnit", product.getProductMeasurementUnit())
+                .addValue("specialMentions", product.getProductSpecialMentions());
 
         namedParameterJdbcTemplate.update(sql, namedParameters);
+
+        //jdbcTemplate.update(sql, new Object[] {product.getId(), product.getName()});
+    }
+
+
+
+    public void insertProductList(List<Product> products) {
+        products.forEach(p -> insertProduct(p));
     }
 
 
@@ -245,7 +220,7 @@ public class ProductDaoImpl implements ProductDao {
     public void removeProductById(String id) {
         //this.products.remove(id);
 
-        String sql = "DELETE FROM CIRCLE WHERE ID IN (?)";
+        String sql = "DELETE FROM products WHERE ID IN (?)";
         jdbcTemplate.update(sql,new Object[] {id});
 
     }
@@ -258,7 +233,7 @@ public class ProductDaoImpl implements ProductDao {
 
 
     @Override
-    public Collection<Product> getProductsByField(Object field) {
+    public List<Product> getProductsByField(Object field) {
         //TODO: implement the capacity to search for object based on different fields
         // Heavy Duty
 
@@ -279,7 +254,7 @@ public class ProductDaoImpl implements ProductDao {
         //TODO: unclear whether this SQL command is good — Also, extend the named parameters to all the relevant parameters
         // of the Product being updated
 
-        String sql = "UPDATE INTO CIRCLE (ID, NAME) VALUES (:id, :name)";
+        String sql = "UPDATE INTO products (ID, NAME) VALUES (:id, :name)";
         SqlParameterSource namedParameters = new MapSqlParameterSource("id", product.getProductUniqueID())
                 .addValue("name", product.getProductName()); //.addValue()....
 

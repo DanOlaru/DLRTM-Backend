@@ -2,40 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42b41507-f400-45e2-a975-ea9266c94d3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JDBC_Repeat_Demo.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Controller/TransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/DLRTMWebPlatform.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/DLRTMWebPlatform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Dao/ClientDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Dao/ClientDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Dao/ClientDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Dao/ClientDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Dao/ProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Dao/ProductDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Dao/ProductDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Dao/ProductDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Dao/TransactionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Dao/TransactionDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Entities/WebClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Entities/WebClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Entities/globalvalues/GlobalValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Entities/globalvalues/GlobalValues.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Entities/models/atomic/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Entities/models/atomic/PaymentInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/PaymentInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Entities/models/atomic/PersonName.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/PersonName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Entities/models/atomic/PhoneNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/PhoneNumber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Entities/models/entity/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Entities/models/entity/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Entities/models/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Entities/models/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Entities/models/entity/TransactedProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Entities/models/entity/TransactedProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Entities/models/entity/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Entities/models/entity/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Repository/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Service/ClientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/Service/TransactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/DLRTMWebPlatform.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/org/longmoneyoffshore/dlrtmweb/DLRTMWebPlatform.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -256,6 +225,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="23" width="1440" height="877" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="DB Browser" order="1" />

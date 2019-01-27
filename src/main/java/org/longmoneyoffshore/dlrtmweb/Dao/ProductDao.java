@@ -1,10 +1,12 @@
 package org.longmoneyoffshore.dlrtmweb.Dao;
 
 import org.longmoneyoffshore.dlrtmweb.Entities.models.entity.Product;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.Collection;
 
 public interface ProductDao {
+//public interface ProductDao extends CrudRepository {
 
     public Collection<Product> getAllProducts();
 

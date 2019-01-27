@@ -9,7 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class DLRTMWebPlatform {
 
     public static void main(String[] args) {
@@ -17,16 +17,22 @@ public class DLRTMWebPlatform {
         //TODO: is this necessary?
         //SpringApplication.run(DLRTMWebPlatform.class, args);
 
-
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 
-        ProductDaoImpl dao = (ProductDaoImpl) context.getBean("productDaoImpl");
-        //JdbcDaoImpl dao = context.getBean("jdbcDaoImpl", JdbcDaoImpl.class);
+        ProductDaoImpl dao = context.getBean("productDaoImpl", ProductDaoImpl.class);
+
+        dao.insertProduct(new Product("0001",
+                "Blender", "Phillips",
+                "Netherlands", "food blender",
+                20, 10.67,
+                0,0,10,0,
+                "Free Bread Knife","USD",
+                100,0,0,0,
+                "Unit","Pending recalls"));
 
 
         List<Product> allProductsInTable = dao.getAllProducts();
         allProductsInTable.forEach(p -> System.out.println(p.getProductName()));
-
 
 
         //Product product = dao.getProduct(4);

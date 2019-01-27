@@ -55,7 +55,7 @@ public class ProductController {
 
 
     //alternate implementation — from Koushik
-    
+  /*
     @RequestMapping(method = RequestMethod.GET ,value = "/products")
     public List<Product> getAllProducts(){
 
@@ -86,5 +86,5 @@ public class ProductController {
 
         productService.deleteProduct(id);
 
-    }
+    }*/
 }

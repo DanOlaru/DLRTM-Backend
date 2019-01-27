@@ -1,23 +1,25 @@
 package org.longmoneyoffshore.dlrtmweb.Service;
 
 //import org.longmoneyoffshore.dlrtmweb.Dao.ProductDao;
+import org.longmoneyoffshore.dlrtmweb.Dao.ProductDao;
+import org.longmoneyoffshore.dlrtmweb.Dao.ProductDaoImpl;
 import org.longmoneyoffshore.dlrtmweb.Entities.models.entity.Product;
-import org.longmoneyoffshore.dlrtmweb.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 @Service
 public class ProductService {
 
-    /*@Autowired
+    @Autowired
     //@Qualifier("mongoData")
-    private ProductDao myProductDao;
+    private ProductDaoImpl myProductDao;
 
-    public ProductService(ProductDao productDao) {
+    public ProductService(ProductDaoImpl productDao) {
         this.myProductDao = productDao;
     }
 
@@ -47,12 +49,12 @@ public class ProductService {
 
     public void insertProduct (Product product) {
         this.myProductDao.insertProduct(product);
-    }*/
+    }
 
 
     //alternate implementation
 
-    @Autowired
+    /*@Autowired
     private ProductRepository productRepository;
 
     public List<Product> getAllProducts() {
@@ -87,7 +89,7 @@ public class ProductService {
 
         productRepository.deleteById(id);
 
-    }
+    }*/
 
     //temporary data source
 
