@@ -96,7 +96,6 @@ public class ProductDaoImpl implements ProductDao {
 
 
 
-
     @Override
     public Product getProductById (String productId) {
 
@@ -162,8 +161,8 @@ public class ProductDaoImpl implements ProductDao {
     public List<Product> getAllProducts() {
         String sql = "SELECT * FROM products";
 
-        //return jdbcTemplate.query(sql, new ProductMapper());
-        return namedParameterJdbcTemplate.query(sql, new ProductMapper());
+        return jdbcTemplate.query(sql, new ProductMapper());
+        //return namedParameterJdbcTemplate.query(sql, new ProductMapper());
     }
 
     @Override
@@ -217,10 +216,10 @@ public class ProductDaoImpl implements ProductDao {
 
 
     @Override
-    public void removeProductById(String id) {
+    public void deleteProductById(String id) {
         //this.products.remove(id);
 
-        String sql = "DELETE FROM products WHERE ID IN (?)";
+        String sql = "DELETE FROM products WHERE uniqueID IN (?)";
         jdbcTemplate.update(sql,new Object[] {id});
 
     }
@@ -243,20 +242,33 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public void updateProduct(Product product) {
 
-        //TODO: unclear whether this implementation actually works ——— Needs testing
+        String sql = "UPDATE products (uniqueID, name, manufacturer, countryOfOrigin, description, unitPurchasePrice, " +
+                "unitPrice, discounts, adjustments, credits, deductions,specialOffers, currency, itemsInStockInt, itemsInStockDecimal, " +
+                "quantityInStock, needToReorder, measurementUnit, specialMentions) " +
 
-        //Product p = products.get(product.getProductUniqueID());
-        //p.setCourse(product.getCourse());
-        //p.setName(product.getName());
+                "VALUES (:uniqueID, :name, :manufacturer, :countryOfOrigin, :description, :unitPurchasePrice, " +
+                ":unitPrice, :discounts, :adjustments, :credits, :deductions, :specialOffers, :currency, :itemsInStockInt, :itemsInStockDecimal, " +
+                ":quantityInStock, :needToReorder, :measurementUnit, :specialMentions)";
 
-        //this.products.put(product.getProductUniqueID(), product);
-
-        //TODO: unclear whether this SQL command is good — Also, extend the named parameters to all the relevant parameters
-        // of the Product being updated
-
-        String sql = "UPDATE INTO products (ID, NAME) VALUES (:id, :name)";
-        SqlParameterSource namedParameters = new MapSqlParameterSource("id", product.getProductUniqueID())
-                .addValue("name", product.getProductName()); //.addValue()....
+        SqlParameterSource namedParameters = new MapSqlParameterSource("uniqueID", product.getProductUniqueID())
+                .addValue("name", product.getProductName())
+                .addValue("manufacturer", product.getProductManufacturer())
+                .addValue("countryOfOrigin", product.getProductCountryOfOrigin())
+                .addValue("description", product.getProductDescription())
+                .addValue("unitPurchasePrice", product.getProductUnitPurchasePrice())
+                .addValue("unitPrice", product.getProductUnitPrice())
+                .addValue("discounts", product.getProductDiscounts())
+                .addValue("adjustments", product.getProductAdjustments())
+                .addValue("credits", product.getProductCredits())
+                .addValue("deductions", product.getProductDeductions())
+                .addValue("specialOffers", product.getProductSpecialOffers())
+                .addValue("currency", product.getCurrency())
+                .addValue("itemsInStockInt", product.getProductItemsInStockInt())
+                .addValue("itemsInStockDecimal", product.getProductItemsInStockDecimal())
+                .addValue("quantityInStock", product.getProductQuantityInStock())
+                .addValue("needToReorder", product.getProductNeedToReorder())
+                .addValue("measurementUnit", product.getProductMeasurementUnit())
+                .addValue("specialMentions", product.getProductSpecialMentions());
 
         namedParameterJdbcTemplate.update(sql, namedParameters);
     }
@@ -271,29 +283,29 @@ public class ProductDaoImpl implements ProductDao {
         public Product mapRow(ResultSet resultSet, int rowNum) throws SQLException {
             Product product = new Product();
 
-            product.setProductUniqueID(resultSet.getString("ID"));
+            product.setProductUniqueID(resultSet.getString("uniqueID"));
 
-            product.setProductName(resultSet.getString("NAME"));
-            product.setProductManufacturer(resultSet.getString("MANUFACTURER"));
-            product.setProductCountryOfOrigin(resultSet.getString("COUNTRY OF ORIGIN"));
-            product.setProductDescription(resultSet.getString("DESCRIPTION"));
+            product.setProductName(resultSet.getString("name"));
+            product.setProductManufacturer(resultSet.getString("manufacturer"));
+            product.setProductCountryOfOrigin(resultSet.getString("countryOfOrigin"));
+            product.setProductDescription(resultSet.getString("description"));
 
-            product.setProductUnitPurchasePrice(resultSet.getDouble("PURCHASE PRICE"));
-            product.setProductUnitPrice(resultSet.getDouble("UNIT PRICE"));
-            product.setProductDiscounts(resultSet.getDouble("DISCOUNTS"));
-            product.setProductAdjustments(resultSet.getDouble("ADJUSTMENTS"));
-            product.setProductCredits(resultSet.getDouble("CREDITS"));
-            product.setProductDeductions(resultSet.getDouble("DEDUCTIONS"));
-            product.setProductSpecialOffers(resultSet.getString("SPECIAL OFFERS"));
-            product.setCurrency (resultSet.getString("CURRENCY"));
+            product.setProductUnitPurchasePrice(resultSet.getDouble("unitPurchasePrice"));
+            product.setProductUnitPrice(resultSet.getDouble("unitPrice"));
+            product.setProductDiscounts(resultSet.getDouble("discounts"));
+            product.setProductAdjustments(resultSet.getDouble("adjustments"));
+            product.setProductCredits(resultSet.getDouble("credits"));
+            product.setProductDeductions(resultSet.getDouble("deductions"));
+            product.setProductSpecialOffers(resultSet.getString("specialOffers"));
+            product.setCurrency (resultSet.getString("currency"));
 
-            product.setProductItemsInStockInt(resultSet.getInt("ITEMS IN STOCK INT"));
-            product.setProductItemsInStockDecimal(resultSet.getFloat("ITEMS IN STOCK DECIMAL"));
-            product.setProductQuantityInStock(resultSet.getFloat("QUANTITY IN STOCK"));
-            product.setProductMeasurementUnit(resultSet.getString("MEASUREMENT UNIT"));
+            product.setProductItemsInStockInt(resultSet.getInt("itemsInStockInt"));
+            product.setProductItemsInStockDecimal(resultSet.getFloat("itemsInStockDecimal"));
+            product.setProductQuantityInStock(resultSet.getFloat("quantityInStock"));
+            product.setProductNeedToReorder(resultSet.getInt("needToReorder"));
+            product.setProductMeasurementUnit(resultSet.getString("measurementUnit"));
 
-            product.setProductNeedToReorder(resultSet.getInt("REORDER"));
-            product.setProductSpecialMentions(resultSet.getString("SPECIAL MENTIONS"));
+            product.setProductSpecialMentions(resultSet.getString("specialMentions"));
 
             return product;
         }

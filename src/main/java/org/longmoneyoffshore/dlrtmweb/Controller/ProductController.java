@@ -28,9 +28,9 @@ public class ProductController {
 
 
     @RequestMapping(value = "{id}" , method = RequestMethod.DELETE)
-    //public Collection<Product> removeProductById(@PathVariable("id") String id) {
-    public void removeProductById(@PathVariable("id") String id) {
-        productService.removeProductById(id);
+    //public Collection<Product> deleteProductById(@PathVariable("id") String id) {
+    public void deleteProductById(@PathVariable("id") String id) {
+        productService.deleteProductById(id);
         //return productService.getAllProducts();
     }
 

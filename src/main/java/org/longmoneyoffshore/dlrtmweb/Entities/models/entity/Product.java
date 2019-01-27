@@ -249,4 +249,29 @@ public class Product {
     public void setProductSpecialMentions(String productSpecialMentions) {
         this.productSpecialMentions = productSpecialMentions;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productUniqueID='" + productUniqueID.trim() + '\'' + "\n" +
+                ", productName='" + productName.trim() + '\'' + "\n" +
+                ", productManufacturer='" + productManufacturer.trim() + '\'' + "\n" +
+                ", productCountryOfOrigin='" + productCountryOfOrigin.trim() + '\'' + "\n" +
+                ", productDescription='" + productDescription.trim() + '\'' + "\n" +
+                ", productUnitPurchasePrice=" + productUnitPurchasePrice + "\n" +
+                ", productUnitPrice=" + productUnitPrice + "\n" +
+                ", productDiscounts=" + productDiscounts + "\n" +
+                ", productAdjustments=" + productAdjustments + "\n" +
+                ", productCredits=" + productCredits + "\n" +
+                ", productDeductions=" + productDeductions + "\n" +
+                ", productSpecialOffers='" + productSpecialOffers.trim() + '\'' + "\n" +
+                ", currency='" + currency.trim() + '\'' + "\n" +
+                ", productItemsInStockInt=" + productItemsInStockInt + "\n" +
+                ", productItemsInStockDecimal=" + productItemsInStockDecimal + "\n" +
+                ", productQuantityInStock=" + productQuantityInStock + "\n" +
+                ", productMeasurementUnit='" + productMeasurementUnit.trim() + '\'' + "\n" +
+                ", productNeedToReorder=" + productNeedToReorder + "\n" +
+                ", productSpecialMentions='" + productSpecialMentions.trim() + '\'' + "\n" +
+                '}';
+    }
 }

@@ -1,7 +1,6 @@
 package org.longmoneyoffshore.dlrtmweb.Service;
 
 //import org.longmoneyoffshore.dlrtmweb.Dao.ProductDao;
-import org.longmoneyoffshore.dlrtmweb.Dao.ProductDao;
 import org.longmoneyoffshore.dlrtmweb.Dao.ProductDaoImpl;
 import org.longmoneyoffshore.dlrtmweb.Entities.models.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +36,8 @@ public class ProductService {
     }
 
 
-    public void removeProductById(String productId) {
-        this.myProductDao.removeProductById (productId);
+    public void deleteProductById(String productId) {
+        this.myProductDao.deleteProductById(productId);
     }
 
 
