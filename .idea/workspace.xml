@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed8da808-fee5-4c82-9b40-5c4f870cd86a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/PhysicalProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/FakeDataSets.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB_Commands" beforeDir="false" afterPath="$PROJECT_DIR$/sqlDb/DB_Commands" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/DLRTMWebPlatform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/DLRTMWebPlatform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Dao/ProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Dao/ProductDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Dao/ProductDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Dao/ProductDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Entities/models/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Entities/models/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Service/ProductService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -22,12 +22,12 @@
     <favorites_list name="dlrtmbackend" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/DLRTMWebPlatform.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="76" column="38" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="38" />
+            <state relative-caret-position="138">
+              <caret line="68" column="73" selection-start-line="68" selection-start-column="73" selection-end-line="68" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -35,42 +35,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/spring.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="20" column="72" selection-start-line="20" selection-end-line="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Dao/ProductDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="218" column="24" selection-start-line="218" selection-start-column="24" selection-end-line="218" selection-end-column="24" />
+            <state relative-caret-position="-2201">
+              <caret line="99" column="10" selection-start-line="99" selection-start-column="10" selection-end-line="99" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1247#1248#0" expanded="true" />
-                <element signature="e#1295#1296#0" expanded="true" />
-                <element signature="e#1337#1338#0" expanded="true" />
-                <element signature="e#1370#1371#0" expanded="true" />
-                <element signature="e#7355#7356#0" expanded="true" />
-                <element signature="e#7410#7411#0" expanded="true" />
+                <element signature="e#6901#6902#0" expanded="true" />
+                <element signature="e#6956#6957#0" expanded="true" />
+                <element signature="e#10854#10855#0" expanded="true" />
+                <element signature="e#10871#10872#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Service/ProductService.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/FakeDataSets.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="115" column="6" lean-forward="true" selection-start-line="94" selection-start-column="4" selection-end-line="115" selection-end-column="6" />
+            <state relative-caret-position="544">
+              <caret line="77" column="30" selection-start-line="77" selection-start-column="30" selection-end-line="77" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1151#1152#0" expanded="true" />
-                <element signature="e#1214#1215#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -116,6 +103,9 @@
       <find>circle</find>
       <find>products</find>
       <find>update</find>
+      <find>productQuantityInStock</find>
+      <find>float</find>
+      <find>getall</find>
     </findStrings>
     <replaceStrings>
       <replace>transaction</replace>
@@ -123,6 +113,7 @@
       <replace>client</replace>
       <replace>Product</replace>
       <replace>product</replace>
+      <replace>double</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/main</dir>
@@ -134,9 +125,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/webtodb/Client.java" />
-        <option value="$PROJECT_DIR$/src/main/java/webtodb/WebClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/webtodb/models/Address.java" />
         <option value="$PROJECT_DIR$/src/main/java/webtodb/models/PaymentInfo.java" />
         <option value="$PROJECT_DIR$/src/main/java/webtodb/models/PersonName.java" />
         <option value="$PROJECT_DIR$/src/main/java/webtodb/globalvalues/GlobalValues.java" />
@@ -181,9 +169,12 @@
         <option value="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Dao/ProductDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Controller/ProductController.java" />
         <option value="$PROJECT_DIR$/DB_Commands" />
-        <option value="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Entities/models/entity/Product.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Dao/ProductDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Service/ProductService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Entities/models/entity/Product.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/PhysicalProperties.java" />
+        <option value="$PROJECT_DIR$/sqlDb/DB_Commands" />
+        <option value="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Dao/ProductDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/FakeDataSets.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/DLRTMWebPlatform.java" />
       </list>
     </option>
@@ -208,6 +199,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -218,6 +211,11 @@
             <path>
               <item name="dlrtmbackend" type="b2602c69:ProjectViewProjectNode" />
               <item name="DLRTM Web Platform" type="462c0819:PsiDirectoryNode" />
+              <item name="sqlDb" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dlrtmbackend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DLRTM Web Platform" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -240,63 +238,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="dlrtmweb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dlrtmbackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DLRTM Web Platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dlrtmweb" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dlrtmbackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DLRTM Web Platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dlrtmweb" type="462c0819:PsiDirectoryNode" />
-              <item name="Dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dlrtmbackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DLRTM Web Platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dlrtmweb" type="462c0819:PsiDirectoryNode" />
-              <item name="Entities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dlrtmbackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DLRTM Web Platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dlrtmweb" type="462c0819:PsiDirectoryNode" />
-              <item name="Entities" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dlrtmbackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DLRTM Web Platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dlrtmweb" type="462c0819:PsiDirectoryNode" />
-              <item name="Entities" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dlrtmbackend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DLRTM Web Platform" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dlrtmweb" type="462c0819:PsiDirectoryNode" />
-              <item name="Service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dlrtmbackend" type="b2602c69:ProjectViewProjectNode" />
@@ -309,12 +250,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548631702551" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548687582183" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -322,6 +261,9 @@
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/sqlDb" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/webtodb/globalvalues" />
     </key>
@@ -426,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1548626768578</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="writes Product objects to Database&#10;writes Product list to DB&#10;deletes Product from DB&#10;&#10;Does NOT yet update individual items in DB properly">
+      <created>1548631779450</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1548631779451</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
@@ -442,7 +391,7 @@
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49808916" visible="true" weight="0.20100144" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49808916" visible="true" weight="0.20386267" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -454,7 +403,7 @@
       <window_info id="Job Explorer" order="9" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299363" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.5057325" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.54140127" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -486,7 +435,8 @@
     <MESSAGE value="A second iteration of — REVISED &#10;- data model&#10;- data access object&#10;- controllers&#10;- service objects&#10;&#10;- Does not run" />
     <MESSAGE value="A second iteration of — REVISED &#10;&#10;- Further implementation touches to data access object&#10;&#10;- Still does not run" />
     <MESSAGE value="Project writes Product objects to Database&#10;&#10;Next capability to implement is reading from DB row into Product Object" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project writes Product objects to Database&#10;&#10;Next capability to implement is reading from DB row into Product Object" />
+    <MESSAGE value="writes Product objects to Database&#10;writes Product list to DB&#10;deletes Product from DB&#10;&#10;Does NOT yet update individual items in DB properly" />
+    <option name="LAST_COMMIT_MESSAGE" value="writes Product objects to Database&#10;writes Product list to DB&#10;deletes Product from DB&#10;&#10;Does NOT yet update individual items in DB properly" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/webtodb/models.java" />
@@ -692,16 +642,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Repository/ProductRepository.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Dao/ProductDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Entities/WebClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -733,13 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DB_Commands">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="484">
@@ -754,10 +687,85 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Service/ProductService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="115" column="6" selection-start-line="94" selection-start-column="4" selection-end-line="115" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sqlDb/Code.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Dao/ProductDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/PhysicalProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1245">
+          <caret line="93" column="1" lean-forward="true" selection-start-line="93" selection-start-column="1" selection-end-line="93" selection-end-column="1" />
+          <folding>
+            <element signature="e#918#919#0" expanded="true" />
+            <element signature="e#954#955#0" expanded="true" />
+            <element signature="e#986#987#0" expanded="true" />
+            <element signature="e#1014#1015#0" expanded="true" />
+            <element signature="e#1056#1057#0" expanded="true" />
+            <element signature="e#1090#1091#0" expanded="true" />
+            <element signature="e#1122#1123#0" expanded="true" />
+            <element signature="e#1150#1151#0" expanded="true" />
+            <element signature="e#1192#1193#0" expanded="true" />
+            <element signature="e#1226#1227#0" expanded="true" />
+            <element signature="e#1259#1260#0" expanded="true" />
+            <element signature="e#1288#1289#0" expanded="true" />
+            <element signature="e#1332#1333#0" expanded="true" />
+            <element signature="e#1368#1369#0" expanded="true" />
+            <element signature="e#1401#1402#0" expanded="true" />
+            <element signature="e#1430#1431#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Entities/models/entity/Product.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3165">
-          <caret line="273" column="76" selection-start-line="273" selection-start-column="76" selection-end-line="273" selection-end-column="76" />
+        <state relative-caret-position="349">
+          <caret line="332" column="65" lean-forward="true" selection-start-line="332" selection-start-column="58" selection-end-line="332" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sqlDb/DB_Commands">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="27" lean-forward="true" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/FakeDataSets.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="77" column="30" selection-start-line="77" selection-start-column="30" selection-end-line="77" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/DLRTMWebPlatform.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="68" column="73" selection-start-line="68" selection-start-column="73" selection-end-line="68" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -766,38 +774,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Dao/ProductDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="218" column="24" selection-start-line="218" selection-start-column="24" selection-end-line="218" selection-end-column="24" />
+        <state relative-caret-position="-2201">
+          <caret line="99" column="10" selection-start-line="99" selection-start-column="10" selection-end-line="99" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1247#1248#0" expanded="true" />
-            <element signature="e#1295#1296#0" expanded="true" />
-            <element signature="e#1337#1338#0" expanded="true" />
-            <element signature="e#1370#1371#0" expanded="true" />
-            <element signature="e#7355#7356#0" expanded="true" />
-            <element signature="e#7410#7411#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/Service/ProductService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="115" column="6" lean-forward="true" selection-start-line="94" selection-start-column="4" selection-end-line="115" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1151#1152#0" expanded="true" />
-            <element signature="e#1214#1215#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/DLRTMWebPlatform.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="76" column="38" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#6901#6902#0" expanded="true" />
+            <element signature="e#6956#6957#0" expanded="true" />
+            <element signature="e#10854#10855#0" expanded="true" />
+            <element signature="e#10871#10872#0" expanded="true" />
           </folding>
         </state>
       </provider>

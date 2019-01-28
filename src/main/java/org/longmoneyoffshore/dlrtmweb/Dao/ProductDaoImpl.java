@@ -1,5 +1,6 @@
 package org.longmoneyoffshore.dlrtmweb.Dao;
 
+import org.longmoneyoffshore.dlrtmweb.Entities.models.atomic.PhysicalProperties;
 import org.longmoneyoffshore.dlrtmweb.Entities.models.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,13 +18,6 @@ import java.util.List;
 @Component
 public class ProductDaoImpl implements ProductDao {
 
-    /*static {
-        products = new HashMap<String, Product>() {
-            {
-                //put (1, new Product(1,"Mario", "Math"));
-            }
-        };
-    }*/
 
     //@Autowired
     private DataSource dataSource;
@@ -41,7 +35,6 @@ public class ProductDaoImpl implements ProductDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
     public DataSource getDataSource() {
         return dataSource;
     }
@@ -54,55 +47,12 @@ public class ProductDaoImpl implements ProductDao {
     }
 
 
-    //TODO: is this relevant?
-    public Product getProductXml(String productId) {
-
-        Connection conn = null;
-
-        try {
-
-            conn = dataSource.getConnection();
-
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM product where id = ?");
-            ps.setString(1, productId);
-
-            Product product = null;
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                //product =  new Product(productId,rs.getString("name"));
-                product =  new Product(String.valueOf(productId),rs.getString("productName"));
-            }
-
-            rs.close();
-            ps.close();
-
-            return product;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        } finally {
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return null;
-    }
-
-
-
     @Override
     public Product getProductById (String productId) {
 
         //TODO: has problems when there are several entries with the same ID
-        String sql = "SELECT * FROM product where id = ?";
+        String sql = "SELECT * FROM products where uniqueID = ?";
         return jdbcTemplate.queryForObject(sql, new Object[] {productId}, new ProductMapper());
-
 
 
         //TODO: is it possible to do the above with namedParameter?
@@ -113,7 +63,7 @@ public class ProductDaoImpl implements ProductDao {
 
 
     public int getProductCount() {
-        String sql = "SELECT COUNT(*) FROM product";
+        String sql = "SELECT COUNT(*) FROM products";
 
         //TODO: is this property set in the spring.xml?
         //jdbcTemplate.setDataSource(getDataSource());
@@ -123,33 +73,31 @@ public class ProductDaoImpl implements ProductDao {
         return count;
     }
 
-
     public int getProductWPropertyCount(){
 
         //TODO: not done yet
 
         int count = 0;
-        String sql = "SELECT COUNT(*) FROM CIRCLE";
+        String sql = "SELECT COUNT(*) FROM products";
 
         //int count = namedParameterJdbcTemplate.queryForObject(sql, commandsMap, new ProductMapper ());
         List<Product> productsWithProperty = namedParameterJdbcTemplate.query(sql, new ProductMapper());
 
         count = productsWithProperty.size();
 
-
         return count;
 
     }
 
     public String getProductName(String productId) {
-        String sql = "SELECT NAME FROM CIRCLE WHERE ID = ?";
+        String sql = "SELECT name FROM products WHERE uniqueID = ?";
 
         //String productName = jdbcTemplate.queryForObject(sql,String.class);
 
         String productName = jdbcTemplate.queryForObject(sql, new Object[] {productId}, String.class); //TODO: this is the old implementation
 
         //TODO: new implementation
-        productName = namedParameterJdbcTemplate.query(sql, new ProductMapper()).get(0).getProductName();
+        //productName = namedParameterJdbcTemplate.query(sql, new ProductMapper()).get(0).getProductName();
 
         //TODO: potentially redundant
 
@@ -168,20 +116,17 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public void insertProduct (Product product) {
 
-        //TODO: First Implementation
-        //String sql = "INSERT INTO CIRCLE (ID, NAME) VALUES (?, ?)";
-        //jdbcTemplate.update(sql, new Object[] {product.getProductUniqueID(), product.getProductName()});
-
-
         //TODO: Second Implementation w/ named parameters
         String sql = "INSERT INTO products (uniqueID, name, manufacturer, countryOfOrigin, description, unitPurchasePrice," +
                 "unitPrice, discounts, adjustments, credits, deductions, specialOffers, currency, itemsInStockInt, itemsInStockDecimal," +
-                "quantityInStock, needToReorder, measurementUnit, specialMentions)" +
+                "quantityInStock, needToReorder, measurementUnit, specialMentions, length, width, depth, height, weight, sizeMeasurementUnit," +
+                "weightMeasurementUnit)" +
 
                 "VALUES (:uniqueID, :name, :manufacturer, :countryOfOrigin," +
                 ":description, :unitPurchasePrice, :unitPrice, :discounts, :adjustments, :credits, :deductions, :specialOffers," +
                 ":currency, :itemsInStockInt, :itemsInStockDecimal, :quantityInStock, :needToReorder, :measurementUnit," +
-                ":specialMentions)";
+                ":specialMentions, :length, :width, :depth, :height, :weight, :sizeMeasurementUnit," +
+                ":weightMeasurementUnit)";
 
         SqlParameterSource namedParameters = new MapSqlParameterSource("uniqueID", product.getProductUniqueID())
                 .addValue("name", product.getProductName())
@@ -201,11 +146,16 @@ public class ProductDaoImpl implements ProductDao {
                 .addValue("quantityInStock", product.getProductQuantityInStock())
                 .addValue("needToReorder", product.getProductNeedToReorder())
                 .addValue("measurementUnit", product.getProductMeasurementUnit())
-                .addValue("specialMentions", product.getProductSpecialMentions());
+                .addValue("specialMentions", product.getProductSpecialMentions())
+                .addValue("length", product.getProductPhysicalProperties().getLength())
+                .addValue("width", product.getProductPhysicalProperties().getWidth())
+                .addValue("depth", product.getProductPhysicalProperties().getDepth())
+                .addValue("height", product.getProductPhysicalProperties().getHeight())
+                .addValue("weight", product.getProductPhysicalProperties().getWeight())
+                .addValue("sizeMeasurementUnit", product.getProductPhysicalProperties().getSizeMeasurementUnit())
+                .addValue("weightMeasurementUnit", product.getProductPhysicalProperties().getWeightMeasurementUnit());
 
         namedParameterJdbcTemplate.update(sql, namedParameters);
-
-        //jdbcTemplate.update(sql, new Object[] {product.getId(), product.getName()});
     }
 
 
@@ -217,8 +167,6 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public void deleteProductById(String id) {
-        //this.products.remove(id);
-
         String sql = "DELETE FROM products WHERE uniqueID IN (?)";
         jdbcTemplate.update(sql,new Object[] {id});
 
@@ -226,7 +174,7 @@ public class ProductDaoImpl implements ProductDao {
 
     //TODO: why is this here?
     public void createClientTable () {
-        String sql = "CREATE TABLE TRIANGLE (ID INTEGER, NAME VARCHAR(50))";
+        String sql = "CREATE TABLE CLIENTS (ID INTEGER, NAME VARCHAR(50))";
         jdbcTemplate.execute(sql);
     }
 
@@ -242,13 +190,15 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public void updateProduct(Product product) {
 
-        String sql = "UPDATE products (uniqueID, name, manufacturer, countryOfOrigin, description, unitPurchasePrice, " +
-                "unitPrice, discounts, adjustments, credits, deductions,specialOffers, currency, itemsInStockInt, itemsInStockDecimal, " +
-                "quantityInStock, needToReorder, measurementUnit, specialMentions) " +
+        //String SQL = "update Student set age = ? where id = ?";
 
-                "VALUES (:uniqueID, :name, :manufacturer, :countryOfOrigin, :description, :unitPurchasePrice, " +
-                ":unitPrice, :discounts, :adjustments, :credits, :deductions, :specialOffers, :currency, :itemsInStockInt, :itemsInStockDecimal, " +
-                ":quantityInStock, :needToReorder, :measurementUnit, :specialMentions)";
+
+        String sql = "UPDATE products set name = :name, manufacturer = :manufacturer, countryOfOrigin = :countryOfOrigin, description = :description," +
+                "unitPurchasePrice = :unitPurchasePrice, unitPrice = :unitPrice, discounts = :discounts, adjustments = :adjustments, credits = :credits, deductions = :deductions," +
+                "specialOffers = :specialOffers, currency = :currency, itemsInStockInt = :itemsInStockInt, itemsInStockDecimal = :itemsInStockDecimal," +
+                "quantityInStock = :quantityInStock, needToReorder = :needToReorder, measurementUnit = :measurementUnit, specialMentions = :specialMentions, " +
+                "length = :length, width = :width, depth = :depth, height = :height, weight = :weight, sizeMeasurementUnit = :sizeMeasurementUnit, weightMeasurementUnit = :weightMeasurementUnit " +
+                "where uniqueID = :uniqueID";
 
         SqlParameterSource namedParameters = new MapSqlParameterSource("uniqueID", product.getProductUniqueID())
                 .addValue("name", product.getProductName())
@@ -268,13 +218,25 @@ public class ProductDaoImpl implements ProductDao {
                 .addValue("quantityInStock", product.getProductQuantityInStock())
                 .addValue("needToReorder", product.getProductNeedToReorder())
                 .addValue("measurementUnit", product.getProductMeasurementUnit())
-                .addValue("specialMentions", product.getProductSpecialMentions());
+                .addValue("specialMentions", product.getProductSpecialMentions())
+
+                .addValue("length", product.getProductPhysicalProperties().getLength())
+                .addValue("width", product.getProductPhysicalProperties().getWidth())
+                .addValue("depth", product.getProductPhysicalProperties().getDepth())
+                .addValue("height", product.getProductPhysicalProperties().getHeight())
+                .addValue("weight", product.getProductPhysicalProperties().getWeight())
+                .addValue("sizeMeasurementUnit", product.getProductPhysicalProperties().getSizeMeasurementUnit())
+                .addValue("weightMeasurementUnit", product.getProductPhysicalProperties().getWeightMeasurementUnit());
+
 
         namedParameterJdbcTemplate.update(sql, namedParameters);
     }
 
+    public void updatedProductSublist (List<Product> subList) {
+        subList.forEach(p -> updateProduct(p));
+    }
 
-    //TODO: mapping the DB table colums to individual fields in the data object
+    //mapping DB table columns to individual fields in the data object
     private static final class ProductMapper implements RowMapper<Product> {
 
         public ProductMapper() {};
@@ -300,12 +262,25 @@ public class ProductDaoImpl implements ProductDao {
             product.setCurrency (resultSet.getString("currency"));
 
             product.setProductItemsInStockInt(resultSet.getInt("itemsInStockInt"));
-            product.setProductItemsInStockDecimal(resultSet.getFloat("itemsInStockDecimal"));
-            product.setProductQuantityInStock(resultSet.getFloat("quantityInStock"));
+            product.setProductItemsInStockDecimal(resultSet.getDouble("itemsInStockDecimal"));
+            product.setProductQuantityInStock(resultSet.getDouble("quantityInStock"));
             product.setProductNeedToReorder(resultSet.getInt("needToReorder"));
             product.setProductMeasurementUnit(resultSet.getString("measurementUnit"));
 
             product.setProductSpecialMentions(resultSet.getString("specialMentions"));
+
+            //read product physical dimensions
+            PhysicalProperties physicalProperties = new PhysicalProperties();
+
+            physicalProperties.setLength(resultSet.getDouble("length"));
+            physicalProperties.setWidth(resultSet.getDouble("width"));
+            physicalProperties.setDepth(resultSet.getDouble("depth"));
+            physicalProperties.setHeight(resultSet.getDouble("height"));
+            physicalProperties.setWeight(resultSet.getDouble("weight"));
+            physicalProperties.setSizeMeasurementUnit(resultSet.getString("sizeMeasurementUnit"));
+            physicalProperties.setWeightMeasurementUnit(resultSet.getString("weightMeasurementUnit"));
+
+            product.setProductPhysicalProperties(physicalProperties);
 
             return product;
         }

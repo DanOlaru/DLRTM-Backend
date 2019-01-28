@@ -1,5 +1,7 @@
 package org.longmoneyoffshore.dlrtmweb.Entities.models.entity;
 
+import org.longmoneyoffshore.dlrtmweb.Entities.models.atomic.PhysicalProperties;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -26,13 +28,15 @@ public class Product {
     private String currency;
 
     private int productItemsInStockInt;
-    private float productItemsInStockDecimal;
-    private float productQuantityInStock; //TODO: make getters/setters/constructors
+    private double productItemsInStockDecimal;
+    private double productQuantityInStock;
     private String productMeasurementUnit;
 
     private int productNeedToReorder = 0;
 
     private String productSpecialMentions;
+
+    private PhysicalProperties productPhysicalProperties;
 
     //Internal Reference / Utility fields
 
@@ -51,11 +55,10 @@ public class Product {
     }
 
 
-    //Full Constructor
     public Product(String productUniqueID, String productName, String productManufacturer, String productCountryOfOrigin, String productDescription,
                    double productUnitPurchasePrice, double productUnitPrice, double productDiscounts, double productAdjustments, double productCredits,
-                   double productDeductions, String productSpecialOffers, String currency, int productItemsInStockInt, float productItemsInStockDecimal,
-                   float productQuantityInStock, int productNeedToReorder, String productMeasurementUnit, String productSpecialMentions) {
+                   double productDeductions, String productSpecialOffers, String currency, int productItemsInStockInt, double productItemsInStockDecimal,
+                   double productQuantityInStock, int productNeedToReorder, String productMeasurementUnit, String productSpecialMentions) {
 
         this.productUniqueID = productUniqueID;
         this.productName = productName;
@@ -76,6 +79,66 @@ public class Product {
         this.productMeasurementUnit = productMeasurementUnit;
         this.productNeedToReorder = productNeedToReorder;
         this.productSpecialMentions = productSpecialMentions;
+        this.productPhysicalProperties = new PhysicalProperties(); //blank
+    }
+
+    //Full Constructor
+    public Product(String productUniqueID, String productName, String productManufacturer, String productCountryOfOrigin, String productDescription,
+                   double productUnitPurchasePrice, double productUnitPrice, double productDiscounts, double productAdjustments, double productCredits,
+                   double productDeductions, String productSpecialOffers, String currency, int productItemsInStockInt, double productItemsInStockDecimal,
+                   double productQuantityInStock, int productNeedToReorder, String productMeasurementUnit, String productSpecialMentions,
+                   PhysicalProperties physicalProperties) {
+
+        this.productUniqueID = productUniqueID;
+        this.productName = productName;
+        this.productManufacturer = productManufacturer;
+        this.productCountryOfOrigin = productCountryOfOrigin;
+        this.productDescription = productDescription;
+        this.productUnitPurchasePrice = productUnitPurchasePrice;
+        this.productUnitPrice = productUnitPrice;
+        this.productDiscounts = productDiscounts;
+        this.productAdjustments = productAdjustments;
+        this.productCredits = productCredits;
+        this.productDeductions = productDeductions;
+        this.productSpecialOffers = productSpecialOffers;
+        this.currency = currency;
+        this.productItemsInStockInt = productItemsInStockInt;
+        this.productItemsInStockDecimal = productItemsInStockDecimal;
+        this.productQuantityInStock = productQuantityInStock;
+        this.productMeasurementUnit = productMeasurementUnit;
+        this.productNeedToReorder = productNeedToReorder;
+        this.productSpecialMentions = productSpecialMentions;
+        this.productPhysicalProperties = physicalProperties;
+    }
+
+    //Full EXPLICIT-IN-TERMS-OF-BASIC-FIELDS Constructor
+    public Product(String productUniqueID, String productName, String productManufacturer, String productCountryOfOrigin, String productDescription,
+                   double productUnitPurchasePrice, double productUnitPrice, double productDiscounts, double productAdjustments, double productCredits,
+                   double productDeductions, String productSpecialOffers, String currency, int productItemsInStockInt, double productItemsInStockDecimal,
+                   double productQuantityInStock, int productNeedToReorder, String productMeasurementUnit, String productSpecialMentions,
+                   double length, double width, double depth, double height, double weight, String sizeMeasurementUnit,
+                   String weightMeasurementUnit) {
+
+        this.productUniqueID = productUniqueID;
+        this.productName = productName;
+        this.productManufacturer = productManufacturer;
+        this.productCountryOfOrigin = productCountryOfOrigin;
+        this.productDescription = productDescription;
+        this.productUnitPurchasePrice = productUnitPurchasePrice;
+        this.productUnitPrice = productUnitPrice;
+        this.productDiscounts = productDiscounts;
+        this.productAdjustments = productAdjustments;
+        this.productCredits = productCredits;
+        this.productDeductions = productDeductions;
+        this.productSpecialOffers = productSpecialOffers;
+        this.currency = currency;
+        this.productItemsInStockInt = productItemsInStockInt;
+        this.productItemsInStockDecimal = productItemsInStockDecimal;
+        this.productQuantityInStock = productQuantityInStock;
+        this.productMeasurementUnit = productMeasurementUnit;
+        this.productNeedToReorder = productNeedToReorder;
+        this.productSpecialMentions = productSpecialMentions;
+        this.productPhysicalProperties = new PhysicalProperties(length, width, depth, height, weight, sizeMeasurementUnit, weightMeasurementUnit);
     }
 
 
@@ -210,19 +273,19 @@ public class Product {
         this.productItemsInStockInt = productItemsInStockInt;
     }
 
-    public float getProductItemsInStockDecimal() {
+    public double getProductItemsInStockDecimal() {
         return productItemsInStockDecimal;
     }
 
-    public void setProductItemsInStockDecimal(float productItemsInStockDecimal) {
+    public void setProductItemsInStockDecimal(double productItemsInStockDecimal) {
         this.productItemsInStockDecimal = productItemsInStockDecimal;
     }
 
-    public float getProductQuantityInStock() {
+    public double getProductQuantityInStock() {
         return productQuantityInStock;
     }
 
-    public void setProductQuantityInStock(float productQuantityInStock) {
+    public void setProductQuantityInStock(double productQuantityInStock) {
         this.productQuantityInStock = productQuantityInStock;
     }
 
@@ -250,7 +313,15 @@ public class Product {
         this.productSpecialMentions = productSpecialMentions;
     }
 
-    @Override
+    public PhysicalProperties getProductPhysicalProperties() {
+        return productPhysicalProperties;
+    }
+
+    public void setProductPhysicalProperties(PhysicalProperties productPhysicalProperties) {
+        this.productPhysicalProperties = productPhysicalProperties;
+    }
+
+   @Override
     public String toString() {
         return "Product{" +
                 "productUniqueID='" + productUniqueID.trim() + '\'' + "\n" +
@@ -272,6 +343,9 @@ public class Product {
                 ", productMeasurementUnit='" + productMeasurementUnit.trim() + '\'' + "\n" +
                 ", productNeedToReorder=" + productNeedToReorder + "\n" +
                 ", productSpecialMentions='" + productSpecialMentions.trim() + '\'' + "\n" +
+                ", productPhysicalProperties=" + productPhysicalProperties.toString() +
                 '}';
     }
+
+
 }
