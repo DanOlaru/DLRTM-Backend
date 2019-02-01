@@ -1,5 +1,8 @@
 package org.longmoneyoffshore.dlrtmweb.Entities.models.atomic;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class PaymentInfo {
 
     private String cardNumber;

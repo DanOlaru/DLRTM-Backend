@@ -1,11 +1,16 @@
+/*
 package org.longmoneyoffshore.dlrtmweb.Entities.models.entity;
 
-/* Dan Olaru 2019*/
+*/
+/* Dan Olaru 2019*//*
+
 
 import org.longmoneyoffshore.dlrtmweb.Entities.models.atomic.Address;
 import org.longmoneyoffshore.dlrtmweb.Entities.models.atomic.PaymentInfo;
 import org.longmoneyoffshore.dlrtmweb.Entities.models.atomic.PersonName;
 import org.longmoneyoffshore.dlrtmweb.Entities.models.atomic.PhoneNumber;
+
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -19,22 +24,29 @@ public class Client {
     private String clientUniqueID;
 
     //#2 Client Name
+    @Embedded
     private PersonName clientName;
 
     //#3 Phone contact info
+    @Embedded
     private PhoneNumber clientHomePhone, clientBusinessPhone, clientAlternatePhone, clientMobilePhone;
+    @Embedded
     private PhoneNumber clientPrimaryContactPhone; //first phone to contact
 
     //#4 email address
     private String clientPrimaryEmailAddress,clientAlternateEmailAddress;
 
     //#5 Client adresses
+    @Embedded
     private Address clientBillingAddress, clientShippingAddress, clientAlternateAddress;
+    @Embedded
     private Address clientDeliveryAddress; //the actual delivery address —————— one from the list above
 
 
     //#6 payment info
+    @Embedded
     private PaymentInfo cardInfo, alternateCardInfo;
+    @Embedded
     private PaymentInfo selectedPaymentMethod; // points to one of the above
 
 
@@ -154,7 +166,9 @@ public class Client {
     //=============CONSTRUCTORS======================================================================================================
 
 
-    /****************Getters and setters - methods use to access the private attributes of a class **/
+    */
+/****************Getters and setters - methods use to access the private attributes of a class **//*
+
 
     public String getClientUniqueID() {
         return clientUniqueID;
@@ -334,7 +348,9 @@ public class Client {
         this.revision = revision;
     }
 
-    /****************Getters and setters - methods use to access the private attributes of a class **/
+    */
+/****************Getters and setters - methods use to access the private attributes of a class **//*
+
 
 
     //return a reference to this Client object
@@ -342,17 +358,21 @@ public class Client {
 
 
 
-    /************ !!!!!!!!!!!!!!!!!!!!!!!!!!!! other/utility methods !!!!!!!!!!!!!!!!!!!!!!!!!!!! *******/
+    */
+/************ !!!!!!!!!!!!!!!!!!!!!!!!!!!! other/utility methods !!!!!!!!!!!!!!!!!!!!!!!!!!!! *******//*
+
 
     //convert client to List<List<Object>>
-   /* public List<List<Object>> returnClientAsObjectList() {
+   */
+/* public List<List<Object>> returnClientAsObjectList() {
         List<List<Object>> values = Arrays.asList(
                 Arrays.asList(
                         this.clientName, this.clientPhoneNo, this.clientLocation, this.clientProductID,
                         this.clientQuantity, this.clientPrice, this.clientPriceAdjust, this.clientUrgency,
                         this.clientValue, this.clientStatus));
         return values;
-    }*/
+    }*//*
+
 
     public boolean equalsRevision(Client toCompare) {
         return this.getRevision().equals(toCompare.getRevision());
@@ -401,7 +421,8 @@ public class Client {
     }
 
     //for debugging purposes
-   /* public void showClient () {
+   */
+/* public void showClient () {
         Log.d("THIS_CLIENT NAME", clientName);
         Log.d("THIS_CLIENT PHONE", clientPhoneNo);
         Log.d("THIS_CLIENT LOCATION", clientLocation);
@@ -414,6 +435,7 @@ public class Client {
         Log.d("THIS_CLIENT STATUS", clientStatus);
         Log.d("THIS_CLIENT REF CODE", clientReferenceCode);
         Log.d("THIS_CLIENT REVISION", revision);
-    }*/
+    }*//*
 
-}
+
+}*/

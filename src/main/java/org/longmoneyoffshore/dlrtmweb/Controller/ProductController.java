@@ -14,6 +14,55 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+
+    @RequestMapping(method = RequestMethod.GET, value = "/products")
+    public List<Product> getAllProducts(){
+
+        System.out.println("REQUEST /GET ALL PRODUCTS");
+
+        return productService.getAllProducts();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/test")
+    public String printTest(){
+        System.out.println("REQUEST /TEST");
+        return "Testing.";
+    }
+
+
+    @RequestMapping("/products/{id}")
+    public Product getProduct(@PathVariable String id) {
+
+        System.out.println("REQUEST /GET PRODUCT BY ID");
+
+        return productService.getProductById(id);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/products")
+    public void addProduct(@RequestBody Product product) {
+        System.out.println("REQUEST /ADD SINGLE PRODUCT");
+        productService.insertProduct(product);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/products/{id}")
+    public void updateProduct(@RequestBody Product product, @PathVariable String id) {
+        System.out.println("REQUEST / UPDATE PRODUCT");
+
+        productService.updateProduct(product);
+
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "products/{id}")
+    public void deleteProduct(@PathVariable String id) {
+
+        System.out.println("REQUEST /DELETE PRODUCT");
+
+        productService.deleteProductById(id);
+
+    }
+
+
+    //alternate implementation
     /*//@RequestMapping(value = "/", method = RequestMethod.GET)
     @RequestMapping(method = RequestMethod.GET)
     public Collection<Product> getAllProducts() {
@@ -53,38 +102,4 @@ public class ProductController {
         //return productService.getAllProducts();
     }*/
 
-
-    //alternate implementation — from Koushik
-  /*
-    @RequestMapping(method = RequestMethod.GET ,value = "/products")
-    public List<Product> getAllProducts(){
-
-        return productService.getAllProducts();
-    }
-
-
-    @RequestMapping("/products/{id}")
-    public Product getProduct(@PathVariable String id) {
-
-        return productService.getProduct(id);
-    }
-
-    @RequestMapping(method = RequestMethod.POST, value = "/products")
-    public void addProduct(@RequestBody Product product) {
-        productService.addProduct(product);
-    }
-
-    @RequestMapping(method = RequestMethod.PUT, value = "/products/{id}")
-    public void updateProduct(@RequestBody Product product, @PathVariable String id) {
-
-        productService.updateProduct(id, product);
-
-    }
-
-    @RequestMapping(method = RequestMethod.DELETE, value = "products/{id}")
-    public void deleteProduct(@PathVariable String id) {
-
-        productService.deleteProduct(id);
-
-    }*/
 }

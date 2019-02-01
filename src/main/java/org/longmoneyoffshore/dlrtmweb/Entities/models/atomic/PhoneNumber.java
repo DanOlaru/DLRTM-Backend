@@ -1,7 +1,10 @@
 package org.longmoneyoffshore.dlrtmweb.Entities.models.atomic;
 
+import javax.persistence.Embeddable;
+
 import static org.longmoneyoffshore.dlrtmweb.Entities.globalvalues.GlobalValues.US_ANONYMIZER_PREFIX;
 
+@Embeddable
 public class PhoneNumber {
 
     private String ownerName;

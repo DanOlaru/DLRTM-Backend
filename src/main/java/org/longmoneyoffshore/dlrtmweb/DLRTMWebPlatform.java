@@ -1,7 +1,10 @@
 package org.longmoneyoffshore.dlrtmweb;
 
 import org.longmoneyoffshore.dlrtmweb.Dao.ProductDaoImpl;
+import org.longmoneyoffshore.dlrtmweb.Dao.ProductHibernateDaoImpl;
 import org.longmoneyoffshore.dlrtmweb.Entities.models.entity.Product;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -20,18 +23,20 @@ public class DLRTMWebPlatform {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 
         ProductDaoImpl dao = context.getBean("productDaoImpl", ProductDaoImpl.class);
+        //ProductHibernateDaoImpl dao = context.getBean("productHibernateDaoImpl", ProductHibernateDaoImpl.class);
 
+        //SpringApplication.run(DLRTMWebPlatform.class, args);
 
-        FakeDataSets fakeData = new FakeDataSets();
+        //FakeDataSets fakeData = new FakeDataSets();
 
-        System.out.println("================================================================================================================");
+        //System.out.println("================================================================================================================");
         //System.out.println("LOAD UP THE DATABASE:");
         //dao.insertProductList(fakeData.productsExtended);
 
-        System.out.println("SHOW THE DATABASE CONTENTS:");
+        System.out.println("SHOW THE DATABASE CONTENTS #:");
+        System.out.println(dao.getProductCount());
         List<Product> inDatabase = dao.getAllProducts();
         inDatabase.forEach(p -> System.out.println(p.toString() + "\n" ));
-
 
         //dao.updateProduct();
         //dao.updatedProductSublist(fakeData.productsExtendedUpdatedSublist);
@@ -40,7 +45,7 @@ public class DLRTMWebPlatform {
 //        inDatabase.forEach(p -> System.out.println(p.toString() + "\n" ));
 
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        //BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         /*String itemId = "-1";
         while (true) {
@@ -66,9 +71,9 @@ public class DLRTMWebPlatform {
 
         }*/
 
-        System.out.println("NUMBER OF ITEMS IN DB " + dao.getProductCount());
+        //System.out.println("NUMBER OF ITEMS IN DB " + dao.getProductCount());
 
-        dao.getAllProducts().forEach(p-> System.out.println(p.toString() + "\n"));
+        //dao.getAllProducts().forEach(p-> System.out.println(p.toString() + "\n"));
 
 
         /*

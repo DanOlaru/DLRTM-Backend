@@ -1,5 +1,8 @@
 package org.longmoneyoffshore.dlrtmweb.Entities.models.atomic;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class PhysicalProperties {
 
     private double length;
@@ -22,6 +25,16 @@ public class PhysicalProperties {
         this.weight = weight;
         this.sizeMeasurementUnit = sizeMeasurementUnit;
         this.weightMeasurementUnit = weightMeasurementUnit;
+    }
+
+    public PhysicalProperties(PhysicalProperties physicalProperties) {
+        this.length = physicalProperties.getLength();
+        this.width = physicalProperties.getWidth();
+        this.depth = physicalProperties.getDepth();
+        this.height = physicalProperties.getHeight();
+        this.weight = physicalProperties.getWeight();
+        this.sizeMeasurementUnit = physicalProperties.getSizeMeasurementUnit();
+        this.weightMeasurementUnit = physicalProperties.getWeightMeasurementUnit();
     }
 
     public double getLength() {

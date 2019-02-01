@@ -2,17 +2,16 @@ package org.longmoneyoffshore.dlrtmweb.Entities.models.entity;
 
 import org.longmoneyoffshore.dlrtmweb.Entities.models.atomic.PhysicalProperties;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
 public class Product {
 
-    //#1 Product id
     @Id
     private String productUniqueID;
 
-    //#2 Product description
     private String productName;
     private String productManufacturer;
     private String productCountryOfOrigin;
@@ -36,6 +35,7 @@ public class Product {
 
     private String productSpecialMentions;
 
+    //@Embedded
     private PhysicalProperties productPhysicalProperties;
 
     //Internal Reference / Utility fields
@@ -158,6 +158,7 @@ public class Product {
         this.productItemsInStockDecimal = product.getProductItemsInStockDecimal();
         this.productNeedToReorder = product.getProductNeedToReorder();
         this.productSpecialMentions = product.getProductSpecialMentions();
+        //this.productPhysicalProperties = new PhysicalProperties(product.getProductPhysicalProperties());
     }
 
 

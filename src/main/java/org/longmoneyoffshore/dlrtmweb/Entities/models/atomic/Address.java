@@ -1,7 +1,9 @@
 package org.longmoneyoffshore.dlrtmweb.Entities.models.atomic;
 
+import javax.persistence.Embeddable;
 import java.util.Objects;
 
+@Embeddable
 public class Address {
 
     //fields

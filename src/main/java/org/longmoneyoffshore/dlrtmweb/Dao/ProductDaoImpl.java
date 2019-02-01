@@ -18,14 +18,15 @@ import java.util.List;
 @Component
 public class ProductDaoImpl implements ProductDao {
 
-
     //@Autowired
     private DataSource dataSource;
-    //@Autowired
-    //private JdbcTemplate jdbcTemplate;
-    private JdbcTemplate jdbcTemplate = new JdbcTemplate();
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+    //@Autowired
+    private JdbcTemplate jdbcTemplate;
+    //private JdbcTemplate jdbcTemplate = new JdbcTemplate();
+
+   // @Autowired
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     public JdbcTemplate getJdbcTemplate() {
         return jdbcTemplate;
@@ -39,11 +40,13 @@ public class ProductDaoImpl implements ProductDao {
         return dataSource;
     }
 
-    @Autowired
+    //@Autowired
     public void setDataSource(DataSource dataSource) {
 
         this.jdbcTemplate = new JdbcTemplate(dataSource);
         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+
+        System.out.println("DANNY-O: DATASOURCE SET " +  dataSource + " " + namedParameterJdbcTemplate.toString());
     }
 
 
@@ -54,11 +57,7 @@ public class ProductDaoImpl implements ProductDao {
         String sql = "SELECT * FROM products where uniqueID = ?";
         return jdbcTemplate.queryForObject(sql, new Object[] {productId}, new ProductMapper());
 
-
-        //TODO: is it possible to do the above with namedParameter?
-        //Product product = namedParameterJdbcTemplate.query(sql, new ProductMapper()).get(0);
-
-        //return product;
+        //return namedParameterJdbcTemplate.query(sql, new ProductMapper()).get(0);
     }
 
 
@@ -107,6 +106,9 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public List<Product> getAllProducts() {
+
+        //System.out.println("TRYING TO GET ALL ENTRIES FROM DB");
+
         String sql = "SELECT * FROM products";
 
         return jdbcTemplate.query(sql, new ProductMapper());
@@ -159,7 +161,6 @@ public class ProductDaoImpl implements ProductDao {
     }
 
 
-
     public void insertProductList(List<Product> products) {
         products.forEach(p -> insertProduct(p));
     }
@@ -172,9 +173,14 @@ public class ProductDaoImpl implements ProductDao {
 
     }
 
-    //TODO: why is this here?
-    public void createClientTable () {
-        String sql = "CREATE TABLE CLIENTS (ID INTEGER, NAME VARCHAR(50))";
+    //for setting up the database the first time it is created
+    public void createProductTable () {
+        String sql = "CREATE TABLE products (uniqueID char(10), name char(50), manufacturer char(50), countryOfOrigin char(50), " +
+                "description char(150), unitPurchasePrice float, unitPrice float, discounts float, adjustments float, credits float, " +
+                "deductions float, specialOffers char(50), currency char(10), itemsInStockInt int, itemsInStockDecimal float, " +
+                "quantityInStock float, needToReorder int, measurementUnit char(10), specialMentions char(150), length float, width float, " +
+                "depth float, height float, weight float, sizeMeasurementUnit char(15), weightMeasurementUnit char(15))";
+
         jdbcTemplate.execute(sql);
     }
 

@@ -1,3 +1,4 @@
+/*
 package org.longmoneyoffshore.dlrtmweb.Entities.models.entity;
 
 import java.util.ArrayList;
@@ -61,3 +62,4 @@ public class Transaction {
 
 
 }
+*/
