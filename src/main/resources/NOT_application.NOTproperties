@@ -1,0 +1,22 @@
+# Oracle Settings
+
+#spring.datasource.url=jdbc:oracle:thin:@localhost:1521:xe
+#spring.datasource.username=demo
+#spring.datasource.password=password
+#spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+
+
+# Hikari settings for connection pooling
+
+#spring.datasource.hikari.connection-timeout=12000
+#spring.datasource.hikari.maximum-pool-size=10
+
+
+# logging
+#logging.level.org.springframework.security= DEBUG
+#logging.level.org.hibernate = DEBUG
+
+#logging.pattern.console= %d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n
+
+#server.port = 8080
+#management.port = 9001
