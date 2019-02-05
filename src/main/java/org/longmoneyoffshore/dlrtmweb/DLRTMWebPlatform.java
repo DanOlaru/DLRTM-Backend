@@ -1,7 +1,7 @@
 package org.longmoneyoffshore.dlrtmweb;
 
 import org.longmoneyoffshore.dlrtmweb.Dao.ProductDaoImpl;
-import org.longmoneyoffshore.dlrtmweb.Dao.ProductHibernateDaoImpl;
+//import org.longmoneyoffshore.dlrtmweb.Dao.ProductHibernateDaoImpl;
 import org.longmoneyoffshore.dlrtmweb.Entities.models.entity.Product;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -41,8 +41,8 @@ public class DLRTMWebPlatform {
         //dao.updateProduct();
         //dao.updatedProductSublist(fakeData.productsExtendedUpdatedSublist);
 
-//        inDatabase = dao.getAllProducts();
-//        inDatabase.forEach(p -> System.out.println(p.toString() + "\n" ));
+        //inDatabase = dao.getAllProducts();
+        //inDatabase.forEach(p -> System.out.println(p.toString() + "\n" ));
 
 
         //BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

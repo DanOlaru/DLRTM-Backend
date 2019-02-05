@@ -40,7 +40,7 @@ public class ProductDaoImpl implements ProductDao {
         return dataSource;
     }
 
-    //@Autowired
+    @Autowired
     public void setDataSource(DataSource dataSource) {
 
         this.jdbcTemplate = new JdbcTemplate(dataSource);

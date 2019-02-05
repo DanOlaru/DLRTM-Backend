@@ -1,3 +1,4 @@
+/*
 package org.longmoneyoffshore.dlrtmweb.Dao;
 
 import org.hibernate.SessionFactory;
@@ -32,3 +33,4 @@ public class ProductHibernateDaoImpl {
         this.sessionFactory = sessionFactory;
     }
 }
+*/
