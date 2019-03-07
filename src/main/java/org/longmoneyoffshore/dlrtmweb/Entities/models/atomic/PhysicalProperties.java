@@ -1,13 +1,39 @@
 package org.longmoneyoffshore.dlrtmweb.Entities.models.atomic;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.validation.constraints.Size;
+//import javax.persistence.Entity;
+
+//@Entity
+@Embeddable
+//@Access(AccessType.PROPERTY)
 public class PhysicalProperties {
 
+    //@Column(name="LENGTH")
     private double length;
+
+    //@Column(name="WIDTH")
     private double width;
+
+    //@Column(name="DEPTH")
     private double depth;
+
+    //@Column(name="HEIGHT")
     private double height;
+
+    //@Column(name="WEIGHT")
     private double weight;
+
+    //@Column(name="SIZEMEASUREMENUNIT")
+    @Size(max = 40)
     private String sizeMeasurementUnit;
+
+    //@Column(name="WEIGHTMEASUREMENTUNIT")
+    @Size(max = 40)
     private String weightMeasurementUnit;
 
 

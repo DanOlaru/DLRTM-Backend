@@ -89,7 +89,7 @@
         <dependency>
             <groupId>hibernate</groupId>
             <artifactId>hibernate</artifactId>
-            <version>3.1rc2</version>
+            <version> 3.0.5</version>
         </dependency>
 
         <dependency>
@@ -97,6 +97,15 @@
             <artifactId>derby</artifactId>
             <version> 10.14.2.0</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.reactivestreams/reactive-streams -->
+        <dependency>
+            <groupId>org.reactivestreams</groupId>
+            <artifactId>reactive-streams</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>

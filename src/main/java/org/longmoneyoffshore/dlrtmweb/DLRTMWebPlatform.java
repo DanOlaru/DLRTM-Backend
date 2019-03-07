@@ -2,7 +2,14 @@ package org.longmoneyoffshore.dlrtmweb;
 
 import org.longmoneyoffshore.dlrtmweb.Dao.ProductDaoImpl;
 import org.longmoneyoffshore.dlrtmweb.Entities.models.entity.Product;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.BufferedReader;
@@ -12,37 +19,40 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-//@SpringBootApplication
+@SpringBootApplication
+@ImportResource("classpath:spring.xml")
+//@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 public class DLRTMWebPlatform {
 
     public static void main(String[] args) {
 
+        System.out.println("=========================================DANNY-O=======================================================================");
+
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-
-        ProductDaoImpl dao = context.getBean("productDaoImpl", ProductDaoImpl.class);
-
 
         FakeDataSets fakeData = new FakeDataSets();
 
-        System.out.println("================================================================================================================");
-        //System.out.println("LOAD UP THE DATABASE:");
-        //dao.insertProductList(fakeData.productsExtended);
-
+        ProductDaoImpl dao = context.getBean("productDaoImpl", ProductDaoImpl.class);
+        System.out.println("Inputting data into database");
+        dao.dropTable();
+        dao.createTable();
+        dao.insertProductList(fakeData.productsExtended);
+        System.out.println("NUMBER OF ITEMS IN DB " + dao.getProductCount());
         System.out.println("SHOW THE DATABASE CONTENTS:");
-        List<Product> inDatabase = dao.getAllProducts();
-        inDatabase.forEach(p -> System.out.println(p.toString() + "\n" ));
+        dao.getAllProducts().forEach(p -> System.out.println(p.getProductUniqueID().trim() + " " + p.getProductName().trim()));
 
+        SpringApplication.run(DLRTMWebPlatform.class, args);
 
-        //dao.updateProduct();
-        //dao.updatedProductSublist(fakeData.productsExtendedUpdatedSublist);
+        /*ApplicationContext applicationContext = SpringApplication.run(DLRTMWebPlatform.class, args);
 
-//        inDatabase = dao.getAllProducts();
-//        inDatabase.forEach(p -> System.out.println(p.toString() + "\n" ));
+        for (String name : applicationContext.getBeanDefinitionNames()) {
+            System.out.println(name);
+        }*/
 
-
+        /*
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        /*String itemId = "-1";
+        String itemId = "-1";
         while (true) {
 
             try {
@@ -65,10 +75,6 @@ public class DLRTMWebPlatform {
             //System.out.println(dao.getProductById(itemId).toString());
 
         }*/
-
-        System.out.println("NUMBER OF ITEMS IN DB " + dao.getProductCount());
-
-        dao.getAllProducts().forEach(p-> System.out.println(p.toString() + "\n"));
 
 
         /*

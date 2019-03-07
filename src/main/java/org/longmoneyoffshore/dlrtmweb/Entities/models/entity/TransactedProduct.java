@@ -1,9 +1,9 @@
 package org.longmoneyoffshore.dlrtmweb.Entities.models.entity;
 import javax.persistence.Entity;
 
-@Entity //TODO: is this even right?
+//@Entity //TODO: is this even right?
 public class TransactedProduct extends Product {
-
+/*
     //TODO: questionable if these are needed
     private int productTransactedUnits;
     private double productTransactedUnitsDecimal;
@@ -196,5 +196,5 @@ public class TransactedProduct extends Product {
     }
 
 
-
+*/
 }

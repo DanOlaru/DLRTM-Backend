@@ -5,9 +5,10 @@ import java.util.Arrays;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
-public class Transaction {
 
+//@Entity
+public class Transaction {
+/*
     //#1 IDs:
     // unique transaction id
     @Id
@@ -59,5 +60,6 @@ public class Transaction {
                 '}';
     }
 
-
+*/
 }
+

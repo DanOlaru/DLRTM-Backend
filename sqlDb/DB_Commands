@@ -10,8 +10,6 @@ CREATE TABLE circle (id integer, name char(50)) ;
 SELECT * FROM circle where id = ?);
 
 
-select * from circle;
-
 insert into circle values(1, 'First Circle’);
 
 
@@ -30,4 +28,5 @@ CREATE TABLE products (uniqueID char(10), name char(50), manufacturer char(50),
                        weight float, sizeMeasurementUnit char(15), weightMeasurementUnit char(15));
 
 
-
+select * from products;
+DROP TABLE products;

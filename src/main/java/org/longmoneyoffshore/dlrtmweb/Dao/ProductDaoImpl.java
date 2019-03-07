@@ -12,18 +12,22 @@ import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.Arrays;
 import java.util.List;
 
 //@Qualifier("")
 @Component
 public class ProductDaoImpl implements ProductDao {
 
-
     //@Autowired
     private DataSource dataSource;
+    //private BasicDataSource dataSource;
+
     //@Autowired
-    //private JdbcTemplate jdbcTemplate;
-    private JdbcTemplate jdbcTemplate = new JdbcTemplate();
+    private JdbcTemplate jdbcTemplate;
+    //private JdbcTemplate jdbcTemplate = new JdbcTemplate();
+
+    @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
 
@@ -35,15 +39,48 @@ public class ProductDaoImpl implements ProductDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    public NamedParameterJdbcTemplate getNamedParameterJdbcTemplate()
+    {
+        return namedParameterJdbcTemplate;
+    }
+
+    public void setNamedParameterJdbcTemplate(NamedParameterJdbcTemplate namedParameterJdbcTemplate)
+    {
+        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
+    }
     public DataSource getDataSource() {
         return dataSource;
     }
 
     @Autowired
     public void setDataSource(DataSource dataSource) {
+    //public void setDataSource(BasicDataSource dataSource) {
 
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-        this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+        this.dataSource = dataSource;
+        //this.jdbcTemplate = new JdbcTemplate(dataSource);
+        //this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+    }
+
+
+    public void createTable() {
+
+        String sql = "CREATE TABLE products (uniqueID char(10), name char(50), manufacturer char(50)," +
+                "                       countryOfOrigin char(50), description char(150), unitPurchasePrice float," +
+                "                       unitPrice float, discounts float, adjustments float," +
+                "                       credits float, deductions float, specialOffers char(50)," +
+                "                       currency char(10), itemsInStockInt int, itemsInStockDecimal float," +
+                "                       quantityInStock float, needToReorder int, measurementUnit char(10)," +
+                "                       specialMentions char(150), length float, width float, depth float, height float," +
+                "                       weight float, sizeMeasurementUnit char(15), weightMeasurementUnit char(15))";
+
+        this.jdbcTemplate.execute(sql);
+    }
+
+    public void dropTable() {
+
+        String sql = "DROP TABLE products";
+
+                this.jdbcTemplate.execute(sql);
     }
 
 
@@ -105,12 +142,23 @@ public class ProductDaoImpl implements ProductDao {
     }
 
 
-    @Override
+    //@Override
     public List<Product> getAllProducts() {
+
+        System.out.println("PRODUCTDAOIMPL: REQUEST /GET ALL PRODUCTS _ XXXXXXXXXX");
+        System.out.println("WHAT: DATASOURCE " + dataSource.toString());
+
+
         String sql = "SELECT * FROM products";
 
-        return jdbcTemplate.query(sql, new ProductMapper());
-        //return namedParameterJdbcTemplate.query(sql, new ProductMapper());
+        //return jdbcTemplate.query(sql, new ProductMapper());
+
+        //List<Product> resultsUntrimmed = Arrays.asList(namedParameterJdbcTemplate.query(sql, new ProductMapper());
+        //List<Product> results = Arrays.asList(resultsUntrimmed.stream())); //TODO: must trim
+
+        //return results;
+
+        return namedParameterJdbcTemplate.query(sql, new ProductMapper());
     }
 
     @Override
@@ -157,7 +205,6 @@ public class ProductDaoImpl implements ProductDao {
 
         namedParameterJdbcTemplate.update(sql, namedParameters);
     }
-
 
 
     public void insertProductList(List<Product> products) {

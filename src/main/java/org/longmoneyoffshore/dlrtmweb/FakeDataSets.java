@@ -50,7 +50,12 @@ public class FakeDataSets {
             new Product("0004", "Coffee Maker", "JVC", "Germany",
                     "coffee maker",22, 16.15,11,20,3,20,
                     "5 year warranty","USD",10,0,0,70,
-                    "Unit","buyer's favorite", 2.3, 1.5,.5,0.0,35.6,"inch", "lbs"))
+                    "Unit","buyer's favorite", 2.3, 1.5,.5,0.0,35.6,"inch", "lbs"),
+
+            new Product("0005", "Coffee Shaker", "Sunny", "China",
+                    "coffee flaker",13, 666,5,5,5,5,
+                    "666 year warranty","flUSD",5,5,5,5,
+                    "flUnit","flyer's delite", 2.3, 1.5,.5,0.0,35.6,"inch", "lbs"))
     );
 
     public List<Product> productsExtendedUpdatedSublist =  new ArrayList<>(Arrays.asList(

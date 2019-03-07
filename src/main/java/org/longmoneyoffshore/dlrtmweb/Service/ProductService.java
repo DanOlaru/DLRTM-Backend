@@ -18,11 +18,21 @@ public class ProductService {
     //@Qualifier("mongoData")
     private ProductDaoImpl myProductDao;
 
+    public ProductDaoImpl getMyProductDao() {
+        return myProductDao;
+    }
+
+    public void setMyProductDao(ProductDaoImpl myProductDao) {
+        this.myProductDao = myProductDao;
+    }
+
     public ProductService(ProductDaoImpl productDao) {
         this.myProductDao = productDao;
     }
 
     public Collection<Product> getAllProducts() {
+
+        System.out.println("SERVICE: REQUEST /GET ALL PRODUCTS");
         return this.myProductDao.getAllProducts();
     }
 

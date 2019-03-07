@@ -2,14 +2,15 @@ package org.longmoneyoffshore.dlrtmweb.Entities.models.entity;
 
 import org.longmoneyoffshore.dlrtmweb.Entities.models.atomic.PhysicalProperties;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "products")
 public class Product {
 
     //#1 Product id
     @Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private String productUniqueID;
 
     //#2 Product description
@@ -36,6 +37,18 @@ public class Product {
 
     private String productSpecialMentions;
 
+    //@ManyToOne
+    //@JoinColumn
+    @Embedded
+    @AttributeOverrides(value = {
+            @AttributeOverride(name = "length", column = @Column(name = "LENGTH")),
+            @AttributeOverride(name = "width", column = @Column(name = "WIDTH")),
+            @AttributeOverride(name = "depth", column = @Column(name = "DEPTH")),
+            @AttributeOverride(name = "height", column = @Column(name = "HEIGHT")),
+            @AttributeOverride(name = "weight", column = @Column(name = "WEIGHT")),
+            @AttributeOverride(name = "sizeMeasurementUnit", column = @Column(name = "SIZEMEASUREMENTUNIT")),
+            @AttributeOverride(name = "weightMeasurementUnit", column = @Column(name = "WEIGHTMEASUREMENTUNIT"))
+    })
     private PhysicalProperties productPhysicalProperties;
 
     //Internal Reference / Utility fields
@@ -347,5 +360,30 @@ public class Product {
                 '}';
     }
 
+    public void trim() {
+
+        this.productUniqueID = productUniqueID.trim();
+        this.productName = productName.trim();
+        this.productManufacturer = productManufacturer.trim();
+        this.productCountryOfOrigin = productCountryOfOrigin.trim();
+        this.productDescription = productDescription.trim();
+        this.productUnitPurchasePrice = productUnitPurchasePrice;
+        this.productUnitPrice = productUnitPrice;
+        this.productDiscounts = productDiscounts;
+        this.productAdjustments = productAdjustments;
+        this.productCredits = productCredits;
+        this.productDeductions = productDeductions;
+        this.productSpecialOffers = productSpecialOffers.trim();
+        this.currency = currency.trim();
+        this.productItemsInStockInt = productItemsInStockInt;
+        this.productItemsInStockDecimal = productItemsInStockDecimal;
+        this.productQuantityInStock = productQuantityInStock;
+        this.productMeasurementUnit = productMeasurementUnit.trim();
+        this.productNeedToReorder = productNeedToReorder;
+        this.productSpecialMentions = productSpecialMentions.trim();
+        //this.productPhysicalProperties = physicalProperties.trim();
+
+
+    }
 
 }
