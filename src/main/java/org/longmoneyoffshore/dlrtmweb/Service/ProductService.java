@@ -32,7 +32,7 @@ public class ProductService {
 
     public Collection<Product> getAllProducts() {
 
-        System.out.println("SERVICE: REQUEST /GET ALL PRODUCTS");
+        //System.out.println("SERVICE: REQUEST /GET ALL PRODUCTS");
         return this.myProductDao.getAllProducts();
     }
 

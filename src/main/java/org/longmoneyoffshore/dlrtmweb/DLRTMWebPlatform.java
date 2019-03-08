@@ -19,16 +19,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
+//@EnableJpaRepositories(basePackages = "com.dlrtime.springwithmysql.repository") //TODO: for when I implement mySQL DB instead of Derby
+//@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 @SpringBootApplication
 @ImportResource("classpath:spring.xml")
-//@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 public class DLRTMWebPlatform {
 
     public static void main(String[] args) {
 
         System.out.println("=========================================DANNY-O=======================================================================");
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        /*ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 
         FakeDataSets fakeData = new FakeDataSets();
 
@@ -39,7 +41,7 @@ public class DLRTMWebPlatform {
         dao.insertProductList(fakeData.productsExtended);
         System.out.println("NUMBER OF ITEMS IN DB " + dao.getProductCount());
         System.out.println("SHOW THE DATABASE CONTENTS:");
-        dao.getAllProducts().forEach(p -> System.out.println(p.getProductUniqueID().trim() + " " + p.getProductName().trim()));
+        dao.getAllProducts().forEach(p -> System.out.println(p.getProductUniqueID().trim() + " " + p.getProductName().trim()));*/
 
         SpringApplication.run(DLRTMWebPlatform.class, args);
 

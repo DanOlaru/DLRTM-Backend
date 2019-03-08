@@ -3,14 +3,19 @@ package org.longmoneyoffshore.dlrtmweb.Controller;
 import org.longmoneyoffshore.dlrtmweb.Entities.models.entity.Product;
 import org.longmoneyoffshore.dlrtmweb.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpSession;
 import java.util.Collection;
 import java.util.List;
 
 @RestController
 //@RequestMapping("/products")
-public class ProductController {
+public class ProductController extends HttpServlet {
+//public class ProductController {
 
     @Autowired
     private ProductService productService;
@@ -26,7 +31,7 @@ public class ProductController {
     @RequestMapping(method = RequestMethod.GET, value = "/products")
     public Collection<Product> getAllProducts(){
 
-        //System.out.println("CONTROLLER: REQUEST /GET ALL PRODUCTS");
+        System.out.println("CONTROLLER: REQUEST /GET ALL PRODUCTS");
 
         return productService.getAllProducts();
     }
@@ -41,14 +46,15 @@ public class ProductController {
     @RequestMapping("/products/{id}")
     public Product getProduct(@PathVariable String id) {
 
-        //System.out.println("REQUEST /GET PRODUCT BY ID: " + id);
+        System.out.println("REQUEST /GET PRODUCT BY ID: " + id);
 
         return productService.getProductById(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/products")
+    //@RequestMapping(method = RequestMethod.POST, value = "/products")
+    @RequestMapping(method = RequestMethod.POST, value = "/products", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void addProduct(@RequestBody Product product) {
-        //System.out.println("REQUEST /ADD SINGLE PRODUCT");
+        System.out.println("REQUEST /ADD SINGLE PRODUCT " + product.toString());
         productService.insertProduct(product);
     }
 

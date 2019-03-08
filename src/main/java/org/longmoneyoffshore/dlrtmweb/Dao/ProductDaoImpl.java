@@ -145,8 +145,8 @@ public class ProductDaoImpl implements ProductDao {
     //@Override
     public List<Product> getAllProducts() {
 
-        System.out.println("PRODUCTDAOIMPL: REQUEST /GET ALL PRODUCTS _ XXXXXXXXXX");
-        System.out.println("WHAT: DATASOURCE " + dataSource.toString());
+        //System.out.println("PRODUCTDAOIMPL: REQUEST /GET ALL PRODUCTS _ XXXXXXXXXX");
+        //System.out.println("WHAT: DATASOURCE " + dataSource.toString());
 
 
         String sql = "SELECT * FROM products";
