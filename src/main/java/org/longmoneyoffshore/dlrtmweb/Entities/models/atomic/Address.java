@@ -22,7 +22,9 @@ public class Address {
 
     public Address(String fullAddress) {
         this.fullAddress = fullAddress;
-        //TODO: from here we populate the individual fields!!!!!!!!!!
+        //TODO: need to parse and populate the individual fields!!!!!!!!!!
+        //regex?
+
     }
 
     public Address(String personName, String bldgNumber, String streetName, String cityName, String provinceName, String zipCode,
@@ -163,7 +165,7 @@ public class Address {
 
 
 
-    //utility methods — experimental
+    //utility methods
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
