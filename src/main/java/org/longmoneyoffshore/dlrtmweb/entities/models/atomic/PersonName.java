@@ -1,7 +1,9 @@
 package org.longmoneyoffshore.dlrtmweb.entities.models.atomic;
 
+import javax.persistence.Embeddable;
 import java.util.StringTokenizer;
 
+@Embeddable
 public class PersonName {
 
     //Enum<String> PersonalTitles {"Mr.","Mrs.","Ms.", "Miss."} //TODO what's wrong with these??
