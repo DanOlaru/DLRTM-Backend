@@ -14,7 +14,7 @@ import java.util.Collection;
 public class ProductController extends HttpServlet {
 //public class ProductController {
 
-    @Autowired
+    //@Autowired
     private ProductService productService;
 
     public ProductService getProductService() {

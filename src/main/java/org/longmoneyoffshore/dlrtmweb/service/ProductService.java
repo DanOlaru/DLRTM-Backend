@@ -43,6 +43,7 @@ public class ProductService {
     }
 
     public Product getProductById (String productId) {
+        System.out.println("SERVICE: REQUEST /GET PRODUCT BY ID: " + productId);
         return this.myProductDao.getProductById (productId);
     }
 

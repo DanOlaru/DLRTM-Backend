@@ -81,17 +81,14 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public Product getProductById (String productId) {
 
-        //TODO: has problems when there are several entries with the same ID
-        String sql = "SELECT * FROM products where uniqueID = ?";
-        return jdbcTemplate.queryForObject(sql, new Object[] {productId}, new ProductMapper());
+        System.out.println("DAO: REQUEST /GET PRODUCT BY ID: " + productId);
 
+        String sql = "SELECT * FROM products where uniqueID = " + productId;
 
-        //TODO: is it possible to do the above with namedParameter?
-        //Product product = namedParameterJdbcTemplate.query(sql, new ProductMapper()).get(0);
+        //return jdbcTemplate.queryForObject(sql, new Object[] {productId}, new ProductMapper());
 
-        //return product;
+        return namedParameterJdbcTemplate.query(sql, new ProductMapper()).get(0);
     }
-
 
     public int getProductCount() {
         String sql = "SELECT COUNT(*) FROM products";
@@ -129,8 +126,6 @@ public class ProductDaoImpl implements ProductDao {
 
         //TODO: new implementation
         //productName = namedParameterJdbcTemplate.query(sql, new ProductMapper()).get(0).getProductName();
-
-        //TODO: potentially redundant
 
         return productName;
     }
