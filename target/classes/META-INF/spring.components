@@ -1,8 +1,0 @@
-#
-#Fri Mar 15 01:37:39 CET 2019
-org.longmoneyoffshore.dlrtmweb.Entities.models.entity.Product=javax.persistence.Entity,javax.persistence.Table
-org.longmoneyoffshore.dlrtmweb.DLRTMWebPlatform=org.springframework.stereotype.Component
-org.longmoneyoffshore.dlrtmweb.Service.ProductService=org.springframework.stereotype.Component
-org.longmoneyoffshore.dlrtmweb.Dao.ProductDaoImpl=org.springframework.stereotype.Component
-org.longmoneyoffshore.dlrtmweb.Controller.ProductController=org.springframework.stereotype.Component
-org.longmoneyoffshore.dlrtmweb.Entities.models.atomic.PhysicalProperties=javax.persistence.Embeddable

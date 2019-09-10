@@ -13,9 +13,6 @@ SELECT * FROM circle where id = ?);
 insert into circle values(1, 'First Circle’);
 
 
-
-
-
 //Commands for the actual Product table
 
 CREATE TABLE products (uniqueID char(10), name char(50), manufacturer char(50),

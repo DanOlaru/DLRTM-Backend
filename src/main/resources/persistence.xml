@@ -1,3 +1,0 @@
-<property name="hibernate.dialect" value="org.hibernate.dialect.DerbyTenSevenDialect"/>
-<!--
-<property name="eclipselink.target-database" value="JavaDB"/>-->

@@ -1,6 +1,6 @@
 package org.longmoneyoffshore.dlrtmweb;
 
-import org.longmoneyoffshore.dlrtmweb.Entities.models.entity.Product;
+import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Product;
 
 import java.util.ArrayList;
 import java.util.Arrays;

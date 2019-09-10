@@ -1,23 +1,8 @@
 package org.longmoneyoffshore.dlrtmweb;
 
-import org.longmoneyoffshore.dlrtmweb.Dao.ProductDaoImpl;
-import org.longmoneyoffshore.dlrtmweb.Entities.models.entity.Product;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
-import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 
 //@EnableJpaRepositories(basePackages = "com.dlrtime.springwithmysql.repository") //TODO: for when I implement mySQL DB instead of Derby
@@ -27,8 +12,6 @@ import java.util.List;
 public class DLRTMWebPlatform {
 
     public static void main(String[] args) {
-
-        System.out.println("=========================================DANNY-O=======================================================================");
 
         /*ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 

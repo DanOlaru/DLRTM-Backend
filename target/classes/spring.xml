@@ -10,6 +10,21 @@
 
     <context:component-scan base-package="org.longmoneyoffshore.dlrtmweb"/>
 
+    <bean id="mySqlDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/DLRTM_DB?serverTimezone=EST5EDT"/>
+
+        <property name="username" value="DLRTM"/>
+        <property name="password" value="fml_dlrtm"/>
+
+        <!--<property name="initialSize" value="2" />
+        <property name="maxActive" value="5" />-->
+    </bean>
+
+    <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate" >
+        <!--<property name="dataSource" ref="dataSource"/>-->
+        <constructor-arg name="dataSource" ref="mySqlDataSource"/>
+    </bean>
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="org.apache.derby.jdbc.ClientDriver"/>
@@ -18,28 +33,29 @@
         <property name="maxActive" value="5" />
     </bean>
 
+
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" >
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate" >
-        <!--<property name="dataSource" ref="dataSource"/>-->
+   <!-- <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate" >
+        &lt;!&ndash;<property name="dataSource" ref="dataSource"/>&ndash;&gt;
         <constructor-arg name="dataSource" ref="dataSource"/>
-    </bean>
+    </bean>-->
 
-    <bean id="productDaoImpl" class="org.longmoneyoffshore.dlrtmweb.Dao.ProductDaoImpl" scope="singleton">
+    <bean id="productDaoImpl" class="org.longmoneyoffshore.dlrtmweb.dao.ProductDaoImpl" scope="singleton">
         <property name="dataSource" ref="dataSource" />
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
 
     </bean>
 
-    <bean id="productService" class="org.longmoneyoffshore.dlrtmweb.Service.ProductService" scope="singleton">
+    <bean id="productService" class="org.longmoneyoffshore.dlrtmweb.service.ProductService" scope="singleton">
         <property name="myProductDao" ref="productDaoImpl"/>
 
     </bean>
 
-    <bean id="productController" class="org.longmoneyoffshore.dlrtmweb.Controller.ProductController" scope="singleton">
+    <bean id="productController" class="org.longmoneyoffshore.dlrtmweb.controller.ProductController" scope="singleton">
         <property name="productService" ref="productService"/>
 
     </bean>

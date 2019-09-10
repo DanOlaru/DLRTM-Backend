@@ -24,19 +24,19 @@
         <constructor-arg name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="productDaoImpl" class="org.longmoneyoffshore.dlrtmweb.Dao.ProductDaoImpl" scope="singleton">
+    <bean id="productDaoImpl" class="org.longmoneyoffshore.dlrtmweb.dao.ProductDaoImpl" scope="singleton">
         <property name="dataSource" ref="dataSource" />
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
 
     </bean>
 
-    <bean id="productService" class="org.longmoneyoffshore.dlrtmweb.Service.ProductService" scope="singleton">
+    <bean id="productService" class="org.longmoneyoffshore.dlrtmweb.service.ProductService" scope="singleton">
         <property name="myProductDao" ref="productDaoImpl"/>
 
     </bean>
 
-    <bean id="productController" class="org.longmoneyoffshore.dlrtmweb.Controller.ProductController" scope="singleton">
+    <bean id="productController" class="org.longmoneyoffshore.dlrtmweb.controller.ProductController" scope="singleton">
         <property name="productService" ref="productService"/>
 
     </bean>
