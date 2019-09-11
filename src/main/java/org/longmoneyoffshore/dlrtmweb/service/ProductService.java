@@ -15,8 +15,6 @@ import java.util.List;
 @Service
 public class ProductService {
 
-    //@Autowired
-    //@Qualifier("mongoData")
     private ProductDaoImpl myProductDao;
 
     public ProductDaoImpl getMyProductDao() {
@@ -33,7 +31,8 @@ public class ProductService {
 
     public Collection<Product> getAllProducts() {
 
-        System.out.println("SERVICE: REQUEST /GET ALL PRODUCTS");
+        //TODO: why Collection and not List??
+
         return this.myProductDao.getAllProducts();
     }
 
@@ -43,7 +42,6 @@ public class ProductService {
     }
 
     public Product getProductById (String productId) {
-        System.out.println("SERVICE: REQUEST /GET PRODUCT BY ID: " + productId);
         return this.myProductDao.getProductById (productId);
     }
 
@@ -59,49 +57,8 @@ public class ProductService {
     }
 
     public void insertProduct (Product product) {
-        System.out.println("SERVICE: REQUEST /INSERT PRODUCT: " + product.getProductName());
         this.myProductDao.insertProduct(product);
     }
-
-
-    //alternate implementation
-
-    /*@Autowired
-    private ProductRepository productRepository;
-
-    public List<Product> getAllProducts() {
-
-        List<Product> products = new ArrayList<>();
-
-        productRepository.findAll().forEach(products :: add);
-
-        return products;
-    }
-
-    public Product getProduct(String id) {
-        //return products.stream().filter(t -> t.getId().equals(id)).findFirst().get();
-        //return productRepository.findById(id).get();
-
-        return productRepository.findById(id).get();
-
-    }
-
-    public void addProduct(Product product) {
-        productRepository.save(product);
-    }
-
-    public void updateProduct(String id, Product product) {
-
-        //!!!!
-        productRepository.save(product);
-
-    }
-
-    public void deleteProduct(String id) {
-
-        productRepository.deleteById(id);
-
-    }*/
 
     //temporary data source
 

@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServlet;
 import java.util.Collection;
 
+//TODO: questions:
+//TODO: What's the last word on Autowired? To use or not to use?
+//TODO: does this class need to extend HttpServlet?
+//TODO: Wasn't there an interface I could implement that would generate methods for the basic CRUD operations for me?
+
+
 @RestController
 //@RequestMapping("/products")
 public class ProductController extends HttpServlet {
@@ -29,8 +35,6 @@ public class ProductController extends HttpServlet {
     @RequestMapping(method = RequestMethod.GET, value = "/products")
     public Collection<Product> getAllProducts(){
 
-        System.out.println("CONTROLLER: REQUEST /GET ALL PRODUCTS");
-
         return productService.getAllProducts();
     }
 
@@ -42,20 +46,11 @@ public class ProductController extends HttpServlet {
 
     @RequestMapping("/products/{id}")
     public Product getProduct(@PathVariable String id) {
-
-        System.out.println("REQUEST /GET PRODUCT BY ID: " + id);
-
         return productService.getProductById(id);
     }
 
-    //@RequestMapping(method = RequestMethod.POST, value = "/products")
     @RequestMapping(method = RequestMethod.POST, value = "/products", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void addProduct(@RequestBody Product product) {
-
-        System.out.println("REQUEST /ADD SINGLE PRODUCT " + product.toString());
-
-        //FakeDataSets fakeDataSets = new FakeDataSets();
-        //product = fakeDataSets.productFive;
 
         productService.insertProduct(product);
     }
@@ -76,44 +71,5 @@ public class ProductController extends HttpServlet {
         productService.deleteProductById(id);
 
     }
-
-
-    /*//@RequestMapping(value = "/", method = RequestMethod.GET)
-    @RequestMapping(method = RequestMethod.GET)
-    public Collection<Product> getAllProducts() {
-        return productService.getAllProducts();
-
-    }
-
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Product getProductById(@PathVariable("id") String id) {
-        return productService.getProductById(id);
-    }
-
-    @RequestMapping(value = "{id}" , method = RequestMethod.DELETE)
-    //public Collection<Product> deleteProductById(@PathVariable("id") String id) {
-    public void deleteProductById(@PathVariable("id") String id) {
-        productService.deleteProductById(id);
-        //return productService.getAllProducts();
-    }
-
-    @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    //public Collection<Product> updateProductById(@RequestBody Product product) {
-    public void updateProductById(@RequestBody Product product) {
-        productService.updateProduct(product);
-        //return productService.getAllProducts();
-    }
-
-
-    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    //public Collection<Product> insertProduct(@RequestBody Product product) {
-    //public boolean insertProduct(@RequestBody Product product) {
-    public void insertProduct(@RequestBody Product product) {
-
-        productService.insertProduct(product);
-
-        System.out.println("INSERTING PRODUCT " + product.toString());
-        //return productService.getAllProducts();
-    }*/
 
 }

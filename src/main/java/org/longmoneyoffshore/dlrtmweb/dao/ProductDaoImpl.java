@@ -18,6 +18,7 @@ import java.util.List;
 @Component
 public class ProductDaoImpl implements ProductDao {
 
+    //TODO: most likely don't need either DataSource or JdbcTemplate
     private DataSource dataSource;
     //private BasicDataSource dataSource;
 
@@ -80,8 +81,6 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public Product getProductById (String productId) {
 
-        System.out.println("DAO: REQUEST /GET PRODUCT BY ID: " + productId);
-
         String sql = "SELECT * FROM products where uniqueID = " + productId;
 
         //return jdbcTemplate.queryForObject(sql, new Object[] {productId}, new ProductMapper());
@@ -92,7 +91,7 @@ public class ProductDaoImpl implements ProductDao {
     public int getProductCount() {
         String sql = "SELECT COUNT(*) FROM products";
 
-        //TODO: is this property set in the spring.xml?
+        //TODO: isn't this property set in the spring.xml?
         //jdbcTemplate.setDataSource(getDataSource());
 
         int count = jdbcTemplate.queryForObject(sql,Integer.class);
@@ -133,10 +132,6 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public List<Product> getAllProducts() {
 
-        //System.out.println("PRODUCTDAOIMPL: REQUEST /GET ALL PRODUCTS _ XXXXXXXXXX");
-        //System.out.println("WHAT: DATASOURCE " + dataSource.toString());
-
-
         String sql = "SELECT * FROM products";
 
         //return jdbcTemplate.query(sql, new ProductMapper());
@@ -145,8 +140,6 @@ public class ProductDaoImpl implements ProductDao {
         //List<Product> results = Arrays.asList(resultsUntrimmed.stream())); //TODO: must trim
 
         //return results;
-
-        System.out.println("PRODUCTDAOIMPL: getAllProducts() :" + sql);
         return namedParameterJdbcTemplate.query(sql, new ProductMapper());
     }
 
