@@ -1,5 +1,6 @@
 package org.longmoneyoffshore.dlrtmweb.controller;
 
+import org.longmoneyoffshore.dlrtmweb.FakeDataSets;
 import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Product;
 import org.longmoneyoffshore.dlrtmweb.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,12 @@ public class ProductController extends HttpServlet {
     //@RequestMapping(method = RequestMethod.POST, value = "/products")
     @RequestMapping(method = RequestMethod.POST, value = "/products", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void addProduct(@RequestBody Product product) {
+
         System.out.println("REQUEST /ADD SINGLE PRODUCT " + product.toString());
+
+        //FakeDataSets fakeDataSets = new FakeDataSets();
+        //product = fakeDataSets.productFive;
+
         productService.insertProduct(product);
     }
 

@@ -56,7 +56,6 @@ public class ProductDaoImpl implements ProductDao {
         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
-
     public void createTable() {
         String sql = "CREATE TABLE products (uniqueID char(10), name char(50), manufacturer char(50)," +
                 "                       countryOfOrigin char(50), description char(150), unitPurchasePrice float," +

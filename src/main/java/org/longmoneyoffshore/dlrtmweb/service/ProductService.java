@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class ProductService {
 
-    @Autowired
+    //@Autowired
     //@Qualifier("mongoData")
     private ProductDaoImpl myProductDao;
 
@@ -59,6 +59,7 @@ public class ProductService {
     }
 
     public void insertProduct (Product product) {
+        System.out.println("SERVICE: REQUEST /INSERT PRODUCT: " + product.getProductName());
         this.myProductDao.insertProduct(product);
     }
 
