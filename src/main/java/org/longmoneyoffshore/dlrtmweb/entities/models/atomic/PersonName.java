@@ -118,6 +118,10 @@ public class PersonName {
 
     //TODO: utility methods to convert human-readable to machine readable name formats
 
+    public String getSimpleName () {
+        return clientFirstName + " " + clientLastName;
+    }
+
     @Override
     public String toString() {
         return "PersonName{" +

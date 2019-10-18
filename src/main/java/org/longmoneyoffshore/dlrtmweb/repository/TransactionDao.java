@@ -1,4 +1,4 @@
-package org.longmoneyoffshore.dlrtmweb.dao;
+package org.longmoneyoffshore.dlrtmweb.repository;
 /*
 
 import org.longmoneyoffshore.dlrtmweb.Entities.models.entity.Transaction;

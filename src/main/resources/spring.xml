@@ -43,22 +43,54 @@
         <constructor-arg name="dataSource" ref="dataSource"/>
     </bean>-->
 
-    <bean id="productDaoImpl" class="org.longmoneyoffshore.dlrtmweb.dao.ProductDaoImpl" scope="singleton">
+
+    <!-- product: controller -> service -> dao -->
+    <bean id="productDaoImpl" class="org.longmoneyoffshore.dlrtmweb.repository.ProductDaoImpl" scope="singleton">
         <property name="dataSource" ref="dataSource" />
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
-
     </bean>
 
     <bean id="productService" class="org.longmoneyoffshore.dlrtmweb.service.ProductService" scope="singleton">
         <property name="myProductDao" ref="productDaoImpl"/>
-
     </bean>
 
     <bean id="productController" class="org.longmoneyoffshore.dlrtmweb.controller.ProductController" scope="singleton">
         <property name="productService" ref="productService"/>
+    </bean>
+
+
+    <!-- client: controller -> service -> dao -->
+    <bean id="clientDaoImpl" class="org.longmoneyoffshore.dlrtmweb.repository.ClientDaoImpl">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+        <property name="payment" ref="paymentCardDaoImpl"/>
 
     </bean>
+
+    <bean id="clientService" class="org.longmoneyoffshore.dlrtmweb.service.ClientService">
+        <property name="clientDao" ref="clientDaoImpl"/>
+    </bean>
+
+    <bean id="clientController" class="org.longmoneyoffshore.dlrtmweb.controller.ClientController">
+        <property name="clientService" ref="clientService"/>
+    </bean>
+
+
+    <bean id="paymentCardDaoImpl" class="org.longmoneyoffshore.dlrtmweb.repository.PaymentCardDaoImpl">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <bean id="paymentCard" class="org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PaymentCard">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <!-- transaction: controller -> service -> dao -->
 
     <!--<bean id="sessionFactory" class="org.springframework.orm.hibernate5.annotation.AnnotationSessionFactoryBean" scope="singleton">
         <property name="dataSource" ref="dataSource" />

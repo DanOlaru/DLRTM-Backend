@@ -1,0 +1,29 @@
+use DLRTM_DB;
+
+show tables;
+
+INSERT INTO products values ("0001",
+"Blender",
+"Phillips",
+"Netherlands",
+"food blender",
+20,
+10.67,
+0,
+0,
+10,
+0,
+"Free Bread Knife",
+"USD",
+100,
+0.0,
+0.0,
+"Unit",
+0,
+"Pending recalls",
+0,
+0,
+0,
+0,0,"meter","kilogram");
+
+-- drop schema dlrtm_db;

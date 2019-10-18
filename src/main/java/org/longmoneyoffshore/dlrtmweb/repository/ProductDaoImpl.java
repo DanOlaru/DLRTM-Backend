@@ -1,21 +1,22 @@
-package org.longmoneyoffshore.dlrtmweb.dao;
+package org.longmoneyoffshore.dlrtmweb.repository;
 
 import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PhysicalProperties;
 import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Product;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.List;
 
 //@Qualifier("")
-@Component
+//@Component
+@Repository
 public class ProductDaoImpl implements ProductDao {
 
     //TODO: most likely don't need either DataSource or JdbcTemplate
@@ -25,6 +26,7 @@ public class ProductDaoImpl implements ProductDao {
     private JdbcTemplate jdbcTemplate;
 
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
 
 
     public JdbcTemplate getJdbcTemplate() {
@@ -77,7 +79,6 @@ public class ProductDaoImpl implements ProductDao {
                 this.jdbcTemplate.execute(sql);
     }
 
-
     @Override
     public Product getProductById (String productId) {
 
@@ -127,7 +128,6 @@ public class ProductDaoImpl implements ProductDao {
 
         return productName;
     }
-
 
     @Override
     public List<Product> getAllProducts() {

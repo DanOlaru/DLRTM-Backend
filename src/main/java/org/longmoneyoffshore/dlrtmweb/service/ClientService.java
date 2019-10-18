@@ -1,10 +1,8 @@
 package org.longmoneyoffshore.dlrtmweb.service;
-/*
 
-import org.longmoneyoffshore.dlrtmweb.Dao.ClientDao;
-import org.longmoneyoffshore.dlrtmweb.Entities.models.entity.Client;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+
+import org.longmoneyoffshore.dlrtmweb.repository.ClientDao;
+import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Client;
 
 import java.util.Collection;
 
@@ -12,35 +10,35 @@ public class ClientService {
 
     //@Autowired
     //@Qualifier("dbData")
-    private ClientDao myClientDao;
+    private ClientDao clientDao;
 
     //constructor
     public ClientService (ClientDao clientDao) {
-        this.myClientDao = clientDao;
+        this.clientDao = clientDao;
     }
 
     public Collection<Client> getAllClients() {
-        return this.myClientDao.getAllClients();
+        return this.clientDao.getAllClients();
     }
 
 
     public Client getClientById(String id) {
-        return this.myClientDao.getClientById(id);
+        return this.clientDao.getClientById(id);
     }
 
 
     public void removeClientById(String id) {
-        this.myClientDao.removeClientById(id);
+        this.clientDao.removeClientById(id);
     }
 
 
     public void updateClient (Client client) {
 
-        this.myClientDao.updateClient(client);
+        this.clientDao.updateClient(client);
     }
 
     public void insertClient (Client client) {
-        this.myClientDao.insertClient(client);
+        this.clientDao.insertClient(client);
     }
 }
-*/
+

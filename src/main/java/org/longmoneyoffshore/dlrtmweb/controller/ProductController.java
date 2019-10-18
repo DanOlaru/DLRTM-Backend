@@ -4,6 +4,7 @@ import org.longmoneyoffshore.dlrtmweb.FakeDataSets;
 import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Product;
 import org.longmoneyoffshore.dlrtmweb.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,10 +19,11 @@ import java.util.Collection;
 
 @RestController
 //@RequestMapping("/products")
-public class ProductController extends HttpServlet {
+public class ProductController  {
 //public class ProductController {
 
     //@Autowired
+    @Qualifier("productService")
     private ProductService productService;
 
     public ProductService getProductService() {
@@ -32,14 +34,15 @@ public class ProductController extends HttpServlet {
         this.productService = productService;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/products")
-    public Collection<Product> getAllProducts(){
+    //todo betterbversion
+    @GetMapping("/products")
+    public Collection<Product> getAllProducts() {
 
         return productService.getAllProducts();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/test")
-    public String printTest(){
+    public String printTest() {
         //System.out.println("REQUEST /TEST");
         return "Testing.";
     }

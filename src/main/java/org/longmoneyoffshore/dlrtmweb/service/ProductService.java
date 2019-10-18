@@ -1,10 +1,9 @@
 package org.longmoneyoffshore.dlrtmweb.service;
 
 //import org.longmoneyoffshore.dlrtmweb.Dao.ProductDao;
-import org.longmoneyoffshore.dlrtmweb.dao.ProductDaoImpl;
+import org.longmoneyoffshore.dlrtmweb.repository.ProductDaoImpl;
 import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Product;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,51 +12,52 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
+@Qualifier("productService")
 public class ProductService {
 
-    private ProductDaoImpl myProductDao;
+    private ProductDaoImpl productDao;
 
-    public ProductDaoImpl getMyProductDao() {
-        return myProductDao;
+    public ProductDaoImpl getProductDao() {
+        return productDao;
     }
 
-    public void setMyProductDao(ProductDaoImpl myProductDao) {
-        this.myProductDao = myProductDao;
+    public void setProductDao(ProductDaoImpl productDao) {
+        this.productDao = productDao;
     }
 
     public ProductService(ProductDaoImpl productDao) {
-        this.myProductDao = productDao;
+        this.productDao = productDao;
     }
 
     public Collection<Product> getAllProducts() {
 
         //TODO: why Collection and not List??
 
-        return this.myProductDao.getAllProducts();
+        return this.productDao.getAllProducts();
     }
 
 
     public Collection<Product> getProductsByField(Object field) {
-        return this.myProductDao.getProductsByField(field);
+        return this.productDao.getProductsByField(field);
     }
 
     public Product getProductById (String productId) {
-        return this.myProductDao.getProductById (productId);
+        return this.productDao.getProductById (productId);
     }
 
 
     public void deleteProductById(String productId) {
-        this.myProductDao.deleteProductById(productId);
+        this.productDao.deleteProductById(productId);
     }
 
 
     public void updateProduct (Product product){
 
-        this.myProductDao.updateProduct(product);
+        this.productDao.updateProduct(product);
     }
 
     public void insertProduct (Product product) {
-        this.myProductDao.insertProduct(product);
+        this.productDao.insertProduct(product);
     }
 
     //temporary data source

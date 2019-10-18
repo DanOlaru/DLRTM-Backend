@@ -146,10 +146,16 @@ public class Address {
         this.longitude = longitude;
     }
 
+    public String getStandardAddress() {
+        return personName + "\n" +
+                " " + bldgNumber + " " + streetName + "\n" +
+                cityName + ", " + provinceName + ", " + zipCode + "\n" +
+                country + "\n" ;
+    }
+
     @Override
     public String toString() {
-        return "Address{" +
-                "fullAddress='" + fullAddress + '\'' +
+        return
                 ", personName='" + personName + '\'' +
                 ", bldgNumber='" + bldgNumber + '\'' +
                 ", streetName='" + streetName + '\'' +

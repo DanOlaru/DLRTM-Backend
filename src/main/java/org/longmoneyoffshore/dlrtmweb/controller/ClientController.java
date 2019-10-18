@@ -1,9 +1,7 @@
 package org.longmoneyoffshore.dlrtmweb.controller;
-/*
 
-
-import org.longmoneyoffshore.dlrtmweb.Entities.models.entity.Client;
-import org.longmoneyoffshore.dlrtmweb.Service.ClientService;
+import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Client;
+import org.longmoneyoffshore.dlrtmweb.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +13,7 @@ import java.util.Date;
 @RequestMapping("/client")
 public class ClientController {
 
-    @Autowired
+    //@Autowired
     private ClientService clientService;
 
     //@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -58,4 +56,4 @@ public class ClientController {
     }
 
 }
-*/
+

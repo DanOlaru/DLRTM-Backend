@@ -3,19 +3,31 @@ package org.longmoneyoffshore.dlrtmweb.entities.models.atomic;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class PaymentInfo {
+public class PaymentCard {
 
     private String cardNumber;
     private String nameOnCard;
     private String cardExpirationDate;
-    private String cardVerificationNumber; //CVV
+    private String CVC;
 
-    public PaymentInfo(String cardNumber, String nameOnCard, String cardExpirationDate, String cardVerificationNumber) {
+    public PaymentCard(String cardNumber, String nameOnCard, String cardExpirationDate, String CVC) {
         this.cardNumber = cardNumber;
         this.nameOnCard = nameOnCard;
         this.cardExpirationDate = cardExpirationDate;
-        this.cardVerificationNumber = cardVerificationNumber;
+        this.CVC = CVC;
     }
+
+    public PaymentCard() {};
+
+    //TODO: card details contains, in this order: card number, expiration date, CVC
+    public PaymentCard(String cardDetails, String nameOnCard) {
+        //TODO: parse cardDetails to cardNumber, cardExpirationDate, cardVerificationNumber
+        this.cardNumber = cardNumber;
+        this.nameOnCard = nameOnCard;
+        this.cardExpirationDate = cardExpirationDate;
+        this.CVC = CVC;
+    }
+
 
     public String getCardNumber() {
         return cardNumber;
@@ -41,12 +53,12 @@ public class PaymentInfo {
         this.cardExpirationDate = cardExpirationDate;
     }
 
-    public String getCardVerificationNumber() {
-        return cardVerificationNumber;
+    public String getCVC() {
+        return CVC;
     }
 
-    public void setCardVerificationNumber(String cardVerificationNumber) {
-        this.cardVerificationNumber = cardVerificationNumber;
+    public void setCVC(String CVC) {
+        this.CVC = CVC;
     }
 
 
@@ -56,7 +68,7 @@ public class PaymentInfo {
                 "cardNumber='" + cardNumber + '\'' +
                 ", nameOnCard='" + nameOnCard + '\'' +
                 ", cardExpirationDate='" + cardExpirationDate + '\'' +
-                ", cardVerificationNumber='" + cardVerificationNumber + '\'' +
+                ", cardVerificationNumber='" + CVC + '\'' +
                 '}';
     }
 

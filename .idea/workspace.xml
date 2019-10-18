@@ -2,16 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed8da808-fee5-4c82-9b40-5c4f870cd86a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/extraResources/MySQL_DB_Access_Terminal_Commands.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extraResources/SampleJSONProduct.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extraResources/SQL_Insert_Product.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sqlDb/createClientsTable.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sqlDb/createPaymentCardsTable.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sqlDb/createProductsTable.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/PaymentCardDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/PaymentCardDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Observations.txt" beforeDir="false" afterPath="$PROJECT_DIR$/extraResources/Observations.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlDb/mySql access steps.rtf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqlDb/DB_Commands" beforeDir="false" afterPath="$PROJECT_DIR$/sqlDb/DB_Commands" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/DLRTMWebPlatform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/DLRTMWebPlatform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/FakeDataSets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/FakeDataSets.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ClientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/dao/ProductDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/dao/ProductDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/dao/ClientDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ClientDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/dao/ClientDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ClientDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/dao/ProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ProductDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/dao/ProductDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ProductDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/dao/ProductHibernateDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ProductHibernateDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/dao/TransactionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/TransactionDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/PaymentInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/PaymentCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/PersonName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/PersonName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/PhoneNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/PhoneNumber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/entity/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/entity/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/ClientService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Controller/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Controller/ProductController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/DLRTMWebPlatform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/DLRTMWebPlatform.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Dao/ProductDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Dao/ProductDaoImpl$ProductMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Dao/ProductDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Service/ProductService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,6 +62,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Dan Olaru &lt;danolaru@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
@@ -59,9 +90,12 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.longmoneyoffshore.dlrtmweb.repository" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main" />
@@ -214,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568214923290</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="code cleaned up somewhat -- questions in ProductDaoImpl&#10;&#10;inputs individuals into DB from HTTP method body;&#10;&#10;retrieves individual entries from DB by Id;&#10;&#10;*before cleanup">
+      <created>1568218355246</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1568218355246</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView">
@@ -270,7 +311,8 @@
     <MESSAGE value="merged Reverted_Works onto master. Hope it does the trick&#10;&#10;Product controller + dao impl reads from mySql database!!!" />
     <MESSAGE value="retrieves individual entries from DB by Id&#10;&#10;Product controller + dao impl reads from mySql database!!!" />
     <MESSAGE value="inputs individuals into DB from HTTP method body;&#10;&#10;retrieves individual entries from DB by Id;&#10;&#10;*before cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="inputs individuals into DB from HTTP method body;&#10;&#10;retrieves individual entries from DB by Id;&#10;&#10;*before cleanup" />
+    <MESSAGE value="code cleaned up somewhat -- questions in ProductDaoImpl&#10;&#10;inputs individuals into DB from HTTP method body;&#10;&#10;retrieves individual entries from DB by Id;&#10;&#10;*before cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="code cleaned up somewhat -- questions in ProductDaoImpl&#10;&#10;inputs individuals into DB from HTTP method body;&#10;&#10;retrieves individual entries from DB by Id;&#10;&#10;*before cleanup" />
   </component>
   <component name="masterDetails">
     <states>

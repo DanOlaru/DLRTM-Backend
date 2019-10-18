@@ -21,6 +21,13 @@ public class PhoneNumber {
         this.anonymizerPrefix = anonymizerPrefix;
     }
 
+    public PhoneNumber(String ownerName, String clientPhoneNo) {
+        this.ownerName = ownerName;
+        this.clientPhoneNo = clientPhoneNo;
+        this.clientAreaCode = "";
+        this.anonymizerPrefix = "";
+    }
+
 
     public String getClientPhoneNo() {
         return clientPhoneNo;

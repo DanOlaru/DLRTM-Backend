@@ -43,7 +43,7 @@
         <constructor-arg name="dataSource" ref="dataSource"/>
     </bean>-->
 
-    <bean id="productDaoImpl" class="org.longmoneyoffshore.dlrtmweb.dao.ProductDaoImpl" scope="singleton">
+    <bean id="productDaoImpl" class="org.longmoneyoffshore.dlrtmweb.repository.ProductDaoImpl" scope="singleton">
         <property name="dataSource" ref="dataSource" />
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
