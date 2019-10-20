@@ -28,7 +28,6 @@ public class ProductDaoImpl implements ProductDao {
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
 
-
     public JdbcTemplate getJdbcTemplate() {
         return jdbcTemplate;
     }

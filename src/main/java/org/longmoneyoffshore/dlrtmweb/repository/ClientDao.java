@@ -5,8 +5,9 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
-public interface ClientDao extends CrudRepository {
+public interface ClientDao {
 
     Collection<Client> getAllClients();
 
@@ -22,7 +23,10 @@ public interface ClientDao extends CrudRepository {
 
     void insertClient (Client client);
 
-    //possible alternative where true is returned when insertion succeeds and false when it does not
+    public void insertClients (List<Client> clients);
+
+
+        //possible alternative where true is returned when insertion succeeds and false when it does not
     //boolean insertClient (Client client);
 
 

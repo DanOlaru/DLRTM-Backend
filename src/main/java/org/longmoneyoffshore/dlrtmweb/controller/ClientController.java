@@ -9,15 +9,26 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 import java.util.Date;
 
+import static org.longmoneyoffshore.dlrtmweb.FakeDataSets.JasonSmith;
+import static org.longmoneyoffshore.dlrtmweb.FakeDataSets.clientsFakeDataSet2;
+
 @RestController
-@RequestMapping("/client")
+@RequestMapping(value = "/clients")
 public class ClientController {
 
-    //@Autowired
     private ClientService clientService;
 
+    public ClientService getClientService() {
+        return clientService;
+    }
+
+    public void setClientService(ClientService clientService) {
+        this.clientService = clientService;
+    }
+
     //@RequestMapping(value = "/", method = RequestMethod.GET)
-    @RequestMapping(method = RequestMethod.GET)
+    //@RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public Collection<Client> getAllClients() {
         return clientService.getAllClients();
     }
@@ -49,10 +60,19 @@ public class ClientController {
     //public boolean insertClient(@RequestBody Client client) {
     public void insertClient(@RequestBody Client client) {
 
-        clientService.insertClient(client);
+        System.out.println("INSERTING CLIENT " + client.smallToString());
 
-        System.out.println("INSERTING TRANSACTION " + client.toString());
-        //return clientService.getAllClients();
+        clientService.insertClient(client);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/clientsfake")
+    public void insertFakeClients() {
+
+        //clientService.insertClient(client);
+        clientService.insertClients(clientsFakeDataSet2);
+
+        //clientService.insertClient(JasonSmith);
+
     }
 
 }

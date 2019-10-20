@@ -171,6 +171,17 @@ public class Address {
                 '}';
     }
 
+    public String simpleAddress() {
+        return
+                        ", bldgNumber='" + bldgNumber + '\'' +
+                        ", streetName='" + streetName + '\'' +
+                        ", cityName='" + cityName + '\'' +
+                        ", provinceName='" + provinceName + '\'' +
+                        ", zipCode='" + zipCode + '\'' +
+                        ", country='" + country + '\'' +
+                        ", otherInfo='" + otherInfo + '\''
+                       ;
+    }
 
 
     //utility methods

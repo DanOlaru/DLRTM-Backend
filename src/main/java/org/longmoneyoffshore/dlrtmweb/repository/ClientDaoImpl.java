@@ -23,6 +23,45 @@ public class ClientDaoImpl implements ClientDao {
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     private PaymentCardDaoImpl payment;
 
+    public JdbcTemplate getJdbcTemplate() {
+        return jdbcTemplate;
+    }
+
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    public NamedParameterJdbcTemplate getNamedParameterJdbcTemplate()
+    {
+        return namedParameterJdbcTemplate;
+    }
+
+    public void setNamedParameterJdbcTemplate(NamedParameterJdbcTemplate namedParameterJdbcTemplate)
+    {
+        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
+    }
+
+    public DataSource getDataSource() {
+        return dataSource;
+    }
+
+    //@Autowired
+    public void setDataSource(DataSource dataSource) {
+        //public void setDataSource(BasicDataSource dataSource) {
+
+        this.dataSource = dataSource;
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+    }
+
+
+    public PaymentCardDaoImpl getPayment() {
+        return payment;
+    }
+
+    public void setPayment(PaymentCardDaoImpl payment) {
+        this.payment = payment;
+    }
 
     public void createTable() {
         String sql = "CREATE TABLE clients (clientID varchar(45) NOT NULL, name varchar(255), homePhone varchar(45)," +
@@ -45,6 +84,9 @@ public class ClientDaoImpl implements ClientDao {
     @Override
     public List<Client> getAllClients() {
         //TODO: need to join tables clients with paymentCards???
+
+        System.out.println("INSIDE DAO: DAN: GETTING ALL CLIENTS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
 
         String sql = "SELECT * FROM clients";
 
@@ -84,6 +126,10 @@ public class ClientDaoImpl implements ClientDao {
 
     @Override
     public void insertClient(Client client) {
+
+        System.out.println("INSIDE CLIENT DAO: INSERTING FAKE CLIENTS SET");
+        System.out.println("CLIENT IS:" + client.smallToString());
+
         String sqlClients = "INSERT INTO clients (clientID, name, homePhone, businessPhone, alternatePhone, mobilePhone," +
                 "primaryContactPhone, primaryEmail, alternateEmail, billingAddress, shippingAddress, alternateAddress," +
                 "deliveryAddress, clientUrgency, clientValue, clientStatus, clientSpecialMentions) " +
@@ -93,7 +139,7 @@ public class ClientDaoImpl implements ClientDao {
                 ":deliveryAddress, :clientUrgency, :clientValue, :clientStatus, :clientSpecialMentions)";
 
         SqlParameterSource clientNamedParameters = new MapSqlParameterSource("clientID", client.getClientID())
-                .addValue("name", client.getClientName())
+                .addValue("name", client.getClientName().getSimpleName())
                 .addValue("homePhone", client.getClientHomePhone().getClientPhoneNo())
                 .addValue("businessPhone", client.getClientBusinessPhone().getClientPhoneNo())
                 .addValue("alternatePhone", client.getClientAlternatePhone().getClientPhoneNo())
@@ -126,72 +172,15 @@ public class ClientDaoImpl implements ClientDao {
             namedParameterJdbcTemplate.update(sqlCards, cardNamedParameters);
         });
 
-
-
     }
 
     @Override
-    public Object save(Object entity) {
-        return null;
+    public void insertClients (List<Client> clients) {
+        clients.stream().forEach(c -> insertClient(c));
     }
-
-    @Override
-    public Iterable saveAll(Iterable entities) {
-        return null;
-    }
-
-    @Override
-    public Optional findById(Object o) {
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean existsById(Object o) {
-        return false;
-    }
-
-    @Override
-    public Iterable findAll() {
-        return null;
-    }
-
-    @Override
-    public Iterable findAllById(Iterable iterable) {
-        return null;
-    }
-
-    @Override
-    public long count() {
-        return 0;
-    }
-
-    @Override
-    public void deleteById(Object o) {
-
-    }
-
-    @Override
-    public void delete(Object entity) {
-
-    }
-
-    @Override
-    public void deleteAll(Iterable entities) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
-
 
     private static final class ClientMapper implements RowMapper<Client> {
-
-        public ClientMapper() {
-        }
-
-        ;
+        public ClientMapper() { }
 
         @Override
         public Client mapRow(ResultSet resultSet, int rowNum) throws SQLException {
@@ -218,7 +207,5 @@ public class ClientDaoImpl implements ClientDao {
             return client;
         }
     }
-
-
 }
 

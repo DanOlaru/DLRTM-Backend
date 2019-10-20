@@ -1,10 +1,11 @@
 package org.longmoneyoffshore.dlrtmweb.entities.models.atomic;
 
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 import java.util.StringTokenizer;
 
 @Embeddable
-public class PersonName {
+public class PersonName implements Serializable {
 
     //Enum<String> PersonalTitles {"Mr.","Mrs.","Ms.", "Miss."} //TODO what's wrong with these??
     //Enum<String> PersonalPostfixes {"Sr.", "Jr."};
@@ -24,9 +25,13 @@ public class PersonName {
 
         StringTokenizer tokenizer = new StringTokenizer(fullName);
 
-        this.clientFirstName = tokenizer.nextToken();
-        this.clientMiddleName = tokenizer.nextToken();
-        this.clientLastName = tokenizer.nextToken();
+        if (tokenizer.hasMoreElements()) this.clientFirstName = tokenizer.nextToken();
+        if (tokenizer.hasMoreElements()) this.clientMiddleName = tokenizer.nextToken();
+        if (tokenizer.hasMoreElements()) this.clientLastName = tokenizer.nextToken();
+        else {
+            this.clientLastName = this.clientMiddleName;
+            this.clientMiddleName = "";
+        }
     }
 
     //#2 from already separated names, no title or postfix

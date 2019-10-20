@@ -10,14 +10,21 @@ public class PaymentCard {
     private String cardExpirationDate;
     private String CVC;
 
+    public PaymentCard() {}
+
+   /* public PaymentCard() {
+        cardNumber = "";
+        nameOnCard = "";
+        cardExpirationDate = "";
+        CVC = "";
+    };*/
+
     public PaymentCard(String cardNumber, String nameOnCard, String cardExpirationDate, String CVC) {
         this.cardNumber = cardNumber;
         this.nameOnCard = nameOnCard;
         this.cardExpirationDate = cardExpirationDate;
         this.CVC = CVC;
     }
-
-    public PaymentCard() {};
 
     //TODO: card details contains, in this order: card number, expiration date, CVC
     public PaymentCard(String cardDetails, String nameOnCard) {
@@ -65,6 +72,15 @@ public class PaymentCard {
     @Override
     public String toString() {
         return "PaymentInfo{" +
+                "cardNumber='" + cardNumber + '\'' +
+                ", nameOnCard='" + nameOnCard + '\'' +
+                ", cardExpirationDate='" + cardExpirationDate + '\'' +
+                ", cardVerificationNumber='" + CVC + '\'' +
+                '}';
+    }
+
+    public String simpleCardInfo() {
+        return
                 "cardNumber='" + cardNumber + '\'' +
                 ", nameOnCard='" + nameOnCard + '\'' +
                 ", cardExpirationDate='" + cardExpirationDate + '\'' +

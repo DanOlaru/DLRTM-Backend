@@ -26,39 +26,59 @@
         <constructor-arg name="dataSource" ref="mySqlDataSource"/>
     </bean>
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="driverClassName" value="org.apache.derby.jdbc.ClientDriver"/>
-        <property name="url" value="jdbc:derby://localhost:1527/db; create = true"/>
-        <property name="initialSize" value ="2" />
-        <property name="maxActive" value="5" />
-    </bean>
-
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" >
-        <property name="dataSource" ref="dataSource"/>
+        <property name="dataSource" ref="mySqlDataSource"/>
     </bean>
 
-   <!-- <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate" >
-        &lt;!&ndash;<property name="dataSource" ref="dataSource"/>&ndash;&gt;
-        <constructor-arg name="dataSource" ref="dataSource"/>
-    </bean>-->
 
+
+    <!-- product: controller -> service -> dao -->
     <bean id="productDaoImpl" class="org.longmoneyoffshore.dlrtmweb.repository.ProductDaoImpl" scope="singleton">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="mySqlDataSource" />
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
-
     </bean>
 
     <bean id="productService" class="org.longmoneyoffshore.dlrtmweb.service.ProductService" scope="singleton">
-        <property name="myProductDao" ref="productDaoImpl"/>
-
+        <!--<property name="myProductDao" ref="productDaoImpl"/>-->
+        <property name="productDao" ref="productDaoImpl"/>
     </bean>
 
     <bean id="productController" class="org.longmoneyoffshore.dlrtmweb.controller.ProductController" scope="singleton">
         <property name="productService" ref="productService"/>
+    </bean>
+
+
+    <!-- client: controller -> service -> dao -->
+    <bean id="clientDaoImpl" class="org.longmoneyoffshore.dlrtmweb.repository.ClientDaoImpl">
+        <property name="dataSource" ref="mySqlDataSource"/>
+        <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+        <property name="payment" ref="paymentCardDaoImpl"/>
 
     </bean>
+
+    <bean id="clientService" class="org.longmoneyoffshore.dlrtmweb.service.ClientService">
+        <property name="clientDao" ref="clientDaoImpl"/>
+    </bean>
+
+    <bean id="clientController" class="org.longmoneyoffshore.dlrtmweb.controller.ClientController">
+        <property name="clientService" ref="clientService"/>
+    </bean>
+
+
+    <bean id="paymentCardDaoImpl" class="org.longmoneyoffshore.dlrtmweb.repository.PaymentCardDaoImpl">
+        <property name="dataSource" ref="mySqlDataSource"/>
+        <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <bean id="paymentCard" class="org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PaymentCard" scope="prototype">
+
+    </bean>
+
+    <!-- transaction: controller -> service -> dao -->
 
     <!--<bean id="sessionFactory" class="org.springframework.orm.hibernate5.annotation.AnnotationSessionFactoryBean" scope="singleton">
         <property name="dataSource" ref="dataSource" />
@@ -69,6 +89,4 @@
             </props>
         </property>
     </bean>-->
-
-
 </beans>

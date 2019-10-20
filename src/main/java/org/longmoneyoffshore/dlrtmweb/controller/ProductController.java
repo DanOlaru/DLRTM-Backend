@@ -22,7 +22,6 @@ import java.util.Collection;
 public class ProductController  {
 //public class ProductController {
 
-    //@Autowired
     @Qualifier("productService")
     private ProductService productService;
 

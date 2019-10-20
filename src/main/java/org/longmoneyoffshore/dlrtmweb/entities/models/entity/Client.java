@@ -6,12 +6,13 @@ import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PersonName;
 import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PhoneNumber;
 import org.springframework.lang.Nullable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 //@Entity
-public class Client {
+public class Client implements Serializable {
     //#1 Client id
     //@Id
     private String clientID;
@@ -379,11 +380,8 @@ public class Client {
 
     //****************Getters and setters - methods use to access the private attributes of a class
 
-
     //return a reference to this Client object
     public Client getClient () {return this;}
-
-
 
     /************ !!!!!!!!!!!!!!!!!!!!!!!!!!!! other/utility methods !!!!!!!!!!!!!!!!!!!!!!!!!!!! *******/
 
@@ -441,6 +439,46 @@ public class Client {
         if (!this.clientStatus.equals(other.getClientStatus())) differencesIndex+=1; else differencesIndex+=0;
 
         return differencesIndex;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "clientID='" + clientID + '\'' +
+                ", clientName=" + clientName +
+                ", clientHomePhone=" + clientHomePhone +
+                ", clientBusinessPhone=" + clientBusinessPhone +
+                ", clientAlternatePhone=" + clientAlternatePhone +
+                ", clientMobilePhone=" + clientMobilePhone +
+                ", clientPrimaryContactPhone=" + clientPrimaryContactPhone +
+                ", clientPrimaryEmailAddress='" + clientPrimaryEmailAddress + '\'' +
+                ", clientAlternateEmailAddress='" + clientAlternateEmailAddress + '\'' +
+                ", clientBillingAddress=" + clientBillingAddress +
+                ", clientShippingAddress=" + clientShippingAddress +
+                ", clientAlternateAddress=" + clientAlternateAddress +
+                ", clientDeliveryAddress=" + clientDeliveryAddress +
+                ", cards=" + cards +
+                ", selectedPaymentMethod=" + selectedPaymentMethod +
+                ", clientUrgency=" + clientUrgency +
+                ", clientValue=" + clientValue +
+                ", clientStatus='" + clientStatus + '\'' +
+                ", clientSpecialMentions='" + clientSpecialMentions + '\'' +
+                '}';
+    }
+
+    public String smallToString() {
+        return "Client{" +
+                "clientID='" + clientID + '\'' +
+                ", clientName=" + clientName.getSimpleName() +
+                ", clientHomePhone=" + clientHomePhone.getClientPhoneNo() +
+                ", clientPrimaryEmailAddress='" + clientPrimaryEmailAddress + '\'' +
+                ", clientBillingAddress=" + clientBillingAddress.getFullAddress() +
+                ", cards=" + cards.get(0).simpleCardInfo() +
+                ", clientUrgency=" + clientUrgency +
+                ", clientValue=" + clientValue +
+                ", clientStatus='" + clientStatus + '\'' +
+                ", clientSpecialMentions='" + clientSpecialMentions + '\'' +
+                '}';
     }
 
     //for debugging purposes
