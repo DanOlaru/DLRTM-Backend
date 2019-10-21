@@ -30,7 +30,6 @@ public class ClientService {
     }
 
     public Collection<Client> getAllClients() {
-        //System.out.println("INSIDE SERVICE: DAN: GETTING ALL CLIENTS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         return this.clientDao.getAllClients();
     }
 
@@ -55,6 +54,10 @@ public class ClientService {
 
     public void insertClients (List<Client> clients) {
         this.clientDao.insertClients(clients);
+    }
+
+    public void clearTables() {
+        this.clientDao.clearTables();
     }
 }
 

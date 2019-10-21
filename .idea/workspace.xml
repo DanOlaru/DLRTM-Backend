@@ -1,33 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ed8da808-fee5-4c82-9b40-5c4f870cd86a" name="Default Changelist" comment="Adding functionality for Clients table">
+    <list default="true" id="ed8da808-fee5-4c82-9b40-5c4f870cd86a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/FakeDataSets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/FakeDataSets.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/PaymentCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/PaymentCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/PersonName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/PersonName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/globalvalues/FakeDataSets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/globalvalues/FakeDataSets.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/entity/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/entity/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ClientDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ClientDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ClientDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ClientDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/PaymentCardDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/PaymentCardDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ProductDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ProductDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/ClientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/applicationContext.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hibernate.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/DLRTMWebPlatform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/DLRTMWebPlatform.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/Address.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/Address.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/PaymentInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/PersonName.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/PersonName.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/PhoneNumber.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/PhoneNumber.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Controller/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Controller/ProductController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Entities/models/entity/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Entities/models/entity/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Service/ProductService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -252,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571410726235</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Successfully inserts entries into Clients table">
+      <created>1571570469140</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1571570469140</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -301,7 +293,8 @@
     <MESSAGE value="inputs individuals into DB from HTTP method body;&#10;&#10;retrieves individual entries from DB by Id;&#10;&#10;*before cleanup" />
     <MESSAGE value="code cleaned up somewhat -- questions in ProductDaoImpl&#10;&#10;inputs individuals into DB from HTTP method body;&#10;&#10;retrieves individual entries from DB by Id;&#10;&#10;*before cleanup" />
     <MESSAGE value="Adding functionality for Clients table" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding functionality for Clients table" />
+    <MESSAGE value="Successfully inserts entries into Clients table" />
+    <option name="LAST_COMMIT_MESSAGE" value="Successfully inserts entries into Clients table" />
   </component>
   <component name="masterDetails">
     <states>

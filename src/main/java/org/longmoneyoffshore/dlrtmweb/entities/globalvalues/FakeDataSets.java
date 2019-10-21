@@ -1,4 +1,4 @@
-package org.longmoneyoffshore.dlrtmweb.Entities.globalvalues;
+package org.longmoneyoffshore.dlrtmweb.entities.globalvalues;
 
 import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Product;
 

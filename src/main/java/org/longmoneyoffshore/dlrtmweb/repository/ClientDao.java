@@ -25,8 +25,10 @@ public interface ClientDao {
 
     public void insertClients (List<Client> clients);
 
+    public void clearTables();
 
-        //possible alternative where true is returned when insertion succeeds and false when it does not
+
+    //possible alternative where true is returned when insertion succeeds and false when it does not
     //boolean insertClient (Client client);
 
 

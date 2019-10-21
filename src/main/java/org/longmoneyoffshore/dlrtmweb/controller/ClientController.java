@@ -69,10 +69,15 @@ public class ClientController {
     public void insertFakeClients() {
 
         //clientService.insertClient(client);
+
+        //clear tables
+        {
+            clientService.clearTables();
+        }
+
         clientService.insertClients(clientsFakeDataSet2);
 
         //clientService.insertClient(JasonSmith);
-
     }
 
 }

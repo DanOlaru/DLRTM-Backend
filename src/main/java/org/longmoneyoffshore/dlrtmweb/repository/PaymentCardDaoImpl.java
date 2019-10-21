@@ -50,16 +50,16 @@ public class PaymentCardDaoImpl implements PaymentCardDao {
     }
 
     public void createTable() {
-        String sql = "CREATE TABLE paymentCards (cardID varchar(15), cardNumber varchar(45), nameOnCard varchar(255), " +
-                "cardExpirationDate varchar(45), CVC varchar(10), clientID varchar(45)" +
+        String sql = "CREATE TABLE IF NOT EXISTS paymentCards (cardID int NOT NULL AUTO_INCREMENT, cardNumber varchar(45), " +
+                "nameOnCard varchar(255), cardExpirationDate varchar(45), CVC varchar(10), clientID varchar(45)," +
                 "PRIMARY KEY (cardID), FOREIGN KEY (clientID) REFERENCES clients(clientID))";
 
         this.jdbcTemplate.execute(sql);
     }
 
-    public void dropTable() {
-        String sql = "DROP TABLE products";
-
+    public void clearTable() {
+        //String sql = "DROP TABLE paymentCards";
+        String sql = "DROP TABLE IF EXISTS DLRTM_DB.paymentCards";
         this.jdbcTemplate.execute(sql);
     }
 

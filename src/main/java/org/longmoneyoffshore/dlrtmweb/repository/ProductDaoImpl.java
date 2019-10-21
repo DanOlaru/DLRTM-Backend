@@ -72,9 +72,7 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     public void dropTable() {
-
         String sql = "DROP TABLE products";
-
                 this.jdbcTemplate.execute(sql);
     }
 

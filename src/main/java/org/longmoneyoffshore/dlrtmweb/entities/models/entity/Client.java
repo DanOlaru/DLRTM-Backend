@@ -34,11 +34,11 @@ public class Client implements Serializable {
     private Address clientDeliveryAddress; //the actual delivery address used —————— one from the list above
 
     //#6 payment info
-    @Nullable
+    /*@Nullable
     private List<PaymentCard> cards;
     @Nullable
     private PaymentCard selectedPaymentMethod; // points to one of the above
-
+*/
     //#7 Other (/internal) client info Value Range 0-5
     private float clientUrgency;
     private float clientValue;
@@ -76,8 +76,8 @@ public class Client implements Serializable {
         this.clientShippingAddress = clientShippingAddress;
         this.clientAlternateAddress = clientAlternateAddress;
         this.clientDeliveryAddress = clientDeliveryAddress;
-        this.cards = cards;
-        this.selectedPaymentMethod = selectedPaymentMethod;
+        //this.cards = cards;
+        //this.selectedPaymentMethod = selectedPaymentMethod;
         this.clientUrgency = clientUrgency;
         this.clientValue = clientValue;
         this.clientStatus = clientStatus;
@@ -102,7 +102,7 @@ public class Client implements Serializable {
         this.clientBillingAddress = clientBillingAddress;
         this.clientShippingAddress = clientShippingAddress;
         this.clientAlternateAddress = clientAlternateAddress;
-        this.cards = cards;
+        //this.cards = cards;
         this.clientUrgency = clientUrgency;
         this.clientValue = clientValue;
         this.clientStatus = clientStatus;
@@ -111,7 +111,7 @@ public class Client implements Serializable {
         //by default the 'primary' fields point to these attributes, respectively
         this.clientPrimaryContactPhone = clientMobilePhone;
         this.clientDeliveryAddress = clientShippingAddress;
-        this.selectedPaymentMethod = this.cards.get(0);
+        //this.selectedPaymentMethod = this.cards.get(0);
     }
 
     //brief-signature Constructor
@@ -130,7 +130,7 @@ public class Client implements Serializable {
         this.clientBillingAddress = clientAddress;
         this.clientShippingAddress = clientAddress;
         this.clientAlternateAddress = clientAddress;
-        this.cards = cards;
+        //this.cards = cards;
         this.clientUrgency = 5;
         this.clientValue = 5;
         this.clientStatus = null;
@@ -139,7 +139,7 @@ public class Client implements Serializable {
         //by default the 'primary' fields point to these attributes, respectively
         this.clientPrimaryContactPhone = clientMobilePhone;
         this.clientDeliveryAddress = clientShippingAddress;
-        this.selectedPaymentMethod = this.cards.get(0);
+        //this.selectedPaymentMethod = this.cards.get(0);
     }
 
     //primitives Constructor
@@ -159,7 +159,7 @@ public class Client implements Serializable {
         this.clientShippingAddress = this.clientBillingAddress;
         this.clientAlternateAddress = this.clientBillingAddress;
 
-        this.cards = new ArrayList<>(Arrays.asList(new PaymentCard(cardInfo, clientName)));
+        //this.cards = new ArrayList<>(Arrays.asList(new PaymentCard(cardInfo, clientName)));
 
         this.clientUrgency = 5;
         this.clientValue = 5;
@@ -169,7 +169,7 @@ public class Client implements Serializable {
         //by default the 'primary' fields point to these attributes, respectively
         this.clientPrimaryContactPhone = clientMobilePhone;
         this.clientDeliveryAddress = clientShippingAddress;
-        this.selectedPaymentMethod = this.cards.get(0);
+        //this.selectedPaymentMethod = this.cards.get(0);
     }
 
     // 6° constructor from the same type of object
@@ -189,8 +189,8 @@ public class Client implements Serializable {
         this.clientShippingAddress = myClient.getClientShippingAddress();
         this.clientAlternateAddress = myClient.getClientAlternateAddress();
         this.clientDeliveryAddress = myClient.getClientDeliveryAddress();
-        this.cards = myClient.getCards();
-        this.selectedPaymentMethod = myClient.getSelectedPaymentMethod();
+        //this.cards = myClient.getCards();
+        //this.selectedPaymentMethod = myClient.getSelectedPaymentMethod();
         this.clientSpecialMentions = myClient.getClientSpecialMentions();
 
         //utility attributes
@@ -202,7 +202,6 @@ public class Client implements Serializable {
     }
 
     //=============CONSTRUCTORS======================================================================================================
-
 
     /****************Getters and setters - methods use to access the private attributes of a class **/
 
@@ -311,7 +310,7 @@ public class Client implements Serializable {
         this.clientDeliveryAddress = clientDeliveryAddress;
     }
 
-    @Nullable
+    /*@Nullable
     public List<PaymentCard> getCards() {
         return cards;
     }
@@ -327,7 +326,7 @@ public class Client implements Serializable {
     public void setSelectedPaymentMethod(PaymentCard selectedPaymentMethod) {
         this.selectedPaymentMethod = selectedPaymentMethod;
     }
-
+*/
     public float getClientUrgency() {
         return clientUrgency;
     }
@@ -428,10 +427,10 @@ public class Client implements Serializable {
         if (!this.clientDeliveryAddress.equals(other.getClientDeliveryAddress())) differencesIndex+=1; else differencesIndex+=0;
 
 
-        //#6 payment info
+       /* //#6 payment info
         if (!this.cards.equals(other.getCards())) differencesIndex+=1; else differencesIndex+=0;
         if (!this.selectedPaymentMethod.equals(other.getSelectedPaymentMethod())) differencesIndex+=1; else differencesIndex+=0;
-
+*/
 
         //#7 Other (/internal) info
         if (this.clientUrgency != other.getClientUrgency()) differencesIndex+=1; else differencesIndex+=0;
@@ -457,8 +456,8 @@ public class Client implements Serializable {
                 ", clientShippingAddress=" + clientShippingAddress +
                 ", clientAlternateAddress=" + clientAlternateAddress +
                 ", clientDeliveryAddress=" + clientDeliveryAddress +
-                ", cards=" + cards +
-                ", selectedPaymentMethod=" + selectedPaymentMethod +
+                //", cards=" + cards +
+                //", selectedPaymentMethod=" + selectedPaymentMethod +
                 ", clientUrgency=" + clientUrgency +
                 ", clientValue=" + clientValue +
                 ", clientStatus='" + clientStatus + '\'' +
@@ -473,7 +472,7 @@ public class Client implements Serializable {
                 ", clientHomePhone=" + clientHomePhone.getClientPhoneNo() +
                 ", clientPrimaryEmailAddress='" + clientPrimaryEmailAddress + '\'' +
                 ", clientBillingAddress=" + clientBillingAddress.getFullAddress() +
-                ", cards=" + cards.get(0).simpleCardInfo() +
+                //", cards=" + cards.get(0).simpleCardInfo() +
                 ", clientUrgency=" + clientUrgency +
                 ", clientValue=" + clientValue +
                 ", clientStatus='" + clientStatus + '\'' +
