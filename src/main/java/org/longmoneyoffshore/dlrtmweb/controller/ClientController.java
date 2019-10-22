@@ -34,6 +34,7 @@ public class ClientController {
     }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
+    @ResponseBody
     public Client getClientById(@PathVariable("id") String id) {
         return clientService.getClientById(id);
     }

@@ -1,8 +1,10 @@
 package org.longmoneyoffshore.dlrtmweb.entities.models.atomic;
 
+import java.io.Serializable;
+
 import static org.longmoneyoffshore.dlrtmweb.entities.globalvalues.GlobalValues.US_ANONYMIZER_PREFIX;
 
-public class PhoneNumber {
+public class PhoneNumber implements Serializable {
 
     private String ownerName;
     private String clientPhoneNo; // It's a string because the sequence of numbers does not have any logic behind it

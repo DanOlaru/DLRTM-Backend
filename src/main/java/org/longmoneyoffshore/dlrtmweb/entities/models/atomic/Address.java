@@ -1,6 +1,7 @@
 package org.longmoneyoffshore.dlrtmweb.entities.models.atomic;
 
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable

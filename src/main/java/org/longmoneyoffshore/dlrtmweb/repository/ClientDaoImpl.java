@@ -96,13 +96,15 @@ public class ClientDaoImpl implements ClientDao {
 
         List<Client> clients = namedParameterJdbcTemplate.query(sql, new ClientMapper());
 
-        /*clients.stream().forEach(c -> {
+        clients.stream().forEach(c -> {
             c.setCards(payment.getPaymentCardsByClientId(c.getClientID()));
-        });*/
+        });
 
-        //return clients;
+        System.out.println("TEST: GETTING ALL CLIENTS: ");
+        clients.stream().forEach(c -> System.out.println(c.toString()));
+        //return namedParameterJdbcTemplate.query(sql, new ClientMapper());
 
-        return namedParameterJdbcTemplate.query(sql, new ClientMapper());
+        return clients;
     }
 
 
@@ -115,6 +117,8 @@ public class ClientDaoImpl implements ClientDao {
     public Client getClientById(String clientId) {
 
         String sql = "SELECT * FROM clients WHERE clientID = " + clientId;
+
+        //System.out.println("TEST: GETTING CLIENT BY ID: " + namedParameterJdbcTemplate.query(sql, new ClientMapper()).get(0).smallToString());
         return namedParameterJdbcTemplate.query(sql, new ClientMapper()).get(0);
     }
 
@@ -173,7 +177,7 @@ public class ClientDaoImpl implements ClientDao {
 
         System.out.println("TEST: SO FAR SO GOOD");
 
-        /*client.getCards().stream().forEach(c -> {
+        client.getCards().stream().forEach(c -> {
             SqlParameterSource cardNamedParameters = new MapSqlParameterSource("cardNumber", c.getCardNumber())
                     .addValue("nameOnCard", c.getNameOnCard())
                     .addValue("cardExpirationDate",c.getCardExpirationDate())
@@ -181,7 +185,7 @@ public class ClientDaoImpl implements ClientDao {
                     .addValue("clientID",client.getClientID());
 
             namedParameterJdbcTemplate.update(sqlCards, cardNamedParameters);
-        });*/
+        });
 
     }
 
@@ -198,14 +202,16 @@ public class ClientDaoImpl implements ClientDao {
         public Client mapRow(ResultSet resultSet, int rowNum) throws SQLException {
             Client client = new Client();
 
-            if (resultSet.getString("clientID") != null) {
             client.setClientID(resultSet.getString("clientID"));
-            client.setClientName(new PersonName(resultSet.getString("name")));
-            client.setClientHomePhone(new PhoneNumber(resultSet.getString("name"), resultSet.getString("homePhone")));
-            client.setClientBusinessPhone(new PhoneNumber(resultSet.getString("name"), resultSet.getString("businessPhone")));
-            client.setClientAlternatePhone(new PhoneNumber(resultSet.getString("name"), resultSet.getString("alternatePhone")));
-            client.setClientMobilePhone(new PhoneNumber(resultSet.getString("name"), resultSet.getString("mobilePhone")));
-            client.setClientPrimaryContactPhone(new PhoneNumber(resultSet.getString("name"), resultSet.getString("primaryContactPhone")));
+
+            String clientName = resultSet.getString("name");
+
+            client.setClientName(new PersonName(clientName));
+            client.setClientHomePhone(new PhoneNumber(clientName, resultSet.getString("homePhone")));
+            client.setClientBusinessPhone(new PhoneNumber(clientName, resultSet.getString("businessPhone")));
+            client.setClientAlternatePhone(new PhoneNumber(clientName, resultSet.getString("alternatePhone")));
+            client.setClientMobilePhone(new PhoneNumber(clientName, resultSet.getString("mobilePhone")));
+            client.setClientPrimaryContactPhone(new PhoneNumber(clientName, resultSet.getString("primaryContactPhone")));
             client.setClientPrimaryEmailAddress(resultSet.getString("primaryEmail"));
             client.setClientAlternateEmailAddress(resultSet.getString("alternateEmail"));
             client.setClientBillingAddress(new Address(resultSet.getString("billingAddress")));
@@ -216,7 +222,6 @@ public class ClientDaoImpl implements ClientDao {
             client.setClientValue(resultSet.getFloat("clientValue"));
             client.setClientStatus(resultSet.getString("clientStatus"));
             client.setClientSpecialMentions(resultSet.getString("clientSpecialMentions"));
-            }
 
             return client;
         }
