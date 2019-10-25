@@ -39,7 +39,6 @@ public class GlobalValues {
     public static final int CREATE_NEW_ORDER=1007;
 
     //
-    public final String dummyFileID = "16ujt55GOJVgcgxox1NrGT_iKf2LIVlEU7ywxtzOtngY";
     //public final static Client blankClient = new Client("N/A","N/A","N/A","N/A",0,0,0,0,0,"N/A");
 
 

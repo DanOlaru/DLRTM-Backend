@@ -107,7 +107,6 @@ public class ClientDaoImpl implements ClientDao {
         return clients;
     }
 
-
     @Override
     public Collection<Client> getAllClientsByField(Object field) {
         return null;
@@ -151,13 +150,12 @@ public class ClientDaoImpl implements ClientDao {
                 .addValue("businessPhone", client.getClientBusinessPhone().getClientPhoneNo())
                 .addValue("alternatePhone", client.getClientAlternatePhone().getClientPhoneNo())
                 .addValue("mobilePhone", client.getClientMobilePhone().getClientPhoneNo())
-                .addValue("primaryContactPhone", client.getClientPrimaryContactPhone().getClientPhoneNo())
                 .addValue("primaryEmail", client.getClientPrimaryEmailAddress())
                 .addValue("alternateEmail", client.getClientAlternateEmailAddress())
                 .addValue("billingAddress", client.getClientBillingAddress().getFullAddress())
                 .addValue("shippingAddress", client.getClientShippingAddress().getFullAddress())
                 .addValue("alternateAddress", client.getClientAlternateAddress().getFullAddress())
-                .addValue("deliveryAddress", client.getClientDeliveryAddress().getFullAddress())
+                //.addValue("deliveryAddress", client.getClientDeliveryAddress().getFullAddress())
                 .addValue("clientUrgency", client.getClientUrgency())
                 .addValue("clientValue", client.getClientValue())
                 .addValue("clientStatus", client.getClientStatus())
@@ -211,13 +209,12 @@ public class ClientDaoImpl implements ClientDao {
             client.setClientBusinessPhone(new PhoneNumber(clientName, resultSet.getString("businessPhone")));
             client.setClientAlternatePhone(new PhoneNumber(clientName, resultSet.getString("alternatePhone")));
             client.setClientMobilePhone(new PhoneNumber(clientName, resultSet.getString("mobilePhone")));
-            client.setClientPrimaryContactPhone(new PhoneNumber(clientName, resultSet.getString("primaryContactPhone")));
             client.setClientPrimaryEmailAddress(resultSet.getString("primaryEmail"));
             client.setClientAlternateEmailAddress(resultSet.getString("alternateEmail"));
             client.setClientBillingAddress(new Address(resultSet.getString("billingAddress")));
             client.setClientShippingAddress(new Address(resultSet.getString("shippingAddress")));
             client.setClientAlternateAddress(new Address(resultSet.getString("alternateAddress")));
-            client.setClientDeliveryAddress(new Address(resultSet.getString("deliveryAddress")));
+            //client.setClientDeliveryAddress(new Address(resultSet.getString("deliveryAddress")));
             client.setClientUrgency(resultSet.getFloat("clientUrgency"));
             client.setClientValue(resultSet.getFloat("clientValue"));
             client.setClientStatus(resultSet.getString("clientStatus"));

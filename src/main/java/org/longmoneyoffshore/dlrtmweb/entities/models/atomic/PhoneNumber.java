@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 import static org.longmoneyoffshore.dlrtmweb.entities.globalvalues.GlobalValues.US_ANONYMIZER_PREFIX;
 
-public class PhoneNumber implements Serializable {
+public class PhoneNumber { //implements Serializable {
 
     private String ownerName;
-    private String clientPhoneNo; // It's a string because the sequence of numbers does not have any logic behind it
+    private String clientPhoneNo;
     private String clientAreaCode;
     private String anonymizerPrefix = US_ANONYMIZER_PREFIX; //can be set to a different value —————————— hidden
 
@@ -16,35 +16,42 @@ public class PhoneNumber implements Serializable {
 
 
     //full constructor
-    public PhoneNumber(String ownerName, String clientPhoneNo, String clientAreaCode, String anonymizerPrefix) {
-        this.ownerName = ownerName;
-        this.clientPhoneNo = clientPhoneNo;
+    public PhoneNumber(String owner, String phoneNo, String clientAreaCode, String anonymizerPrefix) {
+        this.ownerName = owner;
+        this.clientPhoneNo = phoneNo;
         this.clientAreaCode = clientAreaCode;
         this.anonymizerPrefix = anonymizerPrefix;
     }
 
-    public PhoneNumber(String ownerName, String clientPhoneNo) {
-        this.ownerName = ownerName;
-        this.clientPhoneNo = clientPhoneNo;
+    public PhoneNumber(String owner, String phoneNo) {
+        this.ownerName = owner;
+        this.clientPhoneNo = phoneNo;
         this.clientAreaCode = "";
         this.anonymizerPrefix = "";
     }
 
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
 
     public String getClientPhoneNo() {
         return clientPhoneNo;
     }
 
-    public void setClientPhoneNo(String clientPhoneNo) {
-        this.clientPhoneNo = clientPhoneNo;
+    public void setClientPhoneNo(String phoneNo) {
+        this.clientPhoneNo = phoneNo;
     }
 
     public String getClientAreaCode() {
         return clientAreaCode;
     }
 
-    public void setClientAreaCode(String clientAreaCode) {
-        this.clientAreaCode = clientAreaCode;
+    public void setClientAreaCode(String areaCode) {
+        this.clientAreaCode = areaCode;
     }
 
     public String getAnonymizerPrefix() {

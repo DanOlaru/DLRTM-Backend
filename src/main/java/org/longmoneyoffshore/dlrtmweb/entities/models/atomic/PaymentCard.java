@@ -2,9 +2,10 @@ package org.longmoneyoffshore.dlrtmweb.entities.models.atomic;
 
 import javax.persistence.Embeddable;
 
-@Embeddable
+//@Embeddable
 public class PaymentCard {
 
+    private String fullCardInfo;
     private String cardNumber;
     private String nameOnCard;
     private String cardExpirationDate;
@@ -27,14 +28,22 @@ public class PaymentCard {
     }
 
     //TODO: card details contains, in this order: card number, expiration date, CVC
-    public PaymentCard(String cardDetails, String nameOnCard) {
+    public PaymentCard(String cardDetails) {
         //TODO: parse cardDetails to cardNumber, cardExpirationDate, cardVerificationNumber
-        this.cardNumber = cardNumber;
-        this.nameOnCard = nameOnCard;
-        this.cardExpirationDate = cardExpirationDate;
-        this.CVC = CVC;
+        this.fullCardInfo = cardDetails;
+        cardNumber = "";
+        nameOnCard = "";
+        cardExpirationDate = "";
+        CVC = "";
     }
 
+    public String getFullCardInfo() {
+        return fullCardInfo;
+    }
+
+    public void setFullCardInfo(String fullCardInfo) {
+        this.fullCardInfo = fullCardInfo;
+    }
 
     public String getCardNumber() {
         return cardNumber;

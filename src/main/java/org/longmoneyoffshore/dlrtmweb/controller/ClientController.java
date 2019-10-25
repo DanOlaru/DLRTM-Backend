@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 import java.util.Date;
 
-import static org.longmoneyoffshore.dlrtmweb.FakeDataSets.JasonSmith;
 import static org.longmoneyoffshore.dlrtmweb.FakeDataSets.clientsFakeDataSet2;
 
 @RestController

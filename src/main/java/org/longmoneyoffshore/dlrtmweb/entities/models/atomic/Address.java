@@ -4,14 +4,13 @@ import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Embeddable
+//@Embeddable
 public class Address {
 
     //fields
     private String fullAddress;
 
-    private PersonName personName;
-
+    private String personName;
     private String bldgNumber;
     private String streetName;
     private String cityName;
@@ -25,7 +24,7 @@ public class Address {
 
     public Address(String fullAddress) {
         this.fullAddress = fullAddress;
-        //TODO: need to parse and populate the individual fields!!!!!!!!!!
+        //TODO: parse and populate the individual fields!!!!!!!!!!
         //regex?
 
     }
@@ -33,7 +32,7 @@ public class Address {
     public Address(String personName, String bldgNumber, String streetName, String cityName, String provinceName, String zipCode,
                    String country, String otherInfo) {
 
-        this.personName = new PersonName(personName);
+        this.personName = personName;
 
         this.bldgNumber = bldgNumber;
         this.streetName = streetName;
@@ -44,7 +43,7 @@ public class Address {
         this.otherInfo = otherInfo;
     }
 
-    public Address(String fullAddress, PersonName personName, String bldgNumber, String streetName, String cityName,
+    public Address(String fullAddress, String personName, String bldgNumber, String streetName, String cityName,
                    String provinceName, String zipCode, String country, String otherInfo, double latitude, double longitude) {
         this.fullAddress = fullAddress;
         this.personName = personName;
@@ -67,11 +66,11 @@ public class Address {
         this.fullAddress = fullAddress;
     }
 
-    public PersonName getPersonName() {
+    public String getPersonName() {
         return personName;
     }
 
-    public void setPersonName(PersonName personName) {
+    public void setPersonName(String personName) {
         this.personName = personName;
     }
 

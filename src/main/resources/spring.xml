@@ -67,6 +67,10 @@
         <property name="clientService" ref="clientService"/>
     </bean>
 
+    <bean id="simpleClientController" class="org.longmoneyoffshore.dlrtmweb.controller.SimpleClientController">
+        <property name="clientService" ref="clientService"/>
+    </bean>
+
 
     <bean id="paymentCardDaoImpl" class="org.longmoneyoffshore.dlrtmweb.repository.PaymentCardDaoImpl">
         <property name="dataSource" ref="mySqlDataSource"/>
