@@ -1,16 +1,14 @@
 package org.longmoneyoffshore.dlrtmweb.service;
-/*
 
-import org.longmoneyoffshore.dlrtmweb.Dao.TransactionDao;
-import org.longmoneyoffshore.dlrtmweb.Entities.models.entity.Transaction;
+
+import org.longmoneyoffshore.dlrtmweb.repository.TransactionDao;
+import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Transaction;
 
 import java.util.Collection;
 import java.util.Date;
 
 public class TransactionService {
 
-    //@Autowired
-    //@Qualifier("dbData")
     private TransactionDao myTransactionDao;
 
     //constructor
@@ -48,4 +46,4 @@ public class TransactionService {
     }
 
 }
-*/
+

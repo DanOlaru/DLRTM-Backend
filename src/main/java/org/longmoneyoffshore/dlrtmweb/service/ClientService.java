@@ -14,11 +14,10 @@ import java.util.List;
 public class ClientService {
 
     //@Autowired
-    //@Qualifier("dbData")
     private ClientDao clientDao;
 
     //constructor
-    //public ClientService (ClientDao clientDao) { this.clientDao = clientDao; }
+    public ClientService (ClientDao clientDao) { this.clientDao = clientDao; }
 
 
     public ClientDao getClientDao() {

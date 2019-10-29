@@ -44,8 +44,7 @@ public class Client {
 
     //=============CONSTRUCTORS======================================================================================================
     // 1° constructor -  basic
-    public Client()
-    {}
+    public Client() {}
 
     //full constructor
     /*public Client(String clientID, PersonName clientName, PhoneNumber clientHomePhone, PhoneNumber clientBusinessPhone,

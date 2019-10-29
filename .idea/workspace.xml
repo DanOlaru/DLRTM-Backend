@@ -2,42 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed8da808-fee5-4c82-9b40-5c4f870cd86a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/SimpleClientController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/entity/SimpleClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/TransactionDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlDb/Code.sql" beforeDir="false" afterPath="$PROJECT_DIR$/extraResources/sqlDb/Code.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlDb/DB_Commands" beforeDir="false" afterPath="$PROJECT_DIR$/extraResources/sqlDb/DB_Commands" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlDb/DB_Creation_Script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/extraResources/sqlDb/DB_Creation_Script.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlDb/createClientsTable.sql" beforeDir="false" afterPath="$PROJECT_DIR$/extraResources/sqlDb/createClientsTable.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlDb/createPaymentCardsTable.sql" beforeDir="false" afterPath="$PROJECT_DIR$/extraResources/sqlDb/createPaymentCardsTable.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlDb/createProductsTable.sql" beforeDir="false" afterPath="$PROJECT_DIR$/extraResources/sqlDb/createProductsTable.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlDb/springwithmysql/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/extraResources/sqlDb/springwithmysql/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlDb/springwithmysql/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/extraResources/sqlDb/springwithmysql/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlDb/springwithmysql/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/extraResources/sqlDb/springwithmysql/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlDb/springwithmysql/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/extraResources/sqlDb/springwithmysql/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlDb/springwithmysql/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/extraResources/sqlDb/springwithmysql/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlDb/springwithmysql/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/extraResources/sqlDb/springwithmysql/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlDb/springwithmysql/src/main/java/com/dlrtime/springwithmysql/SpringwithmysqlApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/extraResources/sqlDb/springwithmysql/src/main/java/com/dlrtime/springwithmysql/SpringwithmysqlApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlDb/springwithmysql/src/main/java/com/dlrtime/springwithmysql/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/extraResources/sqlDb/springwithmysql/src/main/java/com/dlrtime/springwithmysql/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlDb/springwithmysql/src/main/java/com/dlrtime/springwithmysql/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/extraResources/sqlDb/springwithmysql/src/main/java/com/dlrtime/springwithmysql/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlDb/springwithmysql/src/main/java/com/dlrtime/springwithmysql/resource/UserResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/extraResources/sqlDb/springwithmysql/src/main/java/com/dlrtime/springwithmysql/resource/UserResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlDb/springwithmysql/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/extraResources/sqlDb/springwithmysql/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlDb/springwithmysql/src/test/java/com/dlrtime/springwithmysql/SpringwithmysqlApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/extraResources/sqlDb/springwithmysql/src/test/java/com/dlrtime/springwithmysql/SpringwithmysqlApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/FakeDataSets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/FakeDataSets.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/globalvalues/GlobalValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/globalvalues/GlobalValues.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/PaymentCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/PaymentCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/PersonName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/PersonName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/PhoneNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/atomic/PhoneNumber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/entity/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/entity/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/entity/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/models/entity/Transaction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ClientDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ClientDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Entities/globalvalues/GlobalValues.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Entities/globalvalues/GlobalValues.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/Address.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/Address.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/PersonName.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/PersonName.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/PhoneNumber.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Entities/models/atomic/PhoneNumber.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Entities/models/entity/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Entities/models/entity/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/TransactionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/TransactionDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/TransactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -283,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571743060424</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="successfully retrieves SimpleClients from DB.&#10;Does not correctly retrieve the more complicated Client entity. —&gt; generates some kind of infinite loop exception">
+      <created>1572012087102</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1572012087103</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -335,93 +315,7 @@
     <MESSAGE value="Successfully inserts entries into Clients table" />
     <MESSAGE value="Successfully reads individual Client entries from Clients table&#10;&#10;Does NOT correctly retrieve the list of all Clients from table" />
     <MESSAGE value="Successfully reads individual Client entries from Clients table&#10;&#10;correctly retrieves the list of all Clients from table&#10;&#10;but does NOT convert them to JSON and correctly send them over the HTTP &#10;response" />
-    <option name="LAST_COMMIT_MESSAGE" value="Successfully reads individual Client entries from Clients table&#10;&#10;correctly retrieves the list of all Clients from table&#10;&#10;but does NOT convert them to JSON and correctly send them over the HTTP &#10;response" />
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>DLRTM Web Platform</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>9</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+    <MESSAGE value="successfully retrieves SimpleClients from DB.&#10;Does not correctly retrieve the more complicated Client entity. —&gt; generates some kind of infinite loop exception" />
+    <option name="LAST_COMMIT_MESSAGE" value="successfully retrieves SimpleClients from DB.&#10;Does not correctly retrieve the more complicated Client entity. —&gt; generates some kind of infinite loop exception" />
   </component>
 </project>

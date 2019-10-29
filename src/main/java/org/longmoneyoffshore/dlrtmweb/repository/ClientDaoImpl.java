@@ -43,10 +43,8 @@ public class ClientDaoImpl implements ClientDao {
         return dataSource;
     }
 
-    //@Autowired
     public void setDataSource(DataSource dataSource) {
         //public void setDataSource(BasicDataSource dataSource) {
-
         this.dataSource = dataSource;
         this.jdbcTemplate = new JdbcTemplate(dataSource);
         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);

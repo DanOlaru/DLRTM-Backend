@@ -1,7 +1,7 @@
 package org.longmoneyoffshore.dlrtmweb.repository;
-/*
 
-import org.longmoneyoffshore.dlrtmweb.Entities.models.entity.Transaction;
+
+import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Transaction;
 
 import java.util.Collection;
 import java.util.Date;
@@ -23,8 +23,5 @@ public interface TransactionDao {
 
     void insertTransaction (Transaction transaction);
 
-    //possible alternative where true is returned when insertion succeeds and false when it does not
-    //boolean insertProduct (Product product);
-
 }
-*/
+
