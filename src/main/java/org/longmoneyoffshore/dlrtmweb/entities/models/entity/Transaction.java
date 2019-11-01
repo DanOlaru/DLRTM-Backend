@@ -4,44 +4,58 @@ package org.longmoneyoffshore.dlrtmweb.entities.models.entity;
 import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 //@Entity
 public class Transaction {
 
-    //#1 IDs:
     @Id
     private String transactionID;
-    private Client clientReference;
-    private ArrayList<TransactedProduct> productsList;
+    private Client client;
+    private ArrayList<Product> productsList;
     private String transactionStatus;
     private String specialMentions;
 
     public Transaction() {
     }
 
-
-    public Transaction(String transactionID, Client clientReference,
-                       ArrayList<TransactedProduct> productsList, String specialMentions) {
+    public Transaction(String transactionID, Client client,
+                       ArrayList<Product> productsList, String specialMentions) {
 
         this.transactionID = transactionID;
-        this.clientReference = clientReference;
+        this.client = client;
         this.productsList = productsList;
         this.transactionStatus = "done";
         this.specialMentions = specialMentions;
     }
 
-    public Transaction(Client clientReference, ArrayList<TransactedProduct> productsList) {
-        this.clientReference = clientReference;
+    public Transaction(Client client, ArrayList<Product> productsList) {
+        this.client = client;
         this.productsList = productsList;
         this.specialMentions = "";
         this.transactionStatus = "done";
     }
 
-    public Transaction(Client clientReference, ArrayList<TransactedProduct> productsList, String transactionStatus) {
-        this.clientReference = clientReference;
+    public Transaction(Client client, ArrayList<Product> productsList, String transactionStatus) {
+        this.client = client;
         this.productsList = productsList;
         this.specialMentions = "";
         this.transactionStatus = transactionStatus;
+    }
+
+    public Transaction(String clientId, ArrayList<String> productsList, String transactionStatus) {
+        this.client = new Client(clientId);
+        this.productsList = productsList.stream().map(p -> new Product(p)).collect(Collectors.toCollection(ArrayList::new));
+        this.specialMentions = "";
+        this.transactionStatus = transactionStatus;
+    }
+
+    public Transaction(String clientId, String productsList) {
+        this.client = new Client(clientId);
+        String[] productIds = productsList.split(",");
+        this.productsList = Arrays.stream(productIds).map(p -> new Product(p)).collect(Collectors.toCollection(ArrayList::new));//TODO will be populated from the other tables referenced
+        this.specialMentions = "";
     }
 
     public String getTransactionID() {
@@ -52,19 +66,19 @@ public class Transaction {
         this.transactionID = transactionID;
     }
 
-    public Client getClientReference() {
-        return clientReference;
+    public Client getClient() {
+        return client;
     }
 
-    public void setClientReference(Client clientReference) {
-        this.clientReference = clientReference;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
-    public ArrayList<TransactedProduct> getProductsList() {
+    public ArrayList<Product> getProductsList() {
         return productsList;
     }
 
-    public void setProductsList(ArrayList<TransactedProduct> productsList) {
+    public void setProductsList(ArrayList<Product> productsList) {
         this.productsList = productsList;
     }
 
@@ -88,7 +102,7 @@ public class Transaction {
     public String toString() {
         return "Transaction{" +
                 "transactionUniqueID='" + transactionID + '\'' +
-                ", clientObjReference=" + clientReference +
+                ", clientObjReference=" + client +
                 ", productsList=" + productsList +
                 ", productSpecialMentions='" + specialMentions + '\'' +
                 '}';

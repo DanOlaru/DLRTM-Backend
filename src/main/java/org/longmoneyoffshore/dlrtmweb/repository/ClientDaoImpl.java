@@ -106,7 +106,7 @@ public class ClientDaoImpl implements ClientDao {
     }
 
     @Override
-    public Collection<Client> getAllClientsByField(Object field) {
+    public List<Client> getAllClientsByField(Object field) {
         return null;
     }
 

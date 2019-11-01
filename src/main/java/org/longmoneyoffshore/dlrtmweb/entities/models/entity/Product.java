@@ -56,7 +56,6 @@ public class Product {
     //Zero Constructor
     public Product() {}
 
-
     //Small Constructors
     public Product(String productUniqueID) {
         this.productUniqueID = productUniqueID;

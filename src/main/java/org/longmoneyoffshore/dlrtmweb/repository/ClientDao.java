@@ -9,11 +9,11 @@ import java.util.List;
 
 public interface ClientDao {
 
-    Collection<Client> getAllClients();
+    List<Client> getAllClients();
 
     //Collection<Client> getAllClientsByDate(Date date);
 
-    Collection<Client> getAllClientsByField (Object field);
+    List<Client> getAllClientsByField (Object field);
 
     Client getClientById(String clientId);
 

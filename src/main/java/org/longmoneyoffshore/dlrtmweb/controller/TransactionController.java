@@ -1,21 +1,27 @@
 package org.longmoneyoffshore.dlrtmweb.controller;
 
-/*
-import org.longmoneyoffshore.dlrtmweb.Entities.models.entity.Transaction;
-import org.longmoneyoffshore.dlrtmweb.Service.TransactionService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Transaction;
+import org.longmoneyoffshore.dlrtmweb.service.TransactionService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("/transaction")
 public class TransactionController {
 
-    @Autowired
     private TransactionService transactionService;
+
+    public TransactionService getTransactionService() {
+        return transactionService;
+    }
+
+    public void setTransactionService(TransactionService transactionService) {
+        this.transactionService = transactionService;
+    }
 
     //@RequestMapping(value = "/", method = RequestMethod.GET)
     @RequestMapping(method = RequestMethod.GET)
@@ -33,7 +39,7 @@ public class TransactionController {
     @RequestMapping(value = "/{date}",method = RequestMethod.GET)
     public Collection<Transaction> getTransactionByDate(@PathVariable ("date") Date date) {
 
-        //more appropriately get the transactions for the current day or a specific date
+        //transactions for the current day or a specific date
         return transactionService.getTransactionsByDate(date);
 
     }
@@ -56,7 +62,6 @@ public class TransactionController {
 
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    //public Collection<Transaction> insertTransaction(@RequestBody Transaction transaction) {
     //public boolean insertTransaction(@RequestBody Transaction transaction) {
     public void insertTransaction(@RequestBody Transaction transaction) {
 
@@ -66,5 +71,15 @@ public class TransactionController {
         //return transactionService.getAllTransactions();
     }
 
-}*/
+    @RequestMapping(value = "/newTransaction", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void insertNewTransaction(@RequestBody String clientId, @RequestBody String productIds) {
+
+        transactionService.insertTransaction(new Transaction(clientId, productIds));
+
+        //System.out.println("INSERTING TRANSACTION " + transaction.toString());
+        //return transactionService.getAllTransactions();
+
+    }
+
+}
 

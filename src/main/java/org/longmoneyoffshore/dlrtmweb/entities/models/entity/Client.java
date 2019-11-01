@@ -7,13 +7,13 @@ import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PhoneNumber;
 import org.springframework.lang.Nullable;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.List;
 
-public class Client {
+public class Client implements Serializable {
     //@Id
     @NotNull
     private String clientID;
-
     @Nullable
     private PersonName clientName;
     @Nullable
@@ -46,8 +46,12 @@ public class Client {
     // 1° constructor -  basic
     public Client() {}
 
+    public Client(String clientID) {
+        this.clientID = clientID;
+    }
+
     //full constructor
-    /*public Client(String clientID, PersonName clientName, PhoneNumber clientHomePhone, PhoneNumber clientBusinessPhone,
+    public Client(String clientID, PersonName clientName, PhoneNumber clientHomePhone, PhoneNumber clientBusinessPhone,
                   PhoneNumber clientAlternatePhone, PhoneNumber clientMobilePhone, PhoneNumber clientPrimaryContactPhone,
                   String clientPrimaryEmailAddress, String clientAlternateEmailAddress, Address clientBillingAddress,
                   Address clientShippingAddress, Address clientAlternateAddress, Address clientDeliveryAddress, List<PaymentCard> cards,
@@ -72,10 +76,10 @@ public class Client {
         this.clientValue = clientValue;
         this.clientStatus = clientStatus;
         this.clientSpecialMentions = clientSpecialMentions;
-    }*/
+    }
 
     //smaller-signature Constructor
-    /*public Client(String clientID, PersonName clientName, PhoneNumber clientHomePhone, PhoneNumber clientBusinessPhone,
+    public Client(String clientID, PersonName clientName, PhoneNumber clientHomePhone, PhoneNumber clientBusinessPhone,
                   PhoneNumber clientAlternatePhone, PhoneNumber clientMobilePhone, String clientPrimaryEmailAddress,
                   String clientAlternateEmailAddress, Address clientBillingAddress, Address clientShippingAddress,
                   Address clientAlternateAddress, List<PaymentCard> cards, float clientUrgency,
@@ -102,7 +106,7 @@ public class Client {
         //this.clientPrimaryContactPhone = clientMobilePhone;
         //this.clientDeliveryAddress = clientShippingAddress;
         //this.selectedPaymentMethod = this.cards.get(0);
-    }*/
+    }
 
     //brief-signature Constructor
     public Client(String clientID, PersonName clientName, PhoneNumber clientPhone, String clientPrimaryEmailAddress,
@@ -348,6 +352,7 @@ public class Client {
 
     //return a reference to this Client object
     public Client getClient () {return this;}
+
 
     /************ !!!!!!!!!!!!!!!!!!!!!!!!!!!! other/utility methods !!!!!!!!!!!!!!!!!!!!!!!!!!!! *******/
 

@@ -91,9 +91,9 @@ public class TransactionDaoImpl implements TransactionDao {
                 "VALUES (:transactionID, :clientID, :productUniqueIDs, :transactionStatus, :transactionSpecialMentions)";
 
         SqlParameterSource transactionNamedParameters =
-                new MapSqlParameterSource("clientID", transaction.getClientReference().getClientID())
+                new MapSqlParameterSource("clientID", transaction.getClient().getClientID())
                 .addValue("productUniqueIDs", transaction.getProductsList()
-                    .stream().map(Product::getProductUniqueID).collect(Collectors.joining(" ,"))) //TODO: does this give me string?
+                    .stream().map(Product::getProductUniqueID).collect(Collectors.joining(","))) //TODO: does this give me string?
                 .addValue("transactionStatus", transaction.getTransactionStatus())
                 .addValue("transactionSpecialMentions", transaction.getSpecialMentions());
 

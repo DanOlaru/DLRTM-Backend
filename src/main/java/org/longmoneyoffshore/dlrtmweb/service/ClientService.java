@@ -1,6 +1,5 @@
 package org.longmoneyoffshore.dlrtmweb.service;
 
-
 import org.longmoneyoffshore.dlrtmweb.repository.ClientDao;
 import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Client;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,7 +12,6 @@ import java.util.List;
 @Qualifier("clientService")
 public class ClientService {
 
-    //@Autowired
     private ClientDao clientDao;
 
     //constructor
@@ -28,7 +26,7 @@ public class ClientService {
         this.clientDao = clientDao;
     }
 
-    public Collection<Client> getAllClients() {
+    public List<Client> getAllClients() {
         return this.clientDao.getAllClients();
     }
 

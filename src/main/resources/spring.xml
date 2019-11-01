@@ -41,7 +41,6 @@
     </bean>
 
     <bean id="productService" class="org.longmoneyoffshore.dlrtmweb.service.ProductService" scope="singleton">
-        <!--<property name="myProductDao" ref="productDaoImpl"/>-->
         <property name="productDao" ref="productDaoImpl"/>
     </bean>
 
@@ -83,14 +82,23 @@
     </bean>
 
     <!-- transaction: controller -> service -> dao -->
+    <bean id="transactionDaoImpl" class="org.longmoneyoffshore.dlrtmweb.repository.TransactionDaoImpl">
+        <property name="dataSource" ref="mySqlDataSource"/>
+        <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
 
-    <!--<bean id="sessionFactory" class="org.springframework.orm.hibernate5.annotation.AnnotationSessionFactoryBean" scope="singleton">
-        <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="org.longmoneyoffshore.dlrtmweb" />
-        <property name="hibernateProperties">
-            <props>
-                <prop key="dialect" >org.hibernate.dialect.DerbyDialect</prop>
-            </props>
-        </property>
-    </bean>-->
+    <bean id="transactionService" class="org.longmoneyoffshore.dlrtmweb.service.TransactionService">
+        <property name="transactionDao" ref="transactionDaoImpl"/>
+    </bean>
+
+    <bean id="transactionController" class="org.longmoneyoffshore.dlrtmweb.controller.TransactionController">
+        <property name="transactionService" ref="transactionService"/>
+    </bean>
+
+
+    <bean id="clientsPresenterController" class="org.longmoneyoffshore.dlrtmweb.controller.ClientsPresenterController">
+        <property name="clientService" ref="clientService"/>
+    </bean>
+
 </beans>
