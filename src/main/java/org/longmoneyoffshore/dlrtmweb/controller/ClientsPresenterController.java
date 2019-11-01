@@ -6,6 +6,8 @@ import org.longmoneyoffshore.dlrtmweb.service.ClientService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ClientsPresenterController {
@@ -21,71 +23,22 @@ public class ClientsPresenterController {
     }
 
 
+    @GetMapping("/presentClientsEx")
+    public ModelAndView selectClient() {
 
-   /* private boolean process(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException {
+        ModelAndView mav = new ModelAndView("clientsThyme");
+        mav.addObject("clients", clientService.getAllClients());
 
-        try {
+        return mav;
+    }
 
-            // This prevents triggering engine executions for resource URLs
-            if (request.getRequestURI().startsWith("/css") ||
-                    request.getRequestURI().startsWith("/images") ||
-                    request.getRequestURI().startsWith("/favicon")) {
-                return false;
-            }
-            */
-
-
-            /*
-             * Query controller/URL mapping and obtain the controller
-             * that will process the request. If no controller is available,
-             * return false and let other filters/servlets process the request.
-             */
-            /*DLRTMStoreController controller = this.application.resolveControllerForRequest(request);
-            if (controller == null) {
-                return false;
-            }
-
-            *//*
-             * Obtain the TemplateEngine instance.
-             *//*
-            ITemplateEngine templateEngine = this.application.getTemplateEngine();
-
-            *//*
-             * Write the response headers
-             *//*
-            response.setContentType("text/html;charset=UTF-8");
-            response.setHeader("Pragma", "no-cache");
-            response.setHeader("Cache-Control", "no-cache");
-            response.setDateHeader("Expires", 0);
-
-            *//*
-             * Execute the controller and process view template,
-             * writing the results to the response writer.
-             *//*
-            controller.process(
-                    request, response, this.servletContext, templateEngine);
-
-            return true;
-
-        } catch (Exception e) {
-            try {
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            } catch (final IOException ignored) {
-                // Just ignore this
-            }
-            throw new ServletException(e);
+   /* @Controller
+    public class SomeController {
+        @RequestMapping("/")
+        public String redirect() {
+            return "redirect:/query?q=Thymeleaf+Is+Great!";
         }
-
-    }
-
-    public interface DLRTMStoreController {
-        public void process(
-                HttpServletRequest request, HttpServletResponse response,
-                ServletContext servletContext, ITemplateEngine templateEngine);
-
-    }
-*/
+    }*/
 
     public ClientService getClientService() {
         return clientService;

@@ -101,4 +101,8 @@
         <property name="clientService" ref="clientService"/>
     </bean>
 
+    <bean id="productsPresenterController" class="org.longmoneyoffshore.dlrtmweb.controller.ProductsPresenterController">
+        <property name="productService" ref="productService"/>
+    </bean>
+
 </beans>

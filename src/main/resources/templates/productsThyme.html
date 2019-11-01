@@ -11,18 +11,19 @@
 
 
 <div class="container">
-    <div th:if="${not #lists.isEmpty(clients)}">
-        <h2>Client Lists</h2>
+    <div th:if="${not #lists.isEmpty(products)}">
+        <h2>Product Lists</h2>
         <table class="table table-striped">
             <tr>
                 <th>Id</th>
-                <th>Client Name</th>
+                <th>Product Name</th>
+                <th>Purchase price</th>
             </tr>
 
-            <tr th:each="client : ${clients}">
-                <td th:text="${client.clientID}"></td>
-                <td th:text="${client.clientName.clientFirstName}"></td>
-                <td th:text="${client.clientName.clientLastName}"></td>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.productUniqueID}"></td>
+                <td th:text="${product.productName}"></td>
+                <td th:text="${product.productUnitPurchasePrice}"></td>
             </tr>
 
         </table>
