@@ -1,6 +1,5 @@
 package org.longmoneyoffshore.dlrtmweb.controller;
 
-import org.longmoneyoffshore.dlrtmweb.service.ClientService;
 import org.longmoneyoffshore.dlrtmweb.service.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

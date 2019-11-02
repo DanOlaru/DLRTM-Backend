@@ -351,7 +351,6 @@ public class Client implements Serializable {
     //****************Getters and setters - methods use to access the private attributes of a class
 
     //return a reference to this Client object
-    public Client getClient () {return this;}
 
 
     /************ !!!!!!!!!!!!!!!!!!!!!!!!!!!! other/utility methods !!!!!!!!!!!!!!!!!!!!!!!!!!!! *******/
