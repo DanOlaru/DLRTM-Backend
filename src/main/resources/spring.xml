@@ -103,6 +103,7 @@
 
     <bean id="productsPresenterController" class="org.longmoneyoffshore.dlrtmweb.controller.ProductsPresenterController">
         <property name="productService" ref="productService"/>
+        <property name="clientDao" ref="clientDaoImpl"/>
     </bean>
 
 </beans>

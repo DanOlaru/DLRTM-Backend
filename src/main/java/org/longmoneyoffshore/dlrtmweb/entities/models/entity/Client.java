@@ -1,5 +1,6 @@
 package org.longmoneyoffshore.dlrtmweb.entities.models.entity;
 
+import lombok.Data;
 import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.Address;
 import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PaymentCard;
 import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PersonName;
@@ -10,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
+//@Data
 public class Client implements Serializable {
     //@Id
     @NotNull
@@ -346,11 +348,6 @@ public class Client implements Serializable {
     public void setRevision(String revision) {
         this.revision = revision;
     }
-
-
-    //****************Getters and setters - methods use to access the private attributes of a class
-
-    //return a reference to this Client object
 
 
     /************ !!!!!!!!!!!!!!!!!!!!!!!!!!!! other/utility methods !!!!!!!!!!!!!!!!!!!!!!!!!!!! *******/
