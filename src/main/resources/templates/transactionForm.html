@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Transaction </title>
+</head>
+<body>
+
+
+<form action="#" th:action="@{/createTransaction}" th:object="${command}" method="post">
+
+    <p>Simple Text Field: <input type="text" th:field="*{textField}" /></p>
+
+</form>

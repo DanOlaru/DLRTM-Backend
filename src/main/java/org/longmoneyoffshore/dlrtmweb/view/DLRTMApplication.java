@@ -1,4 +1,5 @@
-package org.longmoneyoffshore.dlrtmweb.controller;
+/*
+package org.longmoneyoffshore.dlrtmweb.view;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templatemode.TemplateMode;
@@ -38,4 +39,4 @@ public class DLRTMApplication {
 
     }
 
-}
+}*/

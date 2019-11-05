@@ -3,6 +3,7 @@ package org.longmoneyoffshore.dlrtmweb.service;
 
 import org.longmoneyoffshore.dlrtmweb.repository.TransactionDao;
 import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Transaction;
+import org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -55,6 +56,11 @@ public class TransactionService {
 
     public void insertTransaction (Transaction transaction) {
         this.transactionDao.insertTransaction(transaction);
+    }
+
+    public void insertTransaction (TransactionCommandObject transactionCommandObject) {
+
+        this.transactionDao.insertTransaction(new Transaction(transactionCommandObject));
     }
 
 }

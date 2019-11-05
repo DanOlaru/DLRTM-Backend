@@ -2,13 +2,13 @@ Access mysql server from terminal:
 
 start the server from folder:
 
-/usr/local/mysql-8.0.15-macos10.14-x86_64/support-files
+cd /usr`/local/mysql-8.0.15-macos10.14-x86_64/support-files
 
 sudo ./mysql.server start
 
 Go to folder where mysql is located:
 
-/usr/local/mysql-8.0.15-macos10.14-x86_64/bin
+cd /usr/local/mysql-8.0.15-macos10.14-x86_64/bin
 
 Access server:
 

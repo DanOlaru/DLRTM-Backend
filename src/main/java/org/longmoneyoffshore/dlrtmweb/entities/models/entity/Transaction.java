@@ -1,64 +1,72 @@
 package org.longmoneyoffshore.dlrtmweb.entities.models.entity;
 
-
+import lombok.Data;
+import org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject;
 import org.springframework.data.annotation.Id;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 //@Entity
+@Data
 public class Transaction {
 
     @Id
     private String transactionID;
-    private Client client;
-    private ArrayList<Product> productsList;
+    private String clientID;
+    private List<String> productIDList;
     private String transactionStatus;
     private String specialMentions;
 
-    public Transaction() {
-    }
+    public Transaction() { }
 
-    public Transaction(String transactionID, Client client,
-                       ArrayList<Product> productsList, String specialMentions) {
+    public Transaction(String transactionID, String clientID, List<String> productIDList, String specialMentions) {
 
         this.transactionID = transactionID;
-        this.client = client;
-        this.productsList = productsList;
+        this.clientID = clientID;
+        this.productIDList = productIDList;
         this.transactionStatus = "done";
         this.specialMentions = specialMentions;
     }
 
-    public Transaction(Client client, ArrayList<Product> productsList) {
-        this.client = client;
-        this.productsList = productsList;
+    public Transaction(String clientID, List<String> productIDList) {
+        this.clientID = clientID;
+        this.productIDList = productIDList;
         this.specialMentions = "";
         this.transactionStatus = "done";
     }
 
-    public Transaction(Client client, ArrayList<Product> productsList, String transactionStatus) {
-        this.client = client;
-        this.productsList = productsList;
+    public Transaction(String clientID, List<String> productIDList, String transactionStatus) {
+        this.clientID = clientID;
+        this.productIDList = productIDList;
         this.specialMentions = "";
         this.transactionStatus = transactionStatus;
     }
 
-    public Transaction(String clientId, ArrayList<String> productsList, String transactionStatus) {
-        this.client = new Client(clientId);
-        this.productsList = productsList.stream().map(p -> new Product(p)).collect(Collectors.toCollection(ArrayList::new));
+    public Transaction(String clientId, String productIDList) {
+        this.clientID = clientId;
+        this.productIDList = Arrays.asList(productIDList.split(","));
         this.specialMentions = "";
+    }
+
+    public Transaction(String clientId, String productIDList, String transactionStatus, String specialMentions) {
+        this.clientID = clientId;
+        this.productIDList = Arrays.asList(productIDList.split(","));
         this.transactionStatus = transactionStatus;
+        this.specialMentions = specialMentions;
     }
 
-    public Transaction(String clientId, String productsList) {
-        this.client = new Client(clientId);
-        String[] productIds = productsList.split(",");
-        this.productsList = Arrays.stream(productIds).map(p -> new Product(p)).collect(Collectors.toCollection(ArrayList::new));//TODO will be populated from the other tables referenced
-        this.specialMentions = "";
+    public Transaction(TransactionCommandObject tco) {
+        //this(tco.getClientId(),tco.getProductIds());
+        this(tco.getClientId(),tco.getProductIds(),tco.getTransactionStatus(), tco.getTransactionSpecialMentions());
     }
 
-    public String getTransactionID() {
+    public String getProductListAsString() {
+        return productIDList.stream().collect(Collectors.joining(", "));
+    }
+
+    /*public String getTransactionID() {
         return transactionID;
     }
 
@@ -66,20 +74,20 @@ public class Transaction {
         this.transactionID = transactionID;
     }
 
-    public Client getClient() {
-        return client;
+    public String getClientID() {
+        return clientID;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClientID(String clientID) {
+        this.clientID = clientID;
     }
 
-    public ArrayList<Product> getProductsList() {
-        return productsList;
+    public List<String> getProductIDList() {
+        return productIDList;
     }
 
-    public void setProductsList(ArrayList<Product> productsList) {
-        this.productsList = productsList;
+    public void setProductIDList(ArrayList<String> productIDList) {
+        this.productIDList = productIDList;
     }
 
     public String getSpecialMentions() {
@@ -102,11 +110,11 @@ public class Transaction {
     public String toString() {
         return "Transaction{" +
                 "transactionUniqueID='" + transactionID + '\'' +
-                ", clientObjReference=" + client +
-                ", productsList=" + productsList +
+                ", clientObjReference=" + clientID +
+                ", productsList=" + productIDList.toString() +
                 ", productSpecialMentions='" + specialMentions + '\'' +
                 '}';
-    }
+    }*/
 
     //Utility methods coming soon
 

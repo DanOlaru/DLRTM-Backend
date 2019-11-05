@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <title>LongMoneyOffShore:DLRTM </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+
+<div class="container">
+    <div th:if="${not #lists.isEmpty(transactions)}">
+        <h2>Transactions: </h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Transaction Id</th>
+            </tr>
+
+            <tr th:each="transaction : ${transactions}">
+                <td th:text="${transaction.transactionID}"></td>
+            </tr>
+
+        </table>
+    </div>
+</div>

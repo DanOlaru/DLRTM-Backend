@@ -31,6 +31,18 @@
 </div>
 
 
+<form method="post" action="/newTransaction">
+    <h2>Insert product IDs in list:</h2>
+
+    <input type="text" id="select-products-text-input" name="selectedProductIDs" placeholder="Selected Product IDs"/>
+    <br>
+    <input type="text" id="transaction-status-text-input" name="transactionStatus" placeholder="Transaction Status"/>
+    <br>
+    <input type="text" id="transaction-special-mentions-text-input" name="transactionSpecialMentions" placeholder="Special Mentions"/>
+
+    <input type="submit" id="select-button" value="Buy"/>
+</form>
+
 <!--<input type="text" th:field = "*{selectedCustomerID}"/>-->
 
 <!--<form id="triggerform" method="post" action="">
@@ -42,11 +54,6 @@
 
 <br>
 <br>
-
-
-
-
-
 
 
 

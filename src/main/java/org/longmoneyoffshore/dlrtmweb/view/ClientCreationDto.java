@@ -1,4 +1,4 @@
-package org.longmoneyoffshore.dlrtmweb.controller;
+package org.longmoneyoffshore.dlrtmweb.view;
 
 import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Client;
 

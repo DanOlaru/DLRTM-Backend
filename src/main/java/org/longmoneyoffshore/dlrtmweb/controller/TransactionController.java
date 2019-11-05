@@ -1,19 +1,25 @@
 package org.longmoneyoffshore.dlrtmweb.controller;
 
+import lombok.Data;
 import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Transaction;
 import org.longmoneyoffshore.dlrtmweb.service.TransactionService;
+import org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject;
 import org.springframework.http.MediaType;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 @RestController
-@RequestMapping("/transaction")
+@Data
+//@RequestMapping("/transaction")
 public class TransactionController {
 
     private TransactionService transactionService;
+
+    private TransactionCommandObject transactionCommandObject;
+
 
     public TransactionService getTransactionService() {
         return transactionService;
@@ -24,19 +30,21 @@ public class TransactionController {
     }
 
     //@RequestMapping(value = "/", method = RequestMethod.GET)
-    @RequestMapping(method = RequestMethod.GET)
+
+    //@RequestMapping(method = RequestMethod.GET)
+    @GetMapping(value = "/transaction")
     public Collection<Transaction> getAllTransactions() {
         return transactionService.getAllTransactions();
 
     }
 
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/transaction/{id}",method = RequestMethod.GET)
     public Transaction getTransactionById(@PathVariable ("id") String id) {
         return transactionService.getTransactionById(id);
     }
 
     //TODO: unclear how the date can be passed via the url — NEEDS SORTING OUT
-    @RequestMapping(value = "/{date}",method = RequestMethod.GET)
+    @RequestMapping(value = "/transaction/{date}",method = RequestMethod.GET)
     public Collection<Transaction> getTransactionByDate(@PathVariable ("date") Date date) {
 
         //transactions for the current day or a specific date
@@ -44,7 +52,7 @@ public class TransactionController {
 
     }
 
-    @RequestMapping(value = "{id}" , method = RequestMethod.DELETE)
+    @RequestMapping(value = "/transaction/{id}" , method = RequestMethod.DELETE)
     //public Collection<Transaction> deleteTransactionById(@PathVariable("id") String id) {
     public void deleteTransactionById(@PathVariable("id") String id) {
         transactionService.removeTransactionById(id);
@@ -71,13 +79,26 @@ public class TransactionController {
         //return transactionService.getAllTransactions();
     }
 
-    @RequestMapping(value = "/newTransaction", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void insertNewTransaction(@RequestBody String clientId, @RequestBody String productIds) {
+    //@RequestMapping(value = "/newTransaction", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/newTransaction", method = RequestMethod.POST)
+    public void insertNewTransaction(@RequestParam("selectedProductIDs") String productIds,
+                                     @RequestParam("transactionStatus") String transactionStatus,
+                                     @RequestParam("transactionSpecialMentions") String transactionSpecialMentions) {
 
-        transactionService.insertTransaction(new Transaction(clientId, productIds));
+        transactionCommandObject.setProductIds(productIds);
+        transactionCommandObject.setTransactionStatus(transactionStatus);
+        transactionCommandObject.setTransactionSpecialMentions(transactionSpecialMentions);
 
-        //System.out.println("INSERTING TRANSACTION " + transaction.toString());
-        //return transactionService.getAllTransactions();
+        //System.out.println("TESTING transactionSpecialMentions AND transactionStatus " + transactionSpecialMentions + " " + transactionStatus);
+
+        transactionService.insertTransaction(transactionCommandObject);
+
+    }
+
+    @RequestMapping(value = "/createNewTransaction", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void createNewTransaction(@ModelAttribute("command") TransactionCommandObject command, Model model ) {
+
+        transactionService.insertTransaction(new Transaction(command.getClientId(), command.getProductIds()));
 
     }
 

@@ -21,21 +21,20 @@
         <property name="maxActive" value="5" />-->
     </bean>
 
-    <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate" >
+    <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
         <!--<property name="dataSource" ref="dataSource"/>-->
         <constructor-arg name="dataSource" ref="mySqlDataSource"/>
     </bean>
 
 
-    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" >
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="mySqlDataSource"/>
     </bean>
 
 
-
     <!-- product: controller -> service -> dao -->
     <bean id="productDaoImpl" class="org.longmoneyoffshore.dlrtmweb.repository.ProductDaoImpl" scope="singleton">
-        <property name="dataSource" ref="mySqlDataSource" />
+        <property name="dataSource" ref="mySqlDataSource"/>
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
@@ -94,6 +93,7 @@
 
     <bean id="transactionController" class="org.longmoneyoffshore.dlrtmweb.controller.TransactionController">
         <property name="transactionService" ref="transactionService"/>
+        <property name="transactionCommandObject" ref="transactionCommandObject"/>
     </bean>
 
 
@@ -101,8 +101,19 @@
         <property name="clientService" ref="clientService"/>
     </bean>
 
-    <bean id="productsPresenterController" class="org.longmoneyoffshore.dlrtmweb.controller.ProductsPresenterController">
+    <bean id="productsPresenterController"
+          class="org.longmoneyoffshore.dlrtmweb.controller.ProductsPresenterController">
         <property name="productService" ref="productService"/>
+        <property name="clientDao" ref="clientDaoImpl"/>
+        <property name="transactionCommandObject" ref="transactionCommandObject"/>
     </bean>
+
+
+    <bean id="transactionsPresenterController"
+          class="org.longmoneyoffshore.dlrtmweb.controller.TransactionsPresenterController">
+        <property name="transactionService" ref="transactionService"/>
+    </bean>
+
+    <bean id="transactionCommandObject" class="org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject"/>
 
 </beans>

@@ -2,6 +2,7 @@ package org.longmoneyoffshore.dlrtmweb.repository;
 
 
 import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Transaction;
+import org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject;
 
 import java.util.Collection;
 import java.util.Date;
