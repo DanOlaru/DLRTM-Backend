@@ -6,7 +6,6 @@ import lombok.Data;
 public class TransactionCommandObject {
     private String clientId;
     private String productIds;
-
     private String transactionStatus;
     private String transactionSpecialMentions;
 

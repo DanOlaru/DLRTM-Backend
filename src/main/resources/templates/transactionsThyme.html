@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 
+<h3>TESTING</h3>
 
 <div class="container">
     <div th:if="${not #lists.isEmpty(transactions)}">
@@ -14,10 +15,18 @@
         <table class="table table-striped">
             <tr>
                 <th>Transaction Id</th>
+                <th>Client Id</th>
+                <th>Transaction Status</th>
+                <th>Special Mentions</th>
+                <th>Local Date</th>
             </tr>
 
             <tr th:each="transaction : ${transactions}">
                 <td th:text="${transaction.transactionID}"></td>
+                <td th:text="${transaction.clientID}"></td>
+                <td th:text="${transaction.transactionStatus}"></td>
+                <td th:text="${transaction.specialMentions}"></td>
+                <td th:text="${transaction.localDate}"></td>
             </tr>
 
         </table>

@@ -4,13 +4,18 @@ import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Client;
 import org.longmoneyoffshore.dlrtmweb.entities.models.entity.TransactedProduct;
 import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Transaction;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
 import javax.sql.DataSource;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 
@@ -104,7 +109,9 @@ public class TransactionDaoImpl implements TransactionDao {
 
     @Override
     public Collection<Transaction> getAllTransactions() {
-        return null;
+        String sql = "SELECT * FROM transactions";
+
+        return namedParameterJdbcTemplate.query(sql, new TransactionMapper());
     }
 
     @Override
@@ -127,4 +134,25 @@ public class TransactionDaoImpl implements TransactionDao {
 
     @Override
     public void updateTransaction(Transaction transaction) { }
+
+
+    private static final class TransactionMapper implements RowMapper<Transaction> {
+        public TransactionMapper () {}
+
+
+        @Override
+        public Transaction mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+            Transaction transaction = new Transaction();
+
+            transaction.setTransactionID(resultSet.getString("transactionID"));
+            transaction.setClientID(resultSet.getString("clientRef"));
+            transaction.setProductIDList(Arrays.asList(resultSet.getString("productIDs").split(", ")));
+            transaction.setTransactionStatus(resultSet.getString("transactionStatus"));
+            transaction.setSpecialMentions(resultSet.getString("transactionSpecialMentions"));
+            transaction.setLocalDate(LocalDate.parse(resultSet.getString("transactionDate")));
+
+            return transaction;
+        }
+    }
+
 }

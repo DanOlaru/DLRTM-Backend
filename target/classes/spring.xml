@@ -109,8 +109,7 @@
     </bean>
 
 
-    <bean id="transactionsPresenterController"
-          class="org.longmoneyoffshore.dlrtmweb.controller.TransactionsPresenterController">
+    <bean id="transactionsPresenterController" class="org.longmoneyoffshore.dlrtmweb.controller.TransactionsPresenterController">
         <property name="transactionService" ref="transactionService"/>
     </bean>
 

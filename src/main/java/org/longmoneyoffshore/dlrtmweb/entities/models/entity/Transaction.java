@@ -4,6 +4,8 @@ import lombok.Data;
 import org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject;
 import org.springframework.data.annotation.Id;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,6 +20,7 @@ public class Transaction {
     private List<String> productIDList;
     private String transactionStatus;
     private String specialMentions;
+    private LocalDate localDate;
 
     public Transaction() { }
 

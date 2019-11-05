@@ -13,7 +13,10 @@ public class TransactionsPresenterController {
 
     @GetMapping("/presentTransactions")
     public String listTransactions(Model model) {
+
         model.addAttribute("transactions", transactionService.getAllTransactions());
+
+        System.out.println("TESTING: " + transactionService.getAllTransactions().size());
         return "transactionsThyme";
     }
 }
