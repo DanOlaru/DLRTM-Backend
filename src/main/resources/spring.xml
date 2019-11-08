@@ -93,7 +93,13 @@
 
     <bean id="transactionController" class="org.longmoneyoffshore.dlrtmweb.controller.TransactionController">
         <property name="transactionService" ref="transactionService"/>
+
+        <property name="productService" ref="productService"/>
+        <property name="clientService" ref="clientService"/>
+
         <property name="transactionCommandObject" ref="transactionCommandObject"/>
+
+        <property name="onlineStoreController" ref="onlineStoreController"/>
     </bean>
 
 
@@ -114,5 +120,14 @@
     </bean>
 
     <bean id="transactionCommandObject" class="org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject"/>
+
+    <bean id="onlineStoreController" class="org.longmoneyoffshore.dlrtmweb.controller.OnlineStoreController">
+        <property name="transactionService" ref="transactionService"/>
+        <property name="productService" ref="productService"/>
+        <property name="clientService" ref="clientService"/>
+
+    </bean>
+
+
 
 </beans>

@@ -16,7 +16,6 @@ public class TransactionsPresenterController {
 
         model.addAttribute("transactions", transactionService.getAllTransactions());
 
-        System.out.println("TESTING: " + transactionService.getAllTransactions().size());
         return "transactionsThyme";
     }
 }

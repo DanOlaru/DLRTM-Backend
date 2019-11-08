@@ -2,16 +2,20 @@ package org.longmoneyoffshore.dlrtmweb.controller;
 
 import lombok.Data;
 import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Transaction;
+import org.longmoneyoffshore.dlrtmweb.service.ClientService;
+import org.longmoneyoffshore.dlrtmweb.service.ProductService;
 import org.longmoneyoffshore.dlrtmweb.service.TransactionService;
 import org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.Date;
 
-@RestController
+//@RestController
+@Controller
 @Data
 //@RequestMapping("/transaction")
 public class TransactionController {
@@ -19,6 +23,10 @@ public class TransactionController {
     private TransactionService transactionService;
 
     private TransactionCommandObject transactionCommandObject;
+
+    private OnlineStoreController onlineStoreController;
+    private ProductService productService;
+    private ClientService clientService;
 
 
     public TransactionService getTransactionService() {
@@ -38,21 +46,21 @@ public class TransactionController {
 
     }
 
-    @RequestMapping(value = "/transaction/{id}",method = RequestMethod.GET)
-    public Transaction getTransactionById(@PathVariable ("id") String id) {
+    @RequestMapping(value = "/transaction/{id}", method = RequestMethod.GET)
+    public Transaction getTransactionById(@PathVariable("id") String id) {
         return transactionService.getTransactionById(id);
     }
 
     //TODO: unclear how the date can be passed via the url — NEEDS SORTING OUT
-    @RequestMapping(value = "/transaction/{date}",method = RequestMethod.GET)
-    public Collection<Transaction> getTransactionByDate(@PathVariable ("date") Date date) {
+    @RequestMapping(value = "/transaction/{date}", method = RequestMethod.GET)
+    public Collection<Transaction> getTransactionByDate(@PathVariable("date") Date date) {
 
         //transactions for the current day or a specific date
         return transactionService.getTransactionsByDate(date);
 
     }
 
-    @RequestMapping(value = "/transaction/{id}" , method = RequestMethod.DELETE)
+    @RequestMapping(value = "/transaction/{id}", method = RequestMethod.DELETE)
     //public Collection<Transaction> deleteTransactionById(@PathVariable("id") String id) {
     public void deleteTransactionById(@PathVariable("id") String id) {
         transactionService.removeTransactionById(id);
@@ -89,14 +97,34 @@ public class TransactionController {
         transactionCommandObject.setTransactionStatus(transactionStatus);
         transactionCommandObject.setTransactionSpecialMentions(transactionSpecialMentions);
 
-        //System.out.println("TESTING transactionSpecialMentions AND transactionStatus " + transactionSpecialMentions + " " + transactionStatus);
-
         transactionService.insertTransaction(transactionCommandObject);
 
     }
 
+    @RequestMapping(value = "/insertNewTransaction", method = RequestMethod.POST)
+    public String insertNewTransactionAndRefresh(@RequestParam("selectedClientID") String clientID,
+                                                 @RequestParam("selectedProductIDs") String productIds,
+                                                 @RequestParam("transactionStatus") String transactionStatus,
+                                                 @RequestParam("transactionSpecialMentions") String transactionSpecialMentions,
+                                                 Model model) {
+
+        transactionCommandObject.setClientId(clientID);
+        transactionCommandObject.setProductIds(productIds);
+        transactionCommandObject.setTransactionStatus(transactionStatus);
+        transactionCommandObject.setTransactionSpecialMentions(transactionSpecialMentions);
+
+        transactionService.insertTransaction(transactionCommandObject);
+
+        //onlineStoreController.showStore(model);
+        model.addAttribute("clients", clientService.getAllClients());
+        model.addAttribute("products", productService.getAllProducts());
+        model.addAttribute("transactions", transactionService.getAllTransactions());
+        return "index";
+
+    }
+
     @RequestMapping(value = "/createNewTransaction", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void createNewTransaction(@ModelAttribute("command") TransactionCommandObject command, Model model ) {
+    public void createNewTransaction(@ModelAttribute("command") TransactionCommandObject command, Model model) {
 
         transactionService.insertTransaction(new Transaction(command.getClientId(), command.getProductIds()));
 
