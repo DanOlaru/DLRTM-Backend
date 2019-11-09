@@ -126,6 +126,9 @@
         <property name="productService" ref="productService"/>
         <property name="clientService" ref="clientService"/>
 
+        <property name="transactionCommandObject" ref="transactionCommandObject"/>
+
+
     </bean>
 
 

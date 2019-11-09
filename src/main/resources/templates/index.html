@@ -64,10 +64,10 @@
 
     </div>
 
-   <!-- <div class="column">
-        <h2>Select Client:</h2>
-        <input type="text" id="select-client-text-input" name="selectedClientID"/>
-    </div>-->
+    <!-- <div class="column">
+         <h2>Select Client:</h2>
+         <input type="text" id="select-client-text-input" name="selectedClientID"/>
+     </div>-->
 
 </div>
 
@@ -117,6 +117,11 @@
 
             <input type="submit" id="select-button" value="Buy"/>
         </form>
+
+        <br>
+        <form method="get" action="/justTesting">
+            <input type="submit" id="test-submit" value="FML TEST">
+        </form>
     </div>
 </div>
 
@@ -150,14 +155,14 @@
 
     </div>
 
+
     <div class="column">
-        <form method="delete" action="/newTransaction">
+        <form action="/deleteTransaction" method="get">
             <h2>Insert transaction IDs in list to delete:</h2>
 
-            <input type="text" id="delete-transactions-text-input" name="selectedTransactionIDs"
-                   placeholder="Selected Transaction IDs"/>
+            <input type="text" id="delete-transactions-text-input" name="selectedTransactionID" placeholder="Transaction IDs"/>
             <br>
-            <input type="submit" id="delete-button" value="Delete Transaction"/>
+            <input type="submit" id="delete-transaction-button" value="Delete lé Transaction"/>
         </form>
     </div>
 </div>

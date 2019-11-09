@@ -130,7 +130,12 @@ public class TransactionDaoImpl implements TransactionDao {
     }
 
     @Override
-    public void removeTransactionById(String transactionId) { }
+    public void removeTransactionById(String transactionId) {
+        String sql = "DELETE FROM transactions WHERE transactionID = (?)";
+
+        int updatedRows = jdbcTemplate.update(sql, transactionId);
+
+    }
 
     @Override
     public void updateTransaction(Transaction transaction) { }

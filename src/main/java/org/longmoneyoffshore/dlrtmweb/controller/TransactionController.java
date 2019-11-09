@@ -37,8 +37,6 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    //@RequestMapping(value = "/", method = RequestMethod.GET)
-
     //@RequestMapping(method = RequestMethod.GET)
     @GetMapping(value = "/transaction")
     public Collection<Transaction> getAllTransactions() {
@@ -51,7 +49,7 @@ public class TransactionController {
         return transactionService.getTransactionById(id);
     }
 
-    //TODO: unclear how the date can be passed via the url — NEEDS SORTING OUT
+    //TODO: unclear how the date can be passed via the url
     @RequestMapping(value = "/transaction/{date}", method = RequestMethod.GET)
     public Collection<Transaction> getTransactionByDate(@PathVariable("date") Date date) {
 
@@ -60,12 +58,20 @@ public class TransactionController {
 
     }
 
-    @RequestMapping(value = "/transaction/{id}", method = RequestMethod.DELETE)
-    //public Collection<Transaction> deleteTransactionById(@PathVariable("id") String id) {
-    public void deleteTransactionById(@PathVariable("id") String id) {
+
+    @DeleteMapping(value = "transaction/{selectedTransactionID}")
+    public String deleteTransactionById(@PathVariable("selectedTransactionID") String id, Model model) {
+
+        System.out.println("TESTING TESTING: DELETING TRANSACTION BY ID: " + id);
+
         transactionService.removeTransactionById(id);
-        //return transactionService.getAllTransactions();
+
+        model.addAttribute("clients", clientService.getAllClients());
+        model.addAttribute("products", productService.getAllProducts());
+        model.addAttribute("transactions", transactionService.getAllTransactions());
+        return "index";
     }
+
 
     @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     //public Collection<Transaction> updateTransactionById(@RequestBody Transaction transaction) {
@@ -87,41 +93,7 @@ public class TransactionController {
         //return transactionService.getAllTransactions();
     }
 
-    //@RequestMapping(value = "/newTransaction", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    @RequestMapping(value = "/newTransaction", method = RequestMethod.POST)
-    public void insertNewTransaction(@RequestParam("selectedProductIDs") String productIds,
-                                     @RequestParam("transactionStatus") String transactionStatus,
-                                     @RequestParam("transactionSpecialMentions") String transactionSpecialMentions) {
 
-        transactionCommandObject.setProductIds(productIds);
-        transactionCommandObject.setTransactionStatus(transactionStatus);
-        transactionCommandObject.setTransactionSpecialMentions(transactionSpecialMentions);
-
-        transactionService.insertTransaction(transactionCommandObject);
-
-    }
-
-    @RequestMapping(value = "/insertNewTransaction", method = RequestMethod.POST)
-    public String insertNewTransactionAndRefresh(@RequestParam("selectedClientID") String clientID,
-                                                 @RequestParam("selectedProductIDs") String productIds,
-                                                 @RequestParam("transactionStatus") String transactionStatus,
-                                                 @RequestParam("transactionSpecialMentions") String transactionSpecialMentions,
-                                                 Model model) {
-
-        transactionCommandObject.setClientId(clientID);
-        transactionCommandObject.setProductIds(productIds);
-        transactionCommandObject.setTransactionStatus(transactionStatus);
-        transactionCommandObject.setTransactionSpecialMentions(transactionSpecialMentions);
-
-        transactionService.insertTransaction(transactionCommandObject);
-
-        //onlineStoreController.showStore(model);
-        model.addAttribute("clients", clientService.getAllClients());
-        model.addAttribute("products", productService.getAllProducts());
-        model.addAttribute("transactions", transactionService.getAllTransactions());
-        return "index";
-
-    }
 
     @RequestMapping(value = "/createNewTransaction", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createNewTransaction(@ModelAttribute("command") TransactionCommandObject command, Model model) {
@@ -129,6 +101,7 @@ public class TransactionController {
         transactionService.insertTransaction(new Transaction(command.getClientId(), command.getProductIds()));
 
     }
+
 
 }
 
