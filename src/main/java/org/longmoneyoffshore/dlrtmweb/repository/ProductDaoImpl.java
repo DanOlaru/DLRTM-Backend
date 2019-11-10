@@ -14,14 +14,10 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.util.List;
 
-//@Qualifier("")
-//@Component
 @Repository
 public class ProductDaoImpl implements ProductDao {
 
-    //TODO: most likely don't need either DataSource or JdbcTemplate
     private DataSource dataSource;
-    //private BasicDataSource dataSource;
 
     private JdbcTemplate jdbcTemplate;
 
@@ -49,9 +45,7 @@ public class ProductDaoImpl implements ProductDao {
         return dataSource;
     }
 
-    //@Autowired
     public void setDataSource(DataSource dataSource) {
-    //public void setDataSource(BasicDataSource dataSource) {
 
         this.dataSource = dataSource;
         this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -81,16 +75,11 @@ public class ProductDaoImpl implements ProductDao {
 
         String sql = "SELECT * FROM products where uniqueID = " + productId;
 
-        //return jdbcTemplate.queryForObject(sql, new Object[] {productId}, new ProductMapper());
-
         return namedParameterJdbcTemplate.query(sql, new ProductMapper()).get(0);
     }
 
     public int getProductCount() {
         String sql = "SELECT COUNT(*) FROM products";
-
-        //TODO: isn't this property set in the spring.xml?
-        //jdbcTemplate.setDataSource(getDataSource());
 
         int count = jdbcTemplate.queryForObject(sql,Integer.class);
 
@@ -104,7 +93,6 @@ public class ProductDaoImpl implements ProductDao {
         int count = 0;
         String sql = "SELECT COUNT(*) FROM products";
 
-        //int count = namedParameterJdbcTemplate.queryForObject(sql, commandsMap, new ProductMapper ());
         List<Product> productsWithProperty = namedParameterJdbcTemplate.query(sql, new ProductMapper());
 
         count = productsWithProperty.size();
@@ -116,12 +104,7 @@ public class ProductDaoImpl implements ProductDao {
     public String getProductName(String productId) {
         String sql = "SELECT name FROM products WHERE uniqueID = ?";
 
-        //String productName = jdbcTemplate.queryForObject(sql,String.class);
-
         String productName = jdbcTemplate.queryForObject(sql, new Object[] {productId}, String.class); //TODO: this is the old implementation
-
-        //TODO: new implementation
-        //productName = namedParameterJdbcTemplate.query(sql, new ProductMapper()).get(0).getProductName();
 
         return productName;
     }
@@ -131,12 +114,6 @@ public class ProductDaoImpl implements ProductDao {
 
         String sql = "SELECT * FROM products";
 
-        //return jdbcTemplate.query(sql, new ProductMapper());
-
-        //List<Product> resultsUntrimmed = Arrays.asList(namedParameterJdbcTemplate.query(sql, new ProductMapper());
-        //List<Product> results = Arrays.asList(resultsUntrimmed.stream())); //TODO: must trim
-
-        //return results;
         return namedParameterJdbcTemplate.query(sql, new ProductMapper());
     }
 
@@ -214,9 +191,6 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public void updateProduct(Product product) {
-
-        //String SQL = "update Student set age = ? where id = ?";
-
 
         String sql = "UPDATE products set name = :name, manufacturer = :manufacturer, countryOfOrigin = :countryOfOrigin, description = :description," +
                 "unitPurchasePrice = :unitPurchasePrice, unitPrice = :unitPrice, discounts = :discounts, adjustments = :adjustments, credits = :credits, deductions = :deductions," +

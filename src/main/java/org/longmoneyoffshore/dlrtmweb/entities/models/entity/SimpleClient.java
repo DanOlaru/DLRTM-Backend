@@ -1,11 +1,13 @@
 package org.longmoneyoffshore.dlrtmweb.entities.models.entity;
 
+import lombok.Data;
 import org.springframework.lang.Nullable;
 import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Data
 public class SimpleClient {
     @NotNull
     private String clientID;
@@ -71,123 +73,7 @@ public class SimpleClient {
         this.clientSpecialMentions = client.getClientSpecialMentions();
     }
 
-    /****************Getters and setters - methods use to access the private attributes of a class **/
 
-
-
-    /************ !!!!!!!!!!!!!!!!!!!!!!!!!!!! other/utility methods !!!!!!!!!!!!!!!!!!!!!!!!!!!! *******/
-
-    //convert client to List<List<Object>>
-
-  /*  public List<List<Object>> returnClientAsObjectList() {
-        List<List<Object>> values = Arrays.asList(
-                Arrays.asList(
-                        this.clientName, this.clientPhoneNo, this.clientLocation, this.clientProductID,
-                        this.clientQuantity, this.clientPrice, this.clientPriceAdjust, this.clientUrgency,
-                        this.clientValue, this.clientStatus));
-        return values;
-    }*/
-
-    public String getClientID() {
-        return clientID;
-    }
-
-    public void setClientID(String clientID) {
-        this.clientID = clientID;
-    }
-
-    @Nullable
-    public String getClientName() {
-        return clientName;
-    }
-
-    public void setClientName(@Nullable String clientName) {
-        this.clientName = clientName;
-    }
-
-    @Nullable
-    public String getClientBusinessPhone() {
-        return clientBusinessPhone;
-    }
-
-    public void setClientBusinessPhone(@Nullable String clientBusinessPhone) {
-        this.clientBusinessPhone = clientBusinessPhone;
-    }
-
-    @Nullable
-    public String getClientPrimaryEmailAddress() {
-        return clientPrimaryEmailAddress;
-    }
-
-    public void setClientPrimaryEmailAddress(@Nullable String clientPrimaryEmailAddress) {
-        this.clientPrimaryEmailAddress = clientPrimaryEmailAddress;
-    }
-
-    @Nullable
-    public String getClientBillingAddress() {
-        return clientBillingAddress;
-    }
-
-    public void setClientBillingAddress(@Nullable String clientBillingAddress) {
-        this.clientBillingAddress = clientBillingAddress;
-    }
-
-    @Nullable
-    public List<String> getCards() {
-        return cards;
-    }
-
-    public void setCards(@Nullable List<String> cards) {
-        this.cards = cards;
-    }
-
-    public float getClientUrgency() {
-        return clientUrgency;
-    }
-
-    public void setClientUrgency(float clientUrgency) {
-        this.clientUrgency = clientUrgency;
-    }
-
-    public float getClientValue() {
-        return clientValue;
-    }
-
-    public void setClientValue(float clientValue) {
-        this.clientValue = clientValue;
-    }
-
-    public String getClientStatus() {
-        return clientStatus;
-    }
-
-    public void setClientStatus(String clientStatus) {
-        this.clientStatus = clientStatus;
-    }
-
-    public String getClientSpecialMentions() {
-        return clientSpecialMentions;
-    }
-
-    public void setClientSpecialMentions(String clientSpecialMentions) {
-        this.clientSpecialMentions = clientSpecialMentions;
-    }
-
-    public String getClientReferenceCode() {
-        return clientReferenceCode;
-    }
-
-    public void setClientReferenceCode(String clientReferenceCode) {
-        this.clientReferenceCode = clientReferenceCode;
-    }
-
-    public String getRevision() {
-        return revision;
-    }
-
-    public void setRevision(String revision) {
-        this.revision = revision;
-    }
 
     public String smallToString() {
         return "Client{" +

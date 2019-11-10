@@ -1,5 +1,6 @@
 package org.longmoneyoffshore.dlrtmweb.repository;
 
+import lombok.Data;
 import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Client;
 import org.longmoneyoffshore.dlrtmweb.entities.models.entity.TransactedProduct;
 import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Transaction;
@@ -13,12 +14,9 @@ import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
 
+@Data
 public class TransactionDaoImpl implements TransactionDao {
 
     private DataSource dataSource;
@@ -29,44 +27,11 @@ public class TransactionDaoImpl implements TransactionDao {
 
     public TransactionDaoImpl(Client client, ArrayList<TransactedProduct> productsList) { }
 
-    public JdbcTemplate getJdbcTemplate() {
-        return jdbcTemplate;
-    }
-
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
-
-    public NamedParameterJdbcTemplate getNamedParameterJdbcTemplate() {
-        return namedParameterJdbcTemplate;
-    }
-
-    public void setNamedParameterJdbcTemplate(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
-        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-    }
-
-    public DataSource getDataSource() {
-        return dataSource;
-    }
-
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-        this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-    }
-
-    /*
-            String sql = "CREATE TABLE IF NOT EXISTS paymentCards (cardID int NOT NULL AUTO_INCREMENT, cardNumber varchar(45), " +
-                "nameOnCard varchar(255), cardExpirationDate varchar(45), CVC varchar(10), clientID varchar(45)," +
-                "PRIMARY KEY (cardID), FOREIGN KEY (clientID) REFERENCES clients(clientID))";
-
-     */
 
     public void createTable() {
         String sql = "CREATE TABLE IF NOT EXISTS transactions (transactionID int NOT NULL AUTO_INCREMENT, clientRef VARCHAR(255), " +
                 "productIDs CHAR(255), transactionStatus VARCHAR(255), transactionSpecialMentions VARCHAR(255), transactionDate DATE," +
                 "PRIMARY KEY (transactionID), FOREIGN KEY (clientRef) REFERENCES clients(clientID))";
-                //"FOREIGN KEY (productUniqueIDs) REFERENCES products(uniqueID));";
         this.jdbcTemplate.execute(sql);
     }
 
@@ -84,10 +49,6 @@ public class TransactionDaoImpl implements TransactionDao {
         this.jdbcTemplate.execute(sql);
     }
 
-    /*
-    clientRef VARCHAR(255), productIDs CHAR(255), transactionStatus VARCHAR(255), specialMentions VARCHAR(255), transactionDate DATE
-     */
-
     @Override
     public void insertTransaction(Transaction transaction) {
 
@@ -95,7 +56,6 @@ public class TransactionDaoImpl implements TransactionDao {
                 "VALUES (:clientRef, :productIDs, :transactionStatus, :transactionSpecialMentions, :transactionDate)";
 
         SqlParameterSource transactionNamedParameters =
-                //new MapSqlParameterSource("transactionID",null)
                 new MapSqlParameterSource("clientRef", transaction.getClientID())
                 .addValue("clientRef", transaction.getClientID())
                 .addValue("productIDs", transaction.getProductListAsString())
@@ -108,19 +68,18 @@ public class TransactionDaoImpl implements TransactionDao {
     }
 
     @Override
-    public Collection<Transaction> getAllTransactions() {
+    public List<Transaction> getAllTransactions() {
         String sql = "SELECT * FROM transactions";
-
         return namedParameterJdbcTemplate.query(sql, new TransactionMapper());
     }
 
     @Override
-    public Collection<Transaction> getTransactionsByField(Object field) {
+    public List<Transaction> getTransactionsByField(Object field) {
         return null;
     }
 
     @Override
-    public Collection<Transaction> getAllTransactionsByDate(Date date) {
+    public List<Transaction> getAllTransactionsByDate(Date date) {
         return null;
     }
 
@@ -132,12 +91,9 @@ public class TransactionDaoImpl implements TransactionDao {
     @Override
     public void removeTransactionById(String transactionId) {
         String sql = "DELETE FROM transactions WHERE transactionID = (?)";
-
-        int updatedRows = jdbcTemplate.update(sql, transactionId);
-
+        jdbcTemplate.update(sql, transactionId);
     }
 
-    //TODO: test to see if this works
     @Override
     public void removeAllTransactions () {
         String sql = "TRUNCATE TABLE transactions";

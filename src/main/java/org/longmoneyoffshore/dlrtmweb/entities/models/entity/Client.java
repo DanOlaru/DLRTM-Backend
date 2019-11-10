@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
-//@Data
+@Data
 public class Client implements Serializable {
     //@Id
     @NotNull
@@ -194,160 +194,6 @@ public class Client implements Serializable {
         this.revision = myClient.getRevision();
     }*/
 
-    //=============CONSTRUCTORS======================================================================================================
-
-    /****************Getters and setters - methods use to access the private attributes of a class **/
-
-    //@Id
-    //@GeneratedValue(strategy = IDENTITY)
-    //@Column(name = "clientID", unique = true, nullable = false)
-    public String getClientID() {
-        return clientID;
-    }
-
-    public void setClientID(String clientID) {
-        this.clientID = clientID;
-    }
-
-
-    public PersonName getClientName() {
-        return clientName;
-    }
-
-    public void setClientName(PersonName clientName) {
-        this.clientName = clientName;
-    }
-
-    public PhoneNumber getClientBusinessPhone() {
-        return clientBusinessPhone;
-    }
-
-    public void setClientBusinessPhone(PhoneNumber clientBusinessPhone) {
-        this.clientBusinessPhone = clientBusinessPhone;
-    }
-
-
-    public PhoneNumber getClientHomePhone() {
-        return clientHomePhone;
-    }
-
-    public void setClientHomePhone(PhoneNumber clientHomePhone) {
-        this.clientHomePhone = clientHomePhone;
-    }
-
-    public PhoneNumber getClientAlternatePhone() {
-        return clientAlternatePhone;
-    }
-
-    public void setClientAlternatePhone(PhoneNumber clientAlternatePhone) {
-        this.clientAlternatePhone = clientAlternatePhone;
-    }
-
-    public PhoneNumber getClientMobilePhone() {
-        return clientMobilePhone;
-    }
-
-    public void setClientMobilePhone(PhoneNumber clientMobilePhone) {
-        this.clientMobilePhone = clientMobilePhone;
-    }
-
-    public String getClientPrimaryEmailAddress() {
-        return clientPrimaryEmailAddress;
-    }
-
-    public void setClientPrimaryEmailAddress(String clientPrimaryEmailAddress) {
-        this.clientPrimaryEmailAddress = clientPrimaryEmailAddress;
-    }
-
-    public String getClientAlternateEmailAddress() {
-        return clientAlternateEmailAddress;
-    }
-
-    public void setClientAlternateEmailAddress(String clientAlternateEmailAddress) {
-        this.clientAlternateEmailAddress = clientAlternateEmailAddress;
-    }
-
-    public Address getClientBillingAddress() {
-        return clientBillingAddress;
-    }
-
-    public void setClientBillingAddress(Address clientBillingAddress) {
-        this.clientBillingAddress = clientBillingAddress;
-    }
-
-    public Address getClientShippingAddress() {
-        return clientShippingAddress;
-    }
-
-    public void setClientShippingAddress(Address clientShippingAddress) {
-        this.clientShippingAddress = clientShippingAddress;
-    }
-
-    public Address getClientAlternateAddress() {
-        return clientAlternateAddress;
-    }
-
-    public void setClientAlternateAddress(Address clientAlternateAddress) {
-        this.clientAlternateAddress = clientAlternateAddress;
-    }
-
-    @Nullable
-    public List<PaymentCard> getCards() {
-        return cards;
-    }
-
-    public void setCards(@Nullable List<PaymentCard> cards) {
-        this.cards = cards;
-    }
-
-    public float getClientUrgency() {
-        return clientUrgency;
-    }
-
-    public void setClientUrgency(float clientUrgency) {
-        this.clientUrgency = clientUrgency;
-    }
-
-    public float getClientValue() {
-        return clientValue;
-    }
-
-    public void setClientValue(float clientValue) {
-        this.clientValue = clientValue;
-    }
-
-    public String getClientStatus() {
-        return clientStatus;
-    }
-
-    public void setClientStatus(String clientStatus) {
-        this.clientStatus = clientStatus;
-    }
-
-
-    public String getClientSpecialMentions() {
-        return clientSpecialMentions;
-    }
-
-    public void setClientSpecialMentions(String clientSpecialMentions) {
-        this.clientSpecialMentions = clientSpecialMentions;
-    }
-
-    public String getClientReferenceCode() {
-        return clientReferenceCode;
-    }
-
-    public void setClientReferenceCode(String clientReferenceCode) {
-        this.clientReferenceCode = clientReferenceCode;
-    }
-
-    public String getRevision() {
-        return revision;
-    }
-
-    public void setRevision(String revision) {
-        this.revision = revision;
-    }
 
 
     /************ !!!!!!!!!!!!!!!!!!!!!!!!!!!! other/utility methods !!!!!!!!!!!!!!!!!!!!!!!!!!!! *******/
@@ -366,7 +212,6 @@ public class Client implements Serializable {
     public boolean equalsRevision(Client toCompare) {
         return this.getRevision().equals(toCompare.getRevision());
     }
-
 
     public String clientDifferences(Client other) {
         String differencesIndex="";
@@ -438,7 +283,6 @@ public class Client implements Serializable {
                 ", clientHomePhone=" + clientHomePhone.getClientPhoneNo() +
                 ", clientPrimaryEmailAddress='" + clientPrimaryEmailAddress + '\'' +
                 ", clientBillingAddress=" + clientBillingAddress.getFullAddress() +
-                //", cards=" + cards.get(0).simpleCardInfo() +
                 ", clientUrgency=" + clientUrgency +
                 ", clientValue=" + clientValue +
                 ", clientStatus='" + clientStatus + '\'' +

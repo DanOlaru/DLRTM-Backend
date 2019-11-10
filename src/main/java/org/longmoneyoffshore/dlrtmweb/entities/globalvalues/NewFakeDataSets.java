@@ -1,4 +1,4 @@
-package org.longmoneyoffshore.dlrtmweb;
+package org.longmoneyoffshore.dlrtmweb.entities.globalvalues;
 
 import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.Address;
 import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PaymentCard;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class FakeDataSets {
+public class NewFakeDataSets {
 
     //Insert into DB from this list
     public List<Product> productsSimple = new ArrayList<>(Arrays.asList(
@@ -95,7 +95,7 @@ public class FakeDataSets {
                   Address clientAddress, List<PaymentCard> cards, String clientSpecialMentions)
  */
 
-public static Client JasonSmith =  new Client("0001", new PersonName("Jason Smith"), new PhoneNumber("Jason Smith", "555-888-6767"),
+    public static Client JasonSmith =  new Client("0001", new PersonName("Jason Smith"), new PhoneNumber("Jason Smith", "555-888-6767"),
             "jason.smith@gmail.com", new Address("1421 E 23rd St, Chicago, IL, 60615"),
             Arrays.asList(new PaymentCard("1234 4321 5678 0987", "Jason Smith", "10/14/20", "665")),
             "good customer");
@@ -179,5 +179,33 @@ public static Client JasonSmith =  new Client("0001", new PersonName("Jason Smit
                     "good customer") */
 
     ));
+
+
+    //temporary data source
+
+    private List<Product> products =  new ArrayList<>(Arrays.asList(
+            new Product("0001", "Blender", "Phillips", "Netherlands",
+                    "food blender", 20, 10.67,0,0,10,0,
+                    "Free Bread Knife","USD", 100,0,0,0,
+                    "Unit","Pending recalls"),
+
+            new Product("0002", "Mixer", "Sony", "Japan",
+                    "food mixer", 47.8, 20.25,2,-1,20,10,
+                    "10% off blades","USD",180,0,0,0,
+                    "Unit","best in class"),
+
+            new Product("0003", "Grinder", "Sanyo", "South Korea",
+                    "coffee grinder",33, 34.43,3,-3,0,14,
+                    "free CD player","USD",60,0,0,20,
+                    "Unit","new model"),
+
+            new Product("0004", "Coffee Maker", "JVC", "Germany",
+                    "coffee maker",22, 16.15,11,20,3,20,
+                    "5 year warranty","USD",10,0,0,70,
+                    "Unit","buyer's favorite"))
+
+    );
+
+
 
 }

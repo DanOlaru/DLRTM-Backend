@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 import java.util.Date;
 
-//@RestController
 @Controller
 @Data
-//@RequestMapping("/transaction")
 public class TransactionController {
 
     private TransactionService transactionService;
@@ -37,7 +35,6 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    //@RequestMapping(method = RequestMethod.GET)
     @GetMapping(value = "/transaction")
     public Collection<Transaction> getAllTransactions() {
         return transactionService.getAllTransactions();
@@ -71,23 +68,16 @@ public class TransactionController {
 
 
     @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    //public Collection<Transaction> updateTransactionById(@RequestBody Transaction transaction) {
     public void updateTransactionById(@RequestBody Transaction transaction) {
         transactionService.updateTransaction(transaction);
-
-        System.out.println("UPDATING TRANSACTION " + transaction.toString());
-        //return transactionService.getAllTransactions();
     }
 
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    //public boolean insertTransaction(@RequestBody Transaction transaction) {
     public void insertTransaction(@RequestBody Transaction transaction) {
 
         transactionService.insertTransaction(transaction);
 
-        System.out.println("INSERTING TRANSACTION " + transaction.toString());
-        //return transactionService.getAllTransactions();
     }
 
 

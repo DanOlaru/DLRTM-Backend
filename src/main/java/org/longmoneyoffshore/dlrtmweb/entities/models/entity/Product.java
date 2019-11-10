@@ -1,19 +1,18 @@
 package org.longmoneyoffshore.dlrtmweb.entities.models.entity;
 
+import lombok.Data;
 import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PhysicalProperties;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "products")
+@Data
 public class Product {
 
-    //#1 Product id
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private String productUniqueID;
 
-    //#2 Product description
     private String productName;
     private String productManufacturer;
     private String productCountryOfOrigin;
@@ -37,8 +36,6 @@ public class Product {
 
     private String productSpecialMentions;
 
-    //@ManyToOne
-    //@JoinColumn
     @Embedded
     @AttributeOverrides(value = {
             @AttributeOverride(name = "length", column = @Column(name = "LENGTH")),
@@ -51,9 +48,7 @@ public class Product {
     })
     private PhysicalProperties productPhysicalProperties;
 
-    //Internal Reference / Utility fields
 
-    //Zero Constructor
     public Product() {}
 
     //Small Constructors
@@ -173,166 +168,6 @@ public class Product {
     }
 
 
-    public String getProductUniqueID() {
-        return productUniqueID;
-    }
-
-    public void setProductUniqueID(String productUniqueID) {
-        this.productUniqueID = productUniqueID;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public String getProductManufacturer() {
-        return productManufacturer;
-    }
-
-    public void setProductManufacturer(String productManufacturer) {
-        this.productManufacturer = productManufacturer;
-    }
-
-    public String getProductCountryOfOrigin() {
-        return productCountryOfOrigin;
-    }
-
-    public void setProductCountryOfOrigin(String productCountryOfOrigin) {
-        this.productCountryOfOrigin = productCountryOfOrigin;
-    }
-
-    public String getProductDescription() {
-        return productDescription;
-    }
-
-    public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
-    }
-
-    public double getProductUnitPurchasePrice() {
-        return productUnitPurchasePrice;
-    }
-
-    public void setProductUnitPurchasePrice(double productUnitPurchasePrice) {
-        this.productUnitPurchasePrice = productUnitPurchasePrice;
-    }
-
-    public double getProductUnitPrice() {
-        return productUnitPrice;
-    }
-
-    public void setProductUnitPrice(double productUnitPrice) {
-        this.productUnitPrice = productUnitPrice;
-    }
-
-    public double getProductDiscounts() {
-        return productDiscounts;
-    }
-
-    public void setProductDiscounts(double productDiscounts) {
-        this.productDiscounts = productDiscounts;
-    }
-
-    public double getProductAdjustments() {
-        return productAdjustments;
-    }
-
-    public void setProductAdjustments(double productAdjustments) {
-        this.productAdjustments = productAdjustments;
-    }
-
-    public double getProductCredits() {
-        return productCredits;
-    }
-
-    public void setProductCredits(double productCredits) {
-        this.productCredits = productCredits;
-    }
-
-    public double getProductDeductions() {
-        return productDeductions;
-    }
-
-    public void setProductDeductions(double productDeductions) {
-        this.productDeductions = productDeductions;
-    }
-
-    public String getProductSpecialOffers() {
-        return productSpecialOffers;
-    }
-
-    public void setProductSpecialOffers(String productSpecialOffers) {
-        this.productSpecialOffers = productSpecialOffers;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
-    public int getProductItemsInStockInt() {
-        return productItemsInStockInt;
-    }
-
-    public void setProductItemsInStockInt(int productItemsInStockInt) {
-        this.productItemsInStockInt = productItemsInStockInt;
-    }
-
-    public double getProductItemsInStockDecimal() {
-        return productItemsInStockDecimal;
-    }
-
-    public void setProductItemsInStockDecimal(double productItemsInStockDecimal) {
-        this.productItemsInStockDecimal = productItemsInStockDecimal;
-    }
-
-    public double getProductQuantityInStock() {
-        return productQuantityInStock;
-    }
-
-    public void setProductQuantityInStock(double productQuantityInStock) {
-        this.productQuantityInStock = productQuantityInStock;
-    }
-
-    public String getProductMeasurementUnit() {
-        return productMeasurementUnit;
-    }
-
-    public void setProductMeasurementUnit(String productMeasurementUnit) {
-        this.productMeasurementUnit = productMeasurementUnit;
-    }
-
-    public int getProductNeedToReorder() {
-        return productNeedToReorder;
-    }
-
-    public void setProductNeedToReorder(int productNeedToReorder) {
-        this.productNeedToReorder = productNeedToReorder;
-    }
-
-    public String getProductSpecialMentions() {
-        return productSpecialMentions;
-    }
-
-    public void setProductSpecialMentions(String productSpecialMentions) {
-        this.productSpecialMentions = productSpecialMentions;
-    }
-
-    public PhysicalProperties getProductPhysicalProperties() {
-        return productPhysicalProperties;
-    }
-
-    public void setProductPhysicalProperties(PhysicalProperties productPhysicalProperties) {
-        this.productPhysicalProperties = productPhysicalProperties;
-    }
-
    @Override
     public String toString() {
         return "Product{" +
@@ -381,7 +216,6 @@ public class Product {
         this.productNeedToReorder = productNeedToReorder;
         this.productSpecialMentions = productSpecialMentions.trim();
         //this.productPhysicalProperties = physicalProperties.trim();
-
 
     }
 

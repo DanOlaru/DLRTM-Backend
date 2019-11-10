@@ -6,15 +6,16 @@ import org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 public interface TransactionDao {
 
-    Collection<Transaction> getAllTransactions();
+    List<Transaction> getAllTransactions();
 
     //more general get method
-    Collection<Transaction> getTransactionsByField(Object field);
+    List<Transaction> getTransactionsByField(Object field);
     //more specific get methods
-    Collection<Transaction> getAllTransactionsByDate(Date date);
+    List<Transaction> getAllTransactionsByDate(Date date);
 
     Transaction getTransactionById(String transactionId);
 

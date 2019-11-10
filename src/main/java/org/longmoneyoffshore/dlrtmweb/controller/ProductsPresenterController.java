@@ -56,20 +56,4 @@ public class ProductsPresenterController {
 
         return mav;
     }
-
-   /* @Controller
-    public class SomeController {
-        @RequestMapping("/")
-        public String redirect() {
-            return "redirect:/query?q=Thymeleaf+Is+Great!";
-        }
-    }*/
-
-   /* public ProductService getProductService() {
-        return productService;
-    }
-
-    public void setProductService(ProductService productService) {
-        this.productService = productService;
-    }*/
 }

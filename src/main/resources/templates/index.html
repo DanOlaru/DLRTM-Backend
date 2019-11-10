@@ -34,11 +34,6 @@
   clear: both;
 }
 
-
-
-
-
-
     </style>
 </head>
 
@@ -130,6 +125,7 @@
                     <tr>
                         <th>Transaction Id</th>
                         <th>Client Id</th>
+                        <th>Product(s) Id</th>
                         <th>Transaction Status</th>
                         <th>Special Mentions</th>
                         <th>Local Date</th>
@@ -138,6 +134,7 @@
                     <tr th:each="transaction : ${transactions}">
                         <td th:text="${transaction.transactionID}"></td>
                         <td th:text="${transaction.clientID}"></td>
+                        <td th:text="${transaction.productIDList}"></td>
                         <td th:text="${transaction.transactionStatus}"></td>
                         <td th:text="${transaction.specialMentions}"></td>
                         <td th:text="${transaction.localDate}"></td>
@@ -145,7 +142,6 @@
 
                 </table>
             </div>
-
 
         </div>
 

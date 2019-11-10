@@ -1,5 +1,10 @@
 package org.longmoneyoffshore.dlrtmweb.entities.globalvalues;
 
+import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.Address;
+import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PaymentCard;
+import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PersonName;
+import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PhoneNumber;
+import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Client;
 import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Product;
 
 import java.util.ArrayList;
@@ -111,3 +116,5 @@ public class FakeDataSets {
     );
 
 }
+
+

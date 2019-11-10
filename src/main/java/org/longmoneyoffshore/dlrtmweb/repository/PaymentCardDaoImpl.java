@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
 public class PaymentCardDaoImpl implements PaymentCardDao {
 
@@ -40,7 +39,6 @@ public class PaymentCardDaoImpl implements PaymentCardDao {
         return dataSource;
     }
 
-    //@Autowired
     public void setDataSource(DataSource dataSource) {
         //public void setDataSource(BasicDataSource dataSource) {
 

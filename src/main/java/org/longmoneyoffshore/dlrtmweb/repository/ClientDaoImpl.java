@@ -97,10 +97,6 @@ public class ClientDaoImpl implements ClientDao {
             c.setCards(payment.getPaymentCardsByClientId(c.getClientID()));
         });
 
-//        System.out.println("TEST: GETTING ALL CLIENTS: ");
-//        clients.stream().forEach(c -> System.out.println(c.toString()));
-        //return namedParameterJdbcTemplate.query(sql, new ClientMapper());
-
         return clients;
     }
 
@@ -114,7 +110,6 @@ public class ClientDaoImpl implements ClientDao {
 
         String sql = "SELECT * FROM clients WHERE clientID = " + clientId;
 
-        //System.out.println("TEST: GETTING CLIENT BY ID: " + namedParameterJdbcTemplate.query(sql, new ClientMapper()).get(0).smallToString());
         return namedParameterJdbcTemplate.query(sql, new ClientMapper()).get(0);
     }
 
@@ -130,8 +125,6 @@ public class ClientDaoImpl implements ClientDao {
 
     @Override
     public void insertClient(Client client) {
-
-        //System.out.println("CLIENT TO BE INSERTED:" + client.smallToString());
 
         String sqlClients = "INSERT INTO clients (clientID, name, homePhone, businessPhone, alternatePhone, mobilePhone," +
                 "primaryContactPhone, primaryEmail, alternateEmail, billingAddress, shippingAddress, alternateAddress," +
@@ -170,7 +163,6 @@ public class ClientDaoImpl implements ClientDao {
 
         this.jdbcTemplate.execute(sqlCreatePaymentCard);
 
-        //System.out.println("TEST: SO FAR SO GOOD");
 
         client.getCards().stream().forEach(c -> {
             SqlParameterSource cardNamedParameters = new MapSqlParameterSource("cardNumber", c.getCardNumber())

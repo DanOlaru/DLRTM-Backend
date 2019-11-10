@@ -30,7 +30,6 @@ public class OnlineStoreController {
     }
 
 
-    //@RequestMapping(value = "/newTransaction", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping(value = "/newTransaction", method = RequestMethod.POST)
     public void insertNewTransaction(@RequestParam("selectedProductIDs") String productIds,
                                      @RequestParam("transactionStatus") String transactionStatus,
@@ -58,12 +57,10 @@ public class OnlineStoreController {
 
         transactionService.insertTransaction(transactionCommandObject);
 
-        //onlineStoreController.showStore(model);
         model.addAttribute("clients", clientService.getAllClients());
         model.addAttribute("products", productService.getAllProducts());
         model.addAttribute("transactions", transactionService.getAllTransactions());
         return "index";
-
     }
 
 

@@ -5,7 +5,6 @@ import org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -61,65 +60,12 @@ public class Transaction {
     }
 
     public Transaction(TransactionCommandObject tco) {
-        //this(tco.getClientId(),tco.getProductIds());
         this(tco.getClientId(),tco.getProductIds(),tco.getTransactionStatus(), tco.getTransactionSpecialMentions());
     }
 
     public String getProductListAsString() {
         return productIDList.stream().collect(Collectors.joining(", "));
     }
-
-    /*public String getTransactionID() {
-        return transactionID;
-    }
-
-    public void setTransactionID(String transactionID) {
-        this.transactionID = transactionID;
-    }
-
-    public String getClientID() {
-        return clientID;
-    }
-
-    public void setClientID(String clientID) {
-        this.clientID = clientID;
-    }
-
-    public List<String> getProductIDList() {
-        return productIDList;
-    }
-
-    public void setProductIDList(ArrayList<String> productIDList) {
-        this.productIDList = productIDList;
-    }
-
-    public String getSpecialMentions() {
-        return specialMentions;
-    }
-
-    public void setSpecialMentions(String specialMentions) {
-        this.specialMentions = specialMentions;
-    }
-
-    public String getTransactionStatus() {
-        return transactionStatus;
-    }
-
-    public void setTransactionStatus(String transactionStatus) {
-        this.transactionStatus = transactionStatus;
-    }
-
-    @Override
-    public String toString() {
-        return "Transaction{" +
-                "transactionUniqueID='" + transactionID + '\'' +
-                ", clientObjReference=" + clientID +
-                ", productsList=" + productIDList.toString() +
-                ", productSpecialMentions='" + specialMentions + '\'' +
-                '}';
-    }*/
-
-    //Utility methods coming soon
 
 }
 
