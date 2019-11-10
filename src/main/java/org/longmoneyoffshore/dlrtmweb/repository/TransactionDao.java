@@ -20,6 +20,8 @@ public interface TransactionDao {
 
     void removeTransactionById(String transactionId);
 
+    public void removeAllTransactions ();
+
     void updateTransaction(Transaction transaction);
 
     void insertTransaction (Transaction transaction);

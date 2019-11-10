@@ -36,13 +36,16 @@
 
 
 
+
+
+
     </style>
 </head>
 
 <body>
 
 <form method="post" action="/insertNewTransaction">
-    <div class="row" style="background-color:#000000; color:#FFFFFF; font:">
+    <div class="row" style="background-color:#000000; color:#FFFFFF;">
         <div class="column">
             <div class="container">
                 <div th:if="${not #lists.isEmpty(clients)}">
@@ -110,7 +113,7 @@
             <br>
             <input type="text" id="transaction-special-mentions-text-input" name="transactionSpecialMentions"
                    placeholder="Special Mentions"/>
-
+            <br>
             <input type="submit" id="select-button" value="Buy"/>
 
         </div>
@@ -156,8 +159,15 @@
             <input type="text" id="delete-transactions-text-input" name="selectedTransactionID"
                    placeholder="Transaction IDs"/>
             <br>
-            <input type="submit" id="delete-transaction-button" value="Delete lé Transaction"/>
+            <input type="submit" id="delete-transaction-button" value="Delete Transaction"/>
+
         </form>
+
+        <form action="/deleteAllTransactions" method="get">
+            <br>
+            <input type="submit" id="delete-all-transactions-button" value="Delete All Transactions"/>
+        </form>
+
     </div>
 </div>
 

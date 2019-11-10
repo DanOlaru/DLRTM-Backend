@@ -91,7 +91,6 @@ public class TransactionController {
     }
 
 
-
     @RequestMapping(value = "/createNewTransaction", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createNewTransaction(@ModelAttribute("command") TransactionCommandObject command, Model model) {
 

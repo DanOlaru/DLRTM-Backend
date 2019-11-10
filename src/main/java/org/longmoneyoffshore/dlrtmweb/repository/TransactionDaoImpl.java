@@ -137,6 +137,13 @@ public class TransactionDaoImpl implements TransactionDao {
 
     }
 
+    //TODO: test to see if this works
+    @Override
+    public void removeAllTransactions () {
+        String sql = "TRUNCATE TABLE transactions";
+        jdbcTemplate.update(sql);
+    }
+
     @Override
     public void updateTransaction(Transaction transaction) { }
 

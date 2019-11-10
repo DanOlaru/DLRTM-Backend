@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.*;
 
 @Controller
 @Data
@@ -68,12 +67,8 @@ public class OnlineStoreController {
     }
 
 
-    //@DeleteMapping(value = "deleteTransaction/?selectedTransactionID={selectedTransactionID}")
     @GetMapping(value = "/deleteTransaction")
-    //public String deleteById(@RequestParam("selectedTransactionID") String id, Model model) {
     public String deleteById(@RequestParam("selectedTransactionID") String id, Model model) {
-
-        System.out.println("TESTING TESTING: DELETING TRANSACTION BY ID: ");
 
        transactionService.removeTransactionById(id);
 
@@ -83,11 +78,21 @@ public class OnlineStoreController {
         return "index";
     }
 
+    @GetMapping(value = "/deleteAllTransactions")
+    public String deleteAll(Model model) {
 
-    //@RequestMapping(value = "/justTesting", method = RequestMethod.GET)
+        transactionService.removeAllTransactions();
+
+        model.addAttribute("clients", clientService.getAllClients());
+        model.addAttribute("products", productService.getAllProducts());
+        model.addAttribute("transactions", transactionService.getAllTransactions());
+        return "index";
+    }
+
+
     @RequestMapping(value = "/justTesting")
     public void justTestMethod() {
-        System.out.println("TESTING FML THIS IS TESTING");
+        System.out.println("TESTING, THIS IS TESTING");
     }
 
 }

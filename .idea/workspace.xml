@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed8da808-fee5-4c82-9b40-5c4f870cd86a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/backup templates/index_old_3.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/OnlineStoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/OnlineStoreController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/TransactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/TransactionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/TransactionDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/TransactionDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/TransactionDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/TransactionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -325,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573342192077</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="FIRST WORKING MODEL!!!&#10;&#10;clientID text box positioned in the right area&#10;&#10;application correctly deletes transactions,&#10; &#10;displays tables in thymeleaf templates&#10; &#10;and inputs commands made on the web end into the DB">
+      <created>1573347286295</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1573347286301</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -357,7 +367,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="A first iteration of &#10;- data model&#10;- data access object&#10;- controllers&#10;- service objects" />
     <MESSAGE value="A second iteration of &#10;- data model&#10;- data access object&#10;- controllers&#10;- service objects&#10;&#10;- Does not run" />
     <MESSAGE value="A second iteration of — REVISED &#10;- data model&#10;- data access object&#10;- controllers&#10;- service objects&#10;&#10;- Does not run" />
     <MESSAGE value="A second iteration of — REVISED &#10;&#10;- Further implementation touches to data access object&#10;&#10;- Still does not run" />
@@ -382,6 +391,7 @@
     <MESSAGE value="application &#10;&#10;- correctly displays transactions on the Thymeleaf view&#10;- correctly generates and inserts transactions into DB" />
     <MESSAGE value="application correctly displays tables in thymeleaf templates&#10; &#10;and inputs commands made on the web end into the DB" />
     <MESSAGE value="application correctly deletes transactions,&#10; &#10;displays tables in thymeleaf templates&#10; &#10;and inputs commands made on the web end into the DB" />
-    <option name="LAST_COMMIT_MESSAGE" value="application correctly deletes transactions,&#10; &#10;displays tables in thymeleaf templates&#10; &#10;and inputs commands made on the web end into the DB" />
+    <MESSAGE value="FIRST WORKING MODEL!!!&#10;&#10;clientID text box positioned in the right area&#10;&#10;application correctly deletes transactions,&#10; &#10;displays tables in thymeleaf templates&#10; &#10;and inputs commands made on the web end into the DB" />
+    <option name="LAST_COMMIT_MESSAGE" value="FIRST WORKING MODEL!!!&#10;&#10;clientID text box positioned in the right area&#10;&#10;application correctly deletes transactions,&#10; &#10;displays tables in thymeleaf templates&#10; &#10;and inputs commands made on the web end into the DB" />
   </component>
 </project>

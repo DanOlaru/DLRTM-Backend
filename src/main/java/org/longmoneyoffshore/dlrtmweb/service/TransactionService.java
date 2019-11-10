@@ -48,6 +48,8 @@ public class TransactionService {
         this.transactionDao.removeTransactionById(id);
     }
 
+    public void removeAllTransactions () { this.transactionDao.removeAllTransactions(); }
+
 
     public void updateTransaction (Transaction transaction) {
 
