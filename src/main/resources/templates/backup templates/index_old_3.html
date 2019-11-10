@@ -35,70 +35,69 @@
 }
 
 
-
     </style>
 </head>
 
 <body>
 
-<form method="post" action="/insertNewTransaction">
-    <div class="row" style="background-color:#000000; color:#FFFFFF; font:">
-        <div class="column">
-            <div class="container">
-                <div th:if="${not #lists.isEmpty(clients)}">
-                    <h2>Client Lists</h2>
-                    <table class="table table-striped">
-                        <tr>
-                            <th>Id</th>
-                            <th>Client Name</th>
-                        </tr>
+<div class="row" style="background-color:#000000; color:#FFFFFF;">
+    <div class="column">
+        <div class="container">
+            <div th:if="${not #lists.isEmpty(clients)}">
+                <h2>Client Lists</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Id</th>
+                        <th>Client Name</th>
+                    </tr>
 
-                        <tr th:each="client : ${clients}">
-                            <td th:text="${client.clientID}"></td>
-                            <td th:text="${client.clientName.clientFirstName}"></td>
-                            <td th:text="${client.clientName.clientLastName}"></td>
-                        </tr>
+                    <tr th:each="client : ${clients}">
+                        <td th:text="${client.clientID}"></td>
+                        <td th:text="${client.clientName.clientFirstName}"></td>
+                        <td th:text="${client.clientName.clientLastName}"></td>
+                    </tr>
 
-                    </table>
+                </table>
 
-                </div>
             </div>
-
-        </div>
-
-        <div class="column">
-            <h2>Select Client:</h2>
-            <input type="text" id="select-client-text-input-first" name="selectedClientID"/>
         </div>
 
     </div>
 
+    <div class="column">
+         <h2>Select Client:</h2>
+         <input type="text" id="select-client-text-input-first" name="selectedClientID"/>
+     </div>
 
-    <div class="row" style="background-color:#DD0000; color:#FFFFFF;">
-        <div class="column">
-            <div class="container">
-                <div th:if="${not #lists.isEmpty(products)}">
-                    <h2>Product Lists</h2>
-                    <table class="table table-striped">
-                        <tr>
-                            <th>Id</th>
-                            <th>Product Name</th>
-                            <th>Purchase price</th>
-                        </tr>
+</div>
 
-                        <tr th:each="product : ${products}">
-                            <td th:text="${product.productUniqueID}"></td>
-                            <td th:text="${product.productName}"></td>
-                            <td th:text="${product.productUnitPurchasePrice}"></td>
-                        </tr>
 
-                    </table>
-                </div>
+<div class="row" style="background-color:#DD0000; color:#FFFFFF;">
+    <div class="column">
+        <div class="container">
+            <div th:if="${not #lists.isEmpty(products)}">
+                <h2>Product Lists</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Id</th>
+                        <th>Product Name</th>
+                        <th>Purchase price</th>
+                    </tr>
+
+                    <tr th:each="product : ${products}">
+                        <td th:text="${product.productUniqueID}"></td>
+                        <td th:text="${product.productName}"></td>
+                        <td th:text="${product.productUnitPurchasePrice}"></td>
+                    </tr>
+
+                </table>
             </div>
-
         </div>
-        <div class="column">
 
+    </div>
+    <div class="column">
+
+        <form method="post" action="/insertNewTransaction">
 
             <h2>Insert product IDs in list:</h2>
 
@@ -112,11 +111,10 @@
                    placeholder="Special Mentions"/>
 
             <input type="submit" id="select-button" value="Buy"/>
+        </form>
 
-        </div>
     </div>
-</form>
-
+</div>
 
 <div class="row" style="background-color:#FFCE00;">
     <div class="column">
@@ -153,8 +151,7 @@
         <form action="/deleteTransaction" method="get">
             <h2>Insert transaction IDs in list to delete:</h2>
 
-            <input type="text" id="delete-transactions-text-input" name="selectedTransactionID"
-                   placeholder="Transaction IDs"/>
+            <input type="text" id="delete-transactions-text-input" name="selectedTransactionID" placeholder="Transaction IDs"/>
             <br>
             <input type="submit" id="delete-transaction-button" value="Delete lé Transaction"/>
         </form>

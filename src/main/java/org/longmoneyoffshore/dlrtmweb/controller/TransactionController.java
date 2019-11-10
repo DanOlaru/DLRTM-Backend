@@ -61,9 +61,6 @@ public class TransactionController {
 
     @DeleteMapping(value = "transaction/{selectedTransactionID}")
     public String deleteTransactionById(@PathVariable("selectedTransactionID") String id, Model model) {
-
-        System.out.println("TESTING TESTING: DELETING TRANSACTION BY ID: " + id);
-
         transactionService.removeTransactionById(id);
 
         model.addAttribute("clients", clientService.getAllClients());
