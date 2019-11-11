@@ -40,6 +40,7 @@
 
 
 
+
     </style>
 </head>
 
@@ -183,32 +184,8 @@
                            placeholder="Product IDs"/>
                     <input type="submit" id="delete-product-button" value="Delete Product"/>
                 </form>
-
             </div>
 
-            <div class="column">
-                <form method="post" action="/insertNewTransaction">
-
-                    <h2> Make a transaction: </h2>
-
-                    <input type="text" id="select-client-text-input-first" name="selectedClientID"
-                           placeholder="Client ID"/>
-                    <br>
-                    <input type="text" id="select-products-text-input" name="selectedProductIDs"
-                           placeholder="Selected Product IDs"/>
-                    <br>
-                    <input type="text" id="transaction-status-text-input" name="transactionStatus"
-                           placeholder="Transaction Status"/>
-                    <br>
-                    <input type="text" id="transaction-special-mentions-text-input" name="transactionSpecialMentions"
-                           placeholder="Special Mentions"/>
-                    <br>
-                    <input type="submit" id="select-button" value="Buy"/>
-
-                </form>
-
-
-            </div>
 
         </div>
 
@@ -249,20 +226,45 @@
 
 
     <div class="column">
-        <form action="/deleteTransaction" method="get">
-            <h2>Insert transaction IDs in list to delete:</h2>
 
-            <input type="text" id="delete-transactions-text-input" name="selectedTransactionID"
-                   placeholder="Transaction IDs"/>
-            <br>
-            <input type="submit" id="delete-transaction-button" value="Delete Transaction"/>
+        <div class="column">
+            <form method="post" action="/insertNewTransaction">
 
-        </form>
+                <h2> Make a transaction: </h2>
 
-        <form action="/deleteAllTransactions" method="get">
-            <br>
-            <input type="submit" id="delete-all-transactions-button" value="Delete All Transactions"/>
-        </form>
+                <input type="text" id="select-client-text-input-first" name="selectedClientID"
+                       placeholder="Client ID"/>
+                <br>
+                <input type="text" id="select-products-text-input" name="selectedProductIDs"
+                       placeholder="Selected Product IDs"/>
+                <br>
+                <input type="text" id="transaction-status-text-input" name="transactionStatus"
+                       placeholder="Transaction Status"/>
+                <br>
+                <input type="text" id="transaction-special-mentions-text-input" name="transactionSpecialMentions"
+                       placeholder="Special Mentions"/>
+                <br>
+                <input type="submit" id="select-button" value="Buy"/>
+            </form>
+        </div>
+
+        <div class="column">
+
+            <form action="/deleteTransaction" method="get">
+                <h2>Delete transaction by ID:</h2>
+
+                <input type="text" id="delete-transactions-text-input" name="selectedTransactionID"
+                       placeholder="Transaction IDs"/>
+                <br>
+                <input type="submit" id="delete-transaction-button" value="Delete Transaction"/>
+
+            </form>
+
+            <form action="/deleteAllTransactions" method="get">
+                <br>
+                <input type="submit" id="delete-all-transactions-button" value="Delete All Transactions"/>
+            </form>
+        </div>
 
     </div>
 </div>
