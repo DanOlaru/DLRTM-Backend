@@ -34,12 +34,19 @@
   clear: both;
 }
 
+
+
+
+
+
+
     </style>
 </head>
 
 <body>
 
-<form method="post" action="/insertNewTransaction">
+<div>
+
     <div class="row" style="background-color:#000000; color:#FFFFFF;">
         <div class="column">
             <div class="container">
@@ -56,17 +63,43 @@
                             <td th:text="${client.clientName.clientFirstName}"></td>
                             <td th:text="${client.clientName.clientLastName}"></td>
                         </tr>
-
                     </table>
-
                 </div>
             </div>
 
         </div>
 
         <div class="column">
-            <h2>Select Client:</h2>
-            <input type="text" id="select-client-text-input-first" name="selectedClientID"/>
+            <form action="/deleteClient" method="post">
+                <input type="text" id="delete-client-text-input" name="selectedClientID" placeholder="Client IDs"/>
+                <input type="submit" id="delete-client-button" value="Delete Client"/>
+            </form>
+
+            <form method="post" action="/createNewClient">
+
+                <h2>Create New Client: :</h2>
+                <input type="text" id="new-client-ID" name="clientID" placeholder="Client ID"/>
+                <br>
+                <input type="text" id="new-client-name" name="clientName" placeholder="Client Name"/>
+
+                <br>
+                <input type="text" id="new-client-phone" name="clientPhone" placeholder="Client Phone"/>
+
+                <br>
+                <input type="text" id="new-client-email" name="clientEmail" placeholder="Client Email"/>
+
+                <br>
+                <input type="text" id="new-client-address" name="clientAddress" placeholder="Client Address"/>
+
+                <br>
+                <input type="text" id="new-client-status" name="clientStatus" placeholder="Client status"/>
+                <br>
+                <input type="text" id="new-client-specialMentions" name="clientSpecialMentions"
+                       placeholder="Client Special Mentions"/>
+                <br>
+
+                <input type="submit" id="insert-client-button" value="Insert"/>
+            </form>
         </div>
 
     </div>
@@ -87,7 +120,7 @@
                         <tr th:each="product : ${products}">
                             <td th:text="${product.productUniqueID}"></td>
                             <td th:text="${product.productName}"></td>
-                            <td th:text="${product.productUnitPurchasePrice}"></td>
+                            <td th:text="${product.productUnitPrice}"></td>
                         </tr>
 
                     </table>
@@ -95,26 +128,79 @@
             </div>
 
         </div>
+
         <div class="column">
 
+            <div class="column">
+                <form method="post" action="/createNewProduct">
 
-            <h2>Insert product IDs in list:</h2>
+                    <h2>Create new product: :</h2>
 
-            <input type="text" id="select-products-text-input" name="selectedProductIDs"
-                   placeholder="Selected Product IDs"/>
-            <br>
-            <input type="text" id="transaction-status-text-input" name="transactionStatus"
-                   placeholder="Transaction Status"/>
-            <br>
-            <input type="text" id="transaction-special-mentions-text-input" name="transactionSpecialMentions"
-                   placeholder="Special Mentions"/>
-            <br>
-            <input type="submit" id="select-button" value="Buy"/>
+                    <input type="text" id="new-product-uniqueID" name="uniqueID" placeholder="Product Unique ID"/>
+                    <br>
+                    <input type="text" id="new-product-name" name="name" placeholder="Product Name"/>
+                    <br>
+                    <input type="text" id="new-product-manufacturer" name="manufacturer"
+                           placeholder="Product manufacturer"/>
+                    <br>
+                    <input type="text" id="new-product-countryOfOrigin" name="countryOfOrigin"
+                           placeholder="Product country Of Origin"/>
+                    <br>
+                    <input type="text" id="new-product-description" name="description"
+                           placeholder="Product description"/>
+                    <br>
+                    <input type="text" id="new-product-unitPrice" name="unitPrice" placeholder="Product Price"/>
+                    <br>
+                    <input type="text" id="new-product-specialOffers" name="specialOffers"
+                           placeholder="Special Offers"/>
+                    <br>
+                    <input type="text" id="new-product-itemsInStockInt" name="itemsInStockInt"
+                           placeholder="Items in stock"/>
+                    <br>
+                    <input type="text" id="new-product-specialMentions" name="specialMentions"
+                           placeholder="Special Mentions"/>
+                    <br>
+
+                    <input type="submit" id="create-product-button" value="Create"/>
+                </form>
+
+                <form action="/deleteProduct" method="post">
+                    <input type="text" id="delete-products-text-input" name="selectedProductID"
+                           placeholder="Product IDs"/>
+                    <input type="submit" id="delete-product-button" value="Delete Product"/>
+                </form>
+
+            </div>
+
+            <div class="column">
+                <form method="post" action="/insertNewTransaction">
+
+                    <h2> Make a transaction: </h2>
+
+                    <input type="text" id="select-client-text-input-first" name="selectedClientID"
+                           placeholder="Client ID"/>
+                    <br>
+                    <input type="text" id="select-products-text-input" name="selectedProductIDs"
+                           placeholder="Selected Product IDs"/>
+                    <br>
+                    <input type="text" id="transaction-status-text-input" name="transactionStatus"
+                           placeholder="Transaction Status"/>
+                    <br>
+                    <input type="text" id="transaction-special-mentions-text-input" name="transactionSpecialMentions"
+                           placeholder="Special Mentions"/>
+                    <br>
+                    <input type="submit" id="select-button" value="Buy"/>
+
+                </form>
+
+
+            </div>
 
         </div>
-    </div>
-</form>
 
+    </div>
+
+</div>
 
 <div class="row" style="background-color:#FFCE00;">
     <div class="column">

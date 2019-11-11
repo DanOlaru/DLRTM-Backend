@@ -18,8 +18,6 @@ public class TransactionService {
 
     private TransactionDao transactionDao;
 
-
-
     public List<Transaction> getAllTransactions() {
         return this.transactionDao.getAllTransactions();
     }

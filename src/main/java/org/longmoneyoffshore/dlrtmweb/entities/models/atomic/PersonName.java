@@ -1,10 +1,13 @@
 package org.longmoneyoffshore.dlrtmweb.entities.models.atomic;
 
+import lombok.Data;
+
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.StringTokenizer;
 
 //@Embeddable
+@Data
 public class PersonName { //implements Serializable {
 
     //Enum<String> PersonalTitles {"Mr.","Mrs.","Ms.", "Miss."} //TODO what's wrong with these??
@@ -19,6 +22,14 @@ public class PersonName { //implements Serializable {
     private String clientLastName;
 
     private String nickname, alias;
+
+    public PersonName() {
+        this.clientMiddleName = "";
+        this.clientFirstName = "";
+        this.clientLastName = "";
+        this.nickname = "";
+        this.alias = "";
+    }
 
     //#1 constructor that separates individual names from single String name, no title or postfix
     public PersonName(String fullName) {

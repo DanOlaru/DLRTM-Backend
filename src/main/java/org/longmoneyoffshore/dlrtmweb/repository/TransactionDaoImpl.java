@@ -35,7 +35,7 @@ public class TransactionDaoImpl implements TransactionDao {
         this.jdbcTemplate.execute(sql);
     }
 
-    public void clearTables() {
+    public void clearTable() {
         createTable();
 
         String sql = "TRUNCATE TABLE transactions";
@@ -43,6 +43,8 @@ public class TransactionDaoImpl implements TransactionDao {
     }
 
     public void dropTable() {
+
+        createTable();
 
         String sql = "DROP TABLE transactions";
 
@@ -69,6 +71,9 @@ public class TransactionDaoImpl implements TransactionDao {
 
     @Override
     public List<Transaction> getAllTransactions() {
+
+        createTable();
+
         String sql = "SELECT * FROM transactions";
         return namedParameterJdbcTemplate.query(sql, new TransactionMapper());
     }

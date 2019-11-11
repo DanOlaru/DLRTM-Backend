@@ -1,5 +1,6 @@
 package org.longmoneyoffshore.dlrtmweb.repository;
 
+import lombok.Data;
 import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.*;
 import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Client;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -8,17 +9,18 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
-import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+@Data
 public class ClientDaoImpl implements ClientDao {
 
-    private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    private PaymentCardDaoImpl payment;
+
+    private PaymentCardDaoImpl paymentCardDao;
+    private TransactionDaoImpl transactionDao;
 
     public JdbcTemplate getJdbcTemplate() {
         return jdbcTemplate;
@@ -38,24 +40,13 @@ public class ClientDaoImpl implements ClientDao {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
 
-    public DataSource getDataSource() {
-        return dataSource;
+
+    public PaymentCardDaoImpl getPaymentCardDao() {
+        return paymentCardDao;
     }
 
-    public void setDataSource(DataSource dataSource) {
-        //public void setDataSource(BasicDataSource dataSource) {
-        this.dataSource = dataSource;
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-        this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-    }
-
-
-    public PaymentCardDaoImpl getPayment() {
-        return payment;
-    }
-
-    public void setPayment(PaymentCardDaoImpl payment) {
-        this.payment = payment;
+    public void setPaymentCardDao(PaymentCardDaoImpl paymentCardDao) {
+        this.paymentCardDao = paymentCardDao;
     }
 
     public void createTable() {
@@ -71,11 +62,14 @@ public class ClientDaoImpl implements ClientDao {
 
     @Override
     public void clearTables() {
-        payment.clearTable();
+
+        paymentCardDao.dropTable();
+        transactionDao.dropTable();
 
         createTable();
 
         String sql = "TRUNCATE TABLE clients";
+
         this.jdbcTemplate.execute(sql);
     }
 
@@ -88,13 +82,13 @@ public class ClientDaoImpl implements ClientDao {
 
     @Override
     public List<Client> getAllClients() {
-        //TODO: need to join tables clients with paymentCards???
+
         String sql = "SELECT * FROM clients";
 
         List<Client> clients = namedParameterJdbcTemplate.query(sql, new ClientMapper());
 
         clients.stream().forEach(c -> {
-            c.setCards(payment.getPaymentCardsByClientId(c.getClientID()));
+            c.setCards(paymentCardDao.getPaymentCardsByClientId(c.getClientID()));
         });
 
         return clients;
@@ -108,7 +102,7 @@ public class ClientDaoImpl implements ClientDao {
     @Override
     public Client getClientById(String clientId) {
 
-        String sql = "SELECT * FROM clients WHERE clientID = " + clientId;
+        String sql = "SELECT * FROM clients WHERE clientID =" + clientId;
 
         return namedParameterJdbcTemplate.query(sql, new ClientMapper()).get(0);
     }
@@ -116,6 +110,15 @@ public class ClientDaoImpl implements ClientDao {
     @Override
     public void removeClientById(String clientId) {
 
+        String sqlTransactionFK = "DELETE FROM transactions WHERE clientRef IN (?)";
+        jdbcTemplate.update(sqlTransactionFK, new Object[] {clientId});
+
+
+        String sqlCardsFK = "DELETE FROM paymentCards WHERE clientID IN (?)";
+        jdbcTemplate.update(sqlCardsFK, new Object[] {clientId});
+
+        String sql = "DELETE FROM clients WHERE clientID IN (?)";
+        jdbcTemplate.update(sql, new Object[] {clientId});
     }
 
     @Override
@@ -140,12 +143,13 @@ public class ClientDaoImpl implements ClientDao {
                 .addValue("businessPhone", client.getClientBusinessPhone().getClientPhoneNo())
                 .addValue("alternatePhone", client.getClientAlternatePhone().getClientPhoneNo())
                 .addValue("mobilePhone", client.getClientMobilePhone().getClientPhoneNo())
+                .addValue("primaryContactPhone", client.getClientMobilePhone().getClientPhoneNo())
                 .addValue("primaryEmail", client.getClientPrimaryEmailAddress())
                 .addValue("alternateEmail", client.getClientAlternateEmailAddress())
                 .addValue("billingAddress", client.getClientBillingAddress().getFullAddress())
                 .addValue("shippingAddress", client.getClientShippingAddress().getFullAddress())
                 .addValue("alternateAddress", client.getClientAlternateAddress().getFullAddress())
-                //.addValue("deliveryAddress", client.getClientDeliveryAddress().getFullAddress())
+                .addValue("deliveryAddress", client.getClientShippingAddress().getFullAddress())
                 .addValue("clientUrgency", client.getClientUrgency())
                 .addValue("clientValue", client.getClientValue())
                 .addValue("clientStatus", client.getClientStatus())
@@ -157,12 +161,13 @@ public class ClientDaoImpl implements ClientDao {
         String sqlCards = "INSERT INTO paymentCards (cardNumber, nameOnCard, cardExpirationDate, CVC, clientID) " +
                         "VALUES (:cardNumber, :nameOnCard, :cardExpirationDate, :CVC, :clientID)";
 
-        String sqlCreatePaymentCard = "CREATE TABLE IF NOT EXISTS paymentCards (cardID int NOT NULL AUTO_INCREMENT, cardNumber varchar(45), " +
+        String sqlCreatePaymentCards = "CREATE TABLE IF NOT EXISTS paymentCards (cardID int NOT NULL AUTO_INCREMENT, cardNumber varchar(45), " +
                 "nameOnCard varchar(255), cardExpirationDate varchar(45), CVC varchar(10), clientID varchar(45)," +
                 "PRIMARY KEY (cardID), FOREIGN KEY (clientID) REFERENCES clients(clientID))";
 
-        this.jdbcTemplate.execute(sqlCreatePaymentCard);
+        //this.jdbcTemplate.execute(sqlCreatePaymentCards);
 
+        paymentCardDao.createTable();
 
         client.getCards().stream().forEach(c -> {
             SqlParameterSource cardNamedParameters = new MapSqlParameterSource("cardNumber", c.getCardNumber())

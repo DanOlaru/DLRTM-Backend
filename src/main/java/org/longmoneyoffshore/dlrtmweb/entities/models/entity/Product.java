@@ -2,6 +2,7 @@ package org.longmoneyoffshore.dlrtmweb.entities.models.entity;
 
 import lombok.Data;
 import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PhysicalProperties;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
@@ -36,7 +37,7 @@ public class Product {
 
     private String productSpecialMentions;
 
-    @Embedded
+    /*@Embedded
     @AttributeOverrides(value = {
             @AttributeOverride(name = "length", column = @Column(name = "LENGTH")),
             @AttributeOverride(name = "width", column = @Column(name = "WIDTH")),
@@ -45,11 +46,13 @@ public class Product {
             @AttributeOverride(name = "weight", column = @Column(name = "WEIGHT")),
             @AttributeOverride(name = "sizeMeasurementUnit", column = @Column(name = "SIZEMEASUREMENTUNIT")),
             @AttributeOverride(name = "weightMeasurementUnit", column = @Column(name = "WEIGHTMEASUREMENTUNIT"))
-    })
+    })*/
+
+    @Nullable
     private PhysicalProperties productPhysicalProperties;
 
 
-    public Product() {}
+    public Product() { }
 
     //Small Constructors
     public Product(String productUniqueID) {

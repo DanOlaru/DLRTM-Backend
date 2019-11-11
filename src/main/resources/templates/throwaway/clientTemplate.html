@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>LongMoneyOffShore:DLRTM </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+
+
+<br>
+<br>
+
+
+<div class="row" style="background-color:#000000; color:#FFFFFF;">
+    <div class="column">
+        <form method="post" action="/createNewClient">
+
+            <h2>Create New Client: :</h2>
+            <input type="text" id="new-client-ID" name="clientID" placeholder="Client ID"/>
+            <br>
+            <input type="text" id="new-client-name" name="clientName" placeholder="Client Name"/>
+
+            <br>
+            <input type="text" id="new-client-phone" name="clientPhone" placeholder="Client Phone"/>
+
+            <br>
+            <input type="text" id="new-client-email" name="clientEmail" placeholder="Client Email"/>
+
+            <br>
+            <input type="text" id="new-client-address" name="clientAddress" placeholder="Client Address"/>
+
+            <br>
+            <input type="text" id="new-client-status" name="clientStatus" placeholder="Client status"/>
+            <br>
+            <input type="text" id="new-client-specialMentions" name="clientSpecialMentions" placeholder="Client Special Mentions"/>
+            <br>
+
+            <input type="submit" id="select-button" value="Insert"/>
+        </form>
+
+    </div>
+
+</div>
+
+
+<div class="row" style="background-color:#DD0000; color:#FFFFFF;">
+    <div class="column">
+        <div class="container">
+            <div th:if="${not #lists.isEmpty(clients)}">
+                <h2>Client Lists</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Id</th>
+                        <th>Client Name</th>
+                    </tr>
+
+                    <tr th:each="client : ${clients}">
+                        <td th:text="${client.clientID}"></td>
+                        <td th:text="${client.clientName.clientFirstName}"></td>
+                        <td th:text="${client.clientName.clientLastName}"></td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+    <form action="/showStore" method="get">
+        <input type="submit" id="back-to-store-button" value="Back To Store"/>
+    </form>
+
+</div>
+
+
+
+<br>
+<br>
+
+</body>
+</html>
+
+
+

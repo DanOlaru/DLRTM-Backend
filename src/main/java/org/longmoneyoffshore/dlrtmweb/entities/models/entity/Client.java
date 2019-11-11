@@ -266,9 +266,7 @@ public class Client implements Serializable {
                 ", clientBillingAddress=" + clientBillingAddress +
                 ", clientShippingAddress=" + clientShippingAddress +
                 ", clientAlternateAddress=" + clientAlternateAddress +
-                //", clientDeliveryAddress=" + clientDeliveryAddress +
                 ", cards=" + cards +
-                //", selectedPaymentMethod=" + selectedPaymentMethod +
                 ", clientUrgency=" + clientUrgency +
                 ", clientValue=" + clientValue +
                 ", clientStatus='" + clientStatus + '\'' +

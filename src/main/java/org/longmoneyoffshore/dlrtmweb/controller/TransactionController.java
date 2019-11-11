@@ -35,7 +35,7 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    @GetMapping(value = "/transaction")
+    @GetMapping(value = "/transactions")
     public Collection<Transaction> getAllTransactions() {
         return transactionService.getAllTransactions();
 

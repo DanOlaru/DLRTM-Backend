@@ -32,7 +32,6 @@ public class SimpleClient {
     private String clientReferenceCode = "0";
     private String revision = "0";
 
-    //=============CONSTRUCTORS======================================================================================================
 
     public SimpleClient() {}
 

@@ -1,4 +1,4 @@
-package org.longmoneyoffshore.dlrtmweb.controller;
+package templates.throwaway;
 
 import org.longmoneyoffshore.dlrtmweb.service.ClientService;
 

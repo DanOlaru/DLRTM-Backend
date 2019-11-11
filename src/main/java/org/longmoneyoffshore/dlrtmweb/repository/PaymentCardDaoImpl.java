@@ -56,15 +56,28 @@ public class PaymentCardDaoImpl implements PaymentCardDao {
     }
 
     public void clearTable() {
-        //String sql = "DROP TABLE paymentCards";
-        String sql = "DROP TABLE IF EXISTS DLRTM_DB.paymentCards";
+        //String sql = "DROP TABLE IF EXISTS DLRTM_DB.paymentCards";
+        //this.jdbcTemplate.execute(sql);
+
+        createTable();
+
+        String sql = "TRUNCATE TABLE paymentCards";
+        this.jdbcTemplate.execute(sql);
+    }
+
+    public void dropTable() {
+
+        createTable();
+
+        String sql = "DROP TABLE paymentCards";
+
         this.jdbcTemplate.execute(sql);
     }
 
 
     public List<PaymentCard> getPaymentCardsByClientId(String clientID) {
 
-        String cardsSql = "SELECT * FROM paymentCards WHERE clientID = ";
+        String cardsSql = "SELECT * FROM paymentCards WHERE clientID =";
         return namedParameterJdbcTemplate.query(cardsSql + clientID, new PaymentCardMapper());
     }
 

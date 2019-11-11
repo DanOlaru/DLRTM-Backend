@@ -15,17 +15,6 @@ public class ClientService {
 
     private ClientDao clientDao;
 
-    /*public ClientService (ClientDao clientDao) { this.clientDao = clientDao; }
-
-
-    public ClientDao getClientDao() {
-        return clientDao;
-    }
-
-    public void setClientDao(ClientDao clientDao) {
-        this.clientDao = clientDao;
-    }
-*/
     public List<Client> getAllClients() {
         return this.clientDao.getAllClients();
     }
@@ -53,8 +42,6 @@ public class ClientService {
         this.clientDao.insertClients(clients);
     }
 
-    public void clearTables() {
-        this.clientDao.clearTables();
-    }
+    public void clearTables() { this.clientDao.clearTables(); }
 }
 

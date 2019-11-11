@@ -22,6 +22,10 @@ public class Address {
     private double latitude, longitude;
 
 
+    public Address() {
+        this.fullAddress = "";
+    }
+
     public Address(String fullAddress) {
         this.fullAddress = fullAddress;
         //TODO: parse and populate the individual fields!!!!!!!!!!

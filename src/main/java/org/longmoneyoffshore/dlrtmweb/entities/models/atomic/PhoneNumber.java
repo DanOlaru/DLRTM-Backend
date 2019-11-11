@@ -15,6 +15,12 @@ public class PhoneNumber { //implements Serializable {
     private int isPrimary = 0;
 
 
+    public PhoneNumber() {
+        this.ownerName = "";
+        this.clientPhoneNo = "";
+        this.clientAreaCode = "";
+    }
+
     //full constructor
     public PhoneNumber(String owner, String phoneNo, String clientAreaCode, String anonymizerPrefix) {
         this.ownerName = owner;

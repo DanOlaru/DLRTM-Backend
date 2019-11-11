@@ -1,5 +1,5 @@
 <hibernate-configuration>
-    <session-factory name="session-factory">
+    <!--<session-factory name="session-factory">
         <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyTenSevenDialect"/>
 
         <class name="Product" table="products">
@@ -31,8 +31,8 @@
             <property name="productSpecialMentions" column="SPECIALMENTIONS" type="string"/>
 
 
-            <component name="productPhysicalProperties" class="PhysicalProperties"> <!-- class attribute optional -->
-                <parent name="Product"/> <!-- reference back to the Person -->
+            <component name="productPhysicalProperties" class="PhysicalProperties"> &lt;!&ndash; class attribute optional &ndash;&gt;
+                <parent name="Product"/> &lt;!&ndash; reference back to the Person &ndash;&gt;
                 <property name="length" column="LENGTH" type="double"/>
                 <property name="width" column="WIDTH" type="double"/>
                 <property name="depth" column="DEPTH" type="double"/>
@@ -45,5 +45,5 @@
 
 
 
-    </session-factory>
+    </session-factory>-->
 </hibernate-configuration>

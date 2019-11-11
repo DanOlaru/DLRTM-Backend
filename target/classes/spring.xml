@@ -50,10 +50,10 @@
 
     <!-- client: controller -> service -> dao -->
     <bean id="clientDaoImpl" class="org.longmoneyoffshore.dlrtmweb.repository.ClientDaoImpl">
-        <property name="dataSource" ref="mySqlDataSource"/>
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
-        <property name="payment" ref="paymentCardDaoImpl"/>
+        <property name="paymentCardDao" ref="paymentCardDaoImpl"/>
+        <property name="transactionDao" ref="transactionDaoImpl"/>
 
     </bean>
 
@@ -65,9 +65,6 @@
         <property name="clientService" ref="clientService"/>
     </bean>
 
-    <bean id="simpleClientController" class="org.longmoneyoffshore.dlrtmweb.controller.SimpleClientController">
-        <property name="clientService" ref="clientService"/>
-    </bean>
 
 
     <bean id="paymentCardDaoImpl" class="org.longmoneyoffshore.dlrtmweb.repository.PaymentCardDaoImpl">
@@ -103,7 +100,7 @@
     </bean>
 
 
-    <bean id="clientsPresenterController" class="org.longmoneyoffshore.dlrtmweb.controller.ClientsPresenterController">
+  <!--  <bean id="clientsPresenterController" class="org.longmoneyoffshore.dlrtmweb.controller.ClientsPresenterController">
         <property name="clientService" ref="clientService"/>
     </bean>
 
@@ -117,7 +114,7 @@
 
     <bean id="transactionsPresenterController" class="org.longmoneyoffshore.dlrtmweb.controller.TransactionsPresenterController">
         <property name="transactionService" ref="transactionService"/>
-    </bean>
+    </bean>-->
 
     <bean id="transactionCommandObject" class="org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject"/>
 
@@ -128,8 +125,48 @@
 
         <property name="transactionCommandObject" ref="transactionCommandObject"/>
 
+        <property name="newProduct" ref="disposableProduct"/>
+        <property name="newClient" ref="disposableClient"/>
 
     </bean>
+
+
+    <bean id="disposableProduct" class="org.longmoneyoffshore.dlrtmweb.entities.models.entity.Product" scope="prototype">
+        <property name="productPhysicalProperties" ref="disposablePhysicalProperties"/>
+    </bean>
+
+    <bean id="disposablePhysicalProperties" class="org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PhysicalProperties" scope="prototype">
+    </bean>
+
+    <bean id="disposablePersonName" class="org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PersonName" scope="prototype"/>
+
+    <bean id="disposablePhoneNumber" class="org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PhoneNumber" scope="prototype"/>
+    <bean id="disposableAddress" class="org.longmoneyoffshore.dlrtmweb.entities.models.atomic.Address" scope="prototype"/>
+
+    <bean id="disposablePaymentCard" class="org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PaymentCard" scope="prototype"/>
+
+    <bean id="disposablePaymentCards" class="java.util.ArrayList" scope="prototype">
+    </bean>
+
+    <bean id="disposableClient" class="org.longmoneyoffshore.dlrtmweb.entities.models.entity.Client" scope="prototype">
+        <property name="clientName" ref="disposablePersonName"/>
+
+        <property name="clientHomePhone" ref="disposablePhoneNumber"/>
+        <property name="clientBusinessPhone" ref="disposablePhoneNumber"/>
+        <property name="clientAlternatePhone" ref="disposablePhoneNumber"/>
+        <property name="clientMobilePhone" ref="disposablePhoneNumber"/>
+
+        <property name="clientBillingAddress" ref="disposableAddress"/>
+        <property name="clientShippingAddress" ref="disposableAddress"/>
+        <property name="clientAlternateAddress" ref="disposableAddress"/>
+
+        <property name="cards" ref="disposablePaymentCards"/>
+    </bean>
+
+    <bean id="clientsFakeDataSets" class="org.longmoneyoffshore.dlrtmweb.entities.globalvalues.ClientsFakeDataSets" scope="prototype">
+
+    </bean>
+
 
 
 
