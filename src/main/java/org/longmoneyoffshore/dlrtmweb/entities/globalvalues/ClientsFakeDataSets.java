@@ -31,6 +31,7 @@ public class ClientsFakeDataSets {
 
 
 
+
     public static Client JasonSmith =  new Client("0001", new PersonName("Jason Smith"), new PhoneNumber("Jason Smith", "555-888-6767"),
             "jason.smith@gmail.com", new Address("1421 E 23rd St, Chicago, IL, 60615"),
             Arrays.asList(new PaymentCard("1234 4321 5678 0987", "Jason Smith", "10/14/20", "665")),

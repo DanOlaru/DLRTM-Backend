@@ -55,13 +55,20 @@
                     <table class="table table-striped">
                         <tr>
                             <th>Id</th>
-                            <th>Client Name</th>
+                            <th>Name</th>
+                            <th></th>
+                            <th>Address</th>
+                            <th>Phone #</th>
+                            <th>SpecialMentions</th>
                         </tr>
 
                         <tr th:each="client : ${clients}">
                             <td th:text="${client.clientID}"></td>
                             <td th:text="${client.clientName.clientFirstName}"></td>
                             <td th:text="${client.clientName.clientLastName}"></td>
+                            <td th:text="${client.clientBillingAddress.fullAddress}"></td>
+                            <td th:text="${client.clientBusinessPhone.clientPhoneNo}"></td>
+                            <td th:text="${client.clientSpecialMentions}"></td>
                         </tr>
                     </table>
                 </div>
@@ -114,13 +121,20 @@
                         <tr>
                             <th>Id</th>
                             <th>Product Name</th>
-                            <th>Purchase price</th>
+                            <th>Price</th>
+                            <th>productDescription</th>
+                            <th>productManufacturer</th>
+                            <th>Country of Origin</th>
+
                         </tr>
 
                         <tr th:each="product : ${products}">
                             <td th:text="${product.productUniqueID}"></td>
                             <td th:text="${product.productName}"></td>
                             <td th:text="${product.productUnitPrice}"></td>
+                            <td th:text="${product.productDescription}"></td>
+                            <td th:text="${product.productManufacturer}"></td>
+                            <td th:text="${product.productCountryOfOrigin}"></td>
                         </tr>
 
                     </table>

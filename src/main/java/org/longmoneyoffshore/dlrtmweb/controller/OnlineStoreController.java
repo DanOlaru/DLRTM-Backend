@@ -129,7 +129,9 @@ public class OnlineStoreController {
         productService.insertProduct(newProduct);
 
 
+        model.addAttribute("clients", clientService.getAllClients());
         model.addAttribute("products", productService.getAllProducts());
+        model.addAttribute("transactions", transactionService.getAllTransactions());
         return "index";
     }
 
