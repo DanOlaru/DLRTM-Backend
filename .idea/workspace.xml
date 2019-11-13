@@ -3,7 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="ed8da808-fee5-4c82-9b40-5c4f870cd86a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/throwaway/ClientsPresenterController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/throwaway/ProductsPresenterController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/throwaway/TransactionsPresenterController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/throwaway/clientTemplate.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/throwaway/clientsThyme.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/throwaway/productTemplate.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/throwaway/productsThyme.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/throwaway/transactionsThyme.html" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -359,7 +366,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573494844464</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Application &#10;&#10; WORKING MODEL&#10; &#10;- runs &#10;- is in Beta">
+      <created>1573495333359</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1573495333359</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -391,7 +405,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Project writes Product objects to Database&#10;&#10;Next capability to implement is reading from DB row into Product Object" />
     <MESSAGE value="writes Product objects to Database&#10;writes Product list to DB&#10;deletes Product from DB&#10;&#10;Does NOT yet update individual items in DB properly" />
     <MESSAGE value="Product controller + dao impl WORKS!!" />
     <MESSAGE value="Product controller + dao impl reads from mySql database!!!" />
@@ -416,6 +429,7 @@
     <MESSAGE value="BEFORE CLEAN-UP&#10;&#10;FIRST WORKING MODEL!!!" />
     <MESSAGE value="STARTED CLEAN-UP&#10;&#10;FIRST WORKING MODEL!!!" />
     <MESSAGE value="Application &#10;&#10;- runs &#10;- is in Beta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Application &#10;&#10;- runs &#10;- is in Beta" />
+    <MESSAGE value="Application &#10;&#10; WORKING MODEL&#10; &#10;- runs &#10;- is in Beta" />
+    <option name="LAST_COMMIT_MESSAGE" value="Application &#10;&#10; WORKING MODEL&#10; &#10;- runs &#10;- is in Beta" />
   </component>
 </project>
