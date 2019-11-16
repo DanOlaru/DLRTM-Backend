@@ -1,8 +1,8 @@
 package org.longmoneyoffshore.dlrtmweb.repository;
 
 import lombok.Data;
-import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.*;
-import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Client;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.*;
+import org.longmoneyoffshore.dlrtmweb.entities.entity.Client;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -82,6 +82,8 @@ public class ClientDaoImpl implements ClientDao {
 
     @Override
     public List<Client> getAllClients() {
+
+        createTable();
 
         String sql = "SELECT * FROM clients";
 

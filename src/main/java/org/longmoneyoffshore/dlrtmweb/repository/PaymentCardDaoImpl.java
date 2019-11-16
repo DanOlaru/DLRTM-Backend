@@ -1,6 +1,6 @@
 package org.longmoneyoffshore.dlrtmweb.repository;
 
-import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PaymentCard;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.PaymentCard;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;

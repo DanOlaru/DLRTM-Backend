@@ -1,4 +1,4 @@
-package org.longmoneyoffshore.dlrtmweb.entities.models.atomic;
+package org.longmoneyoffshore.dlrtmweb.entities.atomic;
 
 import javax.persistence.Embeddable;
 import javax.validation.constraints.Size;

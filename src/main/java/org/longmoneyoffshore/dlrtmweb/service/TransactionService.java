@@ -3,7 +3,7 @@ package org.longmoneyoffshore.dlrtmweb.service;
 
 import lombok.Data;
 import org.longmoneyoffshore.dlrtmweb.repository.TransactionDao;
-import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Transaction;
+import org.longmoneyoffshore.dlrtmweb.entities.entity.Transaction;
 import org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

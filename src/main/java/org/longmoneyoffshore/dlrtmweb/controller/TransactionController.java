@@ -1,7 +1,7 @@
 package org.longmoneyoffshore.dlrtmweb.controller;
 
 import lombok.Data;
-import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Transaction;
+import org.longmoneyoffshore.dlrtmweb.entities.entity.Transaction;
 import org.longmoneyoffshore.dlrtmweb.service.ClientService;
 import org.longmoneyoffshore.dlrtmweb.service.ProductService;
 import org.longmoneyoffshore.dlrtmweb.service.TransactionService;

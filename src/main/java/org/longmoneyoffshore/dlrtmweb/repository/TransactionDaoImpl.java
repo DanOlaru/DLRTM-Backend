@@ -1,9 +1,9 @@
 package org.longmoneyoffshore.dlrtmweb.repository;
 
 import lombok.Data;
-import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Client;
-import org.longmoneyoffshore.dlrtmweb.entities.models.entity.TransactedProduct;
-import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Transaction;
+import org.longmoneyoffshore.dlrtmweb.entities.entity.Client;
+import org.longmoneyoffshore.dlrtmweb.entities.entity.Product;
+import org.longmoneyoffshore.dlrtmweb.entities.entity.Transaction;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -25,7 +25,7 @@ public class TransactionDaoImpl implements TransactionDao {
 
     public TransactionDaoImpl() { }
 
-    public TransactionDaoImpl(Client client, ArrayList<TransactedProduct> productsList) { }
+    public TransactionDaoImpl(Client client, ArrayList<Product> productsList) { }
 
 
     public void createTable() {

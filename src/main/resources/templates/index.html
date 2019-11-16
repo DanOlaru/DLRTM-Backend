@@ -34,13 +34,6 @@
   clear: both;
 }
 
-
-
-
-
-
-
-
     </style>
 </head>
 
@@ -78,10 +71,6 @@
         </div>
 
         <div class="column">
-            <form action="/deleteClient" method="post">
-                <input type="text" id="delete-client-text-input" name="selectedClientID" placeholder="Client IDs"/>
-                <input type="submit" id="delete-client-button" value="Delete Client"/>
-            </form>
 
             <form method="post" action="/createNewClient">
 
@@ -108,6 +97,11 @@
 
                 <input type="submit" id="insert-client-button" value="Insert"/>
             </form>
+
+            <form action="/deleteClient" method="post">
+                <input type="text" id="delete-client-text-input" name="selectedClientID" placeholder="Client IDs"/>
+                <input type="submit" id="delete-client-button" value="Delete Client"/>
+            </form>
         </div>
 
     </div>
@@ -121,21 +115,23 @@
                     <table class="table table-striped">
                         <tr>
                             <th>Id</th>
-                            <th>Product Name</th>
+                            <th>Name</th>
                             <th>Price</th>
-                            <th>productDescription</th>
-                            <th>productManufacturer</th>
-                            <th>Country of Origin</th>
+                            <th>Description</th>
+                            <th>Manufacturer</th>
+                            <th>Special Mentions</th>
+                            <th>Country</th>
 
                         </tr>
 
                         <tr th:each="product : ${products}">
-                            <td th:text="${product.productUniqueID}"></td>
+                            <td th:text="${product.productID}"></td>
                             <td th:text="${product.productName}"></td>
                             <td th:text="${product.productUnitPrice}"></td>
                             <td th:text="${product.productDescription}"></td>
                             <td th:text="${product.productManufacturer}"></td>
-                            <td th:text="${product.productCountryOfOrigin}"></td>
+                            <td th:text="${product.productSpecialMentions}"></td>
+                            <td th:text="${product.productCountry}"></td>
                         </tr>
 
                     </table>
@@ -158,7 +154,7 @@
                     <input type="text" id="new-product-manufacturer" name="manufacturer"
                            placeholder="Product manufacturer"/>
                     <br>
-                    <input type="text" id="new-product-countryOfOrigin" name="countryOfOrigin"
+                    <input type="text" id="new-product-country" name="country"
                            placeholder="Product country Of Origin"/>
                     <br>
                     <input type="text" id="new-product-description" name="description"

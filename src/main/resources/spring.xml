@@ -14,18 +14,16 @@
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/DLRTM_DB?serverTimezone=EST5EDT"/>
 
-        <property name="username" value="DLRTM"/>
-        <property name="password" value="fml_dlrtm"/>
+        <property name="username" value="root"/>
+        <property name="password" value="password"/>
 
         <!--<property name="initialSize" value="2" />
         <property name="maxActive" value="5" />-->
     </bean>
 
     <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
-        <!--<property name="dataSource" ref="dataSource"/>-->
         <constructor-arg name="dataSource" ref="mySqlDataSource"/>
     </bean>
-
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="mySqlDataSource"/>
@@ -34,7 +32,6 @@
 
     <!-- product: controller -> service -> dao -->
     <bean id="productDaoImpl" class="org.longmoneyoffshore.dlrtmweb.repository.ProductDaoImpl" scope="singleton">
-        <property name="dataSource" ref="mySqlDataSource"/>
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
@@ -54,7 +51,6 @@
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
         <property name="paymentCardDao" ref="paymentCardDaoImpl"/>
         <property name="transactionDao" ref="transactionDaoImpl"/>
-
     </bean>
 
     <bean id="clientService" class="org.longmoneyoffshore.dlrtmweb.service.ClientService">
@@ -66,14 +62,13 @@
     </bean>
 
 
-
     <bean id="paymentCardDaoImpl" class="org.longmoneyoffshore.dlrtmweb.repository.PaymentCardDaoImpl">
         <property name="dataSource" ref="mySqlDataSource"/>
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
 
-    <bean id="paymentCard" class="org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PaymentCard" scope="prototype">
+    <bean id="paymentCard" class="org.longmoneyoffshore.dlrtmweb.entities.atomic.PaymentCard" scope="prototype">
 
     </bean>
 
@@ -90,7 +85,6 @@
 
     <bean id="transactionController" class="org.longmoneyoffshore.dlrtmweb.controller.TransactionController">
         <property name="transactionService" ref="transactionService"/>
-
         <property name="productService" ref="productService"/>
         <property name="clientService" ref="clientService"/>
 
@@ -99,22 +93,6 @@
         <property name="onlineStoreController" ref="onlineStoreController"/>
     </bean>
 
-
-  <!--  <bean id="clientsPresenterController" class="org.longmoneyoffshore.dlrtmweb.controller.ClientsPresenterController">
-        <property name="clientService" ref="clientService"/>
-    </bean>
-
-    <bean id="productsPresenterController"
-          class="org.longmoneyoffshore.dlrtmweb.controller.ProductsPresenterController">
-        <property name="productService" ref="productService"/>
-        <property name="clientDao" ref="clientDaoImpl"/>
-        <property name="transactionCommandObject" ref="transactionCommandObject"/>
-    </bean>
-
-
-    <bean id="transactionsPresenterController" class="org.longmoneyoffshore.dlrtmweb.controller.TransactionsPresenterController">
-        <property name="transactionService" ref="transactionService"/>
-    </bean>-->
 
     <bean id="transactionCommandObject" class="org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject"/>
 
@@ -130,27 +108,10 @@
 
     </bean>
 
+    <bean id="disposableProduct" class="org.longmoneyoffshore.dlrtmweb.entities.entity.Product" scope="prototype"/>
 
-    <bean id="disposableProduct" class="org.longmoneyoffshore.dlrtmweb.entities.models.entity.Product" scope="prototype">
-        <property name="productPhysicalProperties" ref="disposablePhysicalProperties"/>
-    </bean>
-
-    <bean id="disposablePhysicalProperties" class="org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PhysicalProperties" scope="prototype">
-    </bean>
-
-    <bean id="disposablePersonName" class="org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PersonName" scope="prototype"/>
-
-    <bean id="disposablePhoneNumber" class="org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PhoneNumber" scope="prototype"/>
-    <bean id="disposableAddress" class="org.longmoneyoffshore.dlrtmweb.entities.models.atomic.Address" scope="prototype"/>
-
-    <bean id="disposablePaymentCard" class="org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PaymentCard" scope="prototype"/>
-
-    <bean id="disposablePaymentCards" class="java.util.ArrayList" scope="prototype">
-    </bean>
-
-    <bean id="disposableClient" class="org.longmoneyoffshore.dlrtmweb.entities.models.entity.Client" scope="prototype">
+    <bean id="disposableClient" class="org.longmoneyoffshore.dlrtmweb.entities.entity.Client" scope="prototype">
         <property name="clientName" ref="disposablePersonName"/>
-
         <property name="clientHomePhone" ref="disposablePhoneNumber"/>
         <property name="clientBusinessPhone" ref="disposablePhoneNumber"/>
         <property name="clientAlternatePhone" ref="disposablePhoneNumber"/>
@@ -163,11 +124,16 @@
         <property name="cards" ref="disposablePaymentCards"/>
     </bean>
 
-    <bean id="clientsFakeDataSets" class="org.longmoneyoffshore.dlrtmweb.entities.globalvalues.ClientsFakeDataSets" scope="prototype">
+    <bean id="disposablePersonName" class="org.longmoneyoffshore.dlrtmweb.entities.atomic.PersonName"
+          scope="prototype"/>
 
-    </bean>
+    <bean id="disposablePhoneNumber" class="org.longmoneyoffshore.dlrtmweb.entities.atomic.PhoneNumber"
+          scope="prototype"/>
+    <bean id="disposableAddress" class="org.longmoneyoffshore.dlrtmweb.entities.atomic.Address" scope="prototype"/>
 
+    <bean id="disposablePaymentCard" class="org.longmoneyoffshore.dlrtmweb.entities.atomic.PaymentCard"
+          scope="prototype"/>
 
-
+    <bean id="disposablePaymentCards" class="java.util.ArrayList" scope="prototype"/>
 
 </beans>

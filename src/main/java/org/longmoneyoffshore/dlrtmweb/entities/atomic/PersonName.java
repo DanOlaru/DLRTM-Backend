@@ -1,9 +1,7 @@
-package org.longmoneyoffshore.dlrtmweb.entities.models.atomic;
+package org.longmoneyoffshore.dlrtmweb.entities.atomic;
 
 import lombok.Data;
 
-import javax.persistence.Embeddable;
-import java.io.Serializable;
 import java.util.StringTokenizer;
 
 //@Embeddable

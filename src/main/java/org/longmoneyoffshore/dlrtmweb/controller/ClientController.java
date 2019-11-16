@@ -1,12 +1,12 @@
 package org.longmoneyoffshore.dlrtmweb.controller;
 
 import lombok.Data;
-import org.longmoneyoffshore.dlrtmweb.entities.globalvalues.ClientsFakeDataSets;
-import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.Address;
-import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PaymentCard;
-import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PersonName;
-import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PhoneNumber;
-import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Client;
+import org.longmoneyoffshore.dlrtmweb.globalvalues.ClientsFakeDataSets;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.Address;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.PaymentCard;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.PersonName;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.PhoneNumber;
+import org.longmoneyoffshore.dlrtmweb.entities.entity.Client;
 import org.longmoneyoffshore.dlrtmweb.service.ClientService;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -23,8 +23,6 @@ import java.util.List;
 public class ClientController {
 
     private ClientService clientService;
-
-    ClientsFakeDataSets clientsFakeDataSets;
 
     @GetMapping
     public List<Client> getAllClients() {
@@ -54,6 +52,8 @@ public class ClientController {
 
         clientService.insertClient(client);
     }
+
+    ClientsFakeDataSets clientsFakeDataSets;
 
     @GetMapping(value = "/clientsfake")
     public void insertFakeClients() {

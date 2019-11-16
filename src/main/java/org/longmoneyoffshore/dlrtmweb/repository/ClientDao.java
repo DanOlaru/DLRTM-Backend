@@ -1,10 +1,7 @@
 package org.longmoneyoffshore.dlrtmweb.repository;
 
-import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Client;
-import org.springframework.data.repository.CrudRepository;
+import org.longmoneyoffshore.dlrtmweb.entities.entity.Client;
 
-import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 public interface ClientDao {

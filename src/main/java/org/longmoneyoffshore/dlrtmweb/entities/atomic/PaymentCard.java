@@ -1,6 +1,4 @@
-package org.longmoneyoffshore.dlrtmweb.entities.models.atomic;
-
-import javax.persistence.Embeddable;
+package org.longmoneyoffshore.dlrtmweb.entities.atomic;
 
 //@Embeddable
 public class PaymentCard {

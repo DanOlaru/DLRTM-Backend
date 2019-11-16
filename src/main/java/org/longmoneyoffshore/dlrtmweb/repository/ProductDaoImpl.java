@@ -1,79 +1,52 @@
 package org.longmoneyoffshore.dlrtmweb.repository;
 
-import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PhysicalProperties;
-import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Product;
+import lombok.Data;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.longmoneyoffshore.dlrtmweb.entities.entity.Product;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import javax.sql.DataSource;
 import java.sql.*;
 import java.util.List;
 
 @Repository
+@Data
 public class ProductDaoImpl implements ProductDao {
 
-    private DataSource dataSource;
-
     private JdbcTemplate jdbcTemplate;
-
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
 
-    public JdbcTemplate getJdbcTemplate() {
-        return jdbcTemplate;
-    }
-
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
-
-    public NamedParameterJdbcTemplate getNamedParameterJdbcTemplate()
-    {
-        return namedParameterJdbcTemplate;
-    }
-
-    public void setNamedParameterJdbcTemplate(NamedParameterJdbcTemplate namedParameterJdbcTemplate)
-    {
-        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-    }
-    public DataSource getDataSource() {
-        return dataSource;
-    }
-
-    public void setDataSource(DataSource dataSource) {
-
-        this.dataSource = dataSource;
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-        this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-    }
-
     public void createTable() {
-        String sql = "CREATE TABLE products (uniqueID char(10), name char(50), manufacturer char(50)," +
-                "                       countryOfOrigin char(50), description char(150), unitPurchasePrice float," +
-                "                       unitPrice float, discounts float, adjustments float," +
-                "                       credits float, deductions float, specialOffers char(50)," +
-                "                       currency char(10), itemsInStockInt int, itemsInStockDecimal float," +
-                "                       quantityInStock float, needToReorder int, measurementUnit char(10)," +
-                "                       specialMentions char(150), length float, width float, depth float, height float," +
-                "                       weight float, sizeMeasurementUnit char(15), weightMeasurementUnit char(15))";
+        String sql = "CREATE TABLE IF NOT EXISTS products (productID int NOT NULL AUTO_INCREMENT, name char(50), manufacturer char(50)," +
+                " country char(50), description char(150), unitPrice float, discounts float," +
+                " specialOffers char(50), itemsInStockInt int, specialMentions char(150), PRIMARY KEY (productID))";
 
+        this.jdbcTemplate.execute(sql);
+    }
+
+    public void clearTable() {
+        createTable();
+
+        String sql = "TRUNCATE TABLE products";
         this.jdbcTemplate.execute(sql);
     }
 
     public void dropTable() {
         String sql = "DROP TABLE products";
-                this.jdbcTemplate.execute(sql);
+        this.jdbcTemplate.execute(sql);
     }
 
     @Override
-    public Product getProductById (String productId) {
+    public Product getProductById(int productId) {
 
-        String sql = "SELECT * FROM products where uniqueID = " + productId;
+        String sql = "SELECT * FROM products where productID = " + productId;
 
         return namedParameterJdbcTemplate.query(sql, new ProductMapper()).get(0);
     }
@@ -81,30 +54,16 @@ public class ProductDaoImpl implements ProductDao {
     public int getProductCount() {
         String sql = "SELECT COUNT(*) FROM products";
 
-        int count = jdbcTemplate.queryForObject(sql,Integer.class);
+        int count = jdbcTemplate.queryForObject(sql, Integer.class);
 
         return count;
     }
 
-    public int getProductWPropertyCount(){
 
-        //TODO: not done yet
+    public String getProductName(int productId) {
+        String sql = "SELECT name FROM products WHERE productID = ?";
 
-        int count = 0;
-        String sql = "SELECT COUNT(*) FROM products";
-
-        List<Product> productsWithProperty = namedParameterJdbcTemplate.query(sql, new ProductMapper());
-
-        count = productsWithProperty.size();
-
-        return count;
-
-    }
-
-    public String getProductName(String productId) {
-        String sql = "SELECT name FROM products WHERE uniqueID = ?";
-
-        String productName = jdbcTemplate.queryForObject(sql, new Object[] {productId}, String.class); //TODO: this is the old implementation
+        String productName = jdbcTemplate.queryForObject(sql, new Object[]{productId}, String.class); //TODO: this is the old implementation
 
         return productName;
     }
@@ -112,72 +71,61 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public List<Product> getAllProducts() {
 
+        createTable();
+
         String sql = "SELECT * FROM products";
 
         return namedParameterJdbcTemplate.query(sql, new ProductMapper());
     }
 
     @Override
-    public void insertProduct (Product product) {
+    public void insertProduct(Product product) {
 
-        String sql = "INSERT INTO products (uniqueID, name, manufacturer, countryOfOrigin, description, unitPurchasePrice," +
-                "unitPrice, discounts, adjustments, credits, deductions, specialOffers, currency, itemsInStockInt, itemsInStockDecimal," +
-                "quantityInStock, needToReorder, measurementUnit, specialMentions, length, width, depth, height, weight, sizeMeasurementUnit," +
-                "weightMeasurementUnit)" +
+        createTable();
 
-                "VALUES (:uniqueID, :name, :manufacturer, :countryOfOrigin," +
-                ":description, :unitPurchasePrice, :unitPrice, :discounts, :adjustments, :credits, :deductions, :specialOffers," +
-                ":currency, :itemsInStockInt, :itemsInStockDecimal, :quantityInStock, :needToReorder, :measurementUnit," +
-                ":specialMentions, :length, :width, :depth, :height, :weight, :sizeMeasurementUnit," +
-                ":weightMeasurementUnit)";
+        String sql = "INSERT INTO products (productID, name, manufacturer, country, description," +
+                "unitPrice, specialOffers, itemsInStockInt, specialMentions)" +
 
-        SqlParameterSource namedParameters = new MapSqlParameterSource("uniqueID", product.getProductUniqueID())
+                "VALUES (:productID, :name, :manufacturer, :country, :description, :unitPrice, :specialOffers," +
+                ":itemsInStockInt, :specialMentions)";
+
+        SqlParameterSource namedParameters = new MapSqlParameterSource("productID", product.getProductID())
                 .addValue("name", product.getProductName())
                 .addValue("manufacturer", product.getProductManufacturer())
-                .addValue("countryOfOrigin", product.getProductCountryOfOrigin())
+                .addValue("country", product.getProductCountry())
                 .addValue("description", product.getProductDescription())
-                .addValue("unitPurchasePrice", product.getProductUnitPurchasePrice())
                 .addValue("unitPrice", product.getProductUnitPrice())
-                .addValue("discounts", product.getProductDiscounts())
-                .addValue("adjustments", product.getProductAdjustments())
-                .addValue("credits", product.getProductCredits())
-                .addValue("deductions", product.getProductDeductions())
                 .addValue("specialOffers", product.getProductSpecialOffers())
-                .addValue("currency", product.getCurrency())
                 .addValue("itemsInStockInt", product.getProductItemsInStockInt())
-                .addValue("itemsInStockDecimal", product.getProductItemsInStockDecimal())
-                .addValue("quantityInStock", product.getProductQuantityInStock())
-                .addValue("needToReorder", product.getProductNeedToReorder())
-                .addValue("measurementUnit", product.getProductMeasurementUnit())
-                .addValue("specialMentions", product.getProductSpecialMentions())
-                .addValue("length", product.getProductPhysicalProperties().getLength())
-                .addValue("width", product.getProductPhysicalProperties().getWidth())
-                .addValue("depth", product.getProductPhysicalProperties().getDepth())
-                .addValue("height", product.getProductPhysicalProperties().getHeight())
-                .addValue("weight", product.getProductPhysicalProperties().getWeight())
-                .addValue("sizeMeasurementUnit", product.getProductPhysicalProperties().getSizeMeasurementUnit())
-                .addValue("weightMeasurementUnit", product.getProductPhysicalProperties().getWeightMeasurementUnit());
+                .addValue("specialMentions", product.getProductSpecialMentions());
 
         namedParameterJdbcTemplate.update(sql, namedParameters);
     }
 
+   public void insertProductHibernate(Product product) {
 
-    public void insertProductList(List<Product> products) {
+        try {
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+            Session session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.save(product);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public void insertProducts(List<Product> products) {
         products.forEach(p -> insertProduct(p));
     }
 
 
     @Override
-    public void deleteProductById(String id) {
-        String sql = "DELETE FROM products WHERE uniqueID IN (?)";
-        jdbcTemplate.update(sql,new Object[] {id});
+    public void deleteProductById(int id) {
+        String sql = "DELETE FROM products WHERE productID IN (?)";
+        jdbcTemplate.update(sql, new Object[]{id});
 
-    }
-
-    //TODO: why is this here?
-    public void createClientTable () {
-        String sql = "CREATE TABLE CLIENTS (ID INTEGER, NAME VARCHAR(50))";
-        jdbcTemplate.execute(sql);
     }
 
 
@@ -192,94 +140,46 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public void updateProduct(Product product) {
 
-        String sql = "UPDATE products set name = :name, manufacturer = :manufacturer, countryOfOrigin = :countryOfOrigin, description = :description," +
-                "unitPurchasePrice = :unitPurchasePrice, unitPrice = :unitPrice, discounts = :discounts, adjustments = :adjustments, credits = :credits, deductions = :deductions," +
-                "specialOffers = :specialOffers, currency = :currency, itemsInStockInt = :itemsInStockInt, itemsInStockDecimal = :itemsInStockDecimal," +
-                "quantityInStock = :quantityInStock, needToReorder = :needToReorder, measurementUnit = :measurementUnit, specialMentions = :specialMentions, " +
-                "length = :length, width = :width, depth = :depth, height = :height, weight = :weight, sizeMeasurementUnit = :sizeMeasurementUnit, weightMeasurementUnit = :weightMeasurementUnit " +
-                "where uniqueID = :uniqueID";
+        String sql = "UPDATE products set name = :name, manufacturer = :manufacturer, country = :country, description = :description," +
+                "unitPrice = :unitPrice, specialOffers = :specialOffers, itemsInStockInt = :itemsInStockInt, specialMentions = :specialMentions, " +
+                "where productID = :productID";
 
-        SqlParameterSource namedParameters = new MapSqlParameterSource("uniqueID", product.getProductUniqueID())
+        SqlParameterSource namedParameters = new MapSqlParameterSource("productID", product.getProductID())
                 .addValue("name", product.getProductName())
                 .addValue("manufacturer", product.getProductManufacturer())
-                .addValue("countryOfOrigin", product.getProductCountryOfOrigin())
+                .addValue("country", product.getProductCountry())
                 .addValue("description", product.getProductDescription())
-                .addValue("unitPurchasePrice", product.getProductUnitPurchasePrice())
                 .addValue("unitPrice", product.getProductUnitPrice())
-                .addValue("discounts", product.getProductDiscounts())
-                .addValue("adjustments", product.getProductAdjustments())
-                .addValue("credits", product.getProductCredits())
-                .addValue("deductions", product.getProductDeductions())
                 .addValue("specialOffers", product.getProductSpecialOffers())
-                .addValue("currency", product.getCurrency())
                 .addValue("itemsInStockInt", product.getProductItemsInStockInt())
-                .addValue("itemsInStockDecimal", product.getProductItemsInStockDecimal())
-                .addValue("quantityInStock", product.getProductQuantityInStock())
-                .addValue("needToReorder", product.getProductNeedToReorder())
-                .addValue("measurementUnit", product.getProductMeasurementUnit())
-                .addValue("specialMentions", product.getProductSpecialMentions())
-
-                .addValue("length", product.getProductPhysicalProperties().getLength())
-                .addValue("width", product.getProductPhysicalProperties().getWidth())
-                .addValue("depth", product.getProductPhysicalProperties().getDepth())
-                .addValue("height", product.getProductPhysicalProperties().getHeight())
-                .addValue("weight", product.getProductPhysicalProperties().getWeight())
-                .addValue("sizeMeasurementUnit", product.getProductPhysicalProperties().getSizeMeasurementUnit())
-                .addValue("weightMeasurementUnit", product.getProductPhysicalProperties().getWeightMeasurementUnit());
+                .addValue("specialMentions", product.getProductSpecialMentions());
 
 
         namedParameterJdbcTemplate.update(sql, namedParameters);
     }
 
-    public void updatedProductSublist (List<Product> subList) {
+    public void updatedProductSublist(List<Product> subList) {
         subList.forEach(p -> updateProduct(p));
     }
 
-    //mapping DB table columns to individual fields in the data object
     private static final class ProductMapper implements RowMapper<Product> {
 
-        public ProductMapper() {};
+        public ProductMapper() {
+        }
 
         @Override
         public Product mapRow(ResultSet resultSet, int rowNum) throws SQLException {
             Product product = new Product();
 
-            product.setProductUniqueID(resultSet.getString("uniqueID"));
-
+            product.setProductID(resultSet.getInt("productID"));
             product.setProductName(resultSet.getString("name"));
             product.setProductManufacturer(resultSet.getString("manufacturer"));
-            product.setProductCountryOfOrigin(resultSet.getString("countryOfOrigin"));
+            product.setProductCountry(resultSet.getString("country"));
             product.setProductDescription(resultSet.getString("description"));
-
-            product.setProductUnitPurchasePrice(resultSet.getDouble("unitPurchasePrice"));
             product.setProductUnitPrice(resultSet.getDouble("unitPrice"));
-            product.setProductDiscounts(resultSet.getDouble("discounts"));
-            product.setProductAdjustments(resultSet.getDouble("adjustments"));
-            product.setProductCredits(resultSet.getDouble("credits"));
-            product.setProductDeductions(resultSet.getDouble("deductions"));
             product.setProductSpecialOffers(resultSet.getString("specialOffers"));
-            product.setCurrency (resultSet.getString("currency"));
-
             product.setProductItemsInStockInt(resultSet.getInt("itemsInStockInt"));
-            product.setProductItemsInStockDecimal(resultSet.getDouble("itemsInStockDecimal"));
-            product.setProductQuantityInStock(resultSet.getDouble("quantityInStock"));
-            product.setProductMeasurementUnit(resultSet.getString("measurementUnit"));
-            product.setProductNeedToReorder(resultSet.getInt("needToReorder"));
-
             product.setProductSpecialMentions(resultSet.getString("specialMentions"));
-
-            //read product physical dimensions
-            PhysicalProperties physicalProperties = new PhysicalProperties();
-
-            physicalProperties.setLength(resultSet.getDouble("length"));
-            physicalProperties.setWidth(resultSet.getDouble("width"));
-            physicalProperties.setDepth(resultSet.getDouble("depth"));
-            physicalProperties.setHeight(resultSet.getDouble("height"));
-            physicalProperties.setWeight(resultSet.getDouble("weight"));
-            physicalProperties.setSizeMeasurementUnit(resultSet.getString("sizeMeasurementUnit"));
-            physicalProperties.setWeightMeasurementUnit(resultSet.getString("weightMeasurementUnit"));
-
-            product.setProductPhysicalProperties(physicalProperties);
 
             return product;
         }

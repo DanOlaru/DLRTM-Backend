@@ -1,8 +1,7 @@
 package org.longmoneyoffshore.dlrtmweb.repository;
 
-import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PaymentCard;
-import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Client;
-import org.springframework.data.repository.CrudRepository;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.PaymentCard;
+import org.longmoneyoffshore.dlrtmweb.entities.entity.Client;
 
 import java.util.Collection;
 

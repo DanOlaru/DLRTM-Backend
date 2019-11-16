@@ -2,7 +2,7 @@ package org.longmoneyoffshore.dlrtmweb.service;
 
 import lombok.Data;
 import org.longmoneyoffshore.dlrtmweb.repository.ClientDao;
-import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Client;
+import org.longmoneyoffshore.dlrtmweb.entities.entity.Client;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 

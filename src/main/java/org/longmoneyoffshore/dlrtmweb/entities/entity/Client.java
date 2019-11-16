@@ -1,10 +1,10 @@
-package org.longmoneyoffshore.dlrtmweb.entities.models.entity;
+package org.longmoneyoffshore.dlrtmweb.entities.entity;
 
 import lombok.Data;
-import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.Address;
-import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PaymentCard;
-import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PersonName;
-import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PhoneNumber;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.Address;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.PaymentCard;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.PersonName;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.PhoneNumber;
 import org.springframework.lang.Nullable;
 
 import javax.validation.constraints.NotNull;

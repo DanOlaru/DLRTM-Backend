@@ -1,8 +1,6 @@
-package org.longmoneyoffshore.dlrtmweb.entities.models.atomic;
+package org.longmoneyoffshore.dlrtmweb.entities.atomic;
 
-import java.io.Serializable;
-
-import static org.longmoneyoffshore.dlrtmweb.entities.globalvalues.GlobalValues.US_ANONYMIZER_PREFIX;
+import static org.longmoneyoffshore.dlrtmweb.globalvalues.GlobalValues.US_ANONYMIZER_PREFIX;
 
 public class PhoneNumber { //implements Serializable {
 

@@ -1,11 +1,11 @@
 package org.longmoneyoffshore.dlrtmweb.controller;
 
 import lombok.Data;
-import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.Address;
-import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PersonName;
-import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PhoneNumber;
-import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Client;
-import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Product;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.Address;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.PersonName;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.PhoneNumber;
+import org.longmoneyoffshore.dlrtmweb.entities.entity.Client;
+import org.longmoneyoffshore.dlrtmweb.entities.entity.Product;
 import org.longmoneyoffshore.dlrtmweb.service.ClientService;
 import org.longmoneyoffshore.dlrtmweb.service.ProductService;
 import org.longmoneyoffshore.dlrtmweb.service.TransactionService;
@@ -30,25 +30,11 @@ public class OnlineStoreController {
     @GetMapping("/showStore")
     public String showStore (Model model) {
 
-        model.addAttribute("clients", clientService.getAllClients());
-        model.addAttribute("products", productService.getAllProducts());
-        model.addAttribute("transactions", transactionService.getAllTransactions());
+        setModel(model);
+
         return "index";
     }
 
-
-    @RequestMapping(value = "/newTransaction", method = RequestMethod.POST)
-    public void insertNewTransaction(@RequestParam("selectedProductIDs") String productIds,
-                                     @RequestParam("transactionStatus") String transactionStatus,
-                                     @RequestParam("transactionSpecialMentions") String transactionSpecialMentions) {
-
-        transactionCommandObject.setProductIds(productIds);
-        transactionCommandObject.setTransactionStatus(transactionStatus);
-        transactionCommandObject.setTransactionSpecialMentions(transactionSpecialMentions);
-
-        transactionService.insertTransaction(transactionCommandObject);
-
-    }
 
     @RequestMapping(value = "/insertNewTransaction", method = RequestMethod.POST)
     public String insertNewTransactionAndRefresh(@RequestParam("selectedClientID") String clientID,
@@ -64,21 +50,28 @@ public class OnlineStoreController {
 
         transactionService.insertTransaction(transactionCommandObject);
 
-        model.addAttribute("clients", clientService.getAllClients());
-        model.addAttribute("products", productService.getAllProducts());
-        model.addAttribute("transactions", transactionService.getAllTransactions());
+        setModel(model);
         return "index";
     }
 
+
+    @PostMapping(value = "/deleteClient")
+    public String deleteClientById(@RequestParam("selectedClientID") String id, Model model) {
+
+        clientService.removeClientById(id);
+
+        setModel(model);
+
+        return "index";
+    }
 
     @GetMapping(value = "/deleteTransaction")
     public String deleteTransactionById(@RequestParam("selectedTransactionID") String id, Model model) {
 
        transactionService.removeTransactionById(id);
 
-        model.addAttribute("clients", clientService.getAllClients());
-        model.addAttribute("products", productService.getAllProducts());
-        model.addAttribute("transactions", transactionService.getAllTransactions());
+        setModel(model);
+
         return "index";
     }
 
@@ -87,27 +80,17 @@ public class OnlineStoreController {
 
         transactionService.removeAllTransactions();
 
-        model.addAttribute("clients", clientService.getAllClients());
-        model.addAttribute("products", productService.getAllProducts());
-        model.addAttribute("transactions", transactionService.getAllTransactions());
+        setModel(model);
+
         return "index";
     }
 
 
- /*   @GetMapping (value = "/newProductForm")
-    public String newProduct(Model model) {
-
-        model.addAttribute("products", productService.getAllProducts());
-
-        return "productTemplate";
-    }*/
-
-
     @PostMapping(value = "/createNewProduct")
-    public String createProduct (@RequestParam("uniqueID") String uniqueID,
+    public String createProduct (@RequestParam("uniqueID") int uniqueID,
                                  @RequestParam("name") String name,
                                  @RequestParam("manufacturer") String manufacturer,
-                                 @RequestParam("countryOfOrigin") String countryOfOrigin,
+                                 @RequestParam("country") String country,
                                  @RequestParam("description") String description,
                                  @RequestParam("unitPrice") double unitPrice,
                                  @RequestParam("specialOffers") String specialOffers,
@@ -116,10 +99,10 @@ public class OnlineStoreController {
                                  Model model) {
 
 
-        newProduct.setProductUniqueID(uniqueID);
+        newProduct.setProductID(uniqueID);
         newProduct.setProductName(name);
         newProduct.setProductManufacturer(manufacturer);
-        newProduct.setProductCountryOfOrigin(countryOfOrigin);
+        newProduct.setProductCountry(country);
         newProduct.setProductDescription(description);
         newProduct.setProductUnitPrice(unitPrice);
         newProduct.setProductSpecialOffers(specialOffers);
@@ -128,46 +111,19 @@ public class OnlineStoreController {
 
         productService.insertProduct(newProduct);
 
+        setModel(model);
 
-        model.addAttribute("clients", clientService.getAllClients());
-        model.addAttribute("products", productService.getAllProducts());
-        model.addAttribute("transactions", transactionService.getAllTransactions());
         return "index";
     }
 
     @PostMapping(value = "/deleteProduct")
-    public String deleteProductById(@RequestParam("selectedProductID") String id, Model model) {
+    public String deleteProductById(@RequestParam("selectedProductID") int id, Model model) {
         productService.deleteProductById(id);
 
-        model.addAttribute("clients", clientService.getAllClients());
-        model.addAttribute("products", productService.getAllProducts());
-        model.addAttribute("transactions", transactionService.getAllTransactions());
+        setModel(model);
+
         return "index";
     }
-
-    @PostMapping(value = "/deleteClient")
-    public String deleteClientById(@RequestParam("selectedClientID") String id, Model model) {
-        clientService.removeClientById(id);
-
-        model.addAttribute("clients", clientService.getAllClients());
-        model.addAttribute("products", productService.getAllProducts());
-        model.addAttribute("transactions", transactionService.getAllTransactions());
-        return "index";
-    }
-
-
-/*
-    @GetMapping (value = "/newClientForm")
-    public String newClient (Model model) {
-
-        model.addAttribute("clients", clientService.getAllClients());
-        model.addAttribute("products", productService.getAllProducts());
-        model.addAttribute("transactions", transactionService.getAllTransactions());
-
-        return "clientTemplate";
-    }
-*/
-
 
     @PostMapping(value = "/createNewClient")
     public String createClient (@RequestParam("clientID") String clientID,
@@ -196,13 +152,16 @@ public class OnlineStoreController {
 
         clientService.insertClient(newClient);
 
-        model.addAttribute("clients", clientService.getAllClients());
-        model.addAttribute("products", productService.getAllProducts());
-        model.addAttribute("transactions", transactionService.getAllTransactions());
+        setModel(model);
+
         return "index";
     }
 
-
+    public void setModel(Model model) {
+        model.addAttribute("clients", clientService.getAllClients());
+        model.addAttribute("products", productService.getAllProducts());
+        model.addAttribute("transactions", transactionService.getAllTransactions());
+    }
 
     @RequestMapping(value = "/justTesting")
     public void justTestMethod() {

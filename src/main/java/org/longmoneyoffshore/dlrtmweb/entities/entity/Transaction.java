@@ -1,24 +1,37 @@
-package org.longmoneyoffshore.dlrtmweb.entities.models.entity;
+package org.longmoneyoffshore.dlrtmweb.entities.entity;
 
 import lombok.Data;
 import org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject;
 import org.springframework.data.annotation.Id;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//@Entity
 @Data
-public class Transaction {
+public class Transaction implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "transactionID")
     private String transactionID;
+
+    @Column(name = "clientID")
     private String clientID;
+
+    @Column(name = "productIDList")
     private List<String> productIDList;
+
+    @Column(name = "transactionStatus")
     private String transactionStatus;
+
+    @Column(name = "specialMentions")
     private String specialMentions;
+
+    @Column(name = "localDate")
     private LocalDate localDate;
 
     public Transaction() { }

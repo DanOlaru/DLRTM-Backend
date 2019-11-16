@@ -1,12 +1,12 @@
-package org.longmoneyoffshore.dlrtmweb.entities.globalvalues;
+package org.longmoneyoffshore.dlrtmweb.globalvalues;
 
 import lombok.Data;
-import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.Address;
-import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PaymentCard;
-import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PersonName;
-import org.longmoneyoffshore.dlrtmweb.entities.models.atomic.PhoneNumber;
-import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Client;
-import org.longmoneyoffshore.dlrtmweb.entities.models.entity.Product;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.Address;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.PaymentCard;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.PersonName;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.PhoneNumber;
+import org.longmoneyoffshore.dlrtmweb.entities.entity.Client;
+import org.longmoneyoffshore.dlrtmweb.entities.entity.Product;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -116,32 +116,6 @@ public class ClientsFakeDataSets {
                     "good customer") */
 
     ));
-
-
-    //temporary data source
-
-    private List<Product> products =  new ArrayList<>(Arrays.asList(
-            new Product("0001", "Blender", "Phillips", "Netherlands",
-                    "food blender", 20, 10.67,0,0,10,0,
-                    "Free Bread Knife","USD", 100,0,0,0,
-                    "Unit","Pending recalls"),
-
-            new Product("0002", "Mixer", "Sony", "Japan",
-                    "food mixer", 47.8, 20.25,2,-1,20,10,
-                    "10% off blades","USD",180,0,0,0,
-                    "Unit","best in class"),
-
-            new Product("0003", "Grinder", "Sanyo", "South Korea",
-                    "coffee grinder",33, 34.43,3,-3,0,14,
-                    "free CD player","USD",60,0,0,20,
-                    "Unit","new model"),
-
-            new Product("0004", "Coffee Maker", "JVC", "Germany",
-                    "coffee maker",22, 16.15,11,20,3,20,
-                    "5 year warranty","USD",10,0,0,70,
-                    "Unit","buyer's favorite"))
-
-    );
 
 
 
