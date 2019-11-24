@@ -12,8 +12,8 @@ import java.util.Arrays;
 import java.util.List;
 
 
-//@RestController
-@Controller
+@RestController
+//@Controller
 @Data
 public class ProductController {
 

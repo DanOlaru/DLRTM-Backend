@@ -46,7 +46,6 @@ public class TransactionController {
         return transactionService.getTransactionById(id);
     }
 
-    //TODO: unclear how the date can be passed via the url
     @RequestMapping(value = "/transaction/{date}", method = RequestMethod.GET)
     public Collection<Transaction> getTransactionByDate(@PathVariable("date") Date date) {
 
@@ -75,6 +74,8 @@ public class TransactionController {
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void insertTransaction(@RequestBody Transaction transaction) {
+
+        System.out.println("INSIDE TRANSACTION CONTROLLER " + transaction.toString());
 
         transactionService.insertTransaction(transaction);
 

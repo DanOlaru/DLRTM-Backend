@@ -31,6 +31,8 @@
 
         <!-- annotated classes -->
         <mapping class="org.longmoneyoffshore.dlrtmweb.entities.entity.Product"/>
+        <mapping class="org.longmoneyoffshore.dlrtmweb.entities.entity.Transaction"/>
+
 
     </session-factory>
 </hibernate-configuration>

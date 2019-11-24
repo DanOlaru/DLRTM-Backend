@@ -14,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-
 @Controller
 @Data
 public class OnlineStoreController {
@@ -31,7 +30,6 @@ public class OnlineStoreController {
     public String showStore (Model model) {
 
         setModel(model);
-
         return "index";
     }
 
@@ -61,7 +59,6 @@ public class OnlineStoreController {
         clientService.removeClientById(id);
 
         setModel(model);
-
         return "index";
     }
 

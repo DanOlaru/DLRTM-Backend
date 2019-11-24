@@ -1,6 +1,9 @@
 package org.longmoneyoffshore.dlrtmweb.repository;
 
 import lombok.Data;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.longmoneyoffshore.dlrtmweb.entities.entity.Client;
 import org.longmoneyoffshore.dlrtmweb.entities.entity.Product;
 import org.longmoneyoffshore.dlrtmweb.entities.entity.Transaction;
@@ -70,6 +73,22 @@ public class TransactionDaoImpl implements TransactionDao {
     }
 
     @Override
+    public void insertTransactionHibernate(Transaction transaction) {
+        try {
+
+            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+            Session session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.save(transaction);
+            session.getTransaction().commit();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+    @Override
     public List<Transaction> getAllTransactions() {
 
         createTable();
@@ -119,7 +138,11 @@ public class TransactionDaoImpl implements TransactionDao {
 
             transaction.setTransactionID(resultSet.getString("transactionID"));
             transaction.setClientID(resultSet.getString("clientRef"));
-            transaction.setProductIDList(Arrays.asList(resultSet.getString("productIDs").split(", ")));
+            //transaction.setProductIDList(Arrays.asList(resultSet.getString("productIDs").split(", ")));
+
+            //transaction.setProductIDList(new ArrayList<String>(Arrays.asList(resultSet.getString("productIDs").split(", "))));
+            transaction.getProductIDList().addAll(Arrays.asList(resultSet.getString("productIDs").split(", ")));
+
             transaction.setTransactionStatus(resultSet.getString("transactionStatus"));
             transaction.setSpecialMentions(resultSet.getString("transactionSpecialMentions"));
             transaction.setLocalDate(LocalDate.parse(resultSet.getString("transactionDate")));

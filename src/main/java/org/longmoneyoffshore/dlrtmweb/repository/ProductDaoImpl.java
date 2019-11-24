@@ -158,14 +158,11 @@ public class ProductDaoImpl implements ProductDao {
         namedParameterJdbcTemplate.update(sql, namedParameters);
     }
 
-    public void updatedProductSublist(List<Product> subList) {
-        subList.forEach(p -> updateProduct(p));
-    }
+    public void updatedProductSublist(List<Product> subList) { subList.forEach(p -> updateProduct(p)); }
 
     private static final class ProductMapper implements RowMapper<Product> {
 
-        public ProductMapper() {
-        }
+        public ProductMapper() { }
 
         @Override
         public Product mapRow(ResultSet resultSet, int rowNum) throws SQLException {

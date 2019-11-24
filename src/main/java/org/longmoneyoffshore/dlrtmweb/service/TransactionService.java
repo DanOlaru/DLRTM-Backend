@@ -48,7 +48,9 @@ public class TransactionService {
     }
 
     public void insertTransaction (Transaction transaction) {
-        this.transactionDao.insertTransaction(transaction);
+        System.out.println("TESTING: INSIDE TRANSACTION SERVICE: INSERTING TRANSACTION " + transaction.toString());
+        //this.transactionDao.insertTransaction(transaction);
+        this.transactionDao.insertTransactionHibernate(transaction);
     }
 
     public void insertTransaction (TransactionCommandObject transactionCommandObject) {

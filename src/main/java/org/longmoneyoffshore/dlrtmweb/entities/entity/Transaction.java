@@ -2,20 +2,23 @@ package org.longmoneyoffshore.dlrtmweb.entities.entity;
 
 import lombok.Data;
 import org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject;
-import org.springframework.data.annotation.Id;
+//import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Data
+@Entity
+@Table(name = "transactions_hibernate")
 public class Transaction implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "transactionID")
     private String transactionID;
 
@@ -23,7 +26,7 @@ public class Transaction implements Serializable {
     private String clientID;
 
     @Column(name = "productIDList")
-    private List<String> productIDList;
+    private ArrayList<String> productIDList;
 
     @Column(name = "transactionStatus")
     private String transactionStatus;
@@ -34,9 +37,13 @@ public class Transaction implements Serializable {
     @Column(name = "localDate")
     private LocalDate localDate;
 
-    public Transaction() { }
+    public Transaction() {
+        productIDList = new ArrayList<String>();
+    }
 
-    public Transaction(String transactionID, String clientID, List<String> productIDList, String specialMentions) {
+    public Transaction(String transactionID, String clientID, ArrayList<String> productIDList, String specialMentions) {
+
+        this();
 
         this.transactionID = transactionID;
         this.clientID = clientID;
@@ -45,14 +52,18 @@ public class Transaction implements Serializable {
         this.specialMentions = specialMentions;
     }
 
-    public Transaction(String clientID, List<String> productIDList) {
+    public Transaction(String clientID, ArrayList<String> productIDList) {
+        this();
+
         this.clientID = clientID;
         this.productIDList = productIDList;
         this.specialMentions = "";
         this.transactionStatus = "done";
     }
 
-    public Transaction(String clientID, List<String> productIDList, String transactionStatus) {
+    public Transaction(String clientID, ArrayList<String> productIDList, String transactionStatus) {
+        this();
+
         this.clientID = clientID;
         this.productIDList = productIDList;
         this.specialMentions = "";
@@ -60,14 +71,19 @@ public class Transaction implements Serializable {
     }
 
     public Transaction(String clientId, String productIDList) {
+        this();
+
         this.clientID = clientId;
-        this.productIDList = Arrays.asList(productIDList.split(","));
+        //this.productIDList = Arrays.asList(productIDList.split(","));
+        this.productIDList.addAll(Arrays.asList(productIDList.split(",")));
         this.specialMentions = "";
     }
 
     public Transaction(String clientId, String productIDList, String transactionStatus, String specialMentions) {
+        this();
+
         this.clientID = clientId;
-        this.productIDList = Arrays.asList(productIDList.split(","));
+        this.productIDList.addAll(Arrays.asList(productIDList.split(",")));
         this.transactionStatus = transactionStatus;
         this.specialMentions = specialMentions;
     }
