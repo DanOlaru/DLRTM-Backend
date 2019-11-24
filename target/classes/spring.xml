@@ -29,7 +29,6 @@
         <property name="dataSource" ref="mySqlDataSource"/>
     </bean>
 
-
     <!-- product: controller -> service -> dao -->
     <bean id="productDaoImpl" class="org.longmoneyoffshore.dlrtmweb.repository.ProductDaoImpl" scope="singleton">
         <property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
@@ -43,7 +42,6 @@
     <bean id="productController" class="org.longmoneyoffshore.dlrtmweb.controller.ProductController" scope="singleton">
         <property name="productService" ref="productService"/>
     </bean>
-
 
     <!-- client: controller -> service -> dao -->
     <bean id="clientDaoImpl" class="org.longmoneyoffshore.dlrtmweb.repository.ClientDaoImpl">
@@ -60,7 +58,6 @@
     <bean id="clientController" class="org.longmoneyoffshore.dlrtmweb.controller.ClientController">
         <property name="clientService" ref="clientService"/>
     </bean>
-
 
     <bean id="paymentCardDaoImpl" class="org.longmoneyoffshore.dlrtmweb.repository.PaymentCardDaoImpl">
         <property name="dataSource" ref="mySqlDataSource"/>
@@ -135,5 +132,4 @@
           scope="prototype"/>
 
     <bean id="disposablePaymentCards" class="java.util.ArrayList" scope="prototype"/>
-
 </beans>
