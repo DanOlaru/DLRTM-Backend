@@ -1,8 +1,8 @@
 package org.longmoneyoffshore.dlrtmweb.entities.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 import org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject;
-//import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,20 +13,39 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Data
-@Entity
+@Entity (name = "Transaction")
 @Table(name = "transactions_hibernate")
 public class Transaction implements Serializable {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "transactionID")
-    private String transactionID;
+    private int transactionID;
 
     @Column(name = "clientID")
     private String clientID;
 
-    @Column(name = "productIDList")
-    private ArrayList<String> productIDList;
+
+    //simple @ManyToOne implementation !!!!
+    /*EntityManager entityManager = Persistence
+            .createEntityManagerFactory("longmoneyoffshore.dlrtmweb.entities.entity.TransactedProduct")
+            .createEntityManager();
+
+    @OneToMany(mappedBy = "transaction")
+    //@JoinColumn(name = "transactedProductId")
+    //private List<Product> products;
+    private List<TransactedProduct> products = entityManager.createQuery(
+            "SELECT tc" +
+                    "FROM TransactedProduct tc" +
+                    "WHERE tc.transaction.transactionID = : transactionID" ,TransactedProduct.class)
+            .setParameter(transactionID, transactionID)
+            .getResultList();*/
+
+    //bi-directional @OneToMany
+    //@JoinColumn(name = "transactedProductId")
+    @OneToMany(mappedBy = "transaction", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TransactedProduct> products = new ArrayList<>();
+
 
     @Column(name = "transactionStatus")
     private String transactionStatus;
@@ -37,17 +56,14 @@ public class Transaction implements Serializable {
     @Column(name = "localDate")
     private LocalDate localDate;
 
-    public Transaction() {
-        productIDList = new ArrayList<String>();
-    }
+    public Transaction() {}
 
-    public Transaction(String transactionID, String clientID, ArrayList<String> productIDList, String specialMentions) {
+    public Transaction(int transactionID, String clientID, ArrayList<String> productIDList, String specialMentions) {
 
         this();
 
         this.transactionID = transactionID;
         this.clientID = clientID;
-        this.productIDList = productIDList;
         this.transactionStatus = "done";
         this.specialMentions = specialMentions;
     }
@@ -56,7 +72,6 @@ public class Transaction implements Serializable {
         this();
 
         this.clientID = clientID;
-        this.productIDList = productIDList;
         this.specialMentions = "";
         this.transactionStatus = "done";
     }
@@ -65,7 +80,6 @@ public class Transaction implements Serializable {
         this();
 
         this.clientID = clientID;
-        this.productIDList = productIDList;
         this.specialMentions = "";
         this.transactionStatus = transactionStatus;
     }
@@ -75,7 +89,6 @@ public class Transaction implements Serializable {
 
         this.clientID = clientId;
         //this.productIDList = Arrays.asList(productIDList.split(","));
-        this.productIDList.addAll(Arrays.asList(productIDList.split(",")));
         this.specialMentions = "";
     }
 
@@ -83,7 +96,6 @@ public class Transaction implements Serializable {
         this();
 
         this.clientID = clientId;
-        this.productIDList.addAll(Arrays.asList(productIDList.split(",")));
         this.transactionStatus = transactionStatus;
         this.specialMentions = specialMentions;
     }
@@ -92,8 +104,14 @@ public class Transaction implements Serializable {
         this(tco.getClientId(),tco.getProductIds(),tco.getTransactionStatus(), tco.getTransactionSpecialMentions());
     }
 
-    public String getProductListAsString() {
-        return productIDList.stream().collect(Collectors.joining(", "));
+    public void addProduct (TransactedProduct transactedProduct) {
+        products.add(transactedProduct);
+        transactedProduct.setTransaction(this);
+    }
+
+    public void removeProduct (TransactedProduct transactedProduct) {
+        products.remove(transactedProduct);
+        transactedProduct.setTransaction(null);
     }
 
 }

@@ -207,7 +207,7 @@
                     <tr th:each="transaction : ${transactions}">
                         <td th:text="${transaction.transactionID}"></td>
                         <td th:text="${transaction.clientID}"></td>
-                        <td th:text="${transaction.productIDList}"></td>
+                        <td th:text="${transaction.products.productID}"></td>
                         <td th:text="${transaction.transactionStatus}"></td>
                         <td th:text="${transaction.specialMentions}"></td>
                         <td th:text="${transaction.localDate}"></td>

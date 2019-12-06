@@ -7,21 +7,29 @@ import org.longmoneyoffshore.dlrtmweb.entities.atomic.PersonName;
 import org.longmoneyoffshore.dlrtmweb.entities.atomic.PhoneNumber;
 import org.springframework.lang.Nullable;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
 @Data
+//@Entity
+//@Table(name = "clients_hibernate")
 public class Client implements Serializable {
-    //@Id
-    @NotNull
-    private String clientID;
+
+    @Id
+    //@NotNull
+    private int clientID;
+
     @Nullable
     private PersonName clientName;
+
     @Nullable
     private PhoneNumber clientHomePhone, clientBusinessPhone, clientAlternatePhone, clientMobilePhone;
+
     @Nullable
     private String clientPrimaryEmailAddress,clientAlternateEmailAddress;
+
     @Nullable
     private Address clientBillingAddress, clientShippingAddress, clientAlternateAddress;
     //@Nullable
@@ -29,6 +37,7 @@ public class Client implements Serializable {
 
     //#6 payment info
     @Nullable
+    //@OneToMany (mappedBy = "paymentCards")
     private List<PaymentCard> cards;
     //@Nullable
     //private PaymentCard selectedPaymentMethod; // points to one of the above
@@ -48,16 +57,16 @@ public class Client implements Serializable {
     // 1° constructor -  basic
     public Client() {}
 
-    public Client(String clientID) {
+    public Client(int clientID) {
         this.clientID = clientID;
     }
 
     //full constructor
-    public Client(String clientID, PersonName clientName, PhoneNumber clientHomePhone, PhoneNumber clientBusinessPhone,
-                  PhoneNumber clientAlternatePhone, PhoneNumber clientMobilePhone, PhoneNumber clientPrimaryContactPhone,
+    public Client(int clientID, PersonName clientName, PhoneNumber clientHomePhone, PhoneNumber clientBusinessPhone,
+                  PhoneNumber clientAlternatePhone, PhoneNumber clientMobilePhone,
                   String clientPrimaryEmailAddress, String clientAlternateEmailAddress, Address clientBillingAddress,
-                  Address clientShippingAddress, Address clientAlternateAddress, Address clientDeliveryAddress, List<PaymentCard> cards,
-                  PaymentCard selectedPaymentMethod, float clientUrgency, float clientValue,
+                  Address clientShippingAddress, Address clientAlternateAddress, List<PaymentCard> cards,
+                  float clientUrgency, float clientValue,
                   String clientStatus, String clientSpecialMentions) {
 
         this.clientID = clientID;
@@ -80,8 +89,8 @@ public class Client implements Serializable {
         this.clientSpecialMentions = clientSpecialMentions;
     }
 
-    //smaller-signature Constructor
-    public Client(String clientID, PersonName clientName, PhoneNumber clientHomePhone, PhoneNumber clientBusinessPhone,
+    /*//smaller-signature Constructor
+    public Client(int clientID, PersonName clientName, PhoneNumber clientHomePhone, PhoneNumber clientBusinessPhone,
                   PhoneNumber clientAlternatePhone, PhoneNumber clientMobilePhone, String clientPrimaryEmailAddress,
                   String clientAlternateEmailAddress, Address clientBillingAddress, Address clientShippingAddress,
                   Address clientAlternateAddress, List<PaymentCard> cards, float clientUrgency,
@@ -108,10 +117,10 @@ public class Client implements Serializable {
         //this.clientPrimaryContactPhone = clientMobilePhone;
         //this.clientDeliveryAddress = clientShippingAddress;
         //this.selectedPaymentMethod = this.cards.get(0);
-    }
+    }*/
 
     //brief-signature Constructor
-    public Client(String clientID, PersonName clientName, PhoneNumber clientPhone, String clientPrimaryEmailAddress,
+    public Client(int clientID, PersonName clientName, PhoneNumber clientPhone, String clientPrimaryEmailAddress,
                   Address clientAddress, List<PaymentCard> cards, String clientSpecialMentions) {
 
         this.clientID = clientID;
@@ -138,7 +147,7 @@ public class Client implements Serializable {
     }
 
     //primitives Constructor
-    public Client(String clientID, String clientName, String clientPhone, String clientPrimaryEmailAddress,
+    public Client(int clientID, String clientName, String clientPhone, String clientPrimaryEmailAddress,
                   String clientAddress, String cardInfo, String clientSpecialMentions) {
 
         this.clientID = clientID;
@@ -217,7 +226,7 @@ public class Client implements Serializable {
         String differencesIndex="";
 
         //#1 Client id
-        if (!this.clientID.equals(other.getClientID())) differencesIndex+=1; else differencesIndex+=0;
+        if (!(this.clientID ==other.getClientID())) differencesIndex+=1; else differencesIndex+=0;
 
         //#2 Client Name
         if (!this.clientName.equals(other.getClientName())) differencesIndex+=1; else differencesIndex+=0;

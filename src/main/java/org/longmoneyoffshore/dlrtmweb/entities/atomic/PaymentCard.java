@@ -1,7 +1,14 @@
 package org.longmoneyoffshore.dlrtmweb.entities.atomic;
 
-//@Embeddable
+import javax.persistence.*;
+
+@Embeddable
+@Entity
+@Table(name = "paymentCards")
 public class PaymentCard {
+
+    @Id
+    private int cardID;
 
     private String fullCardInfo;
     private String cardNumber;

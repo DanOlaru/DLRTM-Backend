@@ -25,7 +25,5 @@ public interface TransactionDao {
 
     void insertTransaction (Transaction transaction);
 
-    void insertTransactionHibernate (Transaction transaction);
-
 }
 

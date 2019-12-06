@@ -196,7 +196,7 @@ public class ClientDaoImpl implements ClientDao {
         public Client mapRow(ResultSet resultSet, int rowNum) throws SQLException {
             Client client = new Client();
 
-            client.setClientID(resultSet.getString("clientID"));
+            client.setClientID(resultSet.getInt("clientID"));
 
             String clientName = resultSet.getString("name");
 

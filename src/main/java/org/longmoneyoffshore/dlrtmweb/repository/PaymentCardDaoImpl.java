@@ -75,9 +75,9 @@ public class PaymentCardDaoImpl implements PaymentCardDao {
     }
 
 
-    public List<PaymentCard> getPaymentCardsByClientId(String clientID) {
+    public List<PaymentCard> getPaymentCardsByClientId(int clientID) {
 
-        String cardsSql = "SELECT * FROM paymentCards WHERE clientID =";
+        String cardsSql = "SELECT * FROM paymentCards WHERE clientID = ";
         return namedParameterJdbcTemplate.query(cardsSql + clientID, new PaymentCardMapper());
     }
 

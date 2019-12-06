@@ -1,9 +1,6 @@
 package org.longmoneyoffshore.dlrtmweb.repository;
 
 import lombok.Data;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.longmoneyoffshore.dlrtmweb.entities.entity.Client;
 import org.longmoneyoffshore.dlrtmweb.entities.entity.Product;
 import org.longmoneyoffshore.dlrtmweb.entities.entity.Transaction;
@@ -18,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Data
 public class TransactionDaoImpl implements TransactionDao {
@@ -26,9 +24,11 @@ public class TransactionDaoImpl implements TransactionDao {
     private JdbcTemplate jdbcTemplate;
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    public TransactionDaoImpl() { }
+    public TransactionDaoImpl() {
+    }
 
-    public TransactionDaoImpl(Client client, ArrayList<Product> productsList) { }
+    public TransactionDaoImpl(Client client, ArrayList<Product> productsList) {
+    }
 
 
     public void createTable() {
@@ -57,39 +57,32 @@ public class TransactionDaoImpl implements TransactionDao {
     @Override
     public void insertTransaction(Transaction transaction) {
 
+        System.out.println("TESTING: INSIDE NORMAL TRANSACTION DAOIMPL: INSERTING TRANSACTION " + transaction.toString());
+
         String sqlTransactions = "INSERT INTO transactions (clientRef, productIDs, transactionStatus, transactionSpecialMentions, transactionDate) " +
                 "VALUES (:clientRef, :productIDs, :transactionStatus, :transactionSpecialMentions, :transactionDate)";
 
+
+
         SqlParameterSource transactionNamedParameters =
                 new MapSqlParameterSource("clientRef", transaction.getClientID())
-                .addValue("clientRef", transaction.getClientID())
-                .addValue("productIDs", transaction.getProductListAsString())
-                .addValue("transactionStatus", transaction.getTransactionStatus())
-                .addValue("transactionSpecialMentions", transaction.getSpecialMentions())
-                .addValue("transactionDate", LocalDate.now().toString()); //TODO: might have to modify approach to date
+                        .addValue("clientRef", transaction.getClientID())
+                        .addValue("", transaction.getProducts()
+                                .stream()
+                                .map(String::valueOf)
+                                .collect(Collectors.joining(", ")))
+                        .addValue("transactionStatus", transaction.getTransactionStatus())
+                        .addValue("transactionSpecialMentions", transaction.getSpecialMentions())
+                        .addValue("transactionDate", LocalDate.now().toString()); //TODO: might have to modify approach to date
 
         createTable();
         namedParameterJdbcTemplate.update(sqlTransactions, transactionNamedParameters);
     }
 
     @Override
-    public void insertTransactionHibernate(Transaction transaction) {
-        try {
-
-            SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-            Session session = sessionFactory.openSession();
-            session.beginTransaction();
-            session.save(transaction);
-            session.getTransaction().commit();
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-
-    @Override
     public List<Transaction> getAllTransactions() {
+
+        //System.out.println("CLASSIC TRANSACTIONS DAO GETTING ALL TRANSACTIONS");
 
         createTable();
 
@@ -119,29 +112,30 @@ public class TransactionDaoImpl implements TransactionDao {
     }
 
     @Override
-    public void removeAllTransactions () {
+    public void removeAllTransactions() {
         String sql = "TRUNCATE TABLE transactions";
         jdbcTemplate.update(sql);
     }
 
     @Override
-    public void updateTransaction(Transaction transaction) { }
+    public void updateTransaction(Transaction transaction) {
+    }
 
 
     private static final class TransactionMapper implements RowMapper<Transaction> {
-        public TransactionMapper () {}
+        public TransactionMapper() {
+        }
 
 
         @Override
         public Transaction mapRow(ResultSet resultSet, int rowNum) throws SQLException {
             Transaction transaction = new Transaction();
 
-            transaction.setTransactionID(resultSet.getString("transactionID"));
+            transaction.setTransactionID(resultSet.getInt("transactionID"));
             transaction.setClientID(resultSet.getString("clientRef"));
             //transaction.setProductIDList(Arrays.asList(resultSet.getString("productIDs").split(", ")));
 
-            //transaction.setProductIDList(new ArrayList<String>(Arrays.asList(resultSet.getString("productIDs").split(", "))));
-            transaction.getProductIDList().addAll(Arrays.asList(resultSet.getString("productIDs").split(", ")));
+            //transaction.getProductIDList().addAll(Arrays.asList(resultSet.getString("productIDs").split(", ")));
 
             transaction.setTransactionStatus(resultSet.getString("transactionStatus"));
             transaction.setSpecialMentions(resultSet.getString("transactionSpecialMentions"));

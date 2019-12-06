@@ -43,8 +43,12 @@ public class Product implements Serializable {
     @Column(name = "specialMentions")
     private String productSpecialMentions;
 
+    @ManyToOne
+    @JoinColumn(name = "transaction_id")
+    private Transaction transaction;
 
-    public Product() { }
+    public Product() {
+    }
 
     public Product(int productID) {
         this.productID = productID;
@@ -74,11 +78,11 @@ public class Product implements Serializable {
     public String toString() {
         try {
             return "Product{" + "\n" +
-                    "  productID=" + this.productID+ "\n" +
+                    "  productID=" + this.productID + "\n" +
                     ", productName=" + this.productName + "\n" +
-                    ", productManufacturer=" + this.productManufacturer+ "\n" +
+                    ", productManufacturer=" + this.productManufacturer + "\n" +
                     ", productCountry=" + this.productCountry + "\n" +
-                    ", productDescription=" + this.productDescription+ "\n" +
+                    ", productDescription=" + this.productDescription + "\n" +
                     ", productUnitPrice=" + this.productUnitPrice + "\n" +
                     ", productSpecialOffers=" + this.productSpecialOffers + "\n" +
                     ", productItemsInStockInt=" + this.productItemsInStockInt + "\n" +

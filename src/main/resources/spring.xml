@@ -77,7 +77,10 @@
     </bean>
 
     <bean id="transactionService" class="org.longmoneyoffshore.dlrtmweb.service.TransactionService">
+        <!--<property name="transactionDao" ref="transactionDaoImpl"/>-->
         <property name="transactionDao" ref="transactionDaoImpl"/>
+        <property name="transactionDaoHibernate" ref="transactionDaoHibernateImpl" />
+
     </bean>
 
     <bean id="transactionController" class="org.longmoneyoffshore.dlrtmweb.controller.TransactionController">
@@ -88,6 +91,10 @@
         <property name="transactionCommandObject" ref="transactionCommandObject"/>
 
         <property name="onlineStoreController" ref="onlineStoreController"/>
+    </bean>
+
+    <bean id="transactionDaoHibernateImpl" class="org.longmoneyoffshore.dlrtmweb.repository.TransactionDaoHibernateImpl">
+
     </bean>
 
 

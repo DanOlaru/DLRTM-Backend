@@ -1,6 +1,5 @@
 package org.longmoneyoffshore.dlrtmweb.service;
 
-
 import lombok.Data;
 import org.longmoneyoffshore.dlrtmweb.repository.TransactionDao;
 import org.longmoneyoffshore.dlrtmweb.entities.entity.Transaction;
@@ -16,7 +15,7 @@ import java.util.List;
 @Data
 public class TransactionService {
 
-    private TransactionDao transactionDao;
+    private TransactionDao transactionDao, transactionDaoHibernate;
 
     public List<Transaction> getAllTransactions() {
         return this.transactionDao.getAllTransactions();
@@ -49,13 +48,16 @@ public class TransactionService {
 
     public void insertTransaction (Transaction transaction) {
         System.out.println("TESTING: INSIDE TRANSACTION SERVICE: INSERTING TRANSACTION " + transaction.toString());
-        //this.transactionDao.insertTransaction(transaction);
-        this.transactionDao.insertTransactionHibernate(transaction);
+        this.transactionDao.insertTransaction(transaction);
     }
 
     public void insertTransaction (TransactionCommandObject transactionCommandObject) {
+        //System.out.println("TESTING: INSIDE TRANSACTION SERVICE HIBERNATE: INSERTING TRANSACTION " + transactionCommandObject.toString());
 
         this.transactionDao.insertTransaction(new Transaction(transactionCommandObject));
+
+        //write in the _hibernate table
+        this.transactionDaoHibernate.insertTransaction(new Transaction(transactionCommandObject));
     }
 
 }

@@ -46,6 +46,8 @@ public class OnlineStoreController {
         transactionCommandObject.setTransactionStatus(transactionStatus);
         transactionCommandObject.setTransactionSpecialMentions(transactionSpecialMentions);
 
+        //System.out.println("TESTING: INSIDE ONLINE STORE CONTROLLER CREATE NEW TRANSACTION: " + transactionCommandObject.toString());
+
         transactionService.insertTransaction(transactionCommandObject);
 
         setModel(model);
@@ -123,7 +125,7 @@ public class OnlineStoreController {
     }
 
     @PostMapping(value = "/createNewClient")
-    public String createClient (@RequestParam("clientID") String clientID,
+    public String createClient (@RequestParam("clientID") int clientID,
                                  @RequestParam("clientName") String clientName,
                                  @RequestParam("clientPhone") String clientPhone,
                                  @RequestParam("clientEmail") String clientEmail,

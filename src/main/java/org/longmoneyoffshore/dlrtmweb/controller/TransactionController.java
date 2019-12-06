@@ -16,6 +16,7 @@ import java.util.Date;
 
 @Controller
 @Data
+@RequestMapping(value = "/transactions")
 public class TransactionController {
 
     private TransactionService transactionService;
@@ -35,18 +36,21 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    @GetMapping(value = "/transactions")
+    //@GetMapping(value = "/transactions")
+    @GetMapping
     public Collection<Transaction> getAllTransactions() {
         return transactionService.getAllTransactions();
 
     }
 
-    @RequestMapping(value = "/transaction/{id}", method = RequestMethod.GET)
+    //@RequestMapping(value = "/transaction/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Transaction getTransactionById(@PathVariable("id") String id) {
         return transactionService.getTransactionById(id);
     }
 
-    @RequestMapping(value = "/transaction/{date}", method = RequestMethod.GET)
+    //@RequestMapping(value = "/transaction/{date}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{date}", method = RequestMethod.GET)
     public Collection<Transaction> getTransactionByDate(@PathVariable("date") Date date) {
 
         //transactions for the current day or a specific date
@@ -55,7 +59,8 @@ public class TransactionController {
     }
 
 
-    @DeleteMapping(value = "transaction/{selectedTransactionID}")
+    //@DeleteMapping(value = "transaction/{selectedTransactionID}")
+    @DeleteMapping(value = "/{selectedTransactionID}")
     public String deleteTransactionById(@PathVariable("selectedTransactionID") String id, Model model) {
         transactionService.removeTransactionById(id);
 
@@ -75,10 +80,7 @@ public class TransactionController {
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void insertTransaction(@RequestBody Transaction transaction) {
 
-        System.out.println("INSIDE TRANSACTION CONTROLLER " + transaction.toString());
-
         transactionService.insertTransaction(transaction);
-
     }
 
 
@@ -88,7 +90,6 @@ public class TransactionController {
         transactionService.insertTransaction(new Transaction(command.getClientId(), command.getProductIds()));
 
     }
-
 
 }
 
