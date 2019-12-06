@@ -7,31 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed8da808-fee5-4c82-9b40-5c4f870cd86a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/entity/TransactedProduct.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/TransactionDaoHibernateImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/OnlineStoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/OnlineStoreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/TransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/atomic/PaymentCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/atomic/PaymentCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/entity/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/entity/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/entity/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/entity/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/globalvalues/ClientsFakeDataSets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/globalvalues/ClientsFakeDataSets.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ClientDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ClientDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/PaymentCardDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/PaymentCardDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/TransactionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/TransactionDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/TransactionDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/TransactionDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/TransactionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -433,7 +409,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574635309889</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Implementing DB access via Hibernate">
+      <created>1575638242631</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1575638242631</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -465,7 +448,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="merged Reverted_Works onto master. Hope it does the trick&#10;&#10;Product controller + dao impl reads from mySql database!!!" />
     <MESSAGE value="retrieves individual entries from DB by Id&#10;&#10;Product controller + dao impl reads from mySql database!!!" />
     <MESSAGE value="inputs individuals into DB from HTTP method body;&#10;&#10;retrieves individual entries from DB by Id;&#10;&#10;*before cleanup" />
     <MESSAGE value="code cleaned up somewhat -- questions in ProductDaoImpl&#10;&#10;inputs individuals into DB from HTTP method body;&#10;&#10;retrieves individual entries from DB by Id;&#10;&#10;*before cleanup" />
@@ -490,13 +472,18 @@
     <MESSAGE value="Right before switch to Hibernate &#10;&#10;RUNS AS IS" />
     <MESSAGE value="JDBC implementation" />
     <MESSAGE value="implemented Hibernate for Transaction class.&#10;&#10;WORKS!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented Hibernate for Transaction class.&#10;&#10;WORKS!!" />
+    <MESSAGE value="Implementing DB access via Hibernate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementing DB access via Hibernate" />
   </component>
   <component name="WindowStateProjectService">
     <state x="404" y="126" key="#DLRTMWebPlatform" timestamp="1575100270855">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="404" y="126" key="#DLRTMWebPlatform/0.23.1440.877@0.23.1440.877" timestamp="1575100270855" />
+    <state x="263" y="46" key="CommitChangelistDialog2" timestamp="1575638241397">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="263" y="46" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1575638241397" />
     <state width="1398" height="304" key="GridCell.Tab.0.bottom" timestamp="1575636966555">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -517,5 +504,9 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="208" y="43" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1575635406457" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1575638247589">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1575638247589" />
   </component>
 </project>
