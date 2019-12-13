@@ -1,22 +1,24 @@
-/*
 package org.longmoneyoffshore.dlrtmweb.entities.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-//@Entity
-//@Table(name = "products_hibernate")
-@Component
+@Entity (name = "Product")
+@Table(name = "products")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
+@EqualsAndHashCode
+//@Component
 public class Product implements Serializable {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "productId")
     private int productID;
 
@@ -44,36 +46,6 @@ public class Product implements Serializable {
     @Column(name = "specialMentions")
     private String productSpecialMentions;
 
-    @ManyToOne
-    @JoinColumn(name = "transaction_id")
-    private Transaction transaction;
-
-    public Product() {
-    }
-
-    public Product(int productID) {
-        this.productID = productID;
-    }
-
-    public Product(int productID, String productName) {
-        this.productID = productID;
-        this.productName = productName;
-    }
-
-
-    public Product(int productID, String productName, String productManufacturer, String country, String productDescription,
-                   double productUnitPrice, String productSpecialOffers, int productItemsInStockInt, String productSpecialMentions) {
-
-        this.productID = productID;
-        this.productName = productName;
-        this.productManufacturer = productManufacturer;
-        this.productCountry = country;
-        this.productDescription = productDescription;
-        this.productUnitPrice = productUnitPrice;
-        this.productSpecialOffers = productSpecialOffers;
-        this.productItemsInStockInt = productItemsInStockInt;
-        this.productSpecialMentions = productSpecialMentions;
-    }
 
     @Override
     public String toString() {
@@ -96,4 +68,3 @@ public class Product implements Serializable {
     }
 
 }
-*/

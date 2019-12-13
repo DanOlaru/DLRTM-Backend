@@ -1,3 +1,4 @@
+/*
 package org.longmoneyoffshore.dlrtmweb.repository;
 
 import org.longmoneyoffshore.dlrtmweb.entities.atomic.PaymentCard;
@@ -137,3 +138,4 @@ public class PaymentCardDaoImpl implements PaymentCardDao {
         }
     }
 }
+*/

@@ -2,43 +2,48 @@ package org.longmoneyoffshore.dlrtmweb.controller;
 
 import lombok.Data;
 import org.longmoneyoffshore.dlrtmweb.globalvalues.ClientsFakeDataSets;
-import org.longmoneyoffshore.dlrtmweb.entities.atomic.Address;
-import org.longmoneyoffshore.dlrtmweb.entities.atomic.PaymentCard;
-import org.longmoneyoffshore.dlrtmweb.entities.atomic.PersonName;
-import org.longmoneyoffshore.dlrtmweb.entities.atomic.PhoneNumber;
 import org.longmoneyoffshore.dlrtmweb.entities.entity.Client;
 import org.longmoneyoffshore.dlrtmweb.service.ClientService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 //@Controller
 @RestController
+@Qualifier("ClientController")
 @RequestMapping(value = "/clients")
 @Data
 public class ClientController {
 
+    @Autowired
     private ClientService clientService;
-    private List<Client> myInitialClients = new ArrayList<>(ClientsFakeDataSets.clientsFakeDataSet);
 
     @GetMapping
     public List<Client> getAllClients() {
+        System.out.println("TESTING: INSIDE CONTROLLER: GETTING ALL CLIENTS");
         return clientService.getAllClients();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Client getClientById(@PathVariable("id") String id) {
+    public Client getClientById(@PathVariable("id") int id) {
+
+        System.out.println("TESTING: INSIDE CONTROLLER: GETTING CLIENT # " + id);
+
         return clientService.getClientById(id);
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-    public void deleteClientById(@PathVariable("id") String id) {
+    public void deleteClientById(@PathVariable("id") int id) {
         clientService.removeClientById(id);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE)
+    public void deleteAllClients() {
+        clientService.removeAllClients();
     }
 
     @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -54,16 +59,27 @@ public class ClientController {
     }
 
 
-    @GetMapping(value = "/clientsfake")
+    @PostMapping(value = "/clientsfake")
     public void insertFakeClients() {
 
-        //System.out.println("CLIENT CONTROLLER: ");
+        clientService.insertClients(ClientsFakeDataSets.clientsFakeDataSet);
+    }
 
-        //clientService.clearTables();
-        System.out.println("TESTING: WHAT ARE MY CLIENTS" );
-        for (Client c : myInitialClients) { System.out.print(c.getClientID() + " " + c.getClientName() + " || "); }
+    @PostMapping(value = "/insertoneclient")
+    public void insertOneClient() {
 
-        clientService.insertClients(myInitialClients);
+        System.out.println("testing: insert this one client");
+
+        Client oneClient = Client.builder()
+                .clientName("One Client")
+                .clientBusinessPhone("666-888-6767")
+                .emailAddress("one.client@gmail.com")
+                .clientAddress("345 E 85th St, Chicago, IL, 60617")
+                .paymentCard("5432 5678 6666 0987, 10/14/20, 665")
+                .clientSpecialMentions("just one customer")
+                .build();
+
+        clientService.insertClient(oneClient);
     }
 
 }

@@ -1,8 +1,14 @@
+/*
 package org.longmoneyoffshore.dlrtmweb.entities.atomic;
+
+import javax.persistence.Embeddable;
+
+import java.io.Serializable;
 
 import static org.longmoneyoffshore.dlrtmweb.globalvalues.GlobalValues.US_ANONYMIZER_PREFIX;
 
-public class PhoneNumber { //implements Serializable {
+@Embeddable
+public class PhoneNumber implements Serializable {
 
     private String ownerName;
     private String clientPhoneNo;
@@ -112,3 +118,4 @@ public class PhoneNumber { //implements Serializable {
     }
 
 }
+*/

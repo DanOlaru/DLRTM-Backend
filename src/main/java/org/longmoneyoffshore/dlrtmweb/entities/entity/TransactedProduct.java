@@ -1,13 +1,14 @@
 /*
 package org.longmoneyoffshore.dlrtmweb.entities.entity;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity(name = "TransactedProduct")
-@Table (name = "transacted_products_hibernate")
+@Table (name = "transacted_products")
+@Getter
+@Setter
 @Data
 //@EqualsAndHashCode
 public class TransactedProduct extends Product {

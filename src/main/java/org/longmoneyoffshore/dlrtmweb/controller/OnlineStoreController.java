@@ -2,21 +2,34 @@ package org.longmoneyoffshore.dlrtmweb.controller;
 
 import lombok.Data;
 import org.longmoneyoffshore.dlrtmweb.entities.entity.Client;
+import org.longmoneyoffshore.dlrtmweb.entities.entity.Product;
 import org.longmoneyoffshore.dlrtmweb.service.ClientService;
+import org.longmoneyoffshore.dlrtmweb.service.ProductService;
 import org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@Qualifier("OnlineStoreController")
 @Data
 public class OnlineStoreController {
+
+    @Autowired
     private ClientService clientService;
-    //private ProductService productService;
+
+    @Autowired
+    private ProductService productService;
     //private TransactionService transactionService;
 
     //private TransactionCommandObject transactionCommandObject;
 
+    @GetMapping("/testClientService")
+    public String testClientService() {
+        return clientService.toString();
+    }
 
     @GetMapping("/showStore")
     public String showStore(Model model) {
@@ -72,7 +85,7 @@ public class OnlineStoreController {
     }
 
     @PostMapping(value = "/deleteClient")
-    public String deleteClientById(@RequestParam("selectedClientID") String id, Model model) {
+    public String deleteClientById(@RequestParam("selectedClientID") int id, Model model) {
 
         clientService.removeClientById(id);
 
@@ -98,12 +111,11 @@ public class OnlineStoreController {
         setModel(model);
 
         return "index";
-    }
+    }*/
 
 
     @PostMapping(value = "/createNewProduct")
-    public String createProduct (@RequestParam("uniqueID") int uniqueID,
-                                 @RequestParam("name") String name,
+    public String createProduct (@RequestParam("name") String name,
                                  @RequestParam("manufacturer") String manufacturer,
                                  @RequestParam("country") String country,
                                  @RequestParam("description") String description,
@@ -113,18 +125,16 @@ public class OnlineStoreController {
                                  @RequestParam("specialMentions") String specialMentions,
                                  Model model) {
 
-
-        newProduct.setProductID(uniqueID);
-        newProduct.setProductName(name);
-        newProduct.setProductManufacturer(manufacturer);
-        newProduct.setProductCountry(country);
-        newProduct.setProductDescription(description);
-        newProduct.setProductUnitPrice(unitPrice);
-        newProduct.setProductSpecialOffers(specialOffers);
-        newProduct.setProductItemsInStockInt(itemsInStockInt);
-        newProduct.setProductSpecialMentions(specialMentions);
-
-        productService.insertProduct(newProduct);
+        productService.insertProduct(Product.builder()
+                .productName(name)
+                .productManufacturer(manufacturer)
+                .productCountry(country)
+                .productDescription(description)
+                .productUnitPrice(unitPrice)
+                .productSpecialOffers(specialOffers)
+                .productItemsInStockInt(itemsInStockInt)
+                .productSpecialMentions(specialMentions)
+                .build());
 
         setModel(model);
 
@@ -138,11 +148,12 @@ public class OnlineStoreController {
         setModel(model);
 
         return "index";
-    }*/
+    }
 
     public void setModel(Model model) {
+
         model.addAttribute("clients", clientService.getAllClients());
-        //model.addAttribute("products", productService.getAllProducts());
+        model.addAttribute("products", productService.getAllProducts());
         //model.addAttribute("transactions", transactionService.getAllTransactions());
     }
 

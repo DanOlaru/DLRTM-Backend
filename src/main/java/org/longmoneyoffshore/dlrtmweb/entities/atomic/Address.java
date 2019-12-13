@@ -1,8 +1,16 @@
+/*
 package org.longmoneyoffshore.dlrtmweb.entities.atomic;
 
+import lombok.*;
+
+import javax.persistence.Embeddable;
 import java.util.Objects;
 
-//@Embeddable
+@Embeddable
+@Builder
+@Getter
+@Setter
+@AllArgsConstructor
 public class Address {
 
     //fields
@@ -31,122 +39,6 @@ public class Address {
 
     }
 
-    public Address(String personName, String bldgNumber, String streetName, String cityName, String provinceName, String zipCode,
-                   String country, String otherInfo) {
-
-        this.personName = personName;
-
-        this.bldgNumber = bldgNumber;
-        this.streetName = streetName;
-        this.cityName = cityName;
-        this.provinceName = provinceName;
-        this.zipCode = zipCode;
-        this.country = country;
-        this.otherInfo = otherInfo;
-    }
-
-    public Address(String fullAddress, String personName, String bldgNumber, String streetName, String cityName,
-                   String provinceName, String zipCode, String country, String otherInfo, double latitude, double longitude) {
-        this.fullAddress = fullAddress;
-        this.personName = personName;
-        this.bldgNumber = bldgNumber;
-        this.streetName = streetName;
-        this.cityName = cityName;
-        this.provinceName = provinceName;
-        this.zipCode = zipCode;
-        this.country = country;
-        this.otherInfo = otherInfo;
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
-
-    public String getFullAddress() {
-        return fullAddress;
-    }
-
-    public void setFullAddress(String fullAddress) {
-        this.fullAddress = fullAddress;
-    }
-
-    public String getPersonName() {
-        return personName;
-    }
-
-    public void setPersonName(String personName) {
-        this.personName = personName;
-    }
-
-    public String getBldgNumber() {
-        return bldgNumber;
-    }
-
-    public void setBldgNumber(String bldgNumber) {
-        this.bldgNumber = bldgNumber;
-    }
-
-    public String getStreetName() {
-        return streetName;
-    }
-
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
-    }
-
-    public String getCityName() {
-        return cityName;
-    }
-
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
-    }
-
-    public String getProvinceName() {
-        return provinceName;
-    }
-
-    public void setProvinceName(String provinceName) {
-        this.provinceName = provinceName;
-    }
-
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getOtherInfo() {
-        return otherInfo;
-    }
-
-    public void setOtherInfo(String otherInfo) {
-        this.otherInfo = otherInfo;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
 
     public String getStandardAddress() {
         return personName + "\n" +
@@ -208,3 +100,4 @@ public class Address {
         return Objects.hash(fullAddress, personName, bldgNumber, streetName, cityName, provinceName, zipCode, country, otherInfo);
     }
 }
+*/

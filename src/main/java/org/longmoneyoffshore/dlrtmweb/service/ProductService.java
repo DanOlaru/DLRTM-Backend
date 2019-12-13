@@ -1,9 +1,9 @@
-/*
 package org.longmoneyoffshore.dlrtmweb.service;
 
 import lombok.Data;
-import org.longmoneyoffshore.dlrtmweb.repository.ProductDaoImpl;
+import org.longmoneyoffshore.dlrtmweb.repository.ProductDao;
 import org.longmoneyoffshore.dlrtmweb.entities.entity.Product;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -13,38 +13,36 @@ import java.util.List;
 @Data
 public class ProductService {
 
-    private ProductDaoImpl productDao;
+    @Autowired
+    private ProductDao productDao;
 
-    public List<Product> getAllProducts() { return this.productDao.getAllProducts(); }
+    public List<Product> getAllProducts() { return this.productDao.findAll(); }
 
-
-    public List<Product> getProductsByField(Object field) {
-        return this.productDao.getProductsByField(field);
-    }
 
     public Product getProductById (int productId) {
-        return this.productDao.getProductById (productId);
+        return this.productDao.findById(productId).get();
     }
 
 
     public void deleteProductById(int productId) {
-        this.productDao.deleteProductById(productId);
+        this.productDao.deleteById(productId);
     }
 
 
     public void updateProduct (Product product){
 
-        this.productDao.updateProduct(product);
+        this.productDao.save(product);
     }
 
     public void insertProduct (Product product) {
 
-        this.productDao.insertProduct(product);
-        //this.productDao.insertProductHibernate(product);
+        this.productDao.save(product);
     }
 
-    public void clearTable() {this.productDao.clearTable();}
+    public void insertProducts(List<Product> products) { this.productDao.saveAll(products);}
 
-    public void insertProducts(List<Product> products) { this.productDao.insertProducts(products);}
+    public void deleteAll() {this.productDao.deleteAll();}
+
+    public void clearTable() {this.productDao.deleteAll();}
+
 }
-*/

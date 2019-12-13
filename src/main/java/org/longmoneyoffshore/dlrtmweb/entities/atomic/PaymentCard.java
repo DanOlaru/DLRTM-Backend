@@ -1,13 +1,14 @@
+/*
 package org.longmoneyoffshore.dlrtmweb.entities.atomic;
 
 import javax.persistence.*;
 
-@Embeddable
+//@Embeddable
 @Entity
-@Table(name = "paymentCards")
+@Table(name = "payment_cards")
 public class PaymentCard {
 
-    @Id
+    //@Id
     private int cardID;
 
     private String fullCardInfo;
@@ -18,12 +19,14 @@ public class PaymentCard {
 
     public PaymentCard() {}
 
-   /* public PaymentCard() {
+   */
+/* public PaymentCard() {
         cardNumber = "";
         nameOnCard = "";
         cardExpirationDate = "";
         CVC = "";
-    };*/
+    };*//*
+
 
     public PaymentCard(String cardNumber, String nameOnCard, String cardExpirationDate, String CVC) {
         this.cardNumber = cardNumber;
@@ -103,3 +106,4 @@ public class PaymentCard {
     }
 
 }
+*/

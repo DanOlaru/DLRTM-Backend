@@ -14,7 +14,8 @@
         <property name="connection.pool_size">100</property>
         <!-- Select our SQL dialect -->
         <!--<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>-->
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <!--<property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 
         <!-- Echo the SQL to stdout -->
         <property name="show_sql">true</property>
@@ -31,11 +32,6 @@
 
         <!-- annotated classes -->
         <mapping class="org.longmoneyoffshore.dlrtmweb.entities.entity.Client"/>
-<!--
-        <mapping class="org.longmoneyoffshore.dlrtmweb.entities.entity.Product"/>
-        <mapping class="org.longmoneyoffshore.dlrtmweb.entities.entity.Transaction"/>
-        <mapping class="org.longmoneyoffshore.dlrtmweb.entities.entity.TransactedProduct"/>
--->
 
     </session-factory>
 </hibernate-configuration>

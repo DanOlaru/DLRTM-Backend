@@ -1,12 +1,15 @@
+/*
 package org.longmoneyoffshore.dlrtmweb.entities.atomic;
 
 import lombok.Data;
 
+import javax.persistence.Embeddable;
+import java.io.Serializable;
 import java.util.StringTokenizer;
 
-//@Embeddable
+@Embeddable
 @Data
-public class PersonName { //implements Serializable {
+public class PersonName implements Serializable {
 
     //Enum<String> PersonalTitles {"Mr.","Mrs.","Ms.", "Miss."} //TODO what's wrong with these??
     //Enum<String> PersonalPostfixes {"Sr.", "Jr."};
@@ -149,3 +152,4 @@ public class PersonName { //implements Serializable {
                 '}';
     }
 }
+*/

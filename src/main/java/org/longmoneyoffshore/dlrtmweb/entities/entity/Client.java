@@ -1,12 +1,11 @@
 package org.longmoneyoffshore.dlrtmweb.entities.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity (name = "Client")
-@Table(name = "clients_hibernate")
+@Entity(name = "Client")
+@Table(name = "clients")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -36,45 +35,29 @@ public class Client implements Serializable {
 
     //#7 Other (/internal) client info Value Range 0-5
 
-    private float clientUrgency;
-    private float clientValue;
     private String clientStatus;
 
     private String clientSpecialMentions;
 
-    /************ !!!!!!!!!!!!!!!!!!!!!!!!!!!! other/utility methods !!!!!!!!!!!!!!!!!!!!!!!!!!!! *******/
 
-    /*public String clientDifferences(Client other) {
-        String differencesIndex="";
+    @Override
+    public boolean equals(Object o) {
 
-        //#1 Client id
-        if (!(this.clientID ==other.getClientID())) differencesIndex+=1; else differencesIndex+=0;
+        if ((o == null) || !(o instanceof Client)) return false;
 
-        //#2 Client Name
-        if (!this.clientName.equals(other.getClientName())) differencesIndex+=1; else differencesIndex+=0;
+        return (this.clientID == ((Client) o).getClientID());
+    }
 
-        //#3 Phone contact info
-        if (!this.clientBusinessPhone.equals(other.getClientBusinessPhone())) differencesIndex+=1; else differencesIndex+=0;
+    @Override
+    public int hashCode() {
+        int sumOfDigits = 0, xCopy = this.clientID;
+        while (xCopy > 0) {
+            sumOfDigits += xCopy / 10;
+            xCopy /= 10;
+        }
 
-        //#4 email address
-        if (!this.emailAddress.equals(other.getEmailAddress())) differencesIndex+=1; else differencesIndex+=0;
-
-        //#5 Client adresses
-        if (!this.clientAddress.equals(other.getClientAddress())) differencesIndex+=1; else differencesIndex+=0;
-
-
-        //#6 payment info
-        //if (!this.cards.equals(other.getCards())) differencesIndex+=1; else differencesIndex+=0;
-        //if (!this.selectedPaymentMethod.equals(other.getSelectedPaymentMethod())) differencesIndex+=1; else differencesIndex+=0;
-
-
-        //#7 Other (/internal) info
-        if (this.clientUrgency != other.getClientUrgency()) differencesIndex+=1; else differencesIndex+=0;
-        if (this.clientValue != other.getClientValue()) differencesIndex+=1; else differencesIndex+=0;
-        if (!this.clientStatus.equals(other.getClientStatus())) differencesIndex+=1; else differencesIndex+=0;
-
-        return differencesIndex;
-    }*/
+        return sumOfDigits;
+    }
 
     @Override
     public String toString() {
@@ -84,8 +67,6 @@ public class Client implements Serializable {
                 ", clientBusinessPhone=" + clientBusinessPhone +
                 ", clientPrimaryEmailAddress='" + emailAddress + '\'' +
                 //", cards=" + cards +
-                ", clientUrgency=" + clientUrgency +
-                ", clientValue=" + clientValue +
                 ", clientStatus='" + clientStatus + '\'' +
                 ", clientSpecialMentions='" + clientSpecialMentions + '\'' +
                 '}';
@@ -96,8 +77,6 @@ public class Client implements Serializable {
                 "clientID='" + clientID + '\'' +
                 ", clientName=" + clientName +
                 ", clientPrimaryEmailAddress='" + emailAddress + '\'' +
-                ", clientUrgency=" + clientUrgency +
-                ", clientValue=" + clientValue +
                 ", clientStatus='" + clientStatus + '\'' +
                 ", clientSpecialMentions='" + clientSpecialMentions + '\'' +
                 '}';

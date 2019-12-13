@@ -100,7 +100,7 @@
             </form>
 
             <form action="/deleteClient" method="post">
-                <input type="text" id="delete-client-text-input" name="selectedClientID" placeholder="Client IDs"/>
+                <input type="text" id="delete-client-text-input" name="selectedClientID" placeholder="Client ID"/>
                 <input type="submit" id="delete-client-button" value="Delete Client"/>
             </form>
         </div>
@@ -108,7 +108,7 @@
     </div>
 
 
-    <!--<div class="row" style="background-color:#DD0000; color:#FFFFFF;">
+    <div class="row" style="background-color:#DD0000; color:#FFFFFF;">
         <div class="column">
             <div class="container">
                 <div th:if="${not #lists.isEmpty(products)}">
@@ -146,10 +146,7 @@
             <div class="column">
                 <form method="post" action="/createNewProduct">
 
-                    <h2>Create new product: :</h2>
-
-                    <input type="text" id="new-product-uniqueID" name="uniqueID" placeholder="Product Unique ID"/>
-                    <br>
+                    <h2>Create new product: </h2>
                     <input type="text" id="new-product-name" name="name" placeholder="Product Name"/>
                     <br>
                     <input type="text" id="new-product-manufacturer" name="manufacturer"
@@ -177,8 +174,7 @@
                 </form>
 
                 <form action="/deleteProduct" method="post">
-                    <input type="text" id="delete-products-text-input" name="selectedProductID"
-                           placeholder="Product IDs"/>
+                    <input type="text" id="delete-products-text-input" name="selectedProductID" placeholder="Product ID"/>
                     <input type="submit" id="delete-product-button" value="Delete Product"/>
                 </form>
             </div>
@@ -186,7 +182,7 @@
 
         </div>
 
-    </div>-->
+    </div>
 
 </div>
 

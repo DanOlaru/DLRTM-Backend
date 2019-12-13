@@ -1,7 +1,7 @@
 /*
 package org.longmoneyoffshore.dlrtmweb.entities.entity;
 
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.Cascade;
 import org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject;
 
@@ -9,13 +9,16 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
-@Data
-@Entity (name = "Transaction")
-@Table(name = "transactions_hibernate")
+//@Data
+@Entity(name = "Transaction")
+@Table(name = "transactions")
+@Builder
+@Getter
+@Setter
+@EqualsAndHashCode
+@AllArgsConstructor
 public class Transaction implements Serializable {
 
     @Id
@@ -25,23 +28,6 @@ public class Transaction implements Serializable {
 
     @Column(name = "clientID")
     private String clientID;
-
-
-    //simple @ManyToOne implementation !!!!
-    */
-/*EntityManager entityManager = Persistence
-            .createEntityManagerFactory("longmoneyoffshore.dlrtmweb.entities.entity.TransactedProduct")
-            .createEntityManager();
-
-    @OneToMany(mappedBy = "transaction")
-    //@JoinColumn(name = "transactedProductId")
-    //private List<Product> products;
-    private List<TransactedProduct> products = entityManager.createQuery(
-            "SELECT tc" +
-                    "FROM TransactedProduct tc" +
-                    "WHERE tc.transaction.transactionID = : transactionID" ,TransactedProduct.class)
-            .setParameter(transactionID, transactionID)
-            .getResultList();*//*
 
 
     //bi-directional @OneToMany
@@ -59,19 +45,10 @@ public class Transaction implements Serializable {
     @Column(name = "localDate")
     private LocalDate localDate;
 
-    public Transaction() {}
+    public Transaction() { }
 
-    public Transaction(int transactionID, String clientID, ArrayList<String> productIDList, String specialMentions) {
 
-        this();
-
-        this.transactionID = transactionID;
-        this.clientID = clientID;
-        this.transactionStatus = "done";
-        this.specialMentions = specialMentions;
-    }
-
-    public Transaction(String clientID, ArrayList<String> productIDList) {
+    public Transaction(String clientID) {
         this();
 
         this.clientID = clientID;
@@ -79,20 +56,12 @@ public class Transaction implements Serializable {
         this.transactionStatus = "done";
     }
 
-    public Transaction(String clientID, ArrayList<String> productIDList, String transactionStatus) {
+    public Transaction(String clientID, String transactionStatus) {
         this();
 
         this.clientID = clientID;
         this.specialMentions = "";
         this.transactionStatus = transactionStatus;
-    }
-
-    public Transaction(String clientId, String productIDList) {
-        this();
-
-        this.clientID = clientId;
-        //this.productIDList = Arrays.asList(productIDList.split(","));
-        this.specialMentions = "";
     }
 
     public Transaction(String clientId, String productIDList, String transactionStatus, String specialMentions) {
@@ -104,15 +73,15 @@ public class Transaction implements Serializable {
     }
 
     public Transaction(TransactionCommandObject tco) {
-        this(tco.getClientId(),tco.getProductIds(),tco.getTransactionStatus(), tco.getTransactionSpecialMentions());
+        this(tco.getClientId(), tco.getProductIds(), tco.getTransactionStatus(), tco.getTransactionSpecialMentions());
     }
 
-    public void addProduct (TransactedProduct transactedProduct) {
+    public void addProduct(TransactedProduct transactedProduct) {
         products.add(transactedProduct);
         transactedProduct.setTransaction(this);
     }
 
-    public void removeProduct (TransactedProduct transactedProduct) {
+    public void removeProduct(TransactedProduct transactedProduct) {
         products.remove(transactedProduct);
         transactedProduct.setTransaction(null);
     }
