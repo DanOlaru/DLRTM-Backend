@@ -1,3 +1,4 @@
+/*
 package org.longmoneyoffshore.dlrtmweb.repository;
 
 import lombok.Data;
@@ -146,3 +147,4 @@ public class TransactionDaoImpl implements TransactionDao {
     }
 
 }
+*/

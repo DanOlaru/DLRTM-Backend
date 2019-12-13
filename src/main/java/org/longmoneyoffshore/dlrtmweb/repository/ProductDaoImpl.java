@@ -1,3 +1,4 @@
+/*
 package org.longmoneyoffshore.dlrtmweb.repository;
 
 import lombok.Data;
@@ -182,4 +183,4 @@ public class ProductDaoImpl implements ProductDao {
         }
     }
 
-}
+}*/

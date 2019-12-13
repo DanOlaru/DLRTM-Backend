@@ -1,3 +1,4 @@
+/*
 package org.longmoneyoffshore.dlrtmweb.entities.entity;
 
 import lombok.Data;
@@ -27,7 +28,8 @@ public class Transaction implements Serializable {
 
 
     //simple @ManyToOne implementation !!!!
-    /*EntityManager entityManager = Persistence
+    */
+/*EntityManager entityManager = Persistence
             .createEntityManagerFactory("longmoneyoffshore.dlrtmweb.entities.entity.TransactedProduct")
             .createEntityManager();
 
@@ -39,7 +41,8 @@ public class Transaction implements Serializable {
                     "FROM TransactedProduct tc" +
                     "WHERE tc.transaction.transactionID = : transactionID" ,TransactedProduct.class)
             .setParameter(transactionID, transactionID)
-            .getResultList();*/
+            .getResultList();*//*
+
 
     //bi-directional @OneToMany
     //@JoinColumn(name = "transactedProductId")
@@ -116,3 +119,4 @@ public class Transaction implements Serializable {
 
 }
 
+*/

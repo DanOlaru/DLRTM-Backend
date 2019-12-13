@@ -1,6 +1,5 @@
 package org.longmoneyoffshore.dlrtmweb.globalvalues;
 
-import org.longmoneyoffshore.dlrtmweb.entities.entity.Product;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,7 +18,7 @@ public class ProductsFakeDataSets {
     private String productSpecialMentions;
      */
 
-    public static ArrayList<Product> productsSimple = new ArrayList<>(Arrays.asList(
+   /* public static ArrayList<Product> productsSimple = new ArrayList<>(Arrays.asList(
             new Product(1, "Blender", "Phillips", "Netherlands",
                     "food blender", 20, "Free Bread Knife", 100,
                      "Pending recalls"),
@@ -44,7 +43,7 @@ public class ProductsFakeDataSets {
                     "XRAY machine", 2,
                     "yoyoy",0 , "\"5 year warranty\"heavy duty")
     ));
-
+*/
 
 /*    public static List<Product> productsExtendedUpdatedSublist = new ArrayList<>(Arrays.asList(
 

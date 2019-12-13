@@ -1,3 +1,4 @@
+/*
 package org.longmoneyoffshore.dlrtmweb.repository;
 
 import org.longmoneyoffshore.dlrtmweb.entities.entity.Product;
@@ -19,3 +20,4 @@ public interface ProductDao {
     public void insertProduct (Product product);
 
 }
+*/

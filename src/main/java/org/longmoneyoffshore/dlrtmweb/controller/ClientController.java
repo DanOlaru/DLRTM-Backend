@@ -16,12 +16,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Controller
+//@Controller
+@RestController
 @RequestMapping(value = "/clients")
 @Data
 public class ClientController {
 
     private ClientService clientService;
+    private List<Client> myInitialClients = new ArrayList<>(ClientsFakeDataSets.clientsFakeDataSet);
 
     @GetMapping
     public List<Client> getAllClients() {
@@ -48,44 +50,20 @@ public class ClientController {
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void insertClient(@RequestBody Client client) {
 
-
         clientService.insertClient(client);
     }
 
-    ClientsFakeDataSets clientsFakeDataSets;
 
     @GetMapping(value = "/clientsfake")
     public void insertFakeClients() {
 
-        clientService.clearTables();
+        //System.out.println("CLIENT CONTROLLER: ");
 
-        clientService.insertClients(
-                new ArrayList<>(Arrays.asList(
-                        new Client(1, new PersonName("Jason Smith"), new PhoneNumber("Jason Smith", "555-888-6767"),
-                                "jason.smith@gmail.com", new Address("1421 E 23rd St, Chicago, IL, 60615"),
-                                Arrays.asList(new PaymentCard("1234 4321 5678 0987", "Jason Smith", "10/14/20", "665")),
-                                "good customer"),
-                        new Client(2, new PersonName("Jake Wyler"), new PhoneNumber("Jake Wyler", "555-888-6767"),
-                                "jason.smith@gmail.com", new Address("1421 E 23rd St, Chicago, IL, 60615"),
-                                Arrays.asList(new PaymentCard("1234 4321 5678 0987", "Jake Wyler", "10/14/20", "665")),
-                                "bad customer"),
-                        new Client(3, new PersonName("Betty Boop"), new PhoneNumber("Betty Boop", "555-888-6767"),
-                                "jason.smith@gmail.com", new Address("1421 E 23rd St, Chicago, IL, 60615"),
-                                Arrays.asList(new PaymentCard("1234 4321 5678 0987", "Betty Boop", "10/14/20", "665")),
-                                "good customer"),
-                        new Client(4, new PersonName("Will Smith"), new PhoneNumber("Will Smith", "555-888-6767"),
-                                "jason.smith@gmail.com", new Address("1421 E 23rd St, Chicago, IL, 60615"),
-                                Arrays.asList(new PaymentCard("1234 4321 5678 0987", "Will Smith", "10/14/20", "665")),
-                                "bad customer"),
-                        new Client(5, new PersonName("Jason Lee"), new PhoneNumber("Jason Lee", "555-888-6767"),
-                                "jason.smith@gmail.com", new Address("1421 E 23rd St, Chicago, IL, 60615"),
-                                Arrays.asList(new PaymentCard("1234 4321 5678 0987", "Jason Lee", "10/14/20", "665")),
-                                "bad customer"),
-                        new Client(6, new PersonName("Mike Oldfield"), new PhoneNumber("Mike Oldfield", "555-888-6767"),
-                                "jason.smith@gmail.com", new Address("1421 E 23rd St, Chicago, IL, 60615"),
-                                Arrays.asList(new PaymentCard("1234 4321 5678 0987", "Mike Oldfield", "10/14/20", "665")),
-                                "good customer"))));
+        //clientService.clearTables();
+        System.out.println("TESTING: WHAT ARE MY CLIENTS" );
+        for (Client c : myInitialClients) { System.out.print(c.getClientID() + " " + c.getClientName() + " || "); }
+
+        clientService.insertClients(myInitialClients);
     }
 
 }
-

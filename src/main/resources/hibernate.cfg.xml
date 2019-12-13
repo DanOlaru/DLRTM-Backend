@@ -7,8 +7,8 @@
 
         <!-- JDBC Database connection settings -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/DLRTM_DB?useSSL=false</property>  <!-- ?serverTimezone=EST5EDT -->
-        <property name="connection.username">root</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/DLRTM_HIBERNATE?serverTimezone=EST5EDT</property>  <!-- ?serverTimezone=EST5EDT --> <!--useSSL=false-->
+        <property name="connection.username">dlrtm_hib</property>
         <property name="connection.password">password</property>
         <!-- JDBC connection pool settings ... using built-in test pool -->
         <property name="connection.pool_size">100</property>
@@ -30,8 +30,12 @@
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
 
         <!-- annotated classes -->
+        <mapping class="org.longmoneyoffshore.dlrtmweb.entities.entity.Client"/>
+<!--
         <mapping class="org.longmoneyoffshore.dlrtmweb.entities.entity.Product"/>
         <mapping class="org.longmoneyoffshore.dlrtmweb.entities.entity.Transaction"/>
+        <mapping class="org.longmoneyoffshore.dlrtmweb.entities.entity.TransactedProduct"/>
+-->
 
     </session-factory>
 </hibernate-configuration>

@@ -39,6 +39,8 @@ public class ClientService {
     }
 
     public void insertClients (List<Client> clients) {
+        //System.out.println("INSIDE CLIENT SERVICE: ");
+
         this.clientDao.insertClients(clients);
     }
 

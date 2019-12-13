@@ -7,7 +7,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed8da808-fee5-4c82-9b40-5c4f870cd86a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/derby.log" beforeDir="false" afterPath="$PROJECT_DIR$/derby.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/DLRTMWebPlatform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/DLRTMWebPlatform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/OnlineStoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/OnlineStoreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/TransactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/entity/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/entity/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/entity/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/entity/TransactedProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/entity/TransactedProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/entity/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/entity/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/globalvalues/ClientsFakeDataSets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/globalvalues/ClientsFakeDataSets.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/globalvalues/ProductsFakeDataSets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/globalvalues/ProductsFakeDataSets.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ClientDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ClientDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ProductDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ProductDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/ProductDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/TransactionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/TransactionDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/TransactionDaoHibernateImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/TransactionDaoHibernateImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/TransactionDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/TransactionDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/TransactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Controller/ProductController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/DLRTMWebPlatform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/DLRTMWebPlatform.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/longmoneyoffshore/dlrtmweb/Service/ProductService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,12 +70,20 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="DLRTM_Hibernate_Implementation" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
     <option name="SIGN_OFF_COMMIT" value="true" />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/DanOlaru/dlrtmbackend.git" />
+      </set>
+    </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -54,6 +94,7 @@
   </component>
   <component name="ProjectId" id="1QbGCRXJ5JInAbmqp1EizyGduKs" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -71,7 +112,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -95,13 +136,15 @@
   <component name="RunManager">
     <configuration name="DLRTMWebPlatform" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.longmoneyoffshore.dlrtmweb.DLRTMWebPlatform" />
-      <module name="DLRTM_Web_Maven" />
+      <module name="DLRTM_Web_Maven_Hibernate 2.0" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DLRTMWebPlatform" />
+        <item itemvalue="Application.DLRTMWebPlatform" />
         <item itemvalue="Application.DLRTMWebPlatform" />
       </list>
     </recent_temporary>
@@ -483,41 +526,65 @@
     <option name="LAST_COMMIT_MESSAGE" value="Starting&#10;Implementing DB access via Hibernate" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="404" y="126" key="#DLRTMWebPlatform" timestamp="1575100270855">
+    <state x="404" y="126" key="#DLRTMWebPlatform" timestamp="1576149753621">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="404" y="126" key="#DLRTMWebPlatform/0.23.1440.877@0.23.1440.877" timestamp="1575100270855" />
-    <state x="263" y="46" key="CommitChangelistDialog2" timestamp="1575638507293">
+    <state x="404" y="126" key="#DLRTMWebPlatform/0.23.1440.877@0.23.1440.877" timestamp="1576149753621" />
+    <state x="533" y="178" key="#com.intellij.ide.util.MemberChooser" timestamp="1576149229820">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="263" y="46" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1575638507293" />
-    <state width="1398" height="304" key="GridCell.Tab.0.bottom" timestamp="1575636966555">
+    <state x="533" y="178" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877@0.23.1440.877" timestamp="1576149229820" />
+    <state x="405" y="143" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog" timestamp="1576152314058">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="304" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1575636966555" />
-    <state width="1398" height="304" key="GridCell.Tab.0.center" timestamp="1575636966554">
+    <state x="405" y="143" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog/0.23.1440.877@0.23.1440.877" timestamp="1576152314058" />
+    <state x="263" y="46" key="CommitChangelistDialog2" timestamp="1576233157186">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="304" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1575636966554" />
-    <state width="1398" height="304" key="GridCell.Tab.0.left" timestamp="1575636966553">
+    <state x="263" y="46" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1576233157186" />
+    <state width="1398" height="304" key="GridCell.Tab.0.bottom" timestamp="1576163455420">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="304" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1575636966553" />
-    <state width="1398" height="304" key="GridCell.Tab.0.right" timestamp="1575636966555">
+    <state width="1398" height="304" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1576163455420" />
+    <state width="1398" height="304" key="GridCell.Tab.0.center" timestamp="1576163455418">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="304" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1575636966555" />
-    <state x="208" y="43" key="SettingsEditor" timestamp="1575635406457">
+    <state width="1398" height="304" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1576163455418" />
+    <state width="1398" height="304" key="GridCell.Tab.0.left" timestamp="1576163455416">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="208" y="43" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1575635406457" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1575638985384">
+    <state width="1398" height="304" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1576163455416" />
+    <state width="1398" height="304" key="GridCell.Tab.0.right" timestamp="1576163455419">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1575638985384" />
-    <state x="509" y="385" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1575639053992">
+    <state width="1398" height="304" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1576163455419" />
+    <state x="208" y="43" key="SettingsEditor" timestamp="1576232909882">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="509" y="385" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.877@0.23.1440.877" timestamp="1575639053992" />
+    <state x="208" y="43" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1576232909882" />
+    <state width="515" height="445" key="SwitcherDM" timestamp="1576155989857">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="515" height="445" key="SwitcherDM/0.23.1440.877@0.23.1440.877" timestamp="1576155989857" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1576232967914">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1576232967914" />
+    <state x="378" y="83" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1576149940780">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="378" y="83" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1440.877@0.23.1440.877" timestamp="1576149940780" />
+    <state x="509" y="385" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1575640623928">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="509" y="385" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.877@0.23.1440.877" timestamp="1575640623928" />
+    <state x="315" y="181" key="git4idea.branch.GitSmartOperationDialog" timestamp="1576233129461">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="315" y="181" key="git4idea.branch.GitSmartOperationDialog/0.23.1440.877@0.23.1440.877" timestamp="1576233129461" />
+    <state x="385" y="213" key="search.everywhere.popup" timestamp="1576152376215">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="385" y="213" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1576152376215" />
   </component>
 </project>

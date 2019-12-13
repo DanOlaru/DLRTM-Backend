@@ -50,18 +50,22 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th></th>
                             <th>Address</th>
                             <th>Phone #</th>
+                            <th>Email</th>
+                            <th>Payment Card</th>
+                            <th>Status</th>
                             <th>SpecialMentions</th>
                         </tr>
 
                         <tr th:each="client : ${clients}">
                             <td th:text="${client.clientID}"></td>
-                            <td th:text="${client.clientName.clientFirstName}"></td>
-                            <td th:text="${client.clientName.clientLastName}"></td>
-                            <td th:text="${client.clientBillingAddress.fullAddress}"></td>
-                            <td th:text="${client.clientBusinessPhone.clientPhoneNo}"></td>
+                            <td th:text="${client.clientName}"></td>
+                            <td th:text="${client.clientAddress}"></td>
+                            <td th:text="${client.clientBusinessPhone}"></td>
+                            <td th:text="${client.emailAddress}"></td>
+                            <td th:text="${client.paymentCard}"></td>
+                            <td th:text="${client.clientStatus}"></td>
                             <td th:text="${client.clientSpecialMentions}"></td>
                         </tr>
                     </table>
@@ -75,10 +79,7 @@
             <form method="post" action="/createNewClient">
 
                 <h2>Create New Client: :</h2>
-                <input type="text" id="new-client-ID" name="clientID" placeholder="Client ID"/>
-                <br>
                 <input type="text" id="new-client-name" name="clientName" placeholder="Client Name"/>
-
                 <br>
                 <input type="text" id="new-client-phone" name="clientPhone" placeholder="Client Phone"/>
 
@@ -107,7 +108,7 @@
     </div>
 
 
-    <div class="row" style="background-color:#DD0000; color:#FFFFFF;">
+    <!--<div class="row" style="background-color:#DD0000; color:#FFFFFF;">
         <div class="column">
             <div class="container">
                 <div th:if="${not #lists.isEmpty(products)}">
@@ -185,11 +186,11 @@
 
         </div>
 
-    </div>
+    </div>-->
 
 </div>
 
-<div class="row" style="background-color:#FFCE00;">
+<<!--div class="row" style="background-color:#FFCE00;">
     <div class="column">
         <div class="container">
             <div th:if="${not #lists.isEmpty(transactions)}">
@@ -263,7 +264,7 @@
         </div>
 
     </div>
-</div>
+</div>-->
 
 </body>
 </html>

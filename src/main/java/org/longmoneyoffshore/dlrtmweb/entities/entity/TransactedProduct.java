@@ -1,3 +1,4 @@
+/*
 package org.longmoneyoffshore.dlrtmweb.entities.entity;
 
 import lombok.Data;
@@ -30,3 +31,4 @@ public class TransactedProduct extends Product {
         return 31;
     }
 }
+*/

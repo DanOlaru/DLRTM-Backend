@@ -1,3 +1,4 @@
+/*
 package org.longmoneyoffshore.dlrtmweb.service;
 
 import lombok.Data;
@@ -46,3 +47,4 @@ public class ProductService {
 
     public void insertProducts(List<Product> products) { this.productDao.insertProducts(products);}
 }
+*/

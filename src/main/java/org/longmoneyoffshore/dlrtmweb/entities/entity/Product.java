@@ -1,3 +1,4 @@
+/*
 package org.longmoneyoffshore.dlrtmweb.entities.entity;
 
 import lombok.Getter;
@@ -95,3 +96,4 @@ public class Product implements Serializable {
     }
 
 }
+*/

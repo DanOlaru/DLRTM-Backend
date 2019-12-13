@@ -1,3 +1,4 @@
+/*
 package org.longmoneyoffshore.dlrtmweb.repository;
 
 import org.hibernate.Session;
@@ -67,3 +68,4 @@ public class TransactionDaoHibernateImpl implements TransactionDao {
     }
 
 }
+*/

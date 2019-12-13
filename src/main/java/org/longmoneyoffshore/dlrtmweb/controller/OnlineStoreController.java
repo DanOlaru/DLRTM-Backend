@@ -1,14 +1,8 @@
 package org.longmoneyoffshore.dlrtmweb.controller;
 
 import lombok.Data;
-import org.longmoneyoffshore.dlrtmweb.entities.atomic.Address;
-import org.longmoneyoffshore.dlrtmweb.entities.atomic.PersonName;
-import org.longmoneyoffshore.dlrtmweb.entities.atomic.PhoneNumber;
 import org.longmoneyoffshore.dlrtmweb.entities.entity.Client;
-import org.longmoneyoffshore.dlrtmweb.entities.entity.Product;
 import org.longmoneyoffshore.dlrtmweb.service.ClientService;
-import org.longmoneyoffshore.dlrtmweb.service.ProductService;
-import org.longmoneyoffshore.dlrtmweb.service.TransactionService;
 import org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,23 +12,21 @@ import org.springframework.web.bind.annotation.*;
 @Data
 public class OnlineStoreController {
     private ClientService clientService;
-    private ProductService productService;
-    private TransactionService transactionService;
+    //private ProductService productService;
+    //private TransactionService transactionService;
 
-    private TransactionCommandObject transactionCommandObject;
-    private Product newProduct;
-    private Client newClient;
+    //private TransactionCommandObject transactionCommandObject;
 
 
     @GetMapping("/showStore")
-    public String showStore (Model model) {
+    public String showStore(Model model) {
 
         setModel(model);
         return "index";
     }
 
 
-    @RequestMapping(value = "/insertNewTransaction", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/insertNewTransaction", method = RequestMethod.POST)
     public String insertNewTransactionAndRefresh(@RequestParam("selectedClientID") String clientID,
                                                  @RequestParam("selectedProductIDs") String productIds,
                                                  @RequestParam("transactionStatus") String transactionStatus,
@@ -52,8 +44,32 @@ public class OnlineStoreController {
 
         setModel(model);
         return "index";
-    }
+    }*/
 
+
+    @PostMapping(value = "/createNewClient")
+    public String createClient(@RequestParam("clientName") String clientName,
+                               @RequestParam("clientPhone") String clientPhone,
+                               @RequestParam("clientEmail") String clientEmail,
+                               @RequestParam("clientAddress") String clientAddress,
+                               @RequestParam("clientStatus") String clientStatus,
+                               @RequestParam("clientSpecialMentions") String clientSpecialMentions,
+                               Model model) {
+
+
+        clientService.insertClient(Client.builder()
+                .clientName(clientName)
+                .clientBusinessPhone(clientPhone)
+                .emailAddress(clientEmail)
+                .clientAddress(clientAddress)
+                .clientStatus(clientStatus)
+                .clientSpecialMentions(clientSpecialMentions)
+                .build());
+
+        setModel(model);
+
+        return "index";
+    }
 
     @PostMapping(value = "/deleteClient")
     public String deleteClientById(@RequestParam("selectedClientID") String id, Model model) {
@@ -64,7 +80,7 @@ public class OnlineStoreController {
         return "index";
     }
 
-    @GetMapping(value = "/deleteTransaction")
+   /* @GetMapping(value = "/deleteTransaction")
     public String deleteTransactionById(@RequestParam("selectedTransactionID") String id, Model model) {
 
        transactionService.removeTransactionById(id);
@@ -122,44 +138,12 @@ public class OnlineStoreController {
         setModel(model);
 
         return "index";
-    }
-
-    @PostMapping(value = "/createNewClient")
-    public String createClient (@RequestParam("clientID") int clientID,
-                                 @RequestParam("clientName") String clientName,
-                                 @RequestParam("clientPhone") String clientPhone,
-                                 @RequestParam("clientEmail") String clientEmail,
-                                 @RequestParam("clientAddress") String clientAddress,
-                                 @RequestParam("clientStatus") String clientStatus,
-                                 @RequestParam("clientSpecialMentions") String clientSpecialMentions,
-                                 Model model) {
-
-
-        newClient.setClientID(clientID);
-        newClient.setClientName(new PersonName(clientName));
-
-        PhoneNumber ph = new PhoneNumber(clientName, clientPhone);
-        newClient.setClientBusinessPhone(ph);
-        newClient.setClientMobilePhone(ph);
-        newClient.setClientHomePhone(ph);
-        newClient.setClientAlternatePhone(ph);
-
-        newClient.setClientPrimaryEmailAddress(clientEmail);
-        newClient.setClientBillingAddress(new Address(clientAddress));
-        newClient.setClientStatus(clientStatus);
-        newClient.setClientSpecialMentions(clientSpecialMentions);
-
-        clientService.insertClient(newClient);
-
-        setModel(model);
-
-        return "index";
-    }
+    }*/
 
     public void setModel(Model model) {
         model.addAttribute("clients", clientService.getAllClients());
-        model.addAttribute("products", productService.getAllProducts());
-        model.addAttribute("transactions", transactionService.getAllTransactions());
+        //model.addAttribute("products", productService.getAllProducts());
+        //model.addAttribute("transactions", transactionService.getAllTransactions());
     }
 
     @RequestMapping(value = "/justTesting")

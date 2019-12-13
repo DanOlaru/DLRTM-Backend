@@ -7,9 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="DLRTM_Web_Maven_Hibernate 2.0" />
+        <module name="dlrtm-backend" />
         <module name="DLRTM Web Platform" />
         <module name="DLRTM_Web_Maven" />
-        <module name="dlrtm-backend" />
       </profile>
     </annotationProcessing>
   </component>
@@ -17,6 +18,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="DLRTM Web Platform" options="-parameters" />
       <module name="DLRTM_Web_Maven" options="-parameters" />
+      <module name="DLRTM_Web_Maven_Hibernate 2.0" options="-parameters" />
       <module name="dlrtm-backend" options="-parameters" />
     </option>
   </component>
