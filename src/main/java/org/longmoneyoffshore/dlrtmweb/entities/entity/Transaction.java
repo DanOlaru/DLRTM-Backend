@@ -1,8 +1,8 @@
-/*
 package org.longmoneyoffshore.dlrtmweb.entities.entity;
 
 import lombok.*;
 import org.hibernate.annotations.Cascade;
+import org.longmoneyoffshore.dlrtmweb.service.ProductService;
 import org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject;
 
 import javax.persistence.*;
@@ -22,12 +22,12 @@ import java.util.List;
 public class Transaction implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "transactionID")
     private int transactionID;
 
     @Column(name = "clientID")
-    private String clientID;
+    private int clientID;
 
 
     //bi-directional @OneToMany
@@ -43,41 +43,50 @@ public class Transaction implements Serializable {
     private String specialMentions;
 
     @Column(name = "localDate")
+    //@Temporal(value = TemporalType.TIMESTAMP)
     private LocalDate localDate;
 
-    public Transaction() { }
-
-
-    public Transaction(String clientID) {
-        this();
-
-        this.clientID = clientID;
+    public Transaction() {
         this.specialMentions = "";
         this.transactionStatus = "done";
     }
 
-    public Transaction(String clientID, String transactionStatus) {
-        this();
-
-        this.clientID = clientID;
-        this.specialMentions = "";
-        this.transactionStatus = transactionStatus;
-    }
-
-    public Transaction(String clientId, String productIDList, String transactionStatus, String specialMentions) {
-        this();
-
-        this.clientID = clientId;
-        this.transactionStatus = transactionStatus;
-        this.specialMentions = specialMentions;
-    }
 
     public Transaction(TransactionCommandObject tco) {
-        this(tco.getClientId(), tco.getProductIds(), tco.getTransactionStatus(), tco.getTransactionSpecialMentions());
+        this.clientID = tco.getClientId();
+        this.transactionStatus = tco.getTransactionStatus();
+        this.specialMentions = tco.getTransactionSpecialMentions();
+        this.localDate = LocalDate.now();
+
+        this.products = new ArrayList<>();
+        String[] productIds = tco.getProductIds().split(",");
+
+        for (String id : productIds) {
+            TransactedProduct product = new TransactedProduct(id);
+            addProduct(product);
+        }
+
+    }
+
+    public Transaction(TransactionCommandObject tco, ProductService productService) {
+        this.clientID = tco.getClientId();
+        this.transactionStatus = tco.getTransactionStatus();
+        this.specialMentions = tco.getTransactionSpecialMentions();
+        this.localDate = LocalDate.now();
+
+        this.products = new ArrayList<>();
+        String[] productIds = tco.getProductIds().split(",");
+
+        for (String id : productIds) {
+            TransactedProduct product = new TransactedProduct(id);
+            product.setProductName(productService.getProductById(Integer.valueOf(id)).getProductName());
+            addProduct(product);
+        }
+
     }
 
     public void addProduct(TransactedProduct transactedProduct) {
-        products.add(transactedProduct);
+        this.products.add(transactedProduct);
         transactedProduct.setTransaction(this);
     }
 
@@ -88,4 +97,3 @@ public class Transaction implements Serializable {
 
 }
 
-*/

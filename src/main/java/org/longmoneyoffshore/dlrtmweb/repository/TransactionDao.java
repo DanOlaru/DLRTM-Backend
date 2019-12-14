@@ -1,31 +1,15 @@
-/*
 package org.longmoneyoffshore.dlrtmweb.repository;
 
 
 import org.longmoneyoffshore.dlrtmweb.entities.entity.Transaction;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Date;
 import java.util.List;
 
-public interface TransactionDao {
+public interface TransactionDao extends JpaRepository<Transaction, Integer> {
 
-    List<Transaction> getAllTransactions();
-
-    //more general get method
-    List<Transaction> getTransactionsByField(Object field);
-    //more specific get methods
-    List<Transaction> getAllTransactionsByDate(Date date);
-
-    Transaction getTransactionById(String transactionId);
-
-    void removeTransactionById(String transactionId);
-
-    public void removeAllTransactions ();
-
-    void updateTransaction(Transaction transaction);
-
-    void insertTransaction (Transaction transaction);
+    //List<Transaction> getAllTransactionsByDate(Date date);
 
 }
 
-*/

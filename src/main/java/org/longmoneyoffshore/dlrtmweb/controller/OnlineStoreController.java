@@ -5,6 +5,7 @@ import org.longmoneyoffshore.dlrtmweb.entities.entity.Client;
 import org.longmoneyoffshore.dlrtmweb.entities.entity.Product;
 import org.longmoneyoffshore.dlrtmweb.service.ClientService;
 import org.longmoneyoffshore.dlrtmweb.service.ProductService;
+import org.longmoneyoffshore.dlrtmweb.service.TransactionService;
 import org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -22,7 +23,9 @@ public class OnlineStoreController {
 
     @Autowired
     private ProductService productService;
-    //private TransactionService transactionService;
+
+    @Autowired
+    private TransactionService transactionService;
 
     //private TransactionCommandObject transactionCommandObject;
 
@@ -39,25 +42,30 @@ public class OnlineStoreController {
     }
 
 
-    /*@RequestMapping(value = "/insertNewTransaction", method = RequestMethod.POST)
-    public String insertNewTransactionAndRefresh(@RequestParam("selectedClientID") String clientID,
+    @RequestMapping(value = "/insertNewTransaction", method = RequestMethod.POST)
+    public String insertNewTransactionAndRefresh(@RequestParam("selectedClientID") int clientID,
                                                  @RequestParam("selectedProductIDs") String productIds,
                                                  @RequestParam("transactionStatus") String transactionStatus,
                                                  @RequestParam("transactionSpecialMentions") String transactionSpecialMentions,
                                                  Model model) {
 
-        transactionCommandObject.setClientId(clientID);
-        transactionCommandObject.setProductIds(productIds);
-        transactionCommandObject.setTransactionStatus(transactionStatus);
-        transactionCommandObject.setTransactionSpecialMentions(transactionSpecialMentions);
+        TransactionCommandObject transactionCommandObject = TransactionCommandObject.builder()
+                .clientId(clientID)
+                .productIds(productIds)
+                .transactionStatus(transactionStatus)
+                .transactionSpecialMentions(transactionSpecialMentions)
+                .build();
+
 
         //System.out.println("TESTING: INSIDE ONLINE STORE CONTROLLER CREATE NEW TRANSACTION: " + transactionCommandObject.toString());
 
-        transactionService.insertTransaction(transactionCommandObject);
+        //transactionService.insertTransaction(transactionCommandObject);
+
+        transactionService.insertTransaction(transactionCommandObject, productService);
 
         setModel(model);
         return "index";
-    }*/
+    }
 
 
     @PostMapping(value = "/createNewClient")
@@ -115,15 +123,15 @@ public class OnlineStoreController {
 
 
     @PostMapping(value = "/createNewProduct")
-    public String createProduct (@RequestParam("name") String name,
-                                 @RequestParam("manufacturer") String manufacturer,
-                                 @RequestParam("country") String country,
-                                 @RequestParam("description") String description,
-                                 @RequestParam("unitPrice") double unitPrice,
-                                 @RequestParam("specialOffers") String specialOffers,
-                                 @RequestParam("itemsInStockInt") int itemsInStockInt,
-                                 @RequestParam("specialMentions") String specialMentions,
-                                 Model model) {
+    public String createProduct(@RequestParam("name") String name,
+                                @RequestParam("manufacturer") String manufacturer,
+                                @RequestParam("country") String country,
+                                @RequestParam("description") String description,
+                                @RequestParam("unitPrice") double unitPrice,
+                                @RequestParam("specialOffers") String specialOffers,
+                                @RequestParam("itemsInStockInt") int itemsInStockInt,
+                                @RequestParam("specialMentions") String specialMentions,
+                                Model model) {
 
         productService.insertProduct(Product.builder()
                 .productName(name)
@@ -154,7 +162,7 @@ public class OnlineStoreController {
 
         model.addAttribute("clients", clientService.getAllClients());
         model.addAttribute("products", productService.getAllProducts());
-        //model.addAttribute("transactions", transactionService.getAllTransactions());
+        model.addAttribute("transactions", transactionService.getAllTransactions());
     }
 
     @RequestMapping(value = "/justTesting")

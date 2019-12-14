@@ -1,4 +1,3 @@
-/*
 package org.longmoneyoffshore.dlrtmweb.controller;
 
 import lombok.Data;
@@ -7,6 +6,8 @@ import org.longmoneyoffshore.dlrtmweb.service.ClientService;
 import org.longmoneyoffshore.dlrtmweb.service.ProductService;
 import org.longmoneyoffshore.dlrtmweb.service.TransactionService;
 import org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,9 +18,11 @@ import java.util.Date;
 
 @Controller
 @Data
+@Qualifier("TransactionController")
 @RequestMapping(value = "/transactions")
 public class TransactionController {
 
+    @Autowired
     private TransactionService transactionService;
 
     private TransactionCommandObject transactionCommandObject;
@@ -46,23 +49,23 @@ public class TransactionController {
 
     //@RequestMapping(value = "/transaction/{id}", method = RequestMethod.GET)
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Transaction getTransactionById(@PathVariable("id") String id) {
+    public Transaction getTransactionById(@PathVariable("id") int id) {
         return transactionService.getTransactionById(id);
     }
 
     //@RequestMapping(value = "/transaction/{date}", method = RequestMethod.GET)
-    @RequestMapping(value = "/{date}", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/{date}", method = RequestMethod.GET)
     public Collection<Transaction> getTransactionByDate(@PathVariable("date") Date date) {
 
         //transactions for the current day or a specific date
         return transactionService.getTransactionsByDate(date);
 
-    }
+    }*/
 
 
     //@DeleteMapping(value = "transaction/{selectedTransactionID}")
     @DeleteMapping(value = "/{selectedTransactionID}")
-    public String deleteTransactionById(@PathVariable("selectedTransactionID") String id, Model model) {
+    public String deleteTransactionById(@PathVariable("selectedTransactionID") int id, Model model) {
         transactionService.removeTransactionById(id);
 
         model.addAttribute("clients", clientService.getAllClients());
@@ -88,10 +91,10 @@ public class TransactionController {
     @RequestMapping(value = "/createNewTransaction", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createNewTransaction(@ModelAttribute("command") TransactionCommandObject command, Model model) {
 
-        transactionService.insertTransaction(new Transaction(command.getClientId(), command.getProductIds()));
+        //transactionService.insertTransaction(new Transaction(command.getClientId(), command.getProductIds()));
+        transactionService.insertTransaction(new Transaction(command));
 
     }
 
 }
 
-*/

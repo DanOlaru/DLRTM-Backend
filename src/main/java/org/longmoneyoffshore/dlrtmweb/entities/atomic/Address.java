@@ -1,4 +1,3 @@
-/*
 package org.longmoneyoffshore.dlrtmweb.entities.atomic;
 
 import lombok.*;
@@ -100,4 +99,3 @@ public class Address {
         return Objects.hash(fullAddress, personName, bldgNumber, streetName, cityName, provinceName, zipCode, country, otherInfo);
     }
 }
-*/

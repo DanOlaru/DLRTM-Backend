@@ -1,10 +1,10 @@
-/*
 package org.longmoneyoffshore.dlrtmweb.service;
 
 import lombok.Data;
 import org.longmoneyoffshore.dlrtmweb.repository.TransactionDao;
 import org.longmoneyoffshore.dlrtmweb.entities.entity.Transaction;
 import org.longmoneyoffshore.dlrtmweb.view.TransactionCommandObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -12,55 +12,57 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-@Qualifier("transactionService")
+@Qualifier("TransactionService")
 @Data
 public class TransactionService {
 
-    private TransactionDao transactionDao, transactionDaoHibernate;
+    @Autowired
+    private TransactionDao transactionDao;
 
     public List<Transaction> getAllTransactions() {
-        return this.transactionDao.getAllTransactions();
+        return this.transactionDao.findAll();
     }
 
-    public List<Transaction> getTransactionsByField(Object field) {
-        return this.transactionDao.getTransactionsByField(field);
-    }
-
-    public List<Transaction> getTransactionsByDate (Date date) {
+   /* public List<Transaction> getTransactionsByDate (Date date) {
         return this.transactionDao.getAllTransactionsByDate(date);
+    }*/
+
+    public Transaction getTransactionById (int id) {
+        return this.transactionDao.findById(id).get();
     }
 
-    public Transaction getTransactionById (String id) {
-        return this.transactionDao.getTransactionById(id);
+
+    public void removeTransactionById (int id) {
+        this.transactionDao.deleteById(id);
     }
 
-
-    public void removeTransactionById (String id) {
-        this.transactionDao.removeTransactionById(id);
-    }
-
-    public void removeAllTransactions () { this.transactionDao.removeAllTransactions(); }
+    public void removeAllTransactions () { this.transactionDao.deleteAll(); }
 
 
     public void updateTransaction (Transaction transaction) {
 
-        this.transactionDao.updateTransaction(transaction);
+        this.transactionDao.save(transaction);
     }
 
     public void insertTransaction (Transaction transaction) {
         System.out.println("TESTING: INSIDE TRANSACTION SERVICE: INSERTING TRANSACTION " + transaction.toString());
-        this.transactionDao.insertTransaction(transaction);
+        this.transactionDao.save(transaction);
     }
 
     public void insertTransaction (TransactionCommandObject transactionCommandObject) {
-        //System.out.println("TESTING: INSIDE TRANSACTION SERVICE HIBERNATE: INSERTING TRANSACTION " + transactionCommandObject.toString());
+        System.out.println("TESTING: INSIDE TRANSACTION SERVICE HIBERNATE: INSERTING TRANSACTION " + transactionCommandObject.toString());
 
-        this.transactionDao.insertTransaction(new Transaction(transactionCommandObject));
+        this.transactionDao.save(new Transaction(transactionCommandObject));
 
-        //write in the _hibernate table
-        this.transactionDaoHibernate.insertTransaction(new Transaction(transactionCommandObject));
+    }
+
+    public void insertTransaction(TransactionCommandObject transactionCommandObject, ProductService productService) {
+        System.out.println("TESTING: INSIDE TRANSACTION SERVICE HIBERNATE: INSERTING TRANSACTION " + transactionCommandObject.toString());
+
+        //this.transactionDao.save(new Transaction(transactionCommandObject));
+        this.transactionDao.save(new Transaction(transactionCommandObject, productService));
+
     }
 
 }
 
-*/

@@ -1,43 +1,59 @@
 package org.longmoneyoffshore.dlrtmweb.entities.entity;
 
 import lombok.*;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.PaymentCard;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "Client")
 @Table(name = "clients")
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@EqualsAndHashCode
 public class Client implements Serializable {
 
     @Id //@GeneratedValue(strategy = GenerationType.AUTO)
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "clientID")
     private int clientID;
 
+    @Column(name = "clientName")
     private String clientName;
 
+    @Column(name = "clientBusinessPhone")
     private String clientBusinessPhone;
 
+    @Column(name = "emailAddress")
     private String emailAddress;
 
+    @Column(name = "clientAddress")
     private String clientAddress;
     //@Nullable
     //private Address clientDeliveryAddress; //the actual delivery address used —————— one from the list above
 
     //#6 payment info
-    //@OneToMany (mappedBy = "paymentCards")
-    //private List<PaymentCard> cards;
+    @OneToMany (mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    //private List<PaymentCard> cards = new ArrayList<>();
+    private List<PaymentCard> cards;
     //@Nullable
-    private String paymentCard; // points to one of the above
+    //private String paymentCard; // points to one of the above
 
     //#7 Other (/internal) client info Value Range 0-5
 
+    @Column(name = "clientStatus")
     private String clientStatus;
 
+    @Column(name = "clientSpecialMentions")
     private String clientSpecialMentions;
+
+    public Client () {
+
+    }
 
 
     @Override
@@ -81,4 +97,16 @@ public class Client implements Serializable {
                 ", clientSpecialMentions='" + clientSpecialMentions + '\'' +
                 '}';
     }
+
+    public void addCard (PaymentCard paymentCard) {
+        this.cards.add(paymentCard);
+        paymentCard.setClient(this);
+    }
+
+    public void removeCard (PaymentCard paymentCard) {
+        cards.remove(paymentCard);
+        paymentCard.setClient(null);
+    }
+
+
 }

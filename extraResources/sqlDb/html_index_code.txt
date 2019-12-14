@@ -34,6 +34,9 @@
   clear: both;
 }
 
+
+
+
     </style>
 </head>
 
@@ -50,10 +53,10 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <!--<th>Address</th>-->
+                            <th>Address</th>
                             <th>Phone #</th>
                             <th>Email</th>
-                            <!--<th>Payment Card</th>-->
+                            <th>Payment Card</th>
                             <th>Status</th>
                             <th>SpecialMentions</th>
                         </tr>
@@ -61,10 +64,10 @@
                         <tr th:each="client : ${clients}">
                             <td th:text="${client.clientID}"></td>
                             <td th:text="${client.clientName}"></td>
-                            <!--<td th:text="${client.clientAddress}"></td>-->
+                            <td th:text="${client.clientAddress}"></td>
                             <td th:text="${client.clientBusinessPhone}"></td>
                             <td th:text="${client.emailAddress}"></td>
-                            <!--<td th:text="${client.paymentCard}"></td>-->
+                            <td th:text="${client.paymentCard}"></td>
                             <td th:text="${client.clientStatus}"></td>
                             <td th:text="${client.clientSpecialMentions}"></td>
                         </tr>
@@ -190,7 +193,7 @@
 <div class="row" style="background-color:#FFCE00;">
     <div class="column">
         <div class="container">
-            <div th:if="${not #lists.isEmpty(transactions)}">
+            <li th:if="${not #lists.isEmpty(transactions)}">
                 <h2>Transactions: </h2>
                 <table class="table table-striped">
                     <tr>
@@ -205,7 +208,15 @@
                     <tr th:each="transaction : ${transactions}">
                         <td th:text="${transaction.transactionID}"></td>
                         <td th:text="${transaction.clientID}"></td>
-                        <!--<td th:text="${transaction.productIDs}"></td>-->
+                        <!--<td th:text="${transaction.products.productID}"></td>-->
+
+                        <!--<li th:if="${not #lists.isEmpty(transaction.products)}">
+                                <tr th:each="product : ${transaction.products}">
+                                    <td th:text="${product.productName}"></td>
+                                </tr>
+
+                        </li>-->
+
                         <td th:text="${transaction.transactionStatus}"></td>
                         <td th:text="${transaction.specialMentions}"></td>
                         <td th:text="${transaction.localDate}"></td>

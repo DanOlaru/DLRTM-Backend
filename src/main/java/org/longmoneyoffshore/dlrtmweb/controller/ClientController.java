@@ -1,6 +1,7 @@
 package org.longmoneyoffshore.dlrtmweb.controller;
 
 import lombok.Data;
+import org.longmoneyoffshore.dlrtmweb.entities.atomic.PaymentCard;
 import org.longmoneyoffshore.dlrtmweb.globalvalues.ClientsFakeDataSets;
 import org.longmoneyoffshore.dlrtmweb.entities.entity.Client;
 import org.longmoneyoffshore.dlrtmweb.service.ClientService;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //@Controller
@@ -75,9 +78,10 @@ public class ClientController {
                 .clientBusinessPhone("666-888-6767")
                 .emailAddress("one.client@gmail.com")
                 .clientAddress("345 E 85th St, Chicago, IL, 60617")
-                .paymentCard("5432 5678 6666 0987, 10/14/20, 665")
+                .cards(new ArrayList<PaymentCard>(Arrays.asList(new PaymentCard("5432 5678 6666 0987, 10/14/20, 665"))))
                 .clientSpecialMentions("just one customer")
                 .build();
+
 
         clientService.insertClient(oneClient);
     }

@@ -1,14 +1,22 @@
-/*
 package org.longmoneyoffshore.dlrtmweb.entities.atomic;
+
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import org.longmoneyoffshore.dlrtmweb.entities.entity.Client;
 
 import javax.persistence.*;
 
 //@Embeddable
-@Entity
+@Entity(name = "PaymentCard")
 @Table(name = "payment_cards")
+@Getter
+@Setter
+@Data
 public class PaymentCard {
 
-    //@Id
+    @Id
+    @GeneratedValue
     private int cardID;
 
     private String fullCardInfo;
@@ -17,16 +25,17 @@ public class PaymentCard {
     private String cardExpirationDate;
     private String CVC;
 
-    public PaymentCard() {}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "clientID")
+    private Client client;
 
-   */
-/* public PaymentCard() {
+
+    public PaymentCard() {
         cardNumber = "";
         nameOnCard = "";
         cardExpirationDate = "";
         CVC = "";
-    };*//*
-
+    }
 
     public PaymentCard(String cardNumber, String nameOnCard, String cardExpirationDate, String CVC) {
         this.cardNumber = cardNumber;
@@ -37,52 +46,13 @@ public class PaymentCard {
 
     //TODO: card details contains, in this order: card number, expiration date, CVC
     public PaymentCard(String cardDetails) {
-        //TODO: parse cardDetails to cardNumber, cardExpirationDate, cardVerificationNumber
+
+        String[] cardDetailsSplit = cardDetails.split(",");
         this.fullCardInfo = cardDetails;
-        cardNumber = "";
-        nameOnCard = "";
-        cardExpirationDate = "";
-        CVC = "";
-    }
 
-    public String getFullCardInfo() {
-        return fullCardInfo;
-    }
-
-    public void setFullCardInfo(String fullCardInfo) {
-        this.fullCardInfo = fullCardInfo;
-    }
-
-    public String getCardNumber() {
-        return cardNumber;
-    }
-
-    public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
-    }
-
-    public String getNameOnCard() {
-        return nameOnCard;
-    }
-
-    public void setNameOnCard(String nameOnCard) {
-        this.nameOnCard = nameOnCard;
-    }
-
-    public String getCardExpirationDate() {
-        return cardExpirationDate;
-    }
-
-    public void setCardExpirationDate(String cardExpirationDate) {
-        this.cardExpirationDate = cardExpirationDate;
-    }
-
-    public String getCVC() {
-        return CVC;
-    }
-
-    public void setCVC(String CVC) {
-        this.CVC = CVC;
+        this.cardNumber = cardDetailsSplit[0];
+        this.cardExpirationDate = cardDetailsSplit[1];
+        this.CVC = cardDetailsSplit[2];
     }
 
 
@@ -99,11 +69,21 @@ public class PaymentCard {
     public String simpleCardInfo() {
         return
                 "cardNumber='" + cardNumber + '\'' +
-                ", nameOnCard='" + nameOnCard + '\'' +
-                ", cardExpirationDate='" + cardExpirationDate + '\'' +
-                ", cardVerificationNumber='" + CVC + '\'' +
-                '}';
+                        ", nameOnCard='" + nameOnCard + '\'' +
+                        ", cardExpirationDate='" + cardExpirationDate + '\'' +
+                        ", cardVerificationNumber='" + CVC + '\'' +
+                        '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PaymentCard)) return false;
+        return cardID != 0 && cardID == (((PaymentCard) o).getCardID());
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
+    }
 }
-*/

@@ -50,17 +50,9 @@ public class ClientService {
     }
 
     public void insertClients (List<Client> clients) {
-
-        System.out.println("TRYING TO INPUT THESE CLIENTS: ");
-        clients.stream().forEach(c -> System.out.println(c));
-
         this.clientDao.saveAll(clients);
-
-        //clients.stream().forEach(c -> insertClient(c));
     }
 
-    public void clearTables() {
-
-    }
+    public void clearTables() { this.clientDao.deleteAll();}
 }
 
