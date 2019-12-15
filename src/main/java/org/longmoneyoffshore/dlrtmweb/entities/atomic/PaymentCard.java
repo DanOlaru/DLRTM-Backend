@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.longmoneyoffshore.dlrtmweb.entities.entity.Client;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 
 //@Embeddable
 @Entity(name = "PaymentCard")
@@ -14,6 +15,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Data
+@Transactional
 public class PaymentCard {
 
     @Id

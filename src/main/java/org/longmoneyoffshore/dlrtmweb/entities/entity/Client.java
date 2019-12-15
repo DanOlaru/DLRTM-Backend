@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity(name = "Client")
 @Table(name = "clients")
@@ -90,6 +91,16 @@ public class Client implements Serializable {
                 ", clientName=" + clientName +
                 ", clientPrimaryEmailAddress='" + emailAddress + '\'' +
                 ", clientStatus='" + clientStatus + '\'' +
+                ", clientSpecialMentions='" + clientSpecialMentions + '\'' +
+                '}';
+    }
+    public String smallToStringWithCards() {
+        return "Client{" +
+                "clientID='" + clientID + '\'' +
+                ", clientName=" + clientName +
+                ", clientPrimaryEmailAddress='" + emailAddress + '\'' +
+                ", clientStatus='" + clientStatus + '\'' +
+                ", cards='" + cards.stream().map(PaymentCard::getFullCardInfo).collect(Collectors.joining(" || ")) + '\'' +
                 ", clientSpecialMentions='" + clientSpecialMentions + '\'' +
                 '}';
     }

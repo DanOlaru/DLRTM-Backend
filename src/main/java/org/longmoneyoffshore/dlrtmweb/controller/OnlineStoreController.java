@@ -101,8 +101,8 @@ public class OnlineStoreController {
         return "index";
     }
 
-   /* @GetMapping(value = "/deleteTransaction")
-    public String deleteTransactionById(@RequestParam("selectedTransactionID") String id, Model model) {
+    @GetMapping(value = "/deleteTransaction")
+    public String deleteTransactionById(@RequestParam("selectedTransactionID") int id, Model model) {
 
        transactionService.removeTransactionById(id);
 
@@ -119,7 +119,7 @@ public class OnlineStoreController {
         setModel(model);
 
         return "index";
-    }*/
+    }
 
 
     @PostMapping(value = "/createNewProduct")

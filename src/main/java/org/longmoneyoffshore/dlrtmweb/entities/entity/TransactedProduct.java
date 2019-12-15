@@ -23,6 +23,8 @@ public class TransactedProduct {
     @JoinColumn (name = "transactionID")
     private Transaction transaction;
 
+    public TransactedProduct() {}
+
     public TransactedProduct(String id) {
         //this.transactedProductId = Integer.valueOf(id);
         this.productID = Integer.valueOf(id);

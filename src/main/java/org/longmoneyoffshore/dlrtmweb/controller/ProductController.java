@@ -5,6 +5,7 @@ import org.longmoneyoffshore.dlrtmweb.entities.entity.Product;
 import org.longmoneyoffshore.dlrtmweb.globalvalues.ProductsFakeDataSets;
 import org.longmoneyoffshore.dlrtmweb.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import java.util.List;
 
 
 @RestController
+@Qualifier("ProductController")
 @Data
 public class ProductController {
 

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.ClientInfoStatus;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,15 +27,19 @@ public class ClientController {
 
     @GetMapping
     public List<Client> getAllClients() {
-        System.out.println("TESTING: INSIDE CONTROLLER: GETTING ALL CLIENTS");
+        System.out.println("INSIDE CONTROLLER: GETTING ALL CLIENTS: ");
+
+        clientService.getAllClients().stream().forEach(c -> System.out.println(c.smallToString()));
+
         return clientService.getAllClients();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Client getClientById(@PathVariable("id") int id) {
-
         System.out.println("TESTING: INSIDE CONTROLLER: GETTING CLIENT # " + id);
+
+        System.out.println("CLIENT OBTAINED: " + clientService.getClientById(id).smallToString());
 
         return clientService.getClientById(id);
     }
@@ -81,7 +86,6 @@ public class ClientController {
                 .cards(new ArrayList<PaymentCard>(Arrays.asList(new PaymentCard("5432 5678 6666 0987, 10/14/20, 665"))))
                 .clientSpecialMentions("just one customer")
                 .build();
-
 
         clientService.insertClient(oneClient);
     }
