@@ -1,5 +1,6 @@
 package org.longmoneyoffshore.dlrtmweb.entities.atomic;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +17,8 @@ import javax.persistence.*;
 public class PaymentCard {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "cardID")
     private int cardID;
 
     private String fullCardInfo;
@@ -25,10 +27,11 @@ public class PaymentCard {
     private String cardExpirationDate;
     private String CVC;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "clientID")
-    private Client client;
-
+    //@JsonIgnore
+    //@ManyToOne(fetch = FetchType.LAZY)
+    //@ManyToOne(fetch = FetchType.EAGER)
+    //@JoinColumn(name = "clientid")
+    //private Client client;
 
     public PaymentCard() {
         cardNumber = "";
@@ -50,6 +53,16 @@ public class PaymentCard {
         String[] cardDetailsSplit = cardDetails.split(",");
         this.fullCardInfo = cardDetails;
 
+        this.cardNumber = cardDetailsSplit[0];
+        this.cardExpirationDate = cardDetailsSplit[1];
+        this.CVC = cardDetailsSplit[2];
+    }
+
+    public PaymentCard(String cardDetails, String nameOnCard) {
+        this.fullCardInfo = cardDetails;
+        this.nameOnCard = nameOnCard;
+
+        String[] cardDetailsSplit = cardDetails.split(",");
         this.cardNumber = cardDetailsSplit[0];
         this.cardExpirationDate = cardDetailsSplit[1];
         this.CVC = cardDetailsSplit[2];

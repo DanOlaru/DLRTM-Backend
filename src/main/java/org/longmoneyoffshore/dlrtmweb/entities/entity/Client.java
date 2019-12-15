@@ -17,7 +17,7 @@ import java.util.List;
 @EqualsAndHashCode
 public class Client implements Serializable {
 
-    @Id //@GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "clientID")
     private int clientID;
@@ -37,11 +37,10 @@ public class Client implements Serializable {
     //private Address clientDeliveryAddress; //the actual delivery address used —————— one from the list above
 
     //#6 payment info
-    @OneToMany (mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
-    //private List<PaymentCard> cards = new ArrayList<>();
-    private List<PaymentCard> cards;
-    //@Nullable
-    //private String paymentCard; // points to one of the above
+    @OneToMany (cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "clientID")
+    //@OneToMany (mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PaymentCard> cards = new ArrayList<>();
 
     //#7 Other (/internal) client info Value Range 0-5
 
@@ -51,10 +50,7 @@ public class Client implements Serializable {
     @Column(name = "clientSpecialMentions")
     private String clientSpecialMentions;
 
-    public Client () {
-
-    }
-
+    public Client () { }
 
     @Override
     public boolean equals(Object o) {
@@ -98,7 +94,7 @@ public class Client implements Serializable {
                 '}';
     }
 
-    public void addCard (PaymentCard paymentCard) {
+    /*public void addCard (PaymentCard paymentCard) {
         this.cards.add(paymentCard);
         paymentCard.setClient(this);
     }
@@ -106,7 +102,7 @@ public class Client implements Serializable {
     public void removeCard (PaymentCard paymentCard) {
         cards.remove(paymentCard);
         paymentCard.setClient(null);
-    }
+    }*/
 
 
 }

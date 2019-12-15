@@ -8,8 +8,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="DLRTM_Web_Maven_Hibernate 2.0" />
-        <module name="dlrtm-backend" />
         <module name="DLRTM_Web_Maven" />
+        <module name="dlrtm-backend" />
         <module name="DLRTM Web Platform" />
       </profile>
     </annotationProcessing>

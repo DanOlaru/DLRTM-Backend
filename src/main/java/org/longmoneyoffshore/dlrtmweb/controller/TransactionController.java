@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 import java.util.Date;
 
-@Controller
+//@Controller
+@RestController
 @Data
 @Qualifier("TransactionController")
 @RequestMapping(value = "/transactions")
