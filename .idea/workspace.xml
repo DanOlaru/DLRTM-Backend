@@ -7,17 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed8da808-fee5-4c82-9b40-5c4f870cd86a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/PaymentCardsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/PaymentCardService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/OnlineStoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/OnlineStoreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/controller/ProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/atomic/PaymentCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/atomic/PaymentCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/entity/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/entity/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/entity/TransactedProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/entities/entity/TransactedProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/PaymentCardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/repository/PaymentCardDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/longmoneyoffshore/dlrtmweb/service/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -474,7 +473,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576413107858</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Unidirectional @OneToMany relationship with @JoinColumn established. - WORKS!&#10;&#10;Need to fix entity retrieval from database. Doesn't work! &#10;&#10;Minor problems. (Client ID in PaymentCards table doesn't register)&#10;Table Clients and Products work">
+      <created>1576430098327</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1576430098327</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -506,7 +512,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Successfully inserts entries into Clients table" />
     <MESSAGE value="Successfully reads individual Client entries from Clients table&#10;&#10;Does NOT correctly retrieve the list of all Clients from table" />
     <MESSAGE value="Successfully reads individual Client entries from Clients table&#10;&#10;correctly retrieves the list of all Clients from table&#10;&#10;but does NOT convert them to JSON and correctly send them over the HTTP &#10;response" />
     <MESSAGE value="successfully retrieves SimpleClients from DB.&#10;Does not correctly retrieve the more complicated Client entity. —&gt; generates some kind of infinite loop exception" />
@@ -531,7 +536,8 @@
     <MESSAGE value="DB access via Hibernate&#10;&#10;Table Clients and Products work" />
     <MESSAGE value="Bidirectional relationships established.&#10;They mainly work.&#10;&#10;Minor problems. (Client ID in PaymentCards table doesn't register)&#10;Table Clients and Products work" />
     <MESSAGE value="Unidirectional @OneToMany relationship with @JoinColumn established. - WORKS!&#10;&#10;Need to fix JSON retrieval from database. &#10;&#10;Minor problems. (Client ID in PaymentCards table doesn't register)&#10;Table Clients and Products work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Unidirectional @OneToMany relationship with @JoinColumn established. - WORKS!&#10;&#10;Need to fix JSON retrieval from database. &#10;&#10;Minor problems. (Client ID in PaymentCards table doesn't register)&#10;Table Clients and Products work" />
+    <MESSAGE value="Unidirectional @OneToMany relationship with @JoinColumn established. - WORKS!&#10;&#10;Need to fix entity retrieval from database. Doesn't work! &#10;&#10;Minor problems. (Client ID in PaymentCards table doesn't register)&#10;Table Clients and Products work" />
+    <option name="LAST_COMMIT_MESSAGE" value="Unidirectional @OneToMany relationship with @JoinColumn established. - WORKS!&#10;&#10;Need to fix entity retrieval from database. Doesn't work! &#10;&#10;Minor problems. (Client ID in PaymentCards table doesn't register)&#10;Table Clients and Products work" />
   </component>
   <component name="WindowStateProjectService">
     <state x="404" y="126" key="#DLRTMWebPlatform" timestamp="1576149753621">
@@ -550,26 +556,26 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="405" y="143" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog/0.23.1440.877@0.23.1440.877" timestamp="1576152314058" />
-    <state x="263" y="38" key="CommitChangelistDialog2" timestamp="1576413107230">
+    <state x="263" y="23" key="CommitChangelistDialog2" timestamp="1576430097267">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="263" y="38" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1576413107230" />
-    <state width="1398" height="371" key="GridCell.Tab.0.bottom" timestamp="1576429965273">
+    <state x="263" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1576430097267" />
+    <state width="1398" height="439" key="GridCell.Tab.0.bottom" timestamp="1576521378018">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="371" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1576429965273" />
-    <state width="1398" height="371" key="GridCell.Tab.0.center" timestamp="1576429965271">
+    <state width="1398" height="439" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1576521378018" />
+    <state width="1398" height="439" key="GridCell.Tab.0.center" timestamp="1576521378016">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="371" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1576429965271" />
-    <state width="1398" height="371" key="GridCell.Tab.0.left" timestamp="1576429965270">
+    <state width="1398" height="439" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1576521378016" />
+    <state width="1398" height="439" key="GridCell.Tab.0.left" timestamp="1576521378015">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="371" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1576429965270" />
-    <state width="1398" height="371" key="GridCell.Tab.0.right" timestamp="1576429965272">
+    <state width="1398" height="439" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1576521378015" />
+    <state width="1398" height="439" key="GridCell.Tab.0.right" timestamp="1576521378017">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="371" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1576429965272" />
+    <state width="1398" height="439" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1576521378017" />
     <state x="208" y="43" key="SettingsEditor" timestamp="1576422939099">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -578,14 +584,18 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="515" height="445" key="SwitcherDM/0.23.1440.877@0.23.1440.877" timestamp="1576155989857" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1576413111168">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1576430100882">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1576413111168" />
-    <state x="378" y="83" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1576149940780">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1576430100881" />
+    <state x="100" y="123" width="1240" height="677" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1576520840000">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="378" y="83" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1440.877@0.23.1440.877" timestamp="1576149940780" />
+    <state x="100" y="123" width="1240" height="677" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.877@0.23.1440.877" timestamp="1576520840000" />
+    <state x="378" y="83" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1576521043853">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="378" y="83" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1440.877@0.23.1440.877" timestamp="1576521043853" />
     <state x="509" y="385" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1575640623928">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -598,9 +608,9 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="346" y="260" key="git4idea.merge.GitMergeDialog/0.23.1440.877@0.23.1440.877" timestamp="1576233262392" />
-    <state x="385" y="213" key="search.everywhere.popup" timestamp="1576337757160">
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1576514799808">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="385" y="213" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1576337757160" />
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1576514799808" />
   </component>
 </project>

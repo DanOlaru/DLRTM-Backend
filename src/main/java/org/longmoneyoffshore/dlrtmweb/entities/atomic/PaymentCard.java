@@ -1,6 +1,5 @@
 package org.longmoneyoffshore.dlrtmweb.entities.atomic;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,19 +8,18 @@ import org.longmoneyoffshore.dlrtmweb.entities.entity.Client;
 import javax.persistence.*;
 import javax.transaction.Transactional;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 //@Embeddable
-@Entity(name = "PaymentCard")
+@Entity
 @Table(name = "payment_cards")
-@Getter
-@Setter
 @Data
 @Transactional
 public class PaymentCard {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "cardID")
-    private int cardID;
+    @GeneratedValue(strategy = IDENTITY)
+    private Long id;
 
     private String fullCardInfo;
     private String cardNumber;
@@ -30,10 +28,9 @@ public class PaymentCard {
     private String CVC;
 
     //@JsonIgnore
-    //@ManyToOne(fetch = FetchType.LAZY)
-    //@ManyToOne(fetch = FetchType.EAGER)
-    //@JoinColumn(name = "clientid")
-    //private Client client;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "client_id")
+    private Client client;
 
     public PaymentCard() {
         cardNumber = "";
@@ -94,7 +91,7 @@ public class PaymentCard {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof PaymentCard)) return false;
-        return cardID != 0 && cardID == (((PaymentCard) o).getCardID());
+        return id != 0 && id == (((PaymentCard) o).getId());
     }
 
     @Override

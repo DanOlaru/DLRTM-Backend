@@ -69,8 +69,9 @@ public class ClientController {
 
     @PostMapping(value = "/clientsfake")
     public void insertFakeClients() {
-
-        clientService.insertClients(ClientsFakeDataSets.clientsFakeDataSet);
+        ClientsFakeDataSets.clientsFakeDataSet.forEach(client ->{
+            clientService.insertClient(client);
+        });
     }
 
     @PostMapping(value = "/insertoneclient")
